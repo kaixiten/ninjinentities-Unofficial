@@ -1,12 +1,12 @@
 package hedaox.ninjinentities.proxy;
 
 import cpw.mods.fml.common.FMLCommonHandler;
-import hedaox.ninjinentities.event.EventAttackManager;
-import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import hedaox.ninjinentities.event.EventAttackManager;
+import net.minecraftforge.common.MinecraftForge;
 
 /**
  * Do Things on server and client side at the same time

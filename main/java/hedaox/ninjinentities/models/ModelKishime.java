@@ -7,8 +7,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
 
-import java.awt.*;
-
 public class ModelKishime extends ModelBase {
 	private final ModelRenderer Head;
 	private final ModelRenderer HeadChild_2;

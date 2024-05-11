@@ -13,11 +13,11 @@ import java.util.Arrays;
 
 public class EventAttackManager {
 
-    private int slowClient = 0;
+    private final int slowClient = 0;
 
     /**
      * Event is launch everytime an entity is hurt. Is use for putting player in KO State if entity is a trainer (Goku, Piccolo, Trunks etc...)
-     *
+     * <p>
      *
      * @author Hedaox
      */
@@ -52,7 +52,7 @@ public class EventAttackManager {
                             JRMCoreH.setByte(0, loadedPlayer, "jrmcRelease");
                             JRMCoreH.setInt(0, loadedPlayer, "jrmcStamina");
                             StE = JRMCoreH.StusEfcts(19, StE, nbt, false);
-                            StE = JRMCoreH.StusEfcts(13, StE, nbt, false);
+                            JRMCoreH.StusEfcts(13, StE, nbt, false);
 
                             // Make all Trainers disappear
 

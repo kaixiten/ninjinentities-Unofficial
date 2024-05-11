@@ -1,7 +1,7 @@
 package hedaox.ninjinentities.entities;
 
-import hedaox.ninjinentities.lib.ModVars;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import hedaox.ninjinentities.lib.ModVars;
 
 public class NinjinEntities {
 
@@ -10,7 +10,6 @@ public class NinjinEntities {
 	public static void init()
 	{
 		createEntity(EntityMasterBaba.class, 64, "masterBaba");
-		createEntity(EntityBandit1.class, 64, "bandit1");
 		createEntity(EntityGeneralBlue.class, 64, "generalBlue");
 		createEntity(EntityHercule.class, 64, "hercule");
 		createEntity(EntityGohanAdult.class, 64, "gohanAdult");
@@ -56,6 +55,12 @@ public class NinjinEntities {
 		createEntity(EntityKrillin2.class, 64, "krillin2");
 		createEntity(EntityKrillinKid1.class, 64, "krillinKid1");
 		createEntity(EntityKrillinKid2.class, 64, "krillinKid2");
+		createEntity(Entityglnl.class, 64, "glnl");
+		createEntity(EntityKanba.class, 64, "kanba");
+		createEntity(EntityKanbassj.class, 64, "kanbassj");
+		createEntity(EntityKanbaSsj2.class, 64, "kanbassj2");
+		createEntity(EntityKanbaSsj3.class, 64, "kanbassj3");
+		createEntity(EntityKanbaSsjoozaru.class, 64, "kanbassjoozaru");
 		createEntity(EntityTien.class, 64, "tien");
 		createEntity(EntityChiaotzu1.class, 64, "chiaotzu1");
 		createEntity(EntityChiaotzu2.class, 64, "chiaotzu2");
@@ -63,6 +68,7 @@ public class NinjinEntities {
 		createEntity(EntityYamcha2.class, 64, "yamcha2");
 		createEntity(EntityYamcha3.class, 64, "yamcha3");
 		createEntity(EntityPiccolo.class, 64, "piccolo");
+		createEntity(EntityPiccoloInjury.class, 64, "PiccoloInjury");
 		createEntity(EntityOozaru.class, 64, "oozaru");
 		createEntity(EntityRoshi.class, 64, "roshi");
 		createEntity(EntityRoshiBuff.class, 64, "roshiBuff");
@@ -80,11 +86,19 @@ public class NinjinEntities {
 		createEntity(EntityTrunksKid.class, 64, "trunksKid");
 		createEntity(EntityTrunksKidSsj.class, 64, "trunksKidSsj");
 		createEntity(EntityVegeto.class, 64, "vegeto");
+		createEntity(EntityVegetoSsj2.class, 64, "vegetoSsj2");
+		createEntity(EntityVegetoSsj3.class, 64, "vegetoSsj3");
 		createEntity(EntityVegetoSsj.class, 64, "vegetoSsj");
 		createEntity(EntityVegetoSsjb.class, 64, "vegetoSsjb");
+		createEntity(EntityVegetoUi.class, 64, "vegetoUi");
+		createEntity(EntityVegetoUw.class, 64, "vegetoUw");
 		createEntity(EntityGogeta.class, 64, "gogeta");
 		createEntity(EntityGogetaSsj.class, 64, "gogetaSsj");
+		createEntity(EntityGogetaSsj2.class, 64, "gogetaSsj2");
+		createEntity(EntityGogetaSsj3.class, 64, "gogetaSsj3");
 		createEntity(EntityGogetaSsjb.class, 64, "gogetaSsjb");
+		createEntity(EntityGogetaUi.class, 64, "gogetaUi");
+		createEntity(EntityGogetaUw.class, 64, "gogetaUw");
 		createEntity(EntityVegeta0.class, 64, "vegeta0");
 		createEntity(EntityVegeta0Damaged.class, 64, "vegeta0Damaged");
 		createEntity(EntityVegeta1.class, 64, "vegeta");
@@ -146,12 +160,9 @@ public class NinjinEntities {
 		createEntity(EntityZoire.class, 64, "zoire");
 		createEntity(EntityKettle.class, 64, "kettle");
 		createEntity(EntityKnsi.class, 64, "knsi");
-		createEntity(EntityAnirazaNinjin.class, 64, "aniraza");
-		createEntity(EntityAniraza2.class, 64, "aniraza2");
 		createEntity(EntityKeflaNinjin.class, 64, "kefla");
 		createEntity(EntityKeflaSsj.class, 64, "keflaSsj");
 		createEntity(EntityBergamoNinjin.class, 64, "bergamo");
-		createEntity(EntityBasilNinjin.class, 64, "basil");
 		createEntity(EntityLavenderNinjin.class, 64, "lavender");
 		createEntity(EntityPilina.class, 64, "pilina");
 		createEntity(EntitySaonel.class, 64, "saonel");
@@ -189,6 +200,7 @@ public class NinjinEntities {
 		createEntity(EntityAngol.class, 64, "angol");
 		createEntity(EntityBrolyZBase.class, 64, "brolyZBase");
 		createEntity(EntityBrolyZLSsj.class, 64, "brolyZLSsj");
+		createEntity(EntityBrolyZLSsj3.class, 64, "brolyZLSsj3");
 		createEntity(EntityBrolyZSsj.class, 64, "brolyZSsj");
 		createEntity(EntityBrolyZ2Ssj.class, 64, "brolyZ2Ssj");
 		createEntity(EntityMoah.class, 64, "moah");
@@ -256,6 +268,34 @@ public class NinjinEntities {
 		createEntity(EntityAka.class, 64, "aka");
 		createEntity(EntityCell4Ninjin.class, 64, "cell4");
 		createEntity(EntityRecoomeDamaged.class, 64, "recoomeDamaged");
+		createEntity(EntityHjcellNinjin.class, 64, "hjcell");
+		createEntity(EntityQdeNinjin.class, 64, "qed");
+		createEntity(EntityBdkNinjin.class, 64, "bdk");
+		createEntity(EntityBdkssjNinjin.class, 64, "bdkssj");
+		createEntity(EntityBdkssj3Ninjin.class, 64, "bdkssj3");
+		createEntity(EntityBdkssjbNinjin.class, 64, "bdkssjb");
+		createEntity(EntityBdkssjb3Ninjin.class, 64, "bdkssjb3");
+		createEntity(EntityHsfls.class, 64, "hsfls");
+		createEntity(EntityBb.class, 64, "beibi");
+		createEntity(EntityBbssj.class, 64, "beibissj");
+		createEntity(EntityBbssj2.class, 64, "beibissj2");
+		createEntity(EntityBbssj3.class, 64, "beibissj3");
+		createEntity(EntityJs.class, 64, "jiasi");
+		createEntity(EntityZsfls.class, 64, "zsfls");
+		createEntity(EntityZsCoolerFifthForm.class, 64, "zsgl");
+		createEntity(EntityHjCoolerFifthForm.class, 64, "hjgl");
+		createEntity(EntityBzGokuSsj.class, 64, "Bzgokussj");
+		createEntity(EntityFu.class, 64, "fu");
+		createEntity(EntityVegetaZw.class, 64, "Vegetazw");
+		createEntity(EntityDragon.class, 64, "GTDragon");
+		createEntity(Entityomega.class, 64, "omega");
+		createEntity(Entityomega2.class, 64, "omega2");
+		createEntity(EntityMara.class, 64, "mara");
+		createEntity(EntityYoung_Mara.class, 64, "mara2");
+		createEntity(EntityFusion_Mara.class, 64, "mara3");
+		createEntity(EntityCellmax.class, 64, "cellmax");
+		createEntity(EntityGamma1.class, 64, "Gamma1");
+		createEntity(EntityGamma2.class, 64, "Gamma2");
 	}
 	
 	// simpleEntity

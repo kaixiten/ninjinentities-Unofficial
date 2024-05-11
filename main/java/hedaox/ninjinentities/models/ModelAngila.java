@@ -9,27 +9,11 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelAngila extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer HornR;
-	private final ModelRenderer HornL;
-	private final ModelRenderer EarR;
-	private final ModelRenderer EarL;
-	private final ModelRenderer Hair;
-	private final ModelRenderer Hair1;
-	private final ModelRenderer Hair2;
-	private final ModelRenderer Hair3;
-	private final ModelRenderer Hair4;
-	private final ModelRenderer Hair5;
-	private final ModelRenderer Hair6;
-	private final ModelRenderer Hair7;
 	private final ModelRenderer Body;
-	private final ModelRenderer bone4;
-	private final ModelRenderer Cape;
 	private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
-	private final ModelRenderer bone5;
 	private final ModelRenderer LLeg;
-	private final ModelRenderer bone6;
 	private float scaleX = 1.0F;
 	private float scaleY = 1.0F;
 	private float scaleZ = 1.0F;
@@ -47,92 +31,92 @@ public class ModelAngila extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 24, 24, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		HornR = new ModelRenderer(this);
-		HornR.setRotationPoint(0.0F, 25.0F, -2.0F);
-		setRotationAngle(HornR, -0.0873F, 0.0F, 0.0F);
-		Head.addChild(HornR);
-		HornR.cubeList.add(new ModelBox(HornR, 0, 3, -3.0F, -31.0F, -6.0F, 1, 1, 2, 0.0F));
+		ModelRenderer hornR = new ModelRenderer(this);
+		hornR.setRotationPoint(0.0F, 25.0F, -2.0F);
+		setRotationAngle(hornR, -0.0873F, 0.0F, 0.0F);
+		Head.addChild(hornR);
+		hornR.cubeList.add(new ModelBox(hornR, 0, 3, -3.0F, -31.0F, -6.0F, 1, 1, 2, 0.0F));
 
-		HornL = new ModelRenderer(this);
-		HornL.setRotationPoint(0.0F, 25.0F, -2.0F);
-		setRotationAngle(HornL, -0.0873F, 0.0F, 0.0F);
-		Head.addChild(HornL);
-		HornL.mirror = true;
-		HornL.cubeList.add(new ModelBox(HornL, 0, 3, 2.0F, -31.0F, -6.0F, 1, 1, 2, 0.0F));
+		ModelRenderer hornL = new ModelRenderer(this);
+		hornL.setRotationPoint(0.0F, 25.0F, -2.0F);
+		setRotationAngle(hornL, -0.0873F, 0.0F, 0.0F);
+		Head.addChild(hornL);
+		hornL.mirror = true;
+		hornL.cubeList.add(new ModelBox(hornL, 0, 3, 2.0F, -31.0F, -6.0F, 1, 1, 2, 0.0F));
 
-		EarR = new ModelRenderer(this);
-		EarR.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(EarR, 0.0F, -0.5236F, 0.0F);
-		Head.addChild(EarR);
-		EarR.cubeList.add(new ModelBox(EarR, 26, 10, -4.5F, -6.0F, -1.866F, 0, 4, 6, 0.0F));
+		ModelRenderer earR = new ModelRenderer(this);
+		earR.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(earR, 0.0F, -0.5236F, 0.0F);
+		Head.addChild(earR);
+		earR.cubeList.add(new ModelBox(earR, 26, 10, -4.5F, -6.0F, -1.866F, 0, 4, 6, 0.0F));
 
-		EarL = new ModelRenderer(this);
-		EarL.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(EarL, 0.0F, 0.5236F, 0.0F);
-		Head.addChild(EarL);
-		EarL.mirror = true;
-		EarL.cubeList.add(new ModelBox(EarL, 26, 10, 4.5F, -6.0F, -1.866F, 0, 4, 6, 0.0F));
+		ModelRenderer earL = new ModelRenderer(this);
+		earL.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(earL, 0.0F, 0.5236F, 0.0F);
+		Head.addChild(earL);
+		earL.mirror = true;
+		earL.cubeList.add(new ModelBox(earL, 26, 10, 4.5F, -6.0F, -1.866F, 0, 4, 6, 0.0F));
 
-		Hair = new ModelRenderer(this);
-		Hair.setRotationPoint(0.0F, 0.875F, 6.0625F);
-		setRotationAngle(Hair, 0.3491F, 0.0F, 0.0F);
-		Head.addChild(Hair);
+		ModelRenderer hair = new ModelRenderer(this);
+		hair.setRotationPoint(0.0F, 0.875F, 6.0625F);
+		setRotationAngle(hair, 0.3491F, 0.0F, 0.0F);
+		Head.addChild(hair);
 
-		Hair1 = new ModelRenderer(this);
-		Hair1.setRotationPoint(0.0F, -2.0F, -1.0F);
-		Hair.addChild(Hair1);
-		Hair1.cubeList.add(new ModelBox(Hair1, 24, 41, -4.0F, -4.786F, -0.76F, 8, 11, 2, 0.0F));
+		ModelRenderer hair1 = new ModelRenderer(this);
+		hair1.setRotationPoint(0.0F, -2.0F, -1.0F);
+		hair.addChild(hair1);
+		hair1.cubeList.add(new ModelBox(hair1, 24, 41, -4.0F, -4.786F, -0.76F, 8, 11, 2, 0.0F));
 
-		Hair2 = new ModelRenderer(this);
-		Hair2.setRotationPoint(-3.0625F, -0.6875F, -1.0F);
-		setRotationAngle(Hair2, 0.0F, 0.0F, 0.5236F);
-		Hair.addChild(Hair2);
-		Hair2.cubeList.add(new ModelBox(Hair2, 27, 45, -4.0F, -4.786F, -0.76F, 5, 5, 2, 0.0F));
+		ModelRenderer hair2 = new ModelRenderer(this);
+		hair2.setRotationPoint(-3.0625F, -0.6875F, -1.0F);
+		setRotationAngle(hair2, 0.0F, 0.0F, 0.5236F);
+		hair.addChild(hair2);
+		hair2.cubeList.add(new ModelBox(hair2, 27, 45, -4.0F, -4.786F, -0.76F, 5, 5, 2, 0.0F));
 
-		Hair3 = new ModelRenderer(this);
-		Hair3.setRotationPoint(3.0625F, -0.6875F, -1.0F);
-		setRotationAngle(Hair3, 0.0F, 0.0F, -0.5236F);
-		Hair.addChild(Hair3);
-		Hair3.cubeList.add(new ModelBox(Hair3, 27, 45, -1.0F, -4.786F, -0.76F, 5, 5, 2, 0.0F));
+		ModelRenderer hair3 = new ModelRenderer(this);
+		hair3.setRotationPoint(3.0625F, -0.6875F, -1.0F);
+		setRotationAngle(hair3, 0.0F, 0.0F, -0.5236F);
+		hair.addChild(hair3);
+		hair3.cubeList.add(new ModelBox(hair3, 27, 45, -1.0F, -4.786F, -0.76F, 5, 5, 2, 0.0F));
 
-		Hair4 = new ModelRenderer(this);
-		Hair4.setRotationPoint(-1.75F, -3.25F, -1.0F);
-		setRotationAngle(Hair4, 0.0F, 0.0F, -1.9199F);
-		Hair.addChild(Hair4);
-		Hair4.cubeList.add(new ModelBox(Hair4, 20, 48, -9.1875F, -4.8447F, -0.76F, 10, 5, 2, 0.0F));
+		ModelRenderer hair4 = new ModelRenderer(this);
+		hair4.setRotationPoint(-1.75F, -3.25F, -1.0F);
+		setRotationAngle(hair4, 0.0F, 0.0F, -1.9199F);
+		hair.addChild(hair4);
+		hair4.cubeList.add(new ModelBox(hair4, 20, 48, -9.1875F, -4.8447F, -0.76F, 10, 5, 2, 0.0F));
 
-		Hair5 = new ModelRenderer(this);
-		Hair5.setRotationPoint(1.75F, -3.25F, -1.0F);
-		setRotationAngle(Hair5, 0.0F, 0.0F, 1.9199F);
-		Hair.addChild(Hair5);
-		Hair5.cubeList.add(new ModelBox(Hair5, 20, 48, -0.9786F, -4.8447F, -0.76F, 10, 5, 2, 0.0F));
+		ModelRenderer hair5 = new ModelRenderer(this);
+		hair5.setRotationPoint(1.75F, -3.25F, -1.0F);
+		setRotationAngle(hair5, 0.0F, 0.0F, 1.9199F);
+		hair.addChild(hair5);
+		hair5.cubeList.add(new ModelBox(hair5, 20, 48, -0.9786F, -4.8447F, -0.76F, 10, 5, 2, 0.0F));
 
-		Hair6 = new ModelRenderer(this);
-		Hair6.setRotationPoint(0.0F, -2.342F, -0.9397F);
-		setRotationAngle(Hair6, 0.1745F, 0.0F, 0.0F);
-		Hair.addChild(Hair6);
-		Hair6.cubeList.add(new ModelBox(Hair6, 28, 42, -3.0F, -4.0F, 0.0F, 6, 11, 1, 0.0F));
+		ModelRenderer hair6 = new ModelRenderer(this);
+		hair6.setRotationPoint(0.0F, -2.342F, -0.9397F);
+		setRotationAngle(hair6, 0.1745F, 0.0F, 0.0F);
+		hair.addChild(hair6);
+		hair6.cubeList.add(new ModelBox(hair6, 28, 42, -3.0F, -4.0F, 0.0F, 6, 11, 1, 0.0F));
 
-		Hair7 = new ModelRenderer(this);
-		Hair7.setRotationPoint(0.0F, -6.5924F, -0.9224F);
-		setRotationAngle(Hair7, 0.1745F, 0.0F, 0.0F);
-		Hair.addChild(Hair7);
-		Hair7.cubeList.add(new ModelBox(Hair7, 25, 45, -4.0F, -1.0F, 0.0F, 8, 8, 1, 0.0F));
+		ModelRenderer hair7 = new ModelRenderer(this);
+		hair7.setRotationPoint(0.0F, -6.5924F, -0.9224F);
+		setRotationAngle(hair7, 0.1745F, 0.0F, 0.0F);
+		hair.addChild(hair7);
+		hair7.cubeList.add(new ModelBox(hair7, 25, 45, -4.0F, -1.0F, 0.0F, 8, 8, 1, 0.0F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Body.cubeList.add(new ModelBox(Body, 32, 0, -4.0F, 0.0F, -2.0F, 8, 12, 4, 0.0F));
 
-		bone4 = new ModelRenderer(this);
+		ModelRenderer bone4 = new ModelRenderer(this);
 		bone4.setRotationPoint(0.0F, 24.0F, -0.4375F);
 		Body.addChild(bone4);
 		bone4.cubeList.add(new ModelBox(bone4, 0, 16, -5.0F, -24.0F, -2.0F, 10, 10, 5, 0.0F));
 
-		Cape = new ModelRenderer(this);
-		Cape.setRotationPoint(0.0F, 0.0F, -1.0F);
-		setRotationAngle(Cape, 0.1745F, 0.0F, 0.0F);
-		Body.addChild(Cape);
-		Cape.cubeList.add(new ModelBox(Cape, 0, 32, -5.0F, 1.0F, 4.0F, 10, 22, 0, 0.0F));
+		ModelRenderer cape = new ModelRenderer(this);
+		cape.setRotationPoint(0.0F, 0.0F, -1.0F);
+		setRotationAngle(cape, 0.1745F, 0.0F, 0.0F);
+		Body.addChild(cape);
+		cape.cubeList.add(new ModelBox(cape, 0, 32, -5.0F, 1.0F, 4.0F, 10, 22, 0, 0.0F));
 
 		RArm = new ModelRenderer(this);
 		RArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
@@ -149,7 +133,7 @@ public class ModelAngila extends ModelBase {
 		Body.addChild(RLeg);
 		RLeg.cubeList.add(new ModelBox(RLeg, 44, 44, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		bone5 = new ModelRenderer(this);
+		ModelRenderer bone5 = new ModelRenderer(this);
 		bone5.setRotationPoint(0.0F, 0.0F, 0.0F);
 		setRotationAngle(bone5, 0.0F, 0.0F, 0.0873F);
 		RLeg.addChild(bone5);
@@ -160,7 +144,7 @@ public class ModelAngila extends ModelBase {
 		Body.addChild(LLeg);
 		LLeg.cubeList.add(new ModelBox(LLeg, 0, 54, 2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		bone6 = new ModelRenderer(this);
+		ModelRenderer bone6 = new ModelRenderer(this);
 		bone6.setRotationPoint(2.0F, 12.0F, 0.0F);
 		setRotationAngle(bone6, 0.0F, 0.0F, -0.0873F);
 		LLeg.addChild(bone6);

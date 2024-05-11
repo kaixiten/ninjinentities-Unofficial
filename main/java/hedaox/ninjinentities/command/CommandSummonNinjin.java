@@ -14,16 +14,16 @@ import java.util.List;
 
 public class CommandSummonNinjin implements ICommand {
 
-    private final List aliases;
+    private final List<String> aliases;
 
-    private List<String> listOfAllEntitiesNames = new ArrayList<String>();
+    private final List<String> listOfAllEntitiesNames = new ArrayList<>();
 
     protected String fullEntityName;
     protected Entity summonedEntity;
 
     public CommandSummonNinjin()
     {
-        aliases = new ArrayList();
+        aliases = new ArrayList<String>();
         aliases.add("summonninjin");
         aliases.add("sumnj");
 
@@ -78,23 +78,17 @@ public class CommandSummonNinjin implements ICommand {
     public boolean canCommandSenderUseCommand(ICommandSender sender) {
         if (sender instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) sender;
-            if (player.canCommandSenderUseCommand(3,"")) {
-                return true;
-            } else
-            {
-                return false;
-            }
+            return player.canCommandSenderUseCommand(3, "");
         }
         return true;
     }
 
     @Override
     public List<?> addTabCompletionOptions(ICommandSender sender, String[] strArray) {
-        List<String> strListComp = new ArrayList<String>();
-        List<String> currentCom = listOfAllEntitiesNames;
+        List<String> strListComp = new ArrayList<>();
 
         if (strArray.length == 1) {
-            for (String strCom: currentCom) {
+            for (String strCom: listOfAllEntitiesNames) {
                 if(strCom.length() > strArray[0].length() && strArray[0].startsWith(strCom.substring(0, strArray[0].length())))
                 {
                     strListComp.add(strCom);

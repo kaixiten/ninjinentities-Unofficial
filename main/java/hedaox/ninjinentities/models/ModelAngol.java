@@ -9,12 +9,7 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelAngol extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer bone;
-	private final ModelRenderer HeadChild_2;
-	private final ModelRenderer HeadChild_1;
-	private final ModelRenderer Nose;
 	private final ModelRenderer Body;
-	private final ModelRenderer Skilt;
 	private final ModelRenderer RArm;
 	private final ModelRenderer LLeg;
 	private final ModelRenderer LArm;
@@ -36,36 +31,36 @@ public class ModelAngol extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		bone = new ModelRenderer(this);
+		ModelRenderer bone = new ModelRenderer(this);
 		bone.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.addChild(bone);
 
-		HeadChild_2 = new ModelRenderer(this);
-		HeadChild_2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(HeadChild_2, 0.0F, 0.5236F, 0.0F);
-		bone.addChild(HeadChild_2);
-		HeadChild_2.cubeList.add(new ModelBox(HeadChild_2, 52, 9, 4.5F, -6.0F, -1.866F, 0, 4, 6, 0.0F));
+		ModelRenderer headChild_2 = new ModelRenderer(this);
+		headChild_2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(headChild_2, 0.0F, 0.5236F, 0.0F);
+		bone.addChild(headChild_2);
+		headChild_2.cubeList.add(new ModelBox(headChild_2, 52, 9, 4.5F, -6.0F, -1.866F, 0, 4, 6, 0.0F));
 
-		HeadChild_1 = new ModelRenderer(this);
-		HeadChild_1.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(HeadChild_1, 0.0F, -0.5236F, 0.0F);
-		bone.addChild(HeadChild_1);
-		HeadChild_1.cubeList.add(new ModelBox(HeadChild_1, 52, 9, -4.5F, -6.0F, -1.866F, 0, 4, 6, 0.0F));
+		ModelRenderer headChild_1 = new ModelRenderer(this);
+		headChild_1.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(headChild_1, 0.0F, -0.5236F, 0.0F);
+		bone.addChild(headChild_1);
+		headChild_1.cubeList.add(new ModelBox(headChild_1, 52, 9, -4.5F, -6.0F, -1.866F, 0, 4, 6, 0.0F));
 
-		Nose = new ModelRenderer(this);
-		Nose.setRotationPoint(1.0F, -1.3125F, -4.0F);
-		setRotationAngle(Nose, 0.6109F, 0.0F, 0.0F);
-		Head.addChild(Nose);
-		Nose.cubeList.add(new ModelBox(Nose, 47, 0, -2.0F, -2.0F, -2.0F, 2, 2, 4, 0.0F));
+		ModelRenderer nose = new ModelRenderer(this);
+		nose.setRotationPoint(1.0F, -1.3125F, -4.0F);
+		setRotationAngle(nose, 0.6109F, 0.0F, 0.0F);
+		Head.addChild(nose);
+		nose.cubeList.add(new ModelBox(nose, 47, 0, -2.0F, -2.0F, -2.0F, 2, 2, 4, 0.0F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Body.cubeList.add(new ModelBox(Body, 16, 16, -4.0F, 0.0F, -2.0F, 8, 12, 4, 0.0F));
 
-		Skilt = new ModelRenderer(this);
-		Skilt.setRotationPoint(3.5F, 18.4F, -3.2F);
-		Body.addChild(Skilt);
-		Skilt.cubeList.add(new ModelBox(Skilt, 32, 1, -8.0F, -9.0F, 0.8F, 9, 7, 5, 0.0F));
+		ModelRenderer skilt = new ModelRenderer(this);
+		skilt.setRotationPoint(3.5F, 18.4F, -3.2F);
+		Body.addChild(skilt);
+		skilt.cubeList.add(new ModelBox(skilt, 32, 1, -8.0F, -9.0F, 0.8F, 9, 7, 5, 0.0F));
 
 		RArm = new ModelRenderer(this);
 		RArm.setRotationPoint(-5.0F, 2.0F, 0.0F);

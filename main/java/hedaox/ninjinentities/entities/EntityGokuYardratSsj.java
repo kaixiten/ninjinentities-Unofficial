@@ -1,17 +1,10 @@
 package hedaox.ninjinentities.entities;
 
-import hedaox.ninjinentities.lib.ModVars;
-
-import java.util.List;
-
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.DamageSource;
-import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import hedaox.ninjinentities.lib.ModVars;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.world.World;
 
 public class EntityGokuYardratSsj extends EntityDBCNinjin {
 

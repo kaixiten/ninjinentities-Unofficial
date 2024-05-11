@@ -1,9 +1,9 @@
 package hedaox.ninjinentities.proxy;
 
-import hedaox.ninjinentities.rendering.entities.NinjinRenderEntities;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import hedaox.ninjinentities.rendering.entities.NinjinRenderEntities;
 
 /**
  * Do Things on client side

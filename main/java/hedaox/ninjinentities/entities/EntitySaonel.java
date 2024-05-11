@@ -1,10 +1,10 @@
 package hedaox.ninjinentities.entities;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import hedaox.ninjinentities.lib.ModVars;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntitySaonel extends EntityDBCNinjin {
 

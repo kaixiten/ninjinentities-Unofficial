@@ -1,10 +1,7 @@
 package hedaox.ninjinentities.models;
 
 import net.minecraft.entity.Entity;
-
 import org.lwjgl.opengl.GL11;
-
-import JinRyuu.DragonBC.common.Npcs.ModelNPCNormal;
 
 public class ModelNPCNormalScale extends JinRyuu.DragonBC.common.Npcs.ModelNPCNormal {
 

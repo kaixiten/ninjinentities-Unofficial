@@ -1,11 +1,10 @@
 package hedaox.ninjinentities.entities;
 
 import JinRyuu.DragonBC.common.Items.ItemsDBC;
-import hedaox.ninjinentities.lib.ModVars;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.world.World;
 
 public class EntityWhis extends EntityDBCNinjin {
 

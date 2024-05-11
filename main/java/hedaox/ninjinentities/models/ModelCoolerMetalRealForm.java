@@ -83,6 +83,7 @@ public class ModelCoolerMetalRealForm extends ModelBase {
 		this.RLeg.rotateAngleY = 0.0F;
 		this.LLeg.rotateAngleY = 0.0F;
 	}
+
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;

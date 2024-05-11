@@ -10,8 +10,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import java.util.List;
-
 public class EntityMasterBaba extends EntityDBCKami
 {
 	public final int HePo = 5;

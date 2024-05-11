@@ -6,24 +6,28 @@ import hedaox.ninjinentities.lib.ModVars;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.world.World;
 
-public class EntityAniraza2 extends EntityDBCNinjin {
+public class EntityQdeNinjin extends EntityDBCNinjin {
 
-	public EntityAniraza2(World par1World) {
-		super(par1World, 85, MindState.NEUTRAL, false, true, new byte[]{3, 5}, new byte[]{4, 4});
+
+	public int randomSoundDelay = 0;
+
+	public EntityQdeNinjin(World par1World) {
+		super(par1World, 0, MindState.AGGRESSIVE, false, false, new byte[]{1, 6, 2, 3, 4, 3}, new byte[]{3, 2, 7, 3, 7, 2});
 		this.experienceValue = 80;
-		this.setSize(0.66F,1.98F);
+		this.setSize(0.5F,2.0F);
 	}
+
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(
-				79000.0D);
+				18500.0D);
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(
-				7900.0D);
+				1850.0D);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public String getTexture() {
-		return ModVars.MOD_ID + ":textures/entity/aniraza.png";
+		return ModVars.MOD_ID + ":textures/entity/qed.png";
 	}
 
 }
