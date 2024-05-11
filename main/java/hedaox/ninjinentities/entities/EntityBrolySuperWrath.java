@@ -1,25 +1,18 @@
 package hedaox.ninjinentities.entities;
 
-import hedaox.ninjinentities.lib.ModVars;
-
-import java.util.List;
-
 import JinRyuu.DragonBC.common.Items.ItemsDBC;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.DamageSource;
-import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import hedaox.ninjinentities.lib.ModVars;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.world.World;
 
 public class EntityBrolySuperWrath extends EntityDBCNinjin {
 
 	public int randomSoundDelay = 0;
 
 	public EntityBrolySuperWrath(World par1World) {
-		super(par1World, 100, MindState.AGGRESSIVE, true, true, new byte[]{1, 3, 5, 6}, new byte[]{6, 6, 6, 6}, 50.0F, 255.0F, 50.0F);
+		super(par1World, 100, MindState.AGGRESSIVE, true, true, new byte[]{1, 3, 5, 6}, new byte[]{6, 6, 6, 6});
 		this.experienceValue = 80;
 		this.setSize(0.66F,1.98F);
 	}
