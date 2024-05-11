@@ -13,7 +13,7 @@ public class EntityCell4Ninjin extends EntityDBCNinjin {
 	public EntityCell4Ninjin(World par1World) {
 		super(par1World, 0, MindState.AGGRESSIVE, false, true, new byte[]{1, 6, 2, 3, 4, 3}, new byte[]{3, 2, 7, 3, 7, 2}, 255.0F, 217.0F, 25.0F, true);
 		this.experienceValue = 80;
-		this.setSize(0.45F,1.35F);
+		this.setSize(0.5F,2.0F);
 	}
 
 	protected void applyEntityAttributes() {

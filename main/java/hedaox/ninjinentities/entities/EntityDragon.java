@@ -6,24 +6,27 @@ import hedaox.ninjinentities.lib.ModVars;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.world.World;
 
-public class EntityFrost1 extends EntityDBCNinjin {
+public class EntityDragon extends EntityDBCNinjin {
 
-	public EntityFrost1(World par1World) {
-		super(par1World, 5, MindState.NEUTRAL, false, false, new byte[]{3, 1, 5}, new byte[]{4, 4 ,4});
+	public int randomSoundDelay = 0;
+
+	public EntityDragon(World par1World) {
+		super(par1World, 100, MindState.NEUTRAL, true, false, new byte[]{3, 3, 1, 6}, new byte[]{2, 2, 2, 2});
 		this.experienceValue = 80;
-		this.setSize(0.6F,1.8F);
+		this.setSize(0.54F,1.62F);
 	}
+
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(
-				5000.0D);
+				30000.0D);
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(
-				500.0D);
+				10.0D);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public String getTexture() {
-		return ModVars.MOD_ID + ":textures/entity/frost1.png";
+		return ModVars.MOD_ID + ":textures/entity/Dragon.png";
 	}
 
 }

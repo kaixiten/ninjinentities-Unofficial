@@ -1,9 +1,10 @@
 package hedaox.ninjinentities.entities;
 
+import JinRyuu.JRMCore.JRMCoreH;
+import JinRyuu.JRMCore.entity.EntityEnergyAtt;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import hedaox.ninjinentities.lib.ModVars;
-
-import java.util.List;
-
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
@@ -11,10 +12,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import JinRyuu.JRMCore.JRMCoreH;
-import JinRyuu.JRMCore.entity.EntityEnergyAtt;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import java.util.List;
 
 public class EntityFrost4 extends EntityDBCNinjin {
 
@@ -49,12 +48,12 @@ public class EntityFrost4 extends EntityDBCNinjin {
 			if ((this.targetedEntity != null) && (this.targetedEntity.isDead)) {
 				this.targetedEntity = null;
 				this.dataWatcher.updateObject(23, Integer.valueOf(0));
-				super.func_70626_be();
+				super.updateEntityActionState();
 			}
 			if ((this.targetedEntity == null) || (this.aggroCooldown-- <= 0)) {
 				this.targetedEntity = this.worldObj
 						.getClosestVulnerablePlayerToEntity(this, 100.0D);
-				super.func_70626_be();
+				super.updateEntityActionState();
 				if (this.targetedEntity != null) {
 					this.dataWatcher.updateObject(23,
 							Integer.valueOf(this.targetedEntity.getEntityId()));
@@ -73,7 +72,7 @@ public class EntityFrost4 extends EntityDBCNinjin {
 				if (this.attackTime <= 0) {
 					for (int i = 0; i < list.size(); i++) {
 						EntityPlayer player = (EntityPlayer) list.get(i);
-						func_70652_k(player);
+						attackEntityAsMob(player);
 						player.addPotionEffect(new PotionEffect(Potion.poison.id, 200, 20));
 					}
 					this.attackTime = 35;
@@ -143,7 +142,7 @@ public class EntityFrost4 extends EntityDBCNinjin {
 				this.attackCounter -= 1;
 			}
 		} else {
-			super.func_70626_be();
+			super.updateEntityActionState();
 		}
 	}
 }

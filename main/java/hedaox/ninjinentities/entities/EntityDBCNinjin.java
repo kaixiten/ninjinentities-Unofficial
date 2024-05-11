@@ -1,12 +1,11 @@
 package hedaox.ninjinentities.entities;
 
-import java.util.List;
-
 import JinRyuu.DragonBC.common.DBCConfig;
 import JinRyuu.DragonBC.common.Npcs.EntityDBCNeut;
-import JinRyuu.JRMCore.JRMCoreConfig;
+import JinRyuu.JRMCore.JRMCoreH;
 import JinRyuu.JRMCore.client.config.jrmc.JGConfigClientSettings;
 import JinRyuu.JRMCore.entity.EntityCusPar;
+import JinRyuu.JRMCore.entity.EntityEnergyAtt;
 import hedaox.ninjinentities.Main;
 import hedaox.ninjinentities.lib.ModVars;
 import hedaox.ninjinentities.network.MessageSendEntityToSpark;
@@ -22,9 +21,9 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import JinRyuu.JRMCore.JRMCoreH;
-import JinRyuu.JRMCore.entity.EntityEnergyAtt;
 import net.minecraftforge.common.ForgeHooks;
+
+import java.util.List;
 
 public class EntityDBCNinjin extends EntityDBCNeut {
 

@@ -6,26 +6,26 @@ import hedaox.ninjinentities.lib.ModVars;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.world.World;
 
-public class EntityDaiz extends EntityDBCNinjin {
+public class EntityFusion_Mara extends EntityDBCNinjin {
 
 	public int randomSoundDelay = 0;
 
-	public EntityDaiz(World par1World) {
-		super(par1World, 0, MindState.AGGRESSIVE, false, false, new byte[]{1, 3, 5}, new byte[]{4, 4, 4});
+	public EntityFusion_Mara(World par1World) {
+		super(par1World, 0, MindState.AGGRESSIVE, false, true, new byte[]{1, 6, 2, 3, 4, 3}, new byte[]{3, 2, 7, 3, 7, 2});
 		this.experienceValue = 80;
-		this.setSize(0.57F,1.71F);
+		this.setSize(0.81F,2.16F);
 	}
 
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(
-				475.0D);
+				18000.0D);
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(
-				47.5D);
+				1800.0D);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public String getTexture() {
-		return ModVars.MOD_ID + ":textures/entity/daiz.png";
+		return ModVars.MOD_ID + ":textures/entity/fusion_mara.png";
 	}
 }
