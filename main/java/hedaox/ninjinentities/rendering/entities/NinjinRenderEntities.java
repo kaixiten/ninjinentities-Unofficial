@@ -318,5 +318,6 @@ public class NinjinRenderEntities {
 		RenderingRegistry.registerEntityRenderingHandler(EntityCellmax.class, new RenderDBC(new ModelCellmax(2.3F), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGamma1.class, new RenderDBC(new ModelGamma1(1.0F), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGamma2.class, new RenderDBC(new ModelGamma2(1.0F), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntitySuper17.class, new RenderDBC(new ModelSuperA17(1.0F,1.0F,1.0F), 0.5F));
 	}
 }

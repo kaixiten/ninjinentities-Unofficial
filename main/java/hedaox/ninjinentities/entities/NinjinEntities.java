@@ -296,6 +296,7 @@ public class NinjinEntities {
 		createEntity(EntityCellmax.class, 64, "cellmax");
 		createEntity(EntityGamma1.class, 64, "Gamma1");
 		createEntity(EntityGamma2.class, 64, "Gamma2");
+		createEntity(EntitySuper17.class, 64, "super17");
 	}
 	
 	// simpleEntity
