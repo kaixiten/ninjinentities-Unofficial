@@ -13,7 +13,7 @@ public class EntityMara extends EntityDBCNinjin {
 	public EntityMara(World par1World) {
 		super(par1World, 0, MindState.AGGRESSIVE, false, true, new byte[]{5, 1, 5}, new byte[]{6, 6, 4});
 		this.experienceValue = 80;
-		this.setSize(0.81F,2.16F);
+		this.setSize(1.0F,2.16F);
 	}
 
 	protected void applyEntityAttributes() {

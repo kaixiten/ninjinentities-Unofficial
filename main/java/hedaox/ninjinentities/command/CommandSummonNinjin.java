@@ -1,6 +1,5 @@
 package hedaox.ninjinentities.command;
 
-import hedaox.ninjinentities.lib.ModVars;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.Entity;
@@ -28,7 +27,7 @@ public class CommandSummonNinjin implements ICommand {
         aliases.add("sumnj");
 
         for (Object entityName : EntityList.stringToClassMapping.keySet()) {
-            if(entityName instanceof String && ((String) entityName).contains(ModVars.MOD_ID))
+            if(entityName instanceof String && ((String) entityName).contains("ninjinentities"))
             {
                 listOfAllEntitiesNames.add((String) entityName);
             }

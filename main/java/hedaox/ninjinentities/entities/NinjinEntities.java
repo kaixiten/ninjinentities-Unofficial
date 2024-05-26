@@ -297,6 +297,10 @@ public class NinjinEntities {
 		createEntity(EntityGamma1.class, 64, "Gamma1");
 		createEntity(EntityGamma2.class, 64, "Gamma2");
 		createEntity(EntitySuper17.class, 64, "super17");
+		createEntity(EntityPiccolo2.class, 64, "Piccolo2");
+		createEntity(EntityPiccolo3.class, 64, "Piccolo3");
+		createEntity(EntityPiccolo4.class, 64, "Piccolo4");
+		createEntity(EntityPiccolo5.class, 64, "Piccolo5");
 	}
 	
 	// simpleEntity

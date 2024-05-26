@@ -16,6 +16,7 @@ import hedaox.ninjinentities.entities.EntityGokuBlack;
 import hedaox.ninjinentities.entities.EntityHit;
 import hedaox.ninjinentities.entities.EntityMonaka;
 import hedaox.ninjinentities.entities.EntityPiccolo;
+import hedaox.ninjinentities.entities.EntityPiccolo2;
 import hedaox.ninjinentities.entities.EntityVegeta2;
 import hedaox.ninjinentities.entities.EntityVegeta3;
 import hedaox.ninjinentities.entities.EntityVegetaCopy;
@@ -312,12 +313,16 @@ public class NinjinRenderEntities {
 		RenderingRegistry.registerEntityRenderingHandler(EntityBbssj3.class, new RenderDBC(new ModelBbssj3(1), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(Entityomega.class, new RenderDBC(new Modelomega(2), 3.0F));
 		RenderingRegistry.registerEntityRenderingHandler(Entityomega2.class, new RenderDBC(new Modelomega2(2), 3.0F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityMara.class, new RenderDBC(new ModelMara(1), 3.0F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityYoung_Mara.class, new RenderDBC(new ModelYoung_mara(1), 3.0F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityFusion_Mara.class, new RenderDBC(new ModelFusion_Mara(1), 3.0F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityMara.class, new RenderDBC(new ModelMara(2), 1.0F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityYoung_Mara.class, new RenderDBC(new ModelYoung_mara(2), 1.0F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityFusion_Mara.class, new RenderDBC(new ModelFusion_Mara(2), 1.0F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityCellmax.class, new RenderDBC(new ModelCellmax(2.3F), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGamma1.class, new RenderDBC(new ModelGamma1(1.0F), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGamma2.class, new RenderDBC(new ModelGamma2(1.0F), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySuper17.class, new RenderDBC(new ModelSuperA17(1.0F,1.0F,1.0F), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityPiccolo2.class, new RenderDBC(new ModelPiccolo2(1.0F), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityPiccolo3.class, new RenderDBC(new ModelPiccolo2(1.0F), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityPiccolo4.class, new RenderDBC(new ModelPiccolo3(1.1F), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityPiccolo5.class, new RenderDBC(new ModelPiccolo3(2.5F), 0.5F));
 	}
 }

@@ -6,26 +6,26 @@ import hedaox.ninjinentities.lib.ModVars;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.world.World;
 
-public class EntityYoung_Mara extends EntityDBCNinjin {
+public class EntityPiccolo3 extends EntityDBCNinjin {
 
 	public int randomSoundDelay = 0;
 
-	public EntityYoung_Mara(World par1World) {
-		super(par1World, 0, MindState.AGGRESSIVE, false, true,  new byte[]{1, 6, 2, 3, 4, 3}, new byte[]{3, 2, 7, 3, 7, 2});
+	public EntityPiccolo3(World par1World) {
+		super(par1World, 75, MindState.NEUTRAL, true, false, new byte[]{1, 3, 4, 5, 6}, new byte[]{7, 7, 7, 7, 7});
 		this.experienceValue = 80;
-		this.setSize(1.0F,2.16F);
+		this.setSize(0.8F,2.4F);
 	}
 
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(
-				18000.0D);
+				370.0D);
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(
-				1800.0D);
+				37.0D);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public String getTexture() {
-		return ModVars.MOD_ID + ":textures/entity/young_mara.png";
+		return ModVars.MOD_ID + ":textures/entity/piccolo3.png";
 	}
 }

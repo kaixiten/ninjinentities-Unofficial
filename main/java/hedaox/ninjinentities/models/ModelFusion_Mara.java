@@ -26,6 +26,7 @@ public class ModelFusion_Mara extends ModelBase {
 	private final ModelRenderer Body_r7;
 	private final ModelRenderer RightArm;
 	private final ModelRenderer LeftArm;
+	private final ModelRenderer LeftArm1;
 	private final ModelRenderer LeftLeg;
 	private final ModelRenderer RightLeg;
 	private float scale = 1.0F;
@@ -138,9 +139,14 @@ public class ModelFusion_Mara extends ModelBase {
 
 		LeftArm = new ModelRenderer(this);
 		LeftArm.setRotationPoint(5.0F, 2.0F, 0.0F);
+		LeftArm.mirror = true;
 		Body.addChild(LeftArm);
-		LeftArm.cubeList.add(new ModelBox(LeftArm, 16, 40, -1.0F, -2.0F, -2.0F, 4, 6, 4, 0.0F));
-		LeftArm.cubeList.add(new ModelBox(LeftArm, 0, 36, -1.0F, 3.75F, -2.0F, 4, 6, 4, -0.1F));
+		LeftArm.cubeList.add(new ModelBox(LeftArm, 44, 7, -1.0F, -2.0F, -2.0F, 4, 6, 4, 0.0F));
+
+		LeftArm1 = new ModelRenderer(this);
+		LeftArm1.setRotationPoint(0.0F, 0.0F, 0.0F);
+		LeftArm.addChild(LeftArm1);
+		LeftArm1.cubeList.add(new ModelBox(LeftArm1, 0, 36, -1.0F, 3.75F, -2.0F, 4, 6, 4, -0.1F));
 
 		LeftLeg = new ModelRenderer(this);
 		LeftLeg.setRotationPoint(1.9F, 12.0F, 0.0F);
