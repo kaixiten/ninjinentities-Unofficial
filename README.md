@@ -1,6 +1,6 @@
 # Ninjin Entities
 
-An entities mod for DBC 1.4.73.
+An entities mod for DBC 1.4.85.
 
 The NPCs use the DBC AI meaning that they can fly and use Ki Attack. Each entity has his own set of ki attacks with different colors. Also some of them have an aura ! Can be normal, lightning or god. Also some of the NPCs are "trainers", this mean that they won't kill you if they beat you, instead they will put you into a KO state. 
 
