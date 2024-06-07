@@ -36,8 +36,8 @@ public class ModelSuperA17 extends ModelBase {
 
 		LLeg = new ModelRenderer(this);
 		LLeg.setRotationPoint(1.9F, 12.0F, 0.0F);
-		Body.addChild(LLeg);
 		LLeg.mirror = true;
+		Body.addChild(LLeg);
 		LLeg.cubeList.add(new ModelBox(LLeg, 0, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
 		RLeg = new ModelRenderer(this);
@@ -47,8 +47,8 @@ public class ModelSuperA17 extends ModelBase {
 
 		LArm = new ModelRenderer(this);
 		LArm.setRotationPoint(5.0F, 2.0F, 0.0F);
-		Body.addChild(LArm);
 		LArm.mirror = true;
+		Body.addChild(LArm);
 		LArm.cubeList.add(new ModelBox(LArm, 40, 16, -1.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
 
 		RArm = new ModelRenderer(this);
@@ -59,21 +59,20 @@ public class ModelSuperA17 extends ModelBase {
 		head = new ModelRenderer(this);
 		head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		head.cubeList.add(new ModelBox(head, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
-		head.cubeList.add(new ModelBox(head, 32, 0, -4.0F, 0.0F, -4.0F, 8, 8, 8, 0.25F));
-		head.cubeList.add(new ModelBox(head, 0, 32, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.25F));
+		head.cubeList.add(new ModelBox(head, 32, 0, -4.0F, 0.0F, -4.0F, 8, 8, 8, 0.0F));
 
 		Hair_r1 = new ModelRenderer(this);
-		Hair_r1.setRotationPoint(0.0F, -8.0F, -4.0F);
+		Hair_r1.setRotationPoint(1.0F, -8.0F, -4.0F);
+		Hair_r1.mirror = true;
 		head.addChild(Hair_r1);
 		setRotationAngle(Hair_r1, 0.0F, -0.2618F, -0.2182F);
-		Hair_r1.mirror = true;
-		Hair_r1.cubeList.add(new ModelBox(Hair_r1, 24, -2, 0.0F, 0.0F, -2.0F, 0, 8, 2, 0.0F));
+		Hair_r1.cubeList.add(new ModelBox(Hair_r1, 24, -2, 0.0F, 0.0F, -1.9F, 0, 8, 2, 0.0F));
 
 		Hair_r2 = new ModelRenderer(this);
-		Hair_r2.setRotationPoint(0.0F, -8.0F, -4.0F);
+		Hair_r2.setRotationPoint(-1.0F, -8.0F, -4.0F);
 		head.addChild(Hair_r2);
 		setRotationAngle(Hair_r2, 0.0F, 0.2618F, 0.2182F);
-		Hair_r2.cubeList.add(new ModelBox(Hair_r2, 24, -2, 0.0F, 0.0F, -2.0F, 0, 8, 2, 0.0F));
+		Hair_r2.cubeList.add(new ModelBox(Hair_r2, 24, -2, 0.0F, 0.0F, -1.9F, 0, 8, 2, 0.0F));
 	}
 
 	@Override
