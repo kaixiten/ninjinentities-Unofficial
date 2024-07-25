@@ -35,12 +35,6 @@ but if you use it any other way you will have to respect this :
  
 You can found full license here : https://www.gnu.org/licenses/gpl-3.0.en.html or in the mod files.
 
-# How to install the mod : 
-
-- Install Forge 1.7.10 : https://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.7.10.html
-- Install DBC 1.4.73b-TB61 : https://www.mediafire.com/folder/44f9eft2541py/TB61 (You need all files except the naruto one)
-- Put the mod in the ".Minecraft/mods" folder : https://github.com/Hedaox/ninjinentities/releases/download/1.2.7.4/ninjinentities-1.2.7.4.jar
-
 # Special Thanks
 
 Special thanks to JinRyuu and Ben for making the DBC mod.
