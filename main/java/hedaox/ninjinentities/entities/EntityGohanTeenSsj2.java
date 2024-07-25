@@ -29,19 +29,4 @@ public class EntityGohanTeenSsj2 extends EntityDBCNinjin {
 	public String getTexture() {
 		return ModVars.MOD_ID + ":textures/entity/gohanTeenSsj.png";
 	}
-
-	protected void dropFewItems(boolean par1, int par2) {
-		int var3 = this.rand.nextInt(2 + par2);
-		for (int var4 = 0; var4 < var3; var4++) {
-			dropItem(ItemsDBC.ItemsOutfit1[19], 1);
-		}
-		var3 = this.rand.nextInt(2 + par2);
-		for (int var4 = 0; var4 < var3; var4++) {
-			dropItem(ItemsDBC.ItemsOutfit2[19], 1);
-		}
-		var3 = this.rand.nextInt(2 + par2);
-		for (int var4 = 0; var4 < var3; var4++) {
-			dropItem(ItemsDBC.ItemsOutfit3[19], 1);
-		}
-	}
 }
