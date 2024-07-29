@@ -36,6 +36,7 @@ public class NinjinEntities {
 		createEntity(EntityGokuSsj.class, 64, "gokuSsj");
 		createEntity(EntityGokuSsj2.class, 64, "gokuSsj2");
 		createEntity(EntityGokuSsj3.class, 64, "gokuSsj3");
+		createEntity(EntityGokuSsj4.class, 64, "gokuSsj4");
 		createEntity(EntityGokuSsjg.class, 64, "gokuSsjg");
 		createEntity(EntityGokuSsjb.class, 64, "gokuSsjb");
 		createEntity(EntityGokuSsjbk.class, 64, "gokuSsjbk");
@@ -287,6 +288,7 @@ public class NinjinEntities {
 		createEntity(EntityBzGokuSsj.class, 64, "Bzgokussj");
 		createEntity(EntityFu.class, 64, "fu");
 		createEntity(EntityVegetaZw.class, 64, "Vegetazw");
+		createEntity(EntityVegetaSsj4.class, 64, "VegetaSsj4");
 		createEntity(EntityDragon.class, 64, "GTDragon");
 		createEntity(Entityomega.class, 64, "omega");
 		createEntity(Entityomega2.class, 64, "omega2");

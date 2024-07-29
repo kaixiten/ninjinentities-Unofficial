@@ -324,5 +324,7 @@ public class NinjinRenderEntities {
 		RenderingRegistry.registerEntityRenderingHandler(EntityPiccolo3.class, new RenderDBC(new ModelPiccolo2(1.0F), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPiccolo4.class, new RenderDBC(new ModelPiccolo3(1.1F), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPiccolo5.class, new RenderDBC(new ModelPiccolo3(2.5F), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityGokuSsj4.class, new RenderDBC(new ModelGokuSsj4(1.0F), 3.0F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityVegetaSsj4.class, new RenderDBC(new ModelVegetaSSJ4(1.0F), 3.0F));
 	}
 }

@@ -27,6 +27,6 @@ public class EntityGohanTeenSsj2 extends EntityDBCNinjin {
 
 	@SideOnly(Side.CLIENT)
 	public String getTexture() {
-		return ModVars.MOD_ID + ":textures/entity/gohanTeenSsj.png";
+		return ModVars.MOD_ID + ":textures/entity/gohanTeenSsj2.png";
 	}
 }
