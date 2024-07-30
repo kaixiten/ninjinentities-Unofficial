@@ -303,6 +303,8 @@ public class NinjinEntities {
 		createEntity(EntityPiccolo3.class, 64, "Piccolo3");
 		createEntity(EntityPiccolo4.class, 64, "Piccolo4");
 		createEntity(EntityPiccolo5.class, 64, "Piccolo5");
+		createEntity(EntityEldKaioshin.class, 64, "eldKaioshin");
+		createEntity(EntityKibito.class, 64, "Kibito");
 	}
 	
 	// simpleEntity
