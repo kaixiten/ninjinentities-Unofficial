@@ -1,6 +1,17 @@
 package hedaox.ninjinentities.entities;
 
 import cpw.mods.fml.common.registry.EntityRegistry;
+import hedaox.ninjinentities.Main;
+import hedaox.ninjinentities.entities.IF.*;
+import hedaox.ninjinentities.entities.DBAF.*;
+import hedaox.ninjinentities.entities.DAIMA.*;
+import hedaox.ninjinentities.entities.DB.*;
+import hedaox.ninjinentities.entities.DBGT.*;
+import hedaox.ninjinentities.entities.DBS.*;
+import hedaox.ninjinentities.entities.DBZ.*;
+import hedaox.ninjinentities.entities.Movies.*;
+import hedaox.ninjinentities.entities.ZENO.*;
+import hedaox.ninjinentities.entities.doujin.*;
 import hedaox.ninjinentities.lib.ModVars;
 
 public class NinjinEntities {
@@ -25,6 +36,7 @@ public class NinjinEntities {
 		createEntity(EntityGohanTeenSsj.class, 64, "gohanTeenSsj");
 		createEntity(EntityGohanTeenSsj2.class, 64, "gohanTeenSsj2");
 		createEntity(EntityGohanUltimate.class, 64, "gohanUltimate");
+        createEntity(EntityGohanBeast.class, 64, "gohanBeast");
 		createEntity(EntityGokuKid1.class, 64, "gokuKid1");
 		createEntity(EntityGokuKid2.class, 64, "gokuKid2");
 		createEntity(EntityGoku1.class, 64, "goku1");
@@ -37,6 +49,7 @@ public class NinjinEntities {
 		createEntity(EntityGokuSsj2.class, 64, "gokuSsj2");
 		createEntity(EntityGokuSsj3.class, 64, "gokuSsj3");
 		createEntity(EntityGokuSsj4.class, 64, "gokuSsj4");
+        createEntity(EntityGokuSsj5.class, 64, "gokuSsj5");
 		createEntity(EntityGokuSsjg.class, 64, "gokuSsjg");
 		createEntity(EntityGokuSsjb.class, 64, "gokuSsjb");
 		createEntity(EntityGokuSsjbk.class, 64, "gokuSsjbk");
@@ -269,22 +282,22 @@ public class NinjinEntities {
 		createEntity(EntityAka.class, 64, "aka");
 		createEntity(EntityCell4Ninjin.class, 64, "cell4");
 		createEntity(EntityRecoomeDamaged.class, 64, "recoomeDamaged");
-		createEntity(EntityHjcellNinjin.class, 64, "hjcell");
-		createEntity(EntityQdeNinjin.class, 64, "qed");
+		createEntity(EntityGoldcellNinjin.class, 64, "hjcell");
+		createEntity(EntityChilled.class, 64, "qed");
 		createEntity(EntityBdkNinjin.class, 64, "bdk");
 		createEntity(EntityBdkssjNinjin.class, 64, "bdkssj");
 		createEntity(EntityBdkssj3Ninjin.class, 64, "bdkssj3");
 		createEntity(EntityBdkssjbNinjin.class, 64, "bdkssjb");
 		createEntity(EntityBdkssjb3Ninjin.class, 64, "bdkssjb3");
-		createEntity(EntityHsfls.class, 64, "hsfls");
+		createEntity(EntityBlackFrieza.class, 64, "hsfls");
 		createEntity(EntityBb.class, 64, "beibi");
+		createEntity(EntityBb2.class, 64, "beibi2");
 		createEntity(EntityBbssj.class, 64, "beibissj");
 		createEntity(EntityBbssj2.class, 64, "beibissj2");
-		createEntity(EntityBbssj3.class, 64, "beibissj3");
 		createEntity(EntityJs.class, 64, "jiasi");
 		createEntity(EntityZsfls.class, 64, "zsfls");
 		createEntity(EntityZsCoolerFifthForm.class, 64, "zsgl");
-		createEntity(EntityHjCoolerFifthForm.class, 64, "hjgl");
+		createEntity(EntityGoldCoolerFifthForm.class, 64, "hjgl");
 		createEntity(EntityBzGokuSsj.class, 64, "Bzgokussj");
 		createEntity(EntityFu.class, 64, "fu");
 		createEntity(EntityVegetaZw.class, 64, "Vegetazw");
@@ -293,8 +306,8 @@ public class NinjinEntities {
 		createEntity(Entityomega.class, 64, "omega");
 		createEntity(Entityomega2.class, 64, "omega2");
 		createEntity(EntityMara.class, 64, "mara");
-		createEntity(EntityYoung_Mara.class, 64, "mara2");
-		createEntity(EntityFusion_Mara.class, 64, "mara3");
+		createEntity(EntityMara_Young.class, 64, "mara2");
+		createEntity(EntityMara_Fusion.class, 64, "mara3");
 		createEntity(EntityCellmax.class, 64, "cellmax");
 		createEntity(EntityGamma1.class, 64, "Gamma1");
 		createEntity(EntityGamma2.class, 64, "Gamma2");
@@ -305,8 +318,17 @@ public class NinjinEntities {
 		createEntity(EntityPiccolo5.class, 64, "Piccolo5");
 		createEntity(EntityEldKaioshin.class, 64, "eldKaioshin");
 		createEntity(EntityKibito.class, 64, "Kibito");
+        createEntity(EntityBlockGoku.class,64,"BlockGoku");
+        createEntity(EntityBlockGokuSsjR.class,64,"BlockGokuSsjR");
+        createEntity(EntityBlockGokuSsjR3.class,64,"BlockGokuSsjR3");
+        createEntity(EntityTamagami_1.class,64,"Tamagami1");
+        createEntity(EntityTamagami_2.class,64,"Tamagami2");
+        createEntity(EntityTamagami_3.class,64,"Tamagami3");
+        createEntity(EntityKaioshin.class, 64, "Kaioshin");
+        createEntity(EntityKaioshinChild.class, 64, "KaioshinChild");
+        createEntity(EntityBlockGohanUltimate.class, 64, "BlockGohan");
 	}
-	
+
 	// simpleEntity
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void createEntity(Class entityClass, int trackingRange, String entityName)

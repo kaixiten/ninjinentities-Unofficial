@@ -34,11 +34,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 	public int prevAttackCounter = 0;
 	public int attackCounter = 0;
 	protected Entity targetedEntity = null;
-	private byte data1 = 1;
-	private byte data2 = 0;
-	private byte data3 = 0;
-	private byte data4 = 0;
-	// Attack Type : 1/KiAttack 2/disk 3/wave 4/whirled wave 5/Big Ki Attack 6/SmallKiAttack
+    // Attack Type : 1/KiAttack 2/disk 3/wave 4/whirled wave 5/Big Ki Attack 6/SmallKiAttack
 	private byte[] attacksType = {1};
 	// Attack Color : 1/white 2/blue 3/purple 4/red 5/black 6/green 7/yellow 8/orange
 	private byte[] attacksColor = {0};
@@ -59,11 +55,16 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 	private int rang = 0;
 	public boolean auraLightning = false;
 	private int lightningCount = 0;
-	private static double random = Math.random();
+	public static double random = Math.random();
 	public boolean hasAGodAura = false;
 	private boolean updtd = false;
+    private final double moveSpeed = DBCConfig.EnemyDefaultMoveSpeed;
 
-	public enum MindState {
+    public boolean isBlst() {
+        return blst;
+    }
+
+    public enum MindState {
 		NEUTRAL, AGGRESSIVE, PACIFIC
 	}
 
@@ -71,143 +72,138 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 		super(par1World);
 	}
 
-	public EntityDBCNinjin(World par1World, int _alignment,
-						   MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors) {
-		super(par1World);
-		alignment = _alignment;
-		this.isTrainer = _isTrainer;
-		mindState = _mindState;
-		canTeleport = _canTeleport;
-		attacksType = _attacksType;
-		attacksColor = _attacksColors;
-		if (mindState == MindState.AGGRESSIVE) {
-			angerLevel = 400;
-		}
-	}
+    public EntityDBCNinjin(World par1World, int _alignment, MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors) {
+        super(par1World);
+        setMediumDifficulty();
+        alignment = _alignment;
+        this.isTrainer = _isTrainer;
+        mindState = _mindState;
+        canTeleport = _canTeleport;
+        attacksType = _attacksType;
+        attacksColor = _attacksColors;
+        if (mindState == MindState.AGGRESSIVE)
+            angerLevel = 400;
+    }
 
-	public EntityDBCNinjin(World par1World, int _alignment,
-						   MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, boolean _hasAnAura) {
-		super(par1World);
-		alignment = _alignment;
-		this.isTrainer = _isTrainer;
-		mindState = _mindState;
-		canTeleport = _canTeleport;
-		attacksType = _attacksType;
-		attacksColor = _attacksColors;
-		if (mindState == MindState.AGGRESSIVE) {
-			angerLevel = 400;
-		}
-		hasAnAura = _hasAnAura;
-	}
+    public EntityDBCNinjin(World par1World, int _alignment, MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, boolean _hasAnAura) {
+        super(par1World);
+        setMediumDifficulty();
+        alignment = _alignment;
+        this.isTrainer = _isTrainer;
+        mindState = _mindState;
+        canTeleport = _canTeleport;
+        attacksType = _attacksType;
+        attacksColor = _attacksColors;
+        if (mindState == MindState.AGGRESSIVE)
+            angerLevel = 400;
+        hasAnAura = _hasAnAura;
+    }
 
-	public EntityDBCNinjin(World par1World, int _alignment,
-						   MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue) {
-		super(par1World);
-		alignment = _alignment;
-		this.isTrainer = _isTrainer;
-		mindState = _mindState;
-		canTeleport = _canTeleport;
-		attacksType = _attacksType;
-		attacksColor = _attacksColors;
-		if (mindState == MindState.AGGRESSIVE) {
-			angerLevel = 400;
-		}
-		auraRed = _auraRed;
-		auraGreen = _auraGreen;
-		auraBlue = _auraBlue;
-		hasAnAura = true;
-	}
+    public EntityDBCNinjin(World par1World, int _alignment, MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue) {
+        super(par1World);
+        setMediumDifficulty();
+        alignment = _alignment;
+        this.isTrainer = _isTrainer;
+        mindState = _mindState;
+        canTeleport = _canTeleport;
+        attacksType = _attacksType;
+        attacksColor = _attacksColors;
+        if (mindState == MindState.AGGRESSIVE)
+            angerLevel = 400;
+        auraRed = _auraRed;
+        auraGreen = _auraGreen;
+        auraBlue = _auraBlue;
+        hasAnAura = true;
+    }
 
-	public EntityDBCNinjin(World par1World, int _alignment,
-						   EntityDBCNinjin.MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue, boolean _auraLightning) {
-		super(par1World);
-		alignment = _alignment;
-		this.isTrainer = _isTrainer;
-		mindState = _mindState;
-		canTeleport = _canTeleport;
-		attacksType = _attacksType;
-		attacksColor = _attacksColors;
-		if (mindState == EntityDBCNinjin.MindState.AGGRESSIVE) {
-			angerLevel = 400;
-		}
-		auraRed = _auraRed;
-		auraGreen = _auraGreen;
-		auraBlue = _auraBlue;
-		hasAnAura = true;
-		auraLightning = _auraLightning;
-	}
+    public EntityDBCNinjin(World par1World, int _alignment, MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue, boolean _auraLightning) {
+        super(par1World);
+        setMediumDifficulty();
+        alignment = _alignment;
+        this.isTrainer = _isTrainer;
+        mindState = _mindState;
+        canTeleport = _canTeleport;
+        attacksType = _attacksType;
+        attacksColor = _attacksColors;
+        if (mindState == MindState.AGGRESSIVE)
+            angerLevel = 400;
+        auraRed = _auraRed;
+        auraGreen = _auraGreen;
+        auraBlue = _auraBlue;
+        hasAnAura = true;
+        auraLightning = _auraLightning;
+    }
 
-	public EntityDBCNinjin(World par1World, int _alignment,
-						   EntityDBCNinjin.MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue, boolean _auraLightning, boolean _auraGod) {
-		super(par1World);
-		alignment = _alignment;
-		this.isTrainer = _isTrainer;
-		mindState = _mindState;
-		canTeleport = _canTeleport;
-		attacksType = _attacksType;
-		attacksColor = _attacksColors;
-		if (mindState == EntityDBCNinjin.MindState.AGGRESSIVE) {
-			angerLevel = 400;
-		}
-		auraRed = _auraRed;
-		auraGreen = _auraGreen;
-		auraBlue = _auraBlue;
-		hasAnAura = false;
-		auraLightning = _auraLightning;
-		hasAGodAura = _auraGod;
-	}
+    public EntityDBCNinjin(World par1World, int _alignment, MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue, boolean _auraLightning, boolean _auraGod) {
+        super(par1World);
+        setMediumDifficulty();
+        alignment = _alignment;
+        this.isTrainer = _isTrainer;
+        mindState = _mindState;
+        canTeleport = _canTeleport;
+        attacksType = _attacksType;
+        attacksColor = _attacksColors;
+        if (mindState == MindState.AGGRESSIVE)
+            angerLevel = 400;
+        auraRed = _auraRed;
+        auraGreen = _auraGreen;
+        auraBlue = _auraBlue;
+        hasAnAura = false;
+        auraLightning = _auraLightning;
+        hasAGodAura = _auraGod;
+    }
 
-	public EntityDBCNinjin(World par1World, int _alignment,
-						   EntityDBCNinjin.MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue, boolean _auraLightning, boolean _auraGod, float _auraRed2, float _auraGreen2, float _auraBlue2) {
-		super(par1World);
-		alignment = _alignment;
-		this.isTrainer = _isTrainer;
-		mindState = _mindState;
-		canTeleport = _canTeleport;
-		attacksType = _attacksType;
-		attacksColor = _attacksColors;
-		if (mindState == EntityDBCNinjin.MindState.AGGRESSIVE) {
-			angerLevel = 400;
-		}
-		auraRed = _auraRed;
-		auraGreen = _auraGreen;
-		auraBlue = _auraBlue;
-		auraRed2 = _auraRed2;
-		auraGreen2 = _auraGreen2;
-		auraBlue2 = _auraBlue2;
-		hasAnAura = false;
-		auraLightning = _auraLightning;
-		hasAGodAura = _auraGod;
-	}
+    public EntityDBCNinjin(World par1World, int _alignment, MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue, boolean _auraLightning, boolean _auraGod, float _auraRed2, float _auraGreen2, float _auraBlue2) {
+        super(par1World);
+        setMediumDifficulty();
+        alignment = _alignment;
+        this.isTrainer = _isTrainer;
+        mindState = _mindState;
+        canTeleport = _canTeleport;
+        attacksType = _attacksType;
+        attacksColor = _attacksColors;
+        if (mindState == MindState.AGGRESSIVE)
+            angerLevel = 400;
+        auraRed = _auraRed;
+        auraGreen = _auraGreen;
+        auraBlue = _auraBlue;
+        auraRed2 = _auraRed2;
+        auraGreen2 = _auraGreen2;
+        auraBlue2 = _auraBlue2;
+        hasAnAura = false;
+        auraLightning = _auraLightning;
+        hasAGodAura = _auraGod;
+    }
 
-	public EntityDBCNinjin(World par1World, int _alignment,
-						   EntityDBCNinjin.MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue, boolean _auraLightning, boolean _auraGod, float _auraRed2, float _auraGreen2, float _auraBlue2, boolean _hasAnAura) {
-		super(par1World);
-		alignment = _alignment;
-		this.isTrainer = _isTrainer;
-		mindState = _mindState;
-		canTeleport = _canTeleport;
-		attacksType = _attacksType;
-		attacksColor = _attacksColors;
-		if (mindState == EntityDBCNinjin.MindState.AGGRESSIVE) {
-			angerLevel = 400;
-		}
-		auraRed = _auraRed;
-		auraGreen = _auraGreen;
-		auraBlue = _auraBlue;
-		auraRed2 = _auraRed2;
-		auraGreen2 = _auraGreen2;
-		auraBlue2 = _auraBlue2;
-		hasAnAura = _hasAnAura;
-		auraLightning = _auraLightning;
-		hasAGodAura = _auraGod;
-	}
+    public EntityDBCNinjin(World par1World, int _alignment, MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue, boolean _auraLightning, boolean _auraGod, float _auraRed2, float _auraGreen2, float _auraBlue2, boolean _hasAnAura) {
+        super(par1World);
+        setMediumDifficulty();
+        alignment = _alignment;
+        this.isTrainer = _isTrainer;
+        mindState = _mindState;
+        canTeleport = _canTeleport;
+        attacksType = _attacksType;
+        attacksColor = _attacksColors;
+        if (mindState == MindState.AGGRESSIVE)
+            angerLevel = 400;
+        auraRed = _auraRed;
+        auraGreen = _auraGreen;
+        auraBlue = _auraBlue;
+        auraRed2 = _auraRed2;
+        auraGreen2 = _auraGreen2;
+        auraBlue2 = _auraBlue2;
+        hasAnAura = _hasAnAura;
+        auraLightning = _auraLightning;
+        hasAGodAura = _auraGod;
+    }
 
 	@Override
 	protected void updateEntityActionState() {
 		if (mindState == MindState.PACIFIC) {
 			angerLevel = 0;
-		}
+		} else if (angerLevel >= 400) {
+            becomeAngryAtAllPlayer();
+        }
 		if (this.angerLevel > 0)
 		{
 			this.fallDistance = 0.0F;
@@ -216,7 +212,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 			if ((this.targetedEntity != null) && (this.targetedEntity.isDead))
 			{
 				this.targetedEntity = null;
-				this.dataWatcher.updateObject(23, Integer.valueOf(0));
+				this.dataWatcher.updateObject(23, 0);
 				super.updateEntityActionState();
 			}
 			if ((this.targetedEntity == null) || (this.aggroCooldown-- <= 0))
@@ -225,7 +221,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 				super.updateEntityActionState();
 				if (this.targetedEntity != null)
 				{
-					this.dataWatcher.updateObject(23, Integer.valueOf(this.targetedEntity.getEntityId()));
+					this.dataWatcher.updateObject(23, this.targetedEntity.getEntityId());
 					this.aggroCooldown = 20;
 				}
 			}
@@ -233,14 +229,12 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 			if ((this.entityToAttack != null) && (this.entityToAttack.isEntityAlive()) && (this.entityToAttack.getDistanceToEntity(this) < r))
 			{
 				AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(this.posX - r, this.posY - r, this.posZ - r, this.posX + r, this.posY + r, this.posZ + r);
-				List list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, aabb);
+				List<EntityPlayer> list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, aabb);
 				if (this.attackTime <= 0)
 				{
-					for (int i = 0; i < list.size(); i++)
-					{
-						EntityPlayer player = (EntityPlayer)list.get(i);
-						attackEntityAsMob(player);
-					}
+                    for (EntityPlayer player : list) {
+                        attackEntityAsMob(player);
+                    }
 					this.attackTime = 35;
 					this.worldObj.playSoundAtEntity(this, "jinryuudragonbc:DBC3.force", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
 				}
@@ -277,8 +271,8 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 								}
 							}
 						}
-						this.data1 = type;
-						this.data2 = color;
+                        byte data1 = type;
+                        byte data2 = color;
 
 						byte speed = 1;
 						byte effect = 1;
@@ -287,15 +281,17 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 						byte sfire = 0;
 						byte smove = 0;
 						byte[] sts = JRMCoreH.techDBCstatsDefault;
-						int dmg = (int)(50.0F / (this.data1 == 6 ? 5.0F : 1.0F));
+						int dmg = (int)(50.0F / (data1 == 6 ? 5.0F : 1.0F));
 						int f = (int)getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();
-						int dmg1 = (int)(f * 1.2F / (this.data1 == 6 ? 5.0F : 1.0F));
+						int dmg1 = (int)(f * 1.2F / (data1 == 6 ? 5.0F : 1.0F));
 						int cst = dmg1 / 2;
 						EntityEnergyAtt entityball;
-						if (this.data3 == 0) {
+                        byte data3 = 0;
+                        if (data3 == 0) {
 							entityball = new EntityEnergyAtt(this, type, speed, dmg, effect, color, density, sincantation, sfire, smove, (byte)50, dmg1, cst, sts, (byte)0);
 						} else {
-							entityball = new EntityEnergyAtt(this, type, speed, dmg, effect, color, this.data4, density, sincantation, sfire, smove, (byte)50, dmg1, cst, sts, (byte)0);
+                            byte data4 = 0;
+                            entityball = new EntityEnergyAtt(this, type, speed, dmg, effect, color, data4, density, sincantation, sfire, smove, (byte)50, dmg1, cst, sts, (byte)0);
 						}
 						double d8 = this.width + 0.5D;
 						Vec3 vec3 = getLook(1.0F);
@@ -303,7 +299,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 						entityball.posY = (this.posY + this.height / 2.0F + 0.5D);
 						entityball.posZ = (this.posZ + vec3.zCoord * d8);
 						this.worldObj.spawnEntityInWorld(entityball);
-						if ((this.data1 != 6) || ((int)(Math.random() * 8.0D) == 0))
+						if ((data1 != 6) || ((int)(Math.random() * 8.0D) == 0))
 						{
 							this.attackCounter = -40;
 							this.blst = true;
@@ -359,21 +355,19 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 			List<?> listCloseEntities = this.worldObj
 					.getEntitiesWithinAABBExcludingEntity(this,
 							this.boundingBox.expand(32.0D, 32.0D, 32.0D));
-			for (int i = 0; i < listCloseEntities.size(); i++) {
-				Entity entity = (Entity) listCloseEntities.get(i);
-				if ((entity instanceof EntityDBCNinjin)) {
-					EntityDBCNinjin entityTrain = (EntityDBCNinjin) entity;
-					entityTrain.becomeAngryAt(entitySource);
-				}
-			}
+            for (Object listCloseEntity : listCloseEntities) {
+                Entity entity = (Entity) listCloseEntity;
+                if ((entity instanceof EntityDBCNinjin entityTrain)) {
+                    entityTrain.becomeAngryAt(entitySource);
+                }
+            }
 			becomeAngryAt(entitySource);
 		}
 
 		if (entitySource instanceof EntityPlayer) {
 			int e = 1;
-			if (entitySource instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer)entitySource;
-				JRMCoreH.expPls(player, e);
+			if (entitySource instanceof EntityPlayer player) {
+                JRMCoreH.expPls(player, e);
 			}
 		}
 
@@ -460,13 +454,12 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 			List<?> listCloseEntities = this.worldObj
 					.getEntitiesWithinAABBExcludingEntity(this,
 							this.boundingBox.expand(32.0D, 32.0D, 32.0D));
-			for (int i = 0; i < listCloseEntities.size(); i++) {
-				Entity entity = (Entity) listCloseEntities.get(i);
-				if ((entity instanceof EntityDBCNinjin)) {
-					EntityDBCNinjin entityTrain = (EntityDBCNinjin) entity;
-					entityTrain.becomeAngryAt(entitySource);
-				}
-			}
+            for (Object listCloseEntity : listCloseEntities) {
+                Entity entity = (Entity) listCloseEntity;
+                if ((entity instanceof EntityDBCNinjin entityTrain)) {
+                    entityTrain.becomeAngryAt(entitySource);
+                }
+            }
 			becomeAngryAt(entitySource);
 		}
 		return super.attackEntityFrom(par1DamageSource, par2);
@@ -476,233 +469,223 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 	@Override
 	public void onLivingUpdate() {
 
-		if ((this.worldObj.isRemote) && (JGConfigClientSettings.CLIENT_DA8) && (angerLevel >= 400) && (hasAnAura || auraLightning || hasAGodAura)) {
-			for (int k = 0; k < JGConfigClientSettings.get_da1(); k++) {
+        if ((this.worldObj.isRemote) && (JGConfigClientSettings.CLIENT_DA8) && (angerLevel >= 400) && (hasAnAura || auraLightning || hasAGodAura)) {
+            for (int k = 0; k < JGConfigClientSettings.get_da1(); k++) {
+                EntityDBCNinjin EntityDBCNinjin = this;
+                Entity pl = this;
+                float red = auraRed;float green = auraGreen;float blue = auraBlue;
+                float red2 = auraRed2;float green2 = auraGreen2;float blue2 = auraBlue2;
+                float life = 0.8F * pl.height;
+                float extra_scale = 1.0F + (pl.height > 2.1F ? pl.height / 2.0F : 0.0F) / 5.0F;
+                double x = (Math.random() - 0.5D) * (width * 1.2F);
+                double y = Math.random() * (this.height * 1.4F) - this.height / 2.0F - 0.30000001192092896D;
+                double z = (Math.random() - 0.5D) * (width * 1.2F);
+                double motx = Math.random() * 0.019999999552965164D - 0.009999999776482582D;
+                double moty = (Math.random() * 0.8999999761581421D + 0.8999999761581421D) * (life * extra_scale * 0.07D);
+                double motz = Math.random() * 0.019999999552965164D - 0.009999999776482582D;
+                for (int i = 0; i < 5; i++) {
+                    x = (Math.random() - 0.5D) * (width * 1.2F);
+                    y = Math.random() * (this.height * 1.4F) - this.height / 2.0F - 0.30000001192092896D;
+                    z = (Math.random() - 0.5D) * (width * 1.2F);
+                    motx = Math.random() * 0.019999999552965164D - 0.009999999776482582D;
+                    moty = (Math.random() * 0.8999999761581421D + 0.8999999761581421D) * (life * extra_scale * 0.07D);
+                    motz = Math.random() * 0.019999999552965164D - 0.009999999776482582D;
+                    if (hasAnAura) {
+                        Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", pl.worldObj, 0.2F, 0.2F, pl.posX, pl.posY + ((pl instanceof EntityPlayerSP) ? -1.6F : 0.0F), pl.posZ, x, y, z, motx, moty, motz, 0.0F, (int) (Math.random() * 3.0D) + 32, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", (int) (30.0F * life * 0.5F), 2, ((float) (Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float) (Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.2F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
+                        pl.worldObj.spawnEntityInWorld(entity);
+                        Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", pl.worldObj, 0.2F, 0.2F, pl.posX, pl.posY + ((pl instanceof EntityPlayerSP) ? -1.6F : 0.0F), pl.posZ, x, y, z, motx, moty, motz, 0.0F, (int) (Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", (int) (30.0F * life * 0.5F), 2, ((float) (Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float) (Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.1F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
+                        pl.worldObj.spawnEntityInWorld(entity2);
+                    }
+                }
+                if(hasAGodAura) {
+                    float out = 1.6F;float in = 1.0F;
+                    extra_scale = 0.5F;
+                    int dea = 50;
+                    for (int gh = 0; gh < 2; gh++) {
+                        x = Math.random() * out - out / 2.0F;
+                        y = Math.random() * this.height - 0.5D;
+                        z = Math.random() * out - out / 2.0F;
 
-				Entity pl = this;
-				float red = auraRed;float green = auraGreen;float blue = auraBlue;
-				float red2 = auraRed2;float green2 = auraGreen2;float blue2 = auraBlue2;
-				float life = 0.8F * pl.height;
-				float extra_scale = 1.0F + (pl.height > 2.1F ? pl.height / 2.0F : 0.0F) / 5.0F;
+                        Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
 
-				double x = (Math.random() * 1.0D - 0.5D) * (width * 1.2F);
-				double y = Math.random() * (this.height * 1.4F) - this.height / 2.0F - 0.30000001192092896D;
-				double z = (Math.random() * 1.0D - 0.5D) * (width * 1.2F);
+                        x = Math.random() * out - out / 2.0F;
+                        y = Math.random() * this.height - 0.5D;
+                        z = Math.random() * out - out / 2.0F;
+                        entity.worldObj.spawnEntityInWorld(entity);
 
-				double motx = Math.random() * 0.019999999552965164D - 0.009999999776482582D;
-				double moty = (Math.random() * 0.8999999761581421D + 0.8999999761581421D) * (life * extra_scale * 0.07D);
-				double motz = Math.random() * 0.019999999552965164D - 0.009999999776482582D;
+                        Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
 
-				for (int i = 0; i < 5; i++) {
-					x = (Math.random() * 1.0D - 0.5D) * (width * 1.2F);
-					y = Math.random() * (this.height * 1.4F) - this.height / 2.0F - 0.30000001192092896D;
-					z = (Math.random() * 1.0D - 0.5D) * (width * 1.2F);
+                        entity.worldObj.spawnEntityInWorld(entity2);
+                    }
+                    out *= 1.4F;
+                    x = Math.random() * out - out / 2.0F;
+                    y = Math.random() * this.height - 0.5D;
+                    z = Math.random() * out - out / 2.0F;
 
-					motx = Math.random() * 0.019999999552965164D - 0.009999999776482582D;
-					moty = (Math.random() * 0.8999999761581421D + 0.8999999761581421D) * (life * extra_scale * 0.07D);
-					motz = Math.random() * 0.019999999552965164D - 0.009999999776482582D;
+                    Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
 
-					if (hasAnAura) {
-						Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", pl.worldObj, 0.2F, 0.2F, pl.posX, pl.posY + ((pl instanceof EntityPlayerSP) ? -1.6F : 0.0F), pl.posZ, x, y, z, motx, moty, motz, 0.0F, (int) (Math.random() * 3.0D) + 32, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", (int) (30.0F * life * 0.5F), 2, ((float) (Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float) (Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.2F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
+                    x = Math.random() * out - out / 2.0F;
+                    y = Math.random() * this.height - 0.5D;
+                    z = Math.random() * out - out / 2.0F;
+                    entity.worldObj.spawnEntityInWorld(entity);
 
-						pl.worldObj.spawnEntityInWorld(entity);
+                    Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
 
-						Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", pl.worldObj, 0.2F, 0.2F, pl.posX, pl.posY + ((pl instanceof EntityPlayerSP) ? -1.6F : 0.0F), pl.posZ, x, y, z, motx, moty, motz, 0.0F, (int) (Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", (int) (30.0F * life * 0.5F), 2, ((float) (Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float) (Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.1F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
+                    entity.worldObj.spawnEntityInWorld(entity2);
 
-						pl.worldObj.spawnEntityInWorld(entity2);
-					}
-				}
-				if(hasAGodAura)
-				{
-					float out = 1.6F;float in = 1.0F;
-					extra_scale = 0.5F;
-					int dea = 50;
-					for (int gh = 0; gh < 2; gh++)
-					{
-						x = Math.random() * out - out / 2.0F;
-						y = Math.random() * this.height - 0.5D;
-						z = Math.random() * out - out / 2.0F;
+                    x = Math.random() * in - in / 2.0F;
+                    y = (Math.random() * this.height - 0.5D) * 0.800000011920929D;
+                    z = Math.random() * in - in / 2.0F;
 
-						Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
+                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 180.0F, 180F, 180.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
 
-						x = Math.random() * out - out / 2.0F;
-						y = Math.random() * this.height - 0.5D;
-						z = Math.random() * out - out / 2.0F;
-						entity.worldObj.spawnEntityInWorld(entity);
+                    x = Math.random() * in - in / 2.0F;
+                    y = (Math.random() * this.height - 0.5D) * 0.800000011920929D;
+                    z = Math.random() * in - in / 2.0F;
+                    entity.worldObj.spawnEntityInWorld(entity);
 
-						Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
+                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 180.0F, 180.0F, 180.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
 
-						entity.worldObj.spawnEntityInWorld(entity2);
-					}
-					out *= 1.4F;
-					x = Math.random() * out - out / 2.0F;
-					y = Math.random() * this.height - 0.5D;
-					z = Math.random() * out - out / 2.0F;
+                    entity.worldObj.spawnEntityInWorld(entity2);
 
-					Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
+                    in *= 1.2F;
+                    x = Math.random() * in - in / 2.0F;
+                    y = (Math.random() * this.height - 0.5D) * 0.800000011920929D;
+                    z = Math.random() * in - in / 2.0F;
 
-					x = Math.random() * out - out / 2.0F;
-					y = Math.random() * this.height - 0.5D;
-					z = Math.random() * out - out / 2.0F;
-					entity.worldObj.spawnEntityInWorld(entity);
+                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
 
-					Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
+                    x = Math.random() * in - in / 2.0F;
+                    y = (Math.random() * this.height - 0.5D) * 0.800000011920929D;
+                    z = Math.random() * in - in / 2.0F;
+                    entity.worldObj.spawnEntityInWorld(entity);
 
-					entity.worldObj.spawnEntityInWorld(entity2);
+                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
 
-					x = Math.random() * in - in / 2.0F;
-					y = (Math.random() * this.height - 0.5D) * 0.800000011920929D;
-					z = Math.random() * in - in / 2.0F;
+                    entity.worldObj.spawnEntityInWorld(entity2);
+                }
 
-					entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 180.0F, 180F, 180.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
+                if(auraLightning && lightningCount == 1) {
+                    Entity entity3 = new EntityCusPar(ModVars.MOD_ID + ":textures/effect/lightning.png", pl.worldObj, 0.2F, 0.2F, pl.posX, pl.posY + ((pl instanceof EntityPlayerSP) ? -1.6F : 0.0F), pl.posZ, x, y, z, motx, moty, motz, 0.0F, (int) (Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", (int) (30.0F * life * 0.5F), 2, ((float) (Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float) (Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.1F * life * extra_scale, 0, 255.0F, 255.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
 
-					x = Math.random() * in - in / 2.0F;
-					y = (Math.random() * this.height - 0.5D) * 0.800000011920929D;
-					z = Math.random() * in - in / 2.0F;
-					entity.worldObj.spawnEntityInWorld(entity);
+                    pl.worldObj.spawnEntityInWorld(entity3);
 
-					entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 180.0F, 180.0F, 180.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
+                    if (pl.ticksExisted % 25 == (int) random * 25 || pl.ticksExisted % 70 == 1) {
+                        Main.network.sendToServer(new MessageSendEntityToSpark(this.getEntityId()));
+                        random = Math.random();
+                    }
 
-					entity.worldObj.spawnEntityInWorld(entity2);
+                    lightningCount = 0;
+                }
+                else
+                {
+                    lightningCount++;
+                }
+            }
+        }
+        this.wait += 1;
+        List ListPlayers = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class,
+            this.boundingBox.expand(16.0D, 16.0D, 16.0D));
+        if (!ListPlayers.isEmpty()) {
+            for (Object listPlayer : ListPlayers) {
+                Entity player = (Entity) listPlayer;
+                becomeAngryAt(player);
+                if (this.wait == 150 * this.m) {
+                    this.m = 1;
+                    this.wait = 0;
+                    if (!this.worldObj.isRemote && canTeleport) {
+                        setPositionAndUpdate(player.posX,
+                            player.posY + 1.0D, player.posZ);
+                        this.worldObj
+                            .playSoundAtEntity(this, "jinryuudragonbc:DBC2.tp",
+                                0.5F, this.worldObj.rand
+                                    .nextFloat() * 0.1F + 0.9F);
+                    }
+                }
+            }
+        }
+        updateArmSwingProgress();
+        getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(this.moveSpeed);
+        super.onLivingUpdate();
+    }
 
-					in *= 1.2F;
-					x = Math.random() * in - in / 2.0F;
-					y = (Math.random() * this.height - 0.5D) * 0.800000011920929D;
-					z = Math.random() * in - in / 2.0F;
+    @Override
+    public void onUpdate()
+    {
+        double r = DBCConfig.mdal;
 
-					entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
+        if(this.spwner == null)
+        {
+            AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(this.posX - r, this.posY - r, this.posZ - r, this.posX + r, this.posY + r, this.posZ + r);
+            List<EntityPlayer> list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, aabb);
+            for (EntityPlayer o : list) {
+                this.spwner = o;
+                break;
+            }
+        }
 
-					x = Math.random() * in - in / 2.0F;
-					y = (Math.random() * this.height - 0.5D) * 0.800000011920929D;
-					z = Math.random() * in - in / 2.0F;
-					entity.worldObj.spawnEntityInWorld(entity);
+        if ((this.spwner != null) && (r != 0.0D))
+        {
+            AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(this.posX - r, this.posY - r, this.posZ - r, this.posX + r, this.posY + r, this.posZ + r);
+            List<EntityPlayer> list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, aabb);
+            boolean b = false;
+            int j = 0;
+            int sgid = JRMCoreH.getInt(this.spwner, "JRMCGID");
+            for (EntityPlayer entity2 : list) {
+                int ogid = JRMCoreH.getInt(entity2, "JRMCGID");
+                if ((this.spwner.getEntityId() == entity2.getEntityId()) || ((sgid != 0) && (sgid == ogid))) {
+                    j++;
+                }
+            }
+            if (getEntityId() == this.spwner.getEntityId()) {
+                j++;
+            }
+            if (j == 0)
+            {
+                this.noSpwnr -= 1;
+                if (this.noSpwnr <= 0) {
+                    setDead();
+                }
+            }
+            else if (this.noSpwnr != DBCConfig.mdat)
+            {
+                this.noSpwnr = DBCConfig.mdat;
+            }
+        }
+        if ((!this.worldObj.isRemote) && (this.spwner == null)) {
+            setDead();
+        }
+        if (this.worldObj.isRemote) {
+            this.rang += 1;
+        }
+        if ((this.worldObj.isRemote) && (this.rang > 100))
+        {
+            this.rang = 0;
+            int i = updateDataInt(23);
+            this.targetedEntity = (i > 0 ? this.worldObj.getEntityByID(i) : null);
+        }
+        if ((!this.worldObj.isRemote) && (!this.updtd)) {
+            this.updtd = true;
+        }
+        if ((this.targetedEntity != null) && (canEntityBeSeen(this.targetedEntity))) {
+            if (this.targetedEntity.posY - 4.0D > this.posY)
+            {
+                this.motionY += 0.1D;
+            }
+            else if (this.targetedEntity.posY - 1.6D >= this.posY)
+            {
+                this.posY = (this.targetedEntity.posY - 1.6D);
+                this.motionY = 0.0D;
+                this.fallDistance = 0.0F;
+            }
+        }
+        super.onUpdate();
+    }
 
-					entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
-
-					entity.worldObj.spawnEntityInWorld(entity2);
-				}
-
-				if(auraLightning && lightningCount == 1) {
-					Entity entity3 = new EntityCusPar(ModVars.MOD_ID + ":textures/effect/lightning.png", pl.worldObj, 0.2F, 0.2F, pl.posX, pl.posY + ((pl instanceof EntityPlayerSP) ? -1.6F : 0.0F), pl.posZ, x, y, z, motx, moty, motz, 0.0F, (int) (Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", (int) (30.0F * life * 0.5F), 2, ((float) (Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float) (Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.1F * life * extra_scale, 0, 255.0F, 255.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
-
-					pl.worldObj.spawnEntityInWorld(entity3);
-
-					if (pl.ticksExisted % 25 == (int) random * 25 || pl.ticksExisted % 70 == 1) {
-						Main.network.sendToServer(new MessageSendEntityToSpark(this.getEntityId()));
-						random = Math.random();
-					}
-
-					lightningCount = 0;
-				}
-				else
-				{
-					lightningCount++;
-				}
-			}
-		}
-		this.wait += 1;
-		List ListPlayers = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class,
-				this.boundingBox.expand(16.0D, 16.0D, 16.0D));
-		if (!ListPlayers.isEmpty()) {
-			for (int i = 0; i < ListPlayers.size(); i++) {
-				Entity player = (Entity) ListPlayers.get(i);
-				becomeAngryAt(player);
-				if (this.wait == 150 * this.m) {
-					this.m = 1;
-					this.wait = 0;
-					if (!this.worldObj.isRemote && canTeleport) {
-						setPositionAndUpdate(player.posX,
-								player.posY + 1.0D, player.posZ);
-						this.worldObj
-								.playSoundAtEntity(this, "jinryuudragonbc:DBC2.tp",
-										0.5F, this.worldObj.rand
-												.nextFloat() * 0.1F + 0.9F);
-					}
-				}
-			}
-		}
-		super.onLivingUpdate();
-	}
-
-	@Override
-	public void onUpdate()
-	{
-		double r = DBCConfig.mdal;
-
-		if(this.spwner == null)
-		{
-			AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(this.posX - r, this.posY - r, this.posZ - r, this.posX + r, this.posY + r, this.posZ + r);
-			List list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, aabb);
-			for (int i = 0; i < list.size(); i++)
-			{
-				this.spwner = (EntityPlayer) list.get(i);
-				break;
-			}
-		}
-
-		if ((this.spwner != null) && (r != 0.0D))
-		{
-			AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(this.posX - r, this.posY - r, this.posZ - r, this.posX + r, this.posY + r, this.posZ + r);
-			List list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, aabb);
-			boolean b = false;
-			int j = 0;
-			int sgid = JRMCoreH.getInt((EntityPlayer)this.spwner, "JRMCGID");
-			for (int i = 0; i < list.size(); i++)
-			{
-				EntityPlayer entity2 = (EntityPlayer)list.get(i);
-				int ogid = JRMCoreH.getInt(entity2, "JRMCGID");
-				if ((this.spwner.getEntityId() == entity2.getEntityId()) || ((sgid != 0) && (sgid == ogid))) {
-					j++;
-				}
-			}
-			if (getEntityId() == this.spwner.getEntityId()) {
-				j++;
-			}
-			if (j == 0)
-			{
-				this.noSpwnr -= 1;
-				if (this.noSpwnr <= 0) {
-					setDead();
-				}
-			}
-			else if (this.noSpwnr != DBCConfig.mdat)
-			{
-				this.noSpwnr = DBCConfig.mdat;
-			}
-		}
-		if ((!this.worldObj.isRemote) && (this.spwner == null)) {
-			setDead();
-		}
-		if (this.worldObj.isRemote) {
-			this.rang += 1;
-		}
-		if ((this.worldObj.isRemote) && (this.rang > 100))
-		{
-			this.rang = 0;
-			int i = updateDataInt(23);
-			this.targetedEntity = (i > 0 ? this.worldObj.getEntityByID(i) : null);
-		}
-		if ((!this.worldObj.isRemote) && (!this.updtd)) {
-			this.updtd = true;
-		}
-		if ((this.targetedEntity != null) && (canEntityBeSeen(this.targetedEntity))) {
-			if (this.targetedEntity.posY - 4.0D > this.posY)
-			{
-				this.motionY += 0.1D;
-			}
-			else if (this.targetedEntity.posY - 1.6D >= this.posY)
-			{
-				this.posY = (this.targetedEntity.posY - 1.6D);
-				this.motionY = 0.0D;
-				this.fallDistance = 0.0F;
-			}
-		}
-		super.onUpdate();
-	}
-
-	private void becomeAngryAt(Entity par1Entity) {
-		this.entityToAttack = par1Entity;
-		this.angerLevel = (400 + this.rand.nextInt(400));
-	}
+    private void becomeAngryAt(Entity par1Entity) {
+        this.entityToAttack = par1Entity;
+        this.angerLevel = (400 + this.rand.nextInt(400));
+    }
 
 }
+

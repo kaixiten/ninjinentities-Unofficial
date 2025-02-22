@@ -6,8 +6,6 @@ import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
 
-
-
 public class MessageSendEntityToSpark implements IMessage {
 
     private int toSend;
@@ -31,11 +29,9 @@ public class MessageSendEntityToSpark implements IMessage {
     public static class Handler implements IMessageHandler<MessageSendEntityToSpark, IMessage> {
         @Override
         public IMessage onMessage(MessageSendEntityToSpark message, MessageContext ctx) {
-            for (Object entityObject : ctx.getServerHandler().playerEntity.worldObj.loadedEntityList) {
-                Entity entity = (Entity)entityObject;
-                if(entity.getEntityId() == message.toSend)
-                {
-                    entity.worldObj.playSoundAtEntity(entity, "jinryuudragonbc:1610.spark", 0.4F, 1.0F);
+            for (Entity entityObject : ctx.getServerHandler().playerEntity.worldObj.loadedEntityList) {
+                if(entityObject.getEntityId() == message.toSend) {
+                    entityObject.worldObj.playSoundAtEntity(entityObject, "jinryuudragonbc:1610.spark", 0.0375F, 0.85F);
                 }
             }
             return null; // no response in this case

@@ -24,18 +24,17 @@ import hedaox.ninjinentities.proxy.CommonProxy;
 @Mod(modid = ModVars.MOD_ID, name = ModVars.MOD_name)
 public class Main
 {
-	
+
 	@Instance
 	public static Main instance = new Main();
-	
+
 	@SidedProxy(clientSide = "hedaox.ninjinentities.proxy.ClientProxy", serverSide = "hedaox.ninjinentities.proxy.ServerProxy")
 	public static CommonProxy proxy;
 
 	public static SimpleNetworkWrapper network;
-	
+
     @EventHandler
-    public void preInit(FMLPreInitializationEvent $e)
-    {
+    public void preInit(FMLPreInitializationEvent $e) {
     	proxy.preInit($e);
     	NinjinEntities.init();
 
@@ -44,20 +43,17 @@ public class Main
         network.registerMessage(MessageSendEntityToSpark.Handler.class, MessageSendEntityToSpark.class, 0, Side.SERVER);
     }
     @EventHandler
-    public void init(FMLInitializationEvent $e)
-    {
-    	proxy.init($e);
-    }
-    @EventHandler
-    public void postInit(FMLPostInitializationEvent $e)
-    {
-    	proxy.postInit($e);
+    public void init(FMLInitializationEvent event) {
+        proxy.init(event);
     }
 
     @EventHandler
-    public void serverLoad(FMLServerStartingEvent event)
-    {
-        // register server commands
+    public void postInit(FMLPostInitializationEvent $e) {
+        proxy.postInit($e);
+    }
+
+    @EventHandler
+    public void serverLoad(FMLServerStartingEvent event) {
         event.registerServerCommand(new CommandSummonNinjin());
     }
 }

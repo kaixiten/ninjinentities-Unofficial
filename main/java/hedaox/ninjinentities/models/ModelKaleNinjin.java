@@ -8,31 +8,30 @@ import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
 
 public class ModelKaleNinjin extends ModelBase {
-	private ModelRenderer Head;
-	private ModelRenderer Hair1;
-	private ModelRenderer Hair2;
-	private ModelRenderer Hair3;
-	private ModelRenderer Hair4;
-	private ModelRenderer Hair5;
-	private ModelRenderer Hair6;
-	private ModelRenderer Hair7;
+	private final ModelRenderer Head;
+	private final ModelRenderer Hair1;
+	private final ModelRenderer Hair2;
+	private final ModelRenderer Hair3;
+	private final ModelRenderer Hair4;
+	private final ModelRenderer Hair5;
+	private final ModelRenderer Hair6;
+	private final ModelRenderer Hair7;
 	private ModelRenderer Hair8;
 	private ModelRenderer Hair9;
 	private ModelRenderer Hair10;
 	private ModelRenderer Hair11;
 	private ModelRenderer Hair12;
 	private ModelRenderer Hair13;
-	private ModelRenderer Strand1;
+	private final ModelRenderer Strand1;
 	private ModelRenderer Strand2;
-	private ModelRenderer Body;
-	private ModelRenderer RArm;
-	private ModelRenderer LArm;
-	private ModelRenderer RLeg;
-	private ModelRenderer LLeg;
+	private final ModelRenderer Body;
+	private final ModelRenderer RArm;
+	private final ModelRenderer LArm;
+	private final ModelRenderer RLeg;
+	private final ModelRenderer LLeg;
 	private int form = 0;
 	private float scale = 1.0F;
 
-	@SuppressWarnings("unchecked")
 	public ModelKaleNinjin(int _form, float _scale) {
 		form = _form;
 		scale = _scale;

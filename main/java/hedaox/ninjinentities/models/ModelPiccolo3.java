@@ -24,8 +24,7 @@ public class ModelPiccolo3 extends ModelBase {
   private final ModelRenderer FeetR;
   private final float scale;
 
-  public ModelPiccolo3(float _scale)
-  {
+  public ModelPiccolo3(float _scale) {
     this.textureWidth = 128;
     this.textureHeight = 64;
     scale = _scale;

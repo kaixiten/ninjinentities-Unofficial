@@ -141,8 +141,8 @@ public class ModelOozaru extends ModelBase {
 			renderHairs(0.0625F, "FR", f2);
 			this.RArm.render(f5);
 			this.LArm.render(f5);
-			this.Head.rotateAngleY = f3 / (180F / (float)Math.PI);
-			this.Head.rotateAngleX = f4 / (180F / (float)Math.PI);
+            this.Head.rotateAngleY = f3 / (160F / (float)Math.PI);
+            this.Head.rotateAngleX = f4 / (160F / (float)Math.PI);
 			this.RArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
 			this.LArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
 			this.RArm.rotateAngleZ = 0.0F;

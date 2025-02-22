@@ -10,32 +10,23 @@ import net.minecraftforge.common.MinecraftForge;
 
 /**
  * Do Things on server and client side at the same time
- * 
+ *
  * @author Hedaox
  */
 public class CommonProxy {
-	
+
 	EventAttackManager EAHandler = new EventAttackManager();
 
     public static SimpleNetworkWrapper network;
-    
-    public void preInit(FMLPreInitializationEvent $e) 
-    {
+
+    public void registerRenderers() {}
+
+    public void preInit(FMLPreInitializationEvent $e) {
         MinecraftForge.EVENT_BUS.register(EAHandler);
-
         FMLCommonHandler.instance().bus().register(EAHandler);
-       
     }
 
-    public void init(FMLInitializationEvent $e)
-    {
-        
-    }
+    public void init(FMLInitializationEvent $e) {}
 
-    public void postInit(FMLPostInitializationEvent $e)
-    {
-
-    }
+    public void postInit(FMLPostInitializationEvent $e) {}
 }
-
-
