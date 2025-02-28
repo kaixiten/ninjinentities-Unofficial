@@ -331,6 +331,7 @@ public class NinjinEntities {
         createEntity(EntityDAIMAGoku.class, 64, "DAIMAGoku");
         createEntity(EntityDAIMAGokuSsj.class, 64, "DAIMAGokuSsj");
         createEntity(EntityDAIMAGokuSsj2.class, 64, "DAIMAGokuSsj2");
+        createEntity(EntityDAIMAGokuSsj3.class, 64, "DAIMAGokuSsj3");
         createEntity(EntityDAIMAPorunga.class, 64, "DAIMAPorunga");
         createEntity(EntityPorungaNinjin.class, 64, "PorungaNinjin");
 

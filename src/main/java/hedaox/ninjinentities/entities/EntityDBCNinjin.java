@@ -230,12 +230,13 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 			{
 				AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(this.posX - r, this.posY - r, this.posZ - r, this.posX + r, this.posY + r, this.posZ + r);
 				List<EntityPlayer> list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, aabb);
-				if (this.attackTime <= 0)
+                double distance = getXZDistanceToEntity(this.targetedEntity);
+				if (this.attackTime - ((!DBCConfig.AaiDisabled && distance < 0.5D) ? (DBCConfig.EnemyDefaultAttackTimer - DBCConfig.EnemyDefaultShortRangeAttackTimer) : 0) <= 0)
 				{
                     for (EntityPlayer player : list) {
                         attackEntityAsMob(player);
                     }
-					this.attackTime = 35;
+					this.attackTime = DBCConfig.EnemyDefaultAttackTimer;
 					this.worldObj.playSoundAtEntity(this, "jinryuudragonbc:DBC3.force", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
 				}
 			}
