@@ -9,9 +9,7 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelMisokatsun extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer HeadChild_2;
-	private final ModelRenderer HeadChild_1;
-	private final ModelRenderer Body;
+    private final ModelRenderer Body;
 	private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
@@ -20,7 +18,6 @@ public class ModelMisokatsun extends ModelBase {
 	private float scaleY = 1.0F;
 	private float scaleZ = 1.0F;
 
-	@SuppressWarnings("unchecked")
 	public ModelMisokatsun(float _scaleX, float _scaleY, float _scaleZ) {
 
 		scaleX = _scaleX;
@@ -34,17 +31,17 @@ public class ModelMisokatsun extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 18, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		HeadChild_2 = new ModelRenderer(this);
-		HeadChild_2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(HeadChild_2, 0.0F, 0.5236F, 0.0F);
-		Head.addChild(HeadChild_2);
-		HeadChild_2.cubeList.add(new ModelBox(HeadChild_2, 0, 52, 4.0F, -7.0F, -1.0F, 0, 6, 6, 0.0F));
+        ModelRenderer headChild_2 = new ModelRenderer(this);
+		headChild_2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(headChild_2, 0.0F, 0.5236F, 0.0F);
+		Head.addChild(headChild_2);
+		headChild_2.cubeList.add(new ModelBox(headChild_2, 0, 52, 4.0F, -7.0F, -1.0F, 0, 6, 6, 0.0F));
 
-		HeadChild_1 = new ModelRenderer(this);
-		HeadChild_1.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(HeadChild_1, 0.0F, -0.5236F, 0.0F);
-		Head.addChild(HeadChild_1);
-		HeadChild_1.cubeList.add(new ModelBox(HeadChild_1, 0, 52, -4.0F, -7.0F, -1.0F, 0, 6, 6, 0.0F));
+        ModelRenderer headChild_1 = new ModelRenderer(this);
+		headChild_1.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(headChild_1, 0.0F, -0.5236F, 0.0F);
+		Head.addChild(headChild_1);
+		headChild_1.cubeList.add(new ModelBox(headChild_1, 0, 52, -4.0F, -7.0F, -1.0F, 0, 6, 6, 0.0F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(0.0F, 0.0F, 0.0F);

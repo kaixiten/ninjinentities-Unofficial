@@ -9,9 +9,7 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelAndroid14 extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer Hair1;
 	private final ModelRenderer Body;
-	private final ModelRenderer bb_main;
 	private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
@@ -34,17 +32,17 @@ public class ModelAndroid14 extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 30, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		Hair1 = new ModelRenderer(this);
-		Hair1.setRotationPoint(0.0F, -3.0F, 3.0F);
-		setRotationAngle(Hair1, 0.1745F, 0.0F, 0.0F);
-		Head.addChild(Hair1);
-		Hair1.cubeList.add(new ModelBox(Hair1, 30, 12, -1.0F, -1.0F, 0.0F, 2, 12, 1, 0.0F));
+		ModelRenderer hair1 = new ModelRenderer(this);
+		hair1.setRotationPoint(0.0F, -3.0F, 3.0F);
+		setRotationAngle(hair1, 0.1745F, 0.0F, 0.0F);
+		Head.addChild(hair1);
+		hair1.cubeList.add(new ModelBox(hair1, 30, 12, -1.0F, -1.0F, 0.0F, 2, 12, 1, 0.0F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(0.2F, 5.4F, -0.2F);
 		Body.cubeList.add(new ModelBox(Body, 32, 32, -4.2F, -5.4F, -1.8F, 8, 12, 4, 0.0F));
 
-		bb_main = new ModelRenderer(this);
+		ModelRenderer bb_main = new ModelRenderer(this);
 		bb_main.setRotationPoint(-0.2F, 18.6F, 0.2F);
 		Body.addChild(bb_main);
 		bb_main.cubeList.add(new ModelBox(bb_main, 34, 49, -4.5F, -15.6F, -2.4F, 9, 10, 5, 0.0F));
@@ -80,8 +78,8 @@ public class ModelAndroid14 extends ModelBase {
 		Head.render(f5);
 		Body.render(f5);
 		GL11.glPopMatrix();
-		this.Head.rotateAngleY = f3 / (180F / (float)Math.PI);
-		this.Head.rotateAngleX = f4 / (180F / (float)Math.PI);
+        this.Head.rotateAngleY = f3 / (160F / (float)Math.PI);
+        this.Head.rotateAngleX = f4 / (160F / (float)Math.PI);
 		this.RArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
 		this.LArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
 		this.RArm.rotateAngleZ = 0.0F;

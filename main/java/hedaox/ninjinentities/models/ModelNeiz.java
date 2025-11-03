@@ -9,16 +9,10 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelNeiz extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer EyeBrowsL;
-	private final ModelRenderer EyeBrowsR;
-	private final ModelRenderer EarR;
-	private final ModelRenderer EarL;
-	private final ModelRenderer ScouterScreen;
-	private final ModelRenderer Body;
+    private final ModelRenderer Body;
 	private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
-	private final ModelRenderer leftarmshoulder;
-	private final ModelRenderer RLeg;
+    private final ModelRenderer RLeg;
 	private final ModelRenderer LLeg;
 	private float scaleX = 1.0F;
 	private float scaleY = 1.0F;
@@ -37,35 +31,35 @@ public class ModelNeiz extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 2, -4.0F, -6.0F, -4.0F, 8, 6, 8, 0.0F));
 
-		EyeBrowsL = new ModelRenderer(this);
-		EyeBrowsL.setRotationPoint(0.5625F, -4.125F, -5.0F);
-		setRotationAngle(EyeBrowsL, 0.0F, 0.0F, -0.1745F);
-		Head.addChild(EyeBrowsL);
-		EyeBrowsL.mirror = true;
-		EyeBrowsL.cubeList.add(new ModelBox(EyeBrowsL, 24, 7, 0.0F, -2.0F, 0.8125F, 3, 2, 1, 0.0F));
+        ModelRenderer eyeBrowsL = new ModelRenderer(this);
+		eyeBrowsL.setRotationPoint(0.5625F, -4.125F, -5.0F);
+		setRotationAngle(eyeBrowsL, 0.0F, 0.0F, -0.1745F);
+		Head.addChild(eyeBrowsL);
+		eyeBrowsL.mirror = true;
+		eyeBrowsL.cubeList.add(new ModelBox(eyeBrowsL, 24, 7, 0.0F, -2.0F, 0.8125F, 3, 2, 1, 0.0F));
 
-		EyeBrowsR = new ModelRenderer(this);
-		EyeBrowsR.setRotationPoint(-0.5625F, -4.125F, -5.0F);
-		setRotationAngle(EyeBrowsR, 0.0F, 0.0F, 0.1745F);
-		Head.addChild(EyeBrowsR);
-		EyeBrowsR.cubeList.add(new ModelBox(EyeBrowsR, 24, 7, -3.0F, -2.0F, 0.8125F, 3, 2, 1, 0.0F));
+        ModelRenderer eyeBrowsR = new ModelRenderer(this);
+		eyeBrowsR.setRotationPoint(-0.5625F, -4.125F, -5.0F);
+		setRotationAngle(eyeBrowsR, 0.0F, 0.0F, 0.1745F);
+		Head.addChild(eyeBrowsR);
+		eyeBrowsR.cubeList.add(new ModelBox(eyeBrowsR, 24, 7, -3.0F, -2.0F, 0.8125F, 3, 2, 1, 0.0F));
 
-		EarR = new ModelRenderer(this);
-		EarR.setRotationPoint(-4.0F, -3.0F, -3.0F);
-		setRotationAngle(EarR, 0.0F, -0.6109F, 0.0F);
-		Head.addChild(EarR);
-		EarR.cubeList.add(new ModelBox(EarR, 0, 2, 0.0F, -4.0F, 0.0F, 0, 4, 4, 0.0F));
+        ModelRenderer earR = new ModelRenderer(this);
+		earR.setRotationPoint(-4.0F, -3.0F, -3.0F);
+		setRotationAngle(earR, 0.0F, -0.6109F, 0.0F);
+		Head.addChild(earR);
+		earR.cubeList.add(new ModelBox(earR, 0, 2, 0.0F, -4.0F, 0.0F, 0, 4, 4, 0.0F));
 
-		EarL = new ModelRenderer(this);
-		EarL.setRotationPoint(5.0F, -4.0F, -3.0F);
-		Head.addChild(EarL);
-		EarL.cubeList.add(new ModelBox(EarL, 0, 0, -1.0F, -2.0F, 0.0F, 1, 3, 2, 0.0F));
+        ModelRenderer earL = new ModelRenderer(this);
+		earL.setRotationPoint(5.0F, -4.0F, -3.0F);
+		Head.addChild(earL);
+		earL.cubeList.add(new ModelBox(earL, 0, 0, -1.0F, -2.0F, 0.0F, 1, 3, 2, 0.0F));
 
-		ScouterScreen = new ModelRenderer(this);
-		ScouterScreen.setRotationPoint(4.375F, -3.375F, -3.0F);
-		setRotationAngle(ScouterScreen, 0.0F, -1.5708F, 0.0F);
-		Head.addChild(ScouterScreen);
-		ScouterScreen.cubeList.add(new ModelBox(ScouterScreen, 26, 2, -1.8125F, -1.6476F, -0.1283F, 2, 2, 3, 0.0F));
+        ModelRenderer scouterScreen = new ModelRenderer(this);
+		scouterScreen.setRotationPoint(4.375F, -3.375F, -3.0F);
+		setRotationAngle(scouterScreen, 0.0F, -1.5708F, 0.0F);
+		Head.addChild(scouterScreen);
+		scouterScreen.cubeList.add(new ModelBox(scouterScreen, 26, 2, -1.8125F, -1.6476F, -0.1283F, 2, 2, 3, 0.0F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(0.0F, 0.0F, 0.0F);
@@ -81,7 +75,7 @@ public class ModelNeiz extends ModelBase {
 		Body.addChild(LArm);
 		LArm.cubeList.add(new ModelBox(LArm, 16, 40, -1.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		leftarmshoulder = new ModelRenderer(this);
+        ModelRenderer leftarmshoulder = new ModelRenderer(this);
 		leftarmshoulder.setRotationPoint(0.0F, 0.0F, -0.5F);
 		setRotationAngle(leftarmshoulder, 0.0F, 0.0F, -0.1F);
 		LArm.addChild(leftarmshoulder);

@@ -9,11 +9,8 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelHoi extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer Hood;
-	private final ModelRenderer bone;
-	private final ModelRenderer Body;
-	private final ModelRenderer Skilt;
-	private final ModelRenderer RArm;
+    private final ModelRenderer Body;
+    private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
 	private final ModelRenderer LLeg;
@@ -34,24 +31,24 @@ public class ModelHoi extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -6.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		Hood = new ModelRenderer(this);
-		Hood.setRotationPoint(0.0F, 0.0F, 0.0F);
-		Head.addChild(Hood);
-		Hood.cubeList.add(new ModelBox(Hood, 0, 16, -4.0F, -6.0F, -4.0F, 8, 8, 8, 0.5F));
+        ModelRenderer hood = new ModelRenderer(this);
+		hood.setRotationPoint(0.0F, 0.0F, 0.0F);
+		Head.addChild(hood);
+		hood.cubeList.add(new ModelBox(hood, 0, 16, -4.0F, -6.0F, -4.0F, 8, 8, 8, 0.5F));
 
-		bone = new ModelRenderer(this);
+        ModelRenderer bone = new ModelRenderer(this);
 		bone.setRotationPoint(0.0F, 24.0F, 0.0F);
-		Hood.addChild(bone);
+		hood.addChild(bone);
 		bone.cubeList.add(new ModelBox(bone, 50, 18, -3.0F, -22.0F, 4.0F, 6, 7, 1, 0.0F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Body.cubeList.add(new ModelBox(Body, 0, 32, -4.0F, 2.0F, -2.0F, 8, 11, 4, 0.0F));
 
-		Skilt = new ModelRenderer(this);
-		Skilt.setRotationPoint(3.5F, 18.4F, -3.2F);
-		Body.addChild(Skilt);
-		Skilt.cubeList.add(new ModelBox(Skilt, 27, 27, -8.0F, -6.0F, 0.8F, 9, 8, 5, 0.0F));
+        ModelRenderer skilt = new ModelRenderer(this);
+		skilt.setRotationPoint(3.5F, 18.4F, -3.2F);
+		Body.addChild(skilt);
+		skilt.cubeList.add(new ModelBox(skilt, 27, 27, -8.0F, -6.0F, 0.8F, 9, 8, 5, 0.0F));
 
 		RArm = new ModelRenderer(this);
 		RArm.setRotationPoint(-5.0F, 2.0F, 0.0F);

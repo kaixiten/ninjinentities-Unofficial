@@ -9,15 +9,10 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelSlugOld extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer Helmet;
-	private final ModelRenderer Body;
-	private final ModelRenderer Ba;
-	private final ModelRenderer bodyChild_6;
-	private final ModelRenderer RArm;
-	private final ModelRenderer rightarmshoulder;
-	private final ModelRenderer LArm;
-	private final ModelRenderer leftarmshoulder;
-	private final ModelRenderer RLeg;
+    private final ModelRenderer Body;
+    private final ModelRenderer RArm;
+    private final ModelRenderer LArm;
+    private final ModelRenderer RLeg;
 	private final ModelRenderer LLeg;
 	private float scaleX = 1.0F;
 	private float scaleY = 1.0F;
@@ -36,30 +31,30 @@ public class ModelSlugOld extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 20, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		Helmet = new ModelRenderer(this);
-		Helmet.setRotationPoint(0.0F, 0.0F, 0.0F);
-		Head.addChild(Helmet);
-		Helmet.cubeList.add(new ModelBox(Helmet, 24, 12, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.5F));
-		Helmet.cubeList.add(new ModelBox(Helmet, 32, 28, -1.0F, -9.0F, -5.0F, 2, 2, 1, 0.0F));
-		Helmet.cubeList.add(new ModelBox(Helmet, 16, 56, 4.0F, -5.0F, -3.0F, 1, 3, 4, 0.0F));
-		Helmet.cubeList.add(new ModelBox(Helmet, 48, 12, -5.0F, -5.0F, -3.0F, 1, 3, 4, 0.0F));
-		Helmet.cubeList.add(new ModelBox(Helmet, 26, 56, 4.0F, -2.0F, -4.0F, 1, 1, 4, 0.0F));
-		Helmet.cubeList.add(new ModelBox(Helmet, 55, 40, -5.0F, -2.0F, -4.0F, 1, 1, 4, 0.0F));
-		Helmet.cubeList.add(new ModelBox(Helmet, 28, 3, 4.0F, -1.0F, -5.0F, 1, 1, 2, 0.0F));
-		Helmet.cubeList.add(new ModelBox(Helmet, 28, 0, -5.0F, -1.0F, -5.0F, 1, 1, 2, 0.0F));
-		Helmet.cubeList.add(new ModelBox(Helmet, 0, 23, 4.0F, -6.0F, -2.0F, 1, 1, 2, 0.0F));
-		Helmet.cubeList.add(new ModelBox(Helmet, 0, 20, -5.0F, -6.0F, -2.0F, 1, 1, 2, 0.0F));
+        ModelRenderer helmet = new ModelRenderer(this);
+		helmet.setRotationPoint(0.0F, 0.0F, 0.0F);
+		Head.addChild(helmet);
+		helmet.cubeList.add(new ModelBox(helmet, 24, 12, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.5F));
+		helmet.cubeList.add(new ModelBox(helmet, 32, 28, -1.0F, -9.0F, -5.0F, 2, 2, 1, 0.0F));
+		helmet.cubeList.add(new ModelBox(helmet, 16, 56, 4.0F, -5.0F, -3.0F, 1, 3, 4, 0.0F));
+		helmet.cubeList.add(new ModelBox(helmet, 48, 12, -5.0F, -5.0F, -3.0F, 1, 3, 4, 0.0F));
+		helmet.cubeList.add(new ModelBox(helmet, 26, 56, 4.0F, -2.0F, -4.0F, 1, 1, 4, 0.0F));
+		helmet.cubeList.add(new ModelBox(helmet, 55, 40, -5.0F, -2.0F, -4.0F, 1, 1, 4, 0.0F));
+		helmet.cubeList.add(new ModelBox(helmet, 28, 3, 4.0F, -1.0F, -5.0F, 1, 1, 2, 0.0F));
+		helmet.cubeList.add(new ModelBox(helmet, 28, 0, -5.0F, -1.0F, -5.0F, 1, 1, 2, 0.0F));
+		helmet.cubeList.add(new ModelBox(helmet, 0, 23, 4.0F, -6.0F, -2.0F, 1, 1, 2, 0.0F));
+		helmet.cubeList.add(new ModelBox(helmet, 0, 20, -5.0F, -6.0F, -2.0F, 1, 1, 2, 0.0F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Body.cubeList.add(new ModelBox(Body, 0, 36, -4.0F, 0.0F, -2.0F, 8, 12, 4, 0.0F));
 
-		Ba = new ModelRenderer(this);
-		Ba.setRotationPoint(3.5F, 18.4F, -3.2F);
-		Body.addChild(Ba);
-		Ba.cubeList.add(new ModelBox(Ba, 27, 31, -8.0F, -7.0F, 0.8F, 9, 10, 5, 0.0F));
+        ModelRenderer ba = new ModelRenderer(this);
+		ba.setRotationPoint(3.5F, 18.4F, -3.2F);
+		Body.addChild(ba);
+		ba.cubeList.add(new ModelBox(ba, 27, 31, -8.0F, -7.0F, 0.8F, 9, 10, 5, 0.0F));
 
-		bodyChild_6 = new ModelRenderer(this);
+        ModelRenderer bodyChild_6 = new ModelRenderer(this);
 		bodyChild_6.setRotationPoint(0.0F, 0.0F, 0.0F);
 		setRotationAngle(bodyChild_6, 0.1571F, 0.0F, 0.0F);
 		Body.addChild(bodyChild_6);
@@ -70,7 +65,7 @@ public class ModelSlugOld extends ModelBase {
 		Body.addChild(RArm);
 		RArm.cubeList.add(new ModelBox(RArm, 55, 24, -3.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		rightarmshoulder = new ModelRenderer(this);
+        ModelRenderer rightarmshoulder = new ModelRenderer(this);
 		rightarmshoulder.setRotationPoint(0.0F, 0.0F, 0.0F);
 		setRotationAngle(rightarmshoulder, 0.0F, 0.0F, 0.1F);
 		RArm.addChild(rightarmshoulder);
@@ -81,7 +76,7 @@ public class ModelSlugOld extends ModelBase {
 		Body.addChild(LArm);
 		LArm.cubeList.add(new ModelBox(LArm, 0, 52, -1.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		leftarmshoulder = new ModelRenderer(this);
+        ModelRenderer leftarmshoulder = new ModelRenderer(this);
 		leftarmshoulder.setRotationPoint(0.0F, 0.0F, 0.0F);
 		setRotationAngle(leftarmshoulder, 0.0F, 0.0F, -0.1F);
 		LArm.addChild(leftarmshoulder);

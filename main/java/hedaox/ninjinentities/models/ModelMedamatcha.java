@@ -77,27 +77,44 @@ public class ModelMedamatcha extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		GL11.glPushMatrix();
-		GL11.glScalef(this.scaleX, this.scaleY, this.scaleZ);
-		GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(this.scaleY/0.45F,1.88F)))), 0.0F);
-		Head.render(f5);
-		Body.render(f5);
-		GL11.glPopMatrix();
-		this.Head.rotateAngleY = f3 / (180F / (float)Math.PI);
-		this.Head.rotateAngleX = f4 / (180F / (float)Math.PI);
-		this.RArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
-		this.LArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
-		this.RArm.rotateAngleZ = 0.0F;
-		this.LArm.rotateAngleZ = 0.0F;
-		this.RLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
-		this.LLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
-		this.RLeg.rotateAngleY = 0.0F;
-		this.LLeg.rotateAngleY = 0.0F;
-	}
+    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+        setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+        Head.render(f5);
+        Body.render(f5);
+    }
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
 	}
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float HeadPitch, float scaleFactor, Entity entity) {
+        this.Head.rotateAngleY = netHeadYaw / (180F / (float)Math.PI);
+        this.Head.rotateAngleX = HeadPitch / (180F / (float)Math.PI);
+
+        this.RArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F;
+        this.LArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F;
+
+        this.RLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+        this.LLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+
+        this.RArm.rotateAngleZ = 0.0F;
+        this.LArm.rotateAngleZ = 0.0F;
+        this.RLeg.rotateAngleY = 0.0F;
+        this.LLeg.rotateAngleY = 0.0F;
+        this.RArm.rotateAngleY = 0.0F;
+
+        float animProgress = this.onGround;
+        this.Body.rotateAngleY = MathHelper.sin(MathHelper.sqrt_float(animProgress) * (float)Math.PI * 2.0F) * 0.2F;
+
+        float animCurve = 1.0F - animProgress;
+        animCurve *= animCurve;
+        animCurve *= animCurve;
+        animCurve = 1.0F - animCurve;
+
+        float sinCurve = MathHelper.sin(animCurve * (float)Math.PI);
+        float HeadOffset = MathHelper.sin(animProgress * (float)Math.PI) * -(this.Head.rotateAngleX - 0.7F) * 0.75F;
+        this.RArm.rotateAngleX -= (sinCurve * 1.2F + HeadOffset);
+        this.RArm.rotateAngleY += this.Body.rotateAngleY * 2.0F;
+        this.RArm.rotateAngleZ = MathHelper.sin(animProgress * 2.1415927F) * -0.4F;
+    }
 }

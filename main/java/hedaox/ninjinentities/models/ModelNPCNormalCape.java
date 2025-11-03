@@ -9,10 +9,8 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelNPCNormalCape extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer field_78114_d;
-	private final ModelRenderer Body;
-	private final ModelRenderer Cape;
-	private final ModelRenderer RArm;
+    private final ModelRenderer Body;
+    private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
 	private final ModelRenderer LLeg;
@@ -32,7 +30,7 @@ public class ModelNPCNormalCape extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 23, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		field_78114_d = new ModelRenderer(this);
+        ModelRenderer field_78114_d = new ModelRenderer(this);
 		field_78114_d.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.addChild(field_78114_d);
 		field_78114_d.cubeList.add(new ModelBox(field_78114_d, 55, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.5F));
@@ -41,11 +39,11 @@ public class ModelNPCNormalCape extends ModelBase {
 		Body.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Body.cubeList.add(new ModelBox(Body, 39, 16, -4.0F, 0.0F, -2.0F, 8, 12, 4, 0.0F));
 
-		Cape = new ModelRenderer(this);
-		Cape.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(Cape, 0.1571F, 0.0F, 0.0F);
-		Body.addChild(Cape);
-		Cape.cubeList.add(new ModelBox(Cape, 90, 12, -5.0F, 0.0123F, 2.1564F, 10, 20, 0, 0.0F));
+        ModelRenderer cape = new ModelRenderer(this);
+		cape.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(cape, 0.1571F, 0.0F, 0.0F);
+		Body.addChild(cape);
+		cape.cubeList.add(new ModelBox(cape, 90, 12, -5.0F, 0.0123F, 2.1564F, 10, 20, 0, 0.0F));
 
 		RArm = new ModelRenderer(this);
 		RArm.setRotationPoint(-4.0F, 2.0F, 0.0F);

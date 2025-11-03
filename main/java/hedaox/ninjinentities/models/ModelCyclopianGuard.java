@@ -10,13 +10,9 @@ import org.lwjgl.opengl.GL11;
 public class ModelCyclopianGuard extends ModelBase {
 	private final ModelRenderer Head;
 	private final ModelRenderer Body;
-	private final ModelRenderer bone;
-	private final ModelRenderer field_78176_b1;
-	private final ModelRenderer RArm;
-	private final ModelRenderer rightarmshoulder;
-	private final ModelRenderer LArm;
-	private final ModelRenderer leftarmshoulder;
-	private final ModelRenderer RLeg;
+    private final ModelRenderer RArm;
+    private final ModelRenderer LArm;
+    private final ModelRenderer RLeg;
 	private final ModelRenderer LLeg;
 	private float scaleX = 1.0F;
 	private float scaleY = 1.0F;
@@ -39,12 +35,12 @@ public class ModelCyclopianGuard extends ModelBase {
 		Body.setRotationPoint(0.0F, -7.0F, 0.0F);
 		Body.cubeList.add(new ModelBox(Body, 0, 0, -9.0F, -2.0F, -6.0F, 18, 12, 11, 0.0F));
 
-		bone = new ModelRenderer(this);
+        ModelRenderer bone = new ModelRenderer(this);
 		bone.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Body.addChild(bone);
 		bone.cubeList.add(new ModelBox(bone, 66, 41, -4.0F, -1.0F, -9.0F, 8, 8, 3, 0.0F));
 
-		field_78176_b1 = new ModelRenderer(this);
+        ModelRenderer field_78176_b1 = new ModelRenderer(this);
 		field_78176_b1.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Body.addChild(field_78176_b1);
 		field_78176_b1.cubeList.add(new ModelBox(field_78176_b1, 58, 21, -4.5F, 10.0F, -3.0F, 9, 5, 6, 0.5F));
@@ -54,7 +50,7 @@ public class ModelCyclopianGuard extends ModelBase {
 		Body.addChild(RArm);
 		RArm.cubeList.add(new ModelBox(RArm, 34, 44, -13.0F, -2.5F, -3.0F, 4, 24, 6, 0.0F));
 
-		rightarmshoulder = new ModelRenderer(this);
+        ModelRenderer rightarmshoulder = new ModelRenderer(this);
 		rightarmshoulder.setRotationPoint(-5.0F, 9.0F, -0.6F);
 		setRotationAngle(rightarmshoulder, 0.0F, 0.0F, 0.1F);
 		RArm.addChild(rightarmshoulder);
@@ -65,7 +61,7 @@ public class ModelCyclopianGuard extends ModelBase {
 		Body.addChild(LArm);
 		LArm.cubeList.add(new ModelBox(LArm, 54, 54, 9.0F, -2.5F, -3.0F, 4, 24, 6, 0.0F));
 
-		leftarmshoulder = new ModelRenderer(this);
+        ModelRenderer leftarmshoulder = new ModelRenderer(this);
 		leftarmshoulder.setRotationPoint(5.0F, 9.0F, -0.5F);
 		setRotationAngle(leftarmshoulder, 0.0F, 0.0F, -0.1F);
 		LArm.addChild(leftarmshoulder);

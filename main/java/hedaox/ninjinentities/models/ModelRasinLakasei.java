@@ -10,10 +10,7 @@ import org.lwjgl.opengl.GL11;
 public class ModelRasinLakasei extends ModelBase {
 	private final ModelRenderer Head;
 	private final ModelRenderer Body;
-	private final ModelRenderer Cape;
-	private final ModelRenderer bone2;
-	private final ModelRenderer bone;
-	private final ModelRenderer RArm;
+    private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
 	private final ModelRenderer LLeg;
@@ -39,17 +36,17 @@ public class ModelRasinLakasei extends ModelBase {
 		Body.setRotationPoint(0.2F, 5.4F, -0.2F);
 		Body.cubeList.add(new ModelBox(Body, 34, 12, -4.2F, 2.6F, -1.8F, 8, 8, 4, 0.0F));
 
-		Cape = new ModelRenderer(this);
-		Cape.setRotationPoint(-0.2F, -5.4F, 0.2F);
-		Body.addChild(Cape);
-		Cape.cubeList.add(new ModelBox(Cape, 84, 0, -4.0F, 8.0F, -3.0F, 8, 5, 6, 0.0F));
+        ModelRenderer cape = new ModelRenderer(this);
+		cape.setRotationPoint(-0.2F, -5.4F, 0.2F);
+		Body.addChild(cape);
+		cape.cubeList.add(new ModelBox(cape, 84, 0, -4.0F, 8.0F, -3.0F, 8, 5, 6, 0.0F));
 
-		bone2 = new ModelRenderer(this);
+        ModelRenderer bone2 = new ModelRenderer(this);
 		bone2.setRotationPoint(-4.2F, -3.4F, 0.2F);
 		Body.addChild(bone2);
 		bone2.cubeList.add(new ModelBox(bone2, 0, 117, 8.0F, 6.0F, -3.0F, 4, 5, 6, 0.0F));
 
-		bone = new ModelRenderer(this);
+        ModelRenderer bone = new ModelRenderer(this);
 		bone.setRotationPoint(-0.2F, 18.6F, 0.2F);
 		Body.addChild(bone);
 		bone.cubeList.add(new ModelBox(bone, 108, 27, -8.0F, -16.0F, -3.0F, 4, 5, 6, 0.0F));

@@ -1,122 +1,106 @@
 package hedaox.ninjinentities.models;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
+import org.lwjgl.opengl.GL11;
 
 public class ModelGotenks extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer Hair1;
-	private final ModelRenderer Hair2;
-	private final ModelRenderer Hair3;
-	private final ModelRenderer Hair4;
-	private final ModelRenderer Hair5;
-	private final ModelRenderer Hair6;
-	private final ModelRenderer Hair7;
-	private final ModelRenderer Hair8;
-	private final ModelRenderer Hair9;
-	private final ModelRenderer Hair10;
-	private final ModelRenderer Hair11;
-	private final ModelRenderer Strand2;
-	private final ModelRenderer Body;
+    private final ModelRenderer Body;
 	private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
-	private final ModelRenderer Belt;
-	private final ModelRenderer Belt2;
-	private final ModelRenderer LLeg;
+    private final ModelRenderer LLeg;
 	private float scale = 1.0F;
 
-	@SuppressWarnings("unchecked")
 	public ModelGotenks(float _scale) {
 		textureWidth = 64;
 		textureHeight = 32;
-		
+
 		scale = _scale;
 
 		Head = new ModelRenderer(this);
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
-		Hair1 = new ModelRenderer(this);
-		Hair1.setRotationPoint(-1.0F, -9.0F, 0.0F);
-		setRotationAngle(Hair1, -0.3491F, 0.0F, -0.1745F);
-		Head.addChild(Hair1);
-		Hair1.cubeList.add(new ModelBox(Hair1, 35, 2, -0.5133F, -5.474F, -2.0714F, 4, 8, 4, 0.0F));
+        ModelRenderer hair1 = new ModelRenderer(this);
+		hair1.setRotationPoint(-1.0F, -9.0F, 0.0F);
+		setRotationAngle(hair1, -0.3491F, 0.0F, -0.1745F);
+		Head.addChild(hair1);
+		hair1.cubeList.add(new ModelBox(hair1, 35, 2, -0.5133F, -5.474F, -2.0714F, 4, 8, 4, 0.0F));
 
-		Hair2 = new ModelRenderer(this);
-		Hair2.setRotationPoint(-3.0F, -10.0F, 0.0F);
-		setRotationAngle(Hair2, -0.2618F, 0.0F, 0.2618F);
-		Head.addChild(Hair2);
-		Hair2.cubeList.add(new ModelBox(Hair2, 38, 2, 0.0603F, -2.658F, -3.0F, 3, 6, 3, 0.0F));
+        ModelRenderer hair2 = new ModelRenderer(this);
+		hair2.setRotationPoint(-3.0F, -10.0F, 0.0F);
+		setRotationAngle(hair2, -0.2618F, 0.0F, 0.2618F);
+		Head.addChild(hair2);
+		hair2.cubeList.add(new ModelBox(hair2, 38, 2, 0.0603F, -2.658F, -3.0F, 3, 6, 3, 0.0F));
 
-		Hair3 = new ModelRenderer(this);
-		Hair3.setRotationPoint(1.0F, -8.0F, 0.0F);
-		setRotationAngle(Hair3, 0.0F, 0.0F, -0.0873F);
-		Head.addChild(Hair3);
-		Hair3.cubeList.add(new ModelBox(Hair3, 38, 2, 0.0603F, -3.342F, -3.0F, 3, 6, 3, 0.0F));
+        ModelRenderer hair3 = new ModelRenderer(this);
+		hair3.setRotationPoint(1.0F, -8.0F, 0.0F);
+		setRotationAngle(hair3, 0.0F, 0.0F, -0.0873F);
+		Head.addChild(hair3);
+		hair3.cubeList.add(new ModelBox(hair3, 38, 2, 0.0603F, -3.342F, -3.0F, 3, 6, 3, 0.0F));
 
-		Hair4 = new ModelRenderer(this);
-		Hair4.setRotationPoint(5.0F, -6.0F, -2.0F);
-		setRotationAngle(Hair4, 2.7925F, -0.0873F, 0.6109F);
-		Head.addChild(Hair4);
-		Hair4.cubeList.add(new ModelBox(Hair4, 52, 2, -2.9972F, -3.971F, -3.2188F, 3, 8, 3, 0.0F));
+        ModelRenderer hair4 = new ModelRenderer(this);
+		hair4.setRotationPoint(5.0F, -6.0F, -2.0F);
+		setRotationAngle(hair4, 2.7925F, -0.0873F, 0.6109F);
+		Head.addChild(hair4);
+		hair4.cubeList.add(new ModelBox(hair4, 52, 2, -2.9972F, -3.971F, -3.2188F, 3, 8, 3, 0.0F));
 
-		Hair5 = new ModelRenderer(this);
-		Hair5.setRotationPoint(-5.0F, -6.0F, -2.0F);
-		setRotationAngle(Hair5, 2.7925F, 0.0873F, -0.6109F);
-		Head.addChild(Hair5);
-		Hair5.cubeList.add(new ModelBox(Hair5, 52, 2, -0.0028F, -3.971F, -3.2188F, 3, 8, 3, 0.0F));
+        ModelRenderer hair5 = new ModelRenderer(this);
+		hair5.setRotationPoint(-5.0F, -6.0F, -2.0F);
+		setRotationAngle(hair5, 2.7925F, 0.0873F, -0.6109F);
+		Head.addChild(hair5);
+		hair5.cubeList.add(new ModelBox(hair5, 52, 2, -0.0028F, -3.971F, -3.2188F, 3, 8, 3, 0.0F));
 
-		Hair6 = new ModelRenderer(this);
-		Hair6.setRotationPoint(-5.0F, -7.0F, 4.0F);
-		setRotationAngle(Hair6, -0.3491F, 0.0F, -0.4363F);
-		Head.addChild(Hair6);
-		Hair6.cubeList.add(new ModelBox(Hair6, 40, 2, 1.8099F, -4.1257F, -3.2188F, 3, 7, 3, 0.0F));
+        ModelRenderer hair6 = new ModelRenderer(this);
+		hair6.setRotationPoint(-5.0F, -7.0F, 4.0F);
+		setRotationAngle(hair6, -0.3491F, 0.0F, -0.4363F);
+		Head.addChild(hair6);
+		hair6.cubeList.add(new ModelBox(hair6, 40, 2, 1.8099F, -4.1257F, -3.2188F, 3, 7, 3, 0.0F));
 
-		Hair7 = new ModelRenderer(this);
-		Hair7.setRotationPoint(-1.0F, -10.0F, 4.0F);
-		setRotationAngle(Hair7, -0.3491F, 0.0F, 0.5236F);
-		Head.addChild(Hair7);
-		Hair7.cubeList.add(new ModelBox(Hair7, 33, 2, 1.8099F, -2.4417F, -5.0982F, 3, 6, 5, 0.0F));
+        ModelRenderer hair7 = new ModelRenderer(this);
+		hair7.setRotationPoint(-1.0F, -10.0F, 4.0F);
+		setRotationAngle(hair7, -0.3491F, 0.0F, 0.5236F);
+		Head.addChild(hair7);
+		hair7.cubeList.add(new ModelBox(hair7, 33, 2, 1.8099F, -2.4417F, -5.0982F, 3, 6, 5, 0.0F));
 
-		Hair8 = new ModelRenderer(this);
-		Hair8.setRotationPoint(-5.0F, -7.0F, 2.0F);
-		setRotationAngle(Hair8, 2.7925F, 0.0873F, -0.4363F);
-		Head.addChild(Hair8);
-		Hair8.cubeList.add(new ModelBox(Hair8, 52, 4, -0.0028F, -3.971F, -3.2188F, 3, 6, 3, 0.0F));
+        ModelRenderer hair8 = new ModelRenderer(this);
+		hair8.setRotationPoint(-5.0F, -7.0F, 2.0F);
+		setRotationAngle(hair8, 2.7925F, 0.0873F, -0.4363F);
+		Head.addChild(hair8);
+		hair8.cubeList.add(new ModelBox(hair8, 52, 4, -0.0028F, -3.971F, -3.2188F, 3, 6, 3, 0.0F));
 
-		Hair9 = new ModelRenderer(this);
-		Hair9.setRotationPoint(3.0F, -8.0F, 2.0F);
-		setRotationAngle(Hair9, 2.7925F, 0.0873F, 0.5236F);
-		Head.addChild(Hair9);
-		Hair9.cubeList.add(new ModelBox(Hair9, 52, 4, -0.0028F, -3.971F, -3.2188F, 3, 6, 3, 0.0F));
+        ModelRenderer hair9 = new ModelRenderer(this);
+		hair9.setRotationPoint(3.0F, -8.0F, 2.0F);
+		setRotationAngle(hair9, 2.7925F, 0.0873F, 0.5236F);
+		Head.addChild(hair9);
+		hair9.cubeList.add(new ModelBox(hair9, 52, 4, -0.0028F, -3.971F, -3.2188F, 3, 6, 3, 0.0F));
 
-		Hair10 = new ModelRenderer(this);
-		Hair10.setRotationPoint(0.0F, -2.0F, 6.0F);
-		setRotationAngle(Hair10, -0.5236F, 0.3491F, 0.0F);
-		Head.addChild(Hair10);
-		Hair10.cubeList.add(new ModelBox(Hair10, 52, 2, 0.9972F, -4.6289F, -4.1585F, 3, 7, 3, 0.0F));
+        ModelRenderer hair10 = new ModelRenderer(this);
+		hair10.setRotationPoint(0.0F, -2.0F, 6.0F);
+		setRotationAngle(hair10, -0.5236F, 0.3491F, 0.0F);
+		Head.addChild(hair10);
+		hair10.cubeList.add(new ModelBox(hair10, 52, 2, 0.9972F, -4.6289F, -4.1585F, 3, 7, 3, 0.0F));
 
-		Hair11 = new ModelRenderer(this);
-		Hair11.setRotationPoint(-4.0F, -2.0F, 4.0F);
-		setRotationAngle(Hair11, -0.5236F, -0.2618F, 0.0F);
-		Head.addChild(Hair11);
-		Hair11.cubeList.add(new ModelBox(Hair11, 52, 2, 0.9972F, -4.6289F, -4.1585F, 3, 7, 3, 0.0F));
+        ModelRenderer hair11 = new ModelRenderer(this);
+		hair11.setRotationPoint(-4.0F, -2.0F, 4.0F);
+		setRotationAngle(hair11, -0.5236F, -0.2618F, 0.0F);
+		Head.addChild(hair11);
+		hair11.cubeList.add(new ModelBox(hair11, 52, 2, 0.9972F, -4.6289F, -4.1585F, 3, 7, 3, 0.0F));
 
-		Strand2 = new ModelRenderer(this);
-		Strand2.setRotationPoint(-3.0F, -7.4F, -1.0F);
-		setRotationAngle(Strand2, -0.2618F, 0.0F, 0.0F);
-		Head.addChild(Strand2);
-		Strand2.cubeList.add(new ModelBox(Strand2, 38, 2, 1.9972F, -1.971F, -3.2188F, 2, 4, 2, 0.0F));
+        ModelRenderer strand2 = new ModelRenderer(this);
+		strand2.setRotationPoint(-3.0F, -7.4F, -1.0F);
+		setRotationAngle(strand2, -0.2618F, 0.0F, 0.0F);
+		Head.addChild(strand2);
+		strand2.cubeList.add(new ModelBox(strand2, 38, 2, 1.9972F, -1.971F, -3.2188F, 2, 4, 2, 0.0F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(0.2F, 5.4F, -0.2F);
 		Body.cubeList.add(new ModelBox(Body, 16, 16, -4.2F, -5.4F, -1.8F, 8, 12, 4, 0.0F));
-		
+
 		RArm = new ModelRenderer(this);
 		RArm.setRotationPoint(-4.2F, -3.4F, 0.2F);
 		Body.addChild(RArm);
@@ -133,17 +117,17 @@ public class ModelGotenks extends ModelBase {
 		Body.addChild(RLeg);
 		RLeg.cubeList.add(new ModelBox(RLeg, 0, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		Belt = new ModelRenderer(this);
-		Belt.setRotationPoint(-0.8F, -1.6F, -2.2F);
-		setRotationAngle(Belt, -0.0698F, 0.0873F, 0.0F);
-		RLeg.addChild(Belt);
-		Belt.cubeList.add(new ModelBox(Belt, 56, 20, -1.2857F, -1.145F, -0.1004F, 2, 8, 0, 0.0F));
+        ModelRenderer belt = new ModelRenderer(this);
+		belt.setRotationPoint(-0.8F, -1.6F, -2.2F);
+		setRotationAngle(belt, -0.0698F, 0.0873F, 0.0F);
+		RLeg.addChild(belt);
+		belt.cubeList.add(new ModelBox(belt, 56, 20, -1.2857F, -1.145F, -0.1004F, 2, 8, 0, 0.0F));
 
-		Belt2 = new ModelRenderer(this);
-		Belt2.setRotationPoint(-0.8F, -1.6F, -2.2F);
-		setRotationAngle(Belt2, -0.0698F, 1.2217F, 0.0F);
-		RLeg.addChild(Belt2);
-		Belt2.cubeList.add(new ModelBox(Belt2, 56, 20, -2.2857F, -1.145F, -1.1004F, 2, 8, 0, 0.0F));
+        ModelRenderer belt2 = new ModelRenderer(this);
+		belt2.setRotationPoint(-0.8F, -1.6F, -2.2F);
+		setRotationAngle(belt2, -0.0698F, 1.2217F, 0.0F);
+		RLeg.addChild(belt2);
+		belt2.cubeList.add(new ModelBox(belt2, 56, 20, -2.2857F, -1.145F, -1.1004F, 2, 8, 0, 0.0F));
 
 		LLeg = new ModelRenderer(this);
 		LLeg.setRotationPoint(-2.2F, 6.6F, 0.2F);

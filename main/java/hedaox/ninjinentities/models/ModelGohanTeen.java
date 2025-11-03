@@ -5,7 +5,6 @@ import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
-
 import org.lwjgl.opengl.GL11;
 
 public class ModelGohanTeen extends ModelBase {
@@ -38,7 +37,7 @@ public class ModelGohanTeen extends ModelBase {
 		textureHeight = 32;
 
 		scale = _scale;
-		
+
 		Head = new ModelRenderer(this);
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));

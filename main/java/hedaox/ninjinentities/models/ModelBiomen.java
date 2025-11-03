@@ -9,21 +9,13 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelBiomen extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer HeadChild_2;
-	private final ModelRenderer HeadChild_1;
-	private final ModelRenderer Body;
+    private final ModelRenderer Body;
 	private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
 	private final ModelRenderer LLeg;
-	private final ModelRenderer EarR;
-	private final ModelRenderer EarL;
-	private float scaleX = 1.0F;
-	private float scaleY = 1.0F;
-	private float scaleZ = 1.0F;
 
-	@SuppressWarnings("unchecked")
-	public ModelBiomen(float _scaleX, float _scaleY, float _scaleZ) {
+    public ModelBiomen(float _scaleX, float _scaleY, float _scaleZ) {
 		textureWidth = 64;
 		textureHeight = 64;
 
@@ -31,27 +23,27 @@ public class ModelBiomen extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, 0.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		HeadChild_2 = new ModelRenderer(this);
-		HeadChild_2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(HeadChild_2, 0.0F, 0.5236F, 0.0F);
-		Head.addChild(HeadChild_2);
+        ModelRenderer headChild_2 = new ModelRenderer(this);
+		headChild_2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(headChild_2, 0.0F, 0.5236F, 0.0F);
+		Head.addChild(headChild_2);
 
-		HeadChild_1 = new ModelRenderer(this);
-		HeadChild_1.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(HeadChild_1, 0.0F, -0.5236F, 0.0F);
-		Head.addChild(HeadChild_1);
+        ModelRenderer headChild_1 = new ModelRenderer(this);
+		headChild_1.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(headChild_1, 0.0F, -0.5236F, 0.0F);
+		Head.addChild(headChild_1);
 
-		EarR = new ModelRenderer(this);
-		EarR.setRotationPoint(-4.6F, 3.0F, 0.0F);
-		setRotationAngle(EarR, 0.0F, -0.4363F, 0.0F);
-		Head.addChild(EarR);
-		EarR.cubeList.add(new ModelBox(EarR, 32, 0, 0.0F, -2.0F, -2.0F, 0, 6, 4, 0.0F));
+        ModelRenderer earR = new ModelRenderer(this);
+		earR.setRotationPoint(-4.6F, 3.0F, 0.0F);
+		setRotationAngle(earR, 0.0F, -0.4363F, 0.0F);
+		Head.addChild(earR);
+		earR.cubeList.add(new ModelBox(earR, 32, 0, 0.0F, -2.0F, -2.0F, 0, 6, 4, 0.0F));
 
-		EarL = new ModelRenderer(this);
-		EarL.setRotationPoint(4.6F, 3.0F, 0.0F);
-		setRotationAngle(EarL, 0.0F, 0.4363F, 0.0F);
-		Head.addChild(EarL);
-		EarL.cubeList.add(new ModelBox(EarL, 32, 0, 0.0F, -2.0F, -2.0F, 0, 6, 4, 0.0F));
+        ModelRenderer earL = new ModelRenderer(this);
+		earL.setRotationPoint(4.6F, 3.0F, 0.0F);
+		setRotationAngle(earL, 0.0F, 0.4363F, 0.0F);
+		Head.addChild(earL);
+		earL.cubeList.add(new ModelBox(earL, 32, 0, 0.0F, -2.0F, -2.0F, 0, 6, 4, 0.0F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(0.2F, 5.4F, -0.2F);
@@ -81,8 +73,11 @@ public class ModelBiomen extends ModelBase {
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
 		GL11.glPushMatrix();
-		GL11.glScalef(this.scaleX, this.scaleY, this.scaleZ);
-		GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(this.scaleY/0.45F,1.88F)))), 0.0F);
+        float scaleZ = 1.0F;
+        float scaleY = 1.0F;
+        float scaleX = 1.0F;
+        GL11.glScalef(scaleX, scaleY, scaleZ);
+		GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(scaleY /0.45F,1.88F)))), 0.0F);
 		Head.render(f5);
 		Body.render(f5);
 		GL11.glPopMatrix();

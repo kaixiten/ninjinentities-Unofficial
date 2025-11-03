@@ -1,10 +1,7 @@
 package hedaox.ninjinentities.models;
 
 import net.minecraft.entity.Entity;
-
 import org.lwjgl.opengl.GL11;
-
-import JinRyuu.DragonBC.common.Npcs.ModelNPCNormal;
 
 public class ModelNPCNormalScale extends JinRyuu.DragonBC.common.Npcs.ModelNPCNormal {
 
@@ -13,13 +10,13 @@ public class ModelNPCNormalScale extends JinRyuu.DragonBC.common.Npcs.ModelNPCNo
 	private float scaleZ = 1.0F;
 
 	public ModelNPCNormalScale(float _scaleX, float _scaleY, float _scaleZ) {
-		
+
 		super();
 		scaleX = _scaleX;
 		scaleY = _scaleY;
 		scaleZ = _scaleZ;
 	}
-	
+
 	@Override
 	public void render(Entity entity, float f, float f1, float f2, float f3,
 			float f4, float f5) {

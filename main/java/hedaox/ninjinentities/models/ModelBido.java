@@ -9,15 +9,8 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelBido extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer EarR;
-	private final ModelRenderer EarL;
-	private final ModelRenderer headhair;
-	private final ModelRenderer Hair1;
-	private final ModelRenderer Hair2;
-	private final ModelRenderer Hair3;
-	private final ModelRenderer Body;
-	private final ModelRenderer bb_main;
-	private final ModelRenderer RArm;
+    private final ModelRenderer Body;
+    private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer LLeg;
 	private final ModelRenderer RLeg;
@@ -25,7 +18,6 @@ public class ModelBido extends ModelBase {
 	private float scaleY = 1.0F;
 	private float scaleZ = 1.0F;
 
-	@SuppressWarnings("unchecked")
 	public ModelBido(float _scaleX, float _scaleY, float _scaleZ) {
 		textureWidth = 64;
 		textureHeight = 64;
@@ -38,47 +30,47 @@ public class ModelBido extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 30, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		EarR = new ModelRenderer(this);
-		EarR.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(EarR, 0.0F, -0.5236F, 0.0F);
-		Head.addChild(EarR);
-		EarR.mirror = true;
-		EarR.cubeList.add(new ModelBox(EarR, 25, 19, -4.0F, -8.0F, -1.0F, 0, 6, 6, 0.0F));
+        ModelRenderer earR = new ModelRenderer(this);
+		earR.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(earR, 0.0F, -0.5236F, 0.0F);
+		Head.addChild(earR);
+		earR.mirror = true;
+		earR.cubeList.add(new ModelBox(earR, 25, 19, -4.0F, -8.0F, -1.0F, 0, 6, 6, 0.0F));
 
-		EarL = new ModelRenderer(this);
-		EarL.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(EarL, 0.0F, 0.5236F, 0.0F);
-		Head.addChild(EarL);
-		EarL.cubeList.add(new ModelBox(EarL, 25, 19, 4.0F, -8.0F, -1.0F, 0, 6, 6, 0.0F));
+        ModelRenderer earL = new ModelRenderer(this);
+		earL.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(earL, 0.0F, 0.5236F, 0.0F);
+		Head.addChild(earL);
+		earL.cubeList.add(new ModelBox(earL, 25, 19, 4.0F, -8.0F, -1.0F, 0, 6, 6, 0.0F));
 
-		headhair = new ModelRenderer(this);
+        ModelRenderer headhair = new ModelRenderer(this);
 		headhair.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.addChild(headhair);
 		headhair.cubeList.add(new ModelBox(headhair, 0, 0, -5.0F, -9.0F, -5.0F, 10, 9, 10, 0.0F));
 
-		Hair1 = new ModelRenderer(this);
-		Hair1.setRotationPoint(1.0F, -8.0F, 0.0F);
-		setRotationAngle(Hair1, 0.7854F, 0.3491F, -0.6109F);
-		Head.addChild(Hair1);
-		Hair1.cubeList.add(new ModelBox(Hair1, 0, 0, -2.0F, -4.0F, 0.0F, 2, 5, 2, 0.0F));
+        ModelRenderer hair1 = new ModelRenderer(this);
+		hair1.setRotationPoint(1.0F, -8.0F, 0.0F);
+		setRotationAngle(hair1, 0.7854F, 0.3491F, -0.6109F);
+		Head.addChild(hair1);
+		hair1.cubeList.add(new ModelBox(hair1, 0, 0, -2.0F, -4.0F, 0.0F, 2, 5, 2, 0.0F));
 
-		Hair2 = new ModelRenderer(this);
-		Hair2.setRotationPoint(0.0F, -7.0F, -2.0F);
-		setRotationAngle(Hair2, 1.3963F, 0.5236F, 0.3491F);
-		Head.addChild(Hair2);
-		Hair2.cubeList.add(new ModelBox(Hair2, 0, 0, -2.0F, -4.0F, 0.0F, 2, 5, 2, 0.0F));
+        ModelRenderer hair2 = new ModelRenderer(this);
+		hair2.setRotationPoint(0.0F, -7.0F, -2.0F);
+		setRotationAngle(hair2, 1.3963F, 0.5236F, 0.3491F);
+		Head.addChild(hair2);
+		hair2.cubeList.add(new ModelBox(hair2, 0, 0, -2.0F, -4.0F, 0.0F, 2, 5, 2, 0.0F));
 
-		Hair3 = new ModelRenderer(this);
-		Hair3.setRotationPoint(1.0F, -7.0F, 3.0F);
-		setRotationAngle(Hair3, 0.7854F, 0.3491F, -0.0873F);
-		Head.addChild(Hair3);
-		Hair3.cubeList.add(new ModelBox(Hair3, 0, 0, -1.658F, -4.6645F, -1.6645F, 2, 4, 3, 0.0F));
+        ModelRenderer hair3 = new ModelRenderer(this);
+		hair3.setRotationPoint(1.0F, -7.0F, 3.0F);
+		setRotationAngle(hair3, 0.7854F, 0.3491F, -0.0873F);
+		Head.addChild(hair3);
+		hair3.cubeList.add(new ModelBox(hair3, 0, 0, -1.658F, -4.6645F, -1.6645F, 2, 4, 3, 0.0F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(0.2F, 5.4F, -0.2F);
 		Body.cubeList.add(new ModelBox(Body, 32, 32, -4.2F, -5.4F, -1.8F, 8, 12, 4, 0.0F));
 
-		bb_main = new ModelRenderer(this);
+        ModelRenderer bb_main = new ModelRenderer(this);
 		bb_main.setRotationPoint(-0.2F, 18.6F, 0.2F);
 		Body.addChild(bb_main);
 		bb_main.cubeList.add(new ModelBox(bb_main, 34, 49, -4.5F, -14.6F, -2.4F, 9, 7, 5, 0.0F));

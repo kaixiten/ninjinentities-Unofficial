@@ -9,13 +9,8 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelGarlicJr extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer HeadChild_2;
-	private final ModelRenderer HeadChild_1;
-	private final ModelRenderer Tooth;
-	private final ModelRenderer Body;
-	private final ModelRenderer Cape;
-	private final ModelRenderer Scarf;
-	private final ModelRenderer RArm;
+    private final ModelRenderer Body;
+    private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
 	private final ModelRenderer LLeg;
@@ -36,38 +31,38 @@ public class ModelGarlicJr extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, 0.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		HeadChild_2 = new ModelRenderer(this);
-		HeadChild_2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(HeadChild_2, 0.0F, 0.5236F, 0.0F);
-		Head.addChild(HeadChild_2);
-		HeadChild_2.cubeList.add(new ModelBox(HeadChild_2, 0, 54, 4.0F, 1.0F, -1.0F, 0, 4, 6, 0.0F));
+        ModelRenderer headChild_2 = new ModelRenderer(this);
+		headChild_2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(headChild_2, 0.0F, 0.5236F, 0.0F);
+		Head.addChild(headChild_2);
+		headChild_2.cubeList.add(new ModelBox(headChild_2, 0, 54, 4.0F, 1.0F, -1.0F, 0, 4, 6, 0.0F));
 
-		HeadChild_1 = new ModelRenderer(this);
-		HeadChild_1.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(HeadChild_1, 0.0F, -0.5236F, 0.0F);
-		Head.addChild(HeadChild_1);
-		HeadChild_1.cubeList.add(new ModelBox(HeadChild_1, 0, 54, -4.0F, 1.0F, -1.0F, 0, 4, 6, 0.0F));
+        ModelRenderer headChild_1 = new ModelRenderer(this);
+		headChild_1.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(headChild_1, 0.0F, -0.5236F, 0.0F);
+		Head.addChild(headChild_1);
+		headChild_1.cubeList.add(new ModelBox(headChild_1, 0, 54, -4.0F, 1.0F, -1.0F, 0, 4, 6, 0.0F));
 
-		Tooth = new ModelRenderer(this);
-		Tooth.setRotationPoint(0.625F, 6.3125F, -4.125F);
-		setRotationAngle(Tooth, -0.2618F, 0.2618F, 0.7854F);
-		Head.addChild(Tooth);
-		Tooth.cubeList.add(new ModelBox(Tooth, 0, 0, -1.0F, -1.0F, 0.0F, 1, 1, 0, 0.0F));
+        ModelRenderer tooth = new ModelRenderer(this);
+		tooth.setRotationPoint(0.625F, 6.3125F, -4.125F);
+		setRotationAngle(tooth, -0.2618F, 0.2618F, 0.7854F);
+		Head.addChild(tooth);
+		tooth.cubeList.add(new ModelBox(tooth, 0, 0, -1.0F, -1.0F, 0.0F, 1, 1, 0, 0.0F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(0.2F, 5.4F, -0.2F);
 		Body.cubeList.add(new ModelBox(Body, 0, 16, -4.2F, 2.6F, -1.8F, 8, 8, 4, 0.0F));
 
-		Cape = new ModelRenderer(this);
-		Cape.setRotationPoint(-0.2F, -5.4F, 0.2F);
-		setRotationAngle(Cape, 0.0873F, 0.0F, 0.0F);
-		Body.addChild(Cape);
-		Cape.cubeList.add(new ModelBox(Cape, 46, 48, -4.0F, 9.0F, 3.0F, 8, 15, 0, 0.0F));
+        ModelRenderer cape = new ModelRenderer(this);
+		cape.setRotationPoint(-0.2F, -5.4F, 0.2F);
+		setRotationAngle(cape, 0.0873F, 0.0F, 0.0F);
+		Body.addChild(cape);
+		cape.cubeList.add(new ModelBox(cape, 46, 48, -4.0F, 9.0F, 3.0F, 8, 15, 0, 0.0F));
 
-		Scarf = new ModelRenderer(this);
-		Scarf.setRotationPoint(-0.2F, 18.6F, 0.2F);
-		Body.addChild(Scarf);
-		Scarf.cubeList.add(new ModelBox(Scarf, 13, 55, -4.0F, -16.0F, -4.0F, 8, 1, 8, 0.5F));
+        ModelRenderer scarf = new ModelRenderer(this);
+		scarf.setRotationPoint(-0.2F, 18.6F, 0.2F);
+		Body.addChild(scarf);
+		scarf.cubeList.add(new ModelBox(scarf, 13, 55, -4.0F, -16.0F, -4.0F, 8, 1, 8, 0.5F));
 
 		RArm = new ModelRenderer(this);
 		RArm.setRotationPoint(-4.2F, -3.4F, 0.2F);

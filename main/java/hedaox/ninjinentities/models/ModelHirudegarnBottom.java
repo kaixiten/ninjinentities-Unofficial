@@ -106,12 +106,6 @@ public class ModelHirudegarnBottom extends ModelBase {
 		//Head.render(f5);
 		Body.render(f5);
 		GL11.glPopMatrix();
-		/*this.Head.rotateAngleY = f3 / (180F / (float)Math.PI);
-		this.Head.rotateAngleX = f4 / (180F / (float)Math.PI);
-		this.RArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
-		this.LArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
-		this.RArm.rotateAngleZ = 0.0F;
-		this.LArm.rotateAngleZ = 0.0F;*/
 		this.RLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
 		this.LLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
 		this.RLeg.rotateAngleY = 0.0F;

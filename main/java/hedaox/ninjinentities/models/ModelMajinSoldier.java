@@ -9,8 +9,7 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelMajinSoldier extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer field_78114_d;
-	private final ModelRenderer Body;
+    private final ModelRenderer Body;
 	private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
@@ -33,7 +32,7 @@ public class ModelMajinSoldier extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		field_78114_d = new ModelRenderer(this);
+        ModelRenderer field_78114_d = new ModelRenderer(this);
 		field_78114_d.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.addChild(field_78114_d);
 		field_78114_d.cubeList.add(new ModelBox(field_78114_d, 32, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.5F));

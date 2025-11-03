@@ -9,14 +9,9 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelAka extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer bone;
-	private final ModelRenderer bone2;
-	private final ModelRenderer bone3;
 	private final ModelRenderer Body;
 	private final ModelRenderer RArm;
-	private final ModelRenderer rightarmshoulder;
 	private final ModelRenderer LArm;
-	private final ModelRenderer leftarmshoulder;
 	private final ModelRenderer RLeg;
 	private final ModelRenderer LLeg;
 	private float scaleX = 1.0F;
@@ -36,18 +31,18 @@ public class ModelAka extends ModelBase {
 		Head.setRotationPoint(0.0F, -1.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -6.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		bone = new ModelRenderer(this);
+		ModelRenderer bone = new ModelRenderer(this);
 		bone.setRotationPoint(0.0F, 24.0F, 0.0F);
 		Head.addChild(bone);
 		bone.cubeList.add(new ModelBox(bone, 0, 0, -0.5F, -33.0F, -2.0F, 1, 4, 1, 0.0F));
 
-		bone2 = new ModelRenderer(this);
+		ModelRenderer bone2 = new ModelRenderer(this);
 		bone2.setRotationPoint(0.0F, 1.0F, -3.0F);
 		setRotationAngle(bone2, -0.0873F, 0.0F, 0.0F);
 		bone.addChild(bone2);
 		bone2.cubeList.add(new ModelBox(bone2, 0, 4, -0.5F, -35.0F, -2.0F, 1, 3, 1, 0.0F));
 
-		bone3 = new ModelRenderer(this);
+		ModelRenderer bone3 = new ModelRenderer(this);
 		bone3.setRotationPoint(0.0F, 1.0F, 0.0F);
 		setRotationAngle(bone3, -0.1745F, 0.0F, 0.0F);
 		bone.addChild(bone3);
@@ -62,7 +57,7 @@ public class ModelAka extends ModelBase {
 		Body.addChild(RArm);
 		RArm.cubeList.add(new ModelBox(RArm, 40, 16, -4.0F, -3.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		rightarmshoulder = new ModelRenderer(this);
+		ModelRenderer rightarmshoulder = new ModelRenderer(this);
 		rightarmshoulder.setRotationPoint(-1.0F, 0.0F, -0.6F);
 		setRotationAngle(rightarmshoulder, 0.0F, 0.0F, 0.1F);
 		RArm.addChild(rightarmshoulder);
@@ -74,7 +69,7 @@ public class ModelAka extends ModelBase {
 		LArm.mirror = true;
 		LArm.cubeList.add(new ModelBox(LArm, 40, 16, 8.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		leftarmshoulder = new ModelRenderer(this);
+		ModelRenderer leftarmshoulder = new ModelRenderer(this);
 		leftarmshoulder.setRotationPoint(9.0F, 0.0F, -0.5F);
 		setRotationAngle(leftarmshoulder, 0.0F, 0.0F, -0.1F);
 		LArm.addChild(leftarmshoulder);
@@ -101,8 +96,8 @@ public class ModelAka extends ModelBase {
 		Head.render(f5);
 		Body.render(f5);
 		GL11.glPopMatrix();
-		this.Head.rotateAngleY = f3 / (180F / (float)Math.PI);
-		this.Head.rotateAngleX = f4 / (180F / (float)Math.PI);
+        this.Head.rotateAngleY = f3 / (160F / (float)Math.PI);
+        this.Head.rotateAngleX = f4 / (160F / (float)Math.PI);
 		this.RArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
 		this.LArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
 		this.RArm.rotateAngleZ = 0.0F;

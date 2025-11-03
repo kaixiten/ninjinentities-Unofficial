@@ -9,14 +9,11 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelAndroid15 extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer headhair;
 	private final ModelRenderer Body;
 	private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
-	private final ModelRenderer SkiltR;
 	private final ModelRenderer LLeg;
-	private final ModelRenderer SkiltL;
 	private float scaleX = 1.0F;
 	private float scaleY = 1.0F;
 	private float scaleZ = 1.0F;
@@ -34,7 +31,7 @@ public class ModelAndroid15 extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 30, -4.0F, -4.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		headhair = new ModelRenderer(this);
+		ModelRenderer headhair = new ModelRenderer(this);
 		headhair.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.addChild(headhair);
 		headhair.cubeList.add(new ModelBox(headhair, 0, 1, -5.0F, -5.0F, -5.0F, 10, 3, 10, 0.0F));
@@ -60,21 +57,21 @@ public class ModelAndroid15 extends ModelBase {
 		Body.addChild(RLeg);
 		RLeg.cubeList.add(new ModelBox(RLeg, 40, 0, -2.0F, 2.0F, -2.0F, 4, 10, 4, 0.0F));
 
-		SkiltR = new ModelRenderer(this);
-		SkiltR.setRotationPoint(2.0F, 12.0F, 0.0F);
-		RLeg.addChild(SkiltR);
-		SkiltR.cubeList.add(new ModelBox(SkiltR, 34, 49, -4.5F, -10.6F, -2.4F, 5, 9, 5, 0.0F));
+		ModelRenderer skiltR = new ModelRenderer(this);
+		skiltR.setRotationPoint(2.0F, 12.0F, 0.0F);
+		RLeg.addChild(skiltR);
+		skiltR.cubeList.add(new ModelBox(skiltR, 34, 49, -4.5F, -10.6F, -2.4F, 5, 9, 5, 0.0F));
 
 		LLeg = new ModelRenderer(this);
 		LLeg.setRotationPoint(-2.2F, 6.6F, 0.2F);
 		Body.addChild(LLeg);
 		LLeg.cubeList.add(new ModelBox(LLeg, 40, 16, 2.0F, 2.0F, -2.0F, 4, 10, 4, 0.0F));
 
-		SkiltL = new ModelRenderer(this);
-		SkiltL.setRotationPoint(2.0F, 12.0F, 0.0F);
-		LLeg.addChild(SkiltL);
-		SkiltL.mirror = true;
-		SkiltL.cubeList.add(new ModelBox(SkiltL, 34, 49, -1.0F, -10.6F, -2.4F, 5, 9, 5, 0.0F));
+		ModelRenderer skiltL = new ModelRenderer(this);
+		skiltL.setRotationPoint(2.0F, 12.0F, 0.0F);
+		LLeg.addChild(skiltL);
+		skiltL.mirror = true;
+		skiltL.cubeList.add(new ModelBox(skiltL, 34, 49, -1.0F, -10.6F, -2.4F, 5, 9, 5, 0.0F));
 	}
 
 	@Override
@@ -85,8 +82,8 @@ public class ModelAndroid15 extends ModelBase {
 		Head.render(f5);
 		Body.render(f5);
 		GL11.glPopMatrix();
-		this.Head.rotateAngleY = f3 / (180F / (float)Math.PI);
-		this.Head.rotateAngleX = f4 / (180F / (float)Math.PI);
+        this.Head.rotateAngleY = f3 / (160F / (float)Math.PI);
+        this.Head.rotateAngleX = f4 / (160F / (float)Math.PI);
 		this.RArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
 		this.LArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
 		this.RArm.rotateAngleZ = 0.0F;

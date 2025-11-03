@@ -9,25 +9,12 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelHatchiyackSuper extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer Crown1;
-	private final ModelRenderer Crown2_1;
-	private final ModelRenderer Crown2;
-	private final ModelRenderer Crowngem;
-	private final ModelRenderer Body;
-	private final ModelRenderer bodyChild_1;
-	private final ModelRenderer bodyChild_3;
-	private final ModelRenderer bodyChild_2;
-	private final ModelRenderer bodyChild;
-	private final ModelRenderer RArm;
-	private final ModelRenderer bone3;
-	private final ModelRenderer rightarmshoulder;
-	private final ModelRenderer LArm;
-	private final ModelRenderer leftarmshoulder;
-	private final ModelRenderer RLeg;
-	private final ModelRenderer bone;
-	private final ModelRenderer LLeg;
-	private final ModelRenderer bone2;
-	private float scaleX = 1.0F;
+    private final ModelRenderer Body;
+    private final ModelRenderer RArm;
+    private final ModelRenderer LArm;
+    private final ModelRenderer RLeg;
+    private final ModelRenderer LLeg;
+    private float scaleX = 1.0F;
 	private float scaleY = 1.0F;
 	private float scaleZ = 1.0F;
 
@@ -44,29 +31,29 @@ public class ModelHatchiyackSuper extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		Crown1 = new ModelRenderer(this);
-		Crown1.setRotationPoint(0.5F, -0.9F, -4.2F);
-		setRotationAngle(Crown1, -0.6981F, 0.0F, 0.0F);
-		Head.addChild(Crown1);
-		Crown1.cubeList.add(new ModelBox(Crown1, 48, 9, -4.0F, -10.4088F, -3.8767F, 7, 5, 1, 0.5F));
+        ModelRenderer crown1 = new ModelRenderer(this);
+		crown1.setRotationPoint(0.5F, -0.9F, -4.2F);
+		setRotationAngle(crown1, -0.6981F, 0.0F, 0.0F);
+		Head.addChild(crown1);
+		crown1.cubeList.add(new ModelBox(crown1, 48, 9, -4.0F, -10.4088F, -3.8767F, 7, 5, 1, 0.5F));
 
-		Crown2_1 = new ModelRenderer(this);
-		Crown2_1.setRotationPoint(-1.9F, -0.8F, -1.0F);
-		setRotationAngle(Crown2_1, 0.0F, 0.0F, 1.3271F);
-		Head.addChild(Crown2_1);
-		Crown2_1.cubeList.add(new ModelBox(Crown2_1, 20, 34, -5.9409F, -6.4826F, -4.0F, 1, 3, 1, 0.5F));
+        ModelRenderer crown2_1 = new ModelRenderer(this);
+		crown2_1.setRotationPoint(-1.9F, -0.8F, -1.0F);
+		setRotationAngle(crown2_1, 0.0F, 0.0F, 1.3271F);
+		Head.addChild(crown2_1);
+		crown2_1.cubeList.add(new ModelBox(crown2_1, 20, 34, -5.9409F, -6.4826F, -4.0F, 1, 3, 1, 0.5F));
 
-		Crown2 = new ModelRenderer(this);
-		Crown2.setRotationPoint(3.5F, -7.5F, -1.0F);
-		setRotationAngle(Crown2, 0.0F, 0.0F, -1.3273F);
-		Head.addChild(Crown2);
-		Crown2.cubeList.add(new ModelBox(Crown2, 20, 30, -2.059F, -6.4822F, -4.0F, 1, 3, 1, 0.5F));
+        ModelRenderer crown2 = new ModelRenderer(this);
+		crown2.setRotationPoint(3.5F, -7.5F, -1.0F);
+		setRotationAngle(crown2, 0.0F, 0.0F, -1.3273F);
+		Head.addChild(crown2);
+		crown2.cubeList.add(new ModelBox(crown2, 20, 30, -2.059F, -6.4822F, -4.0F, 1, 3, 1, 0.5F));
 
-		Crowngem = new ModelRenderer(this);
-		Crowngem.setRotationPoint(3.5F, -0.9F, -4.7F);
-		setRotationAngle(Crowngem, -0.6894F, 0.0F, 0.0F);
-		Head.addChild(Crowngem);
-		Crowngem.cubeList.add(new ModelBox(Crowngem, 32, 54, -4.5F, -9.5433F, -5.2721F, 2, 3, 1, 0.3F));
+        ModelRenderer crowngem = new ModelRenderer(this);
+		crowngem.setRotationPoint(3.5F, -0.9F, -4.7F);
+		setRotationAngle(crowngem, -0.6894F, 0.0F, 0.0F);
+		Head.addChild(crowngem);
+		crowngem.cubeList.add(new ModelBox(crowngem, 32, 54, -4.5F, -9.5433F, -5.2721F, 2, 3, 1, 0.3F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(0.0F, 0.0F, 0.0F);
@@ -75,7 +62,7 @@ public class ModelHatchiyackSuper extends ModelBase {
 		Body.cubeList.add(new ModelBox(Body, 0, 26, -3.0F, 5.0F, -3.0F, 1, 3, 1, 0.0F));
 		Body.cubeList.add(new ModelBox(Body, 0, 16, 2.0F, 5.0F, -3.0F, 1, 3, 1, 0.0F));
 
-		bodyChild_1 = new ModelRenderer(this);
+        ModelRenderer bodyChild_1 = new ModelRenderer(this);
 		bodyChild_1.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Body.addChild(bodyChild_1);
 		bodyChild_1.cubeList.add(new ModelBox(bodyChild_1, 46, 19, -3.5F, 5.0F, -2.0F, 7, 7, 4, 0.0F));
@@ -92,17 +79,17 @@ public class ModelHatchiyackSuper extends ModelBase {
 		bodyChild_1.cubeList.add(new ModelBox(bodyChild_1, 24, 0, -3.0F, 10.0F, 2.0F, 6, 1, 1, 0.0F));
 		bodyChild_1.cubeList.add(new ModelBox(bodyChild_1, 50, 35, -4.0F, 8.0F, 2.0F, 8, 2, 1, 0.0F));
 
-		bodyChild_3 = new ModelRenderer(this);
+        ModelRenderer bodyChild_3 = new ModelRenderer(this);
 		bodyChild_3.setRotationPoint(0.0F, 0.0F, 0.0F);
 		setRotationAngle(bodyChild_3, 0.5236F, 0.0F, 0.0F);
 		Body.addChild(bodyChild_3);
 
-		bodyChild_2 = new ModelRenderer(this);
+        ModelRenderer bodyChild_2 = new ModelRenderer(this);
 		bodyChild_2.setRotationPoint(0.0F, 0.0F, 0.0F);
 		setRotationAngle(bodyChild_2, -0.3491F, 0.0F, 0.0F);
 		Body.addChild(bodyChild_2);
 
-		bodyChild = new ModelRenderer(this);
+        ModelRenderer bodyChild = new ModelRenderer(this);
 		bodyChild.setRotationPoint(0.0F, 0.0F, 0.0F);
 		setRotationAngle(bodyChild, -0.1745F, 0.0F, 0.0F);
 		Body.addChild(bodyChild);
@@ -113,7 +100,7 @@ public class ModelHatchiyackSuper extends ModelBase {
 		Body.addChild(RArm);
 		RArm.cubeList.add(new ModelBox(RArm, 20, 35, -5.0F, -2.0F, -2.0F, 5, 12, 5, 0.0F));
 
-		bone3 = new ModelRenderer(this);
+        ModelRenderer bone3 = new ModelRenderer(this);
 		bone3.setRotationPoint(5.0F, 22.0F, 0.0F);
 		RArm.addChild(bone3);
 		bone3.cubeList.add(new ModelBox(bone3, 50, 62, -10.3522F, -16.6322F, -0.8067F, 1, 3, 2, 0.0F));
@@ -121,7 +108,7 @@ public class ModelHatchiyackSuper extends ModelBase {
 		bone3.cubeList.add(new ModelBox(bone3, 52, 32, -10.6683F, -18.6186F, -0.8988F, 1, 1, 2, 0.0F));
 		bone3.cubeList.add(new ModelBox(bone3, 40, 40, -11.3491F, -16.5532F, -0.8048F, 1, 3, 2, 0.0F));
 
-		rightarmshoulder = new ModelRenderer(this);
+        ModelRenderer rightarmshoulder = new ModelRenderer(this);
 		rightarmshoulder.setRotationPoint(0.0F, 0.0F, -0.6F);
 		setRotationAngle(rightarmshoulder, 0.0F, 0.0F, 0.1F);
 		RArm.addChild(rightarmshoulder);
@@ -138,7 +125,7 @@ public class ModelHatchiyackSuper extends ModelBase {
 		LArm.cubeList.add(new ModelBox(LArm, 15, 26, 4.6652F, 3.4604F, -1.1031F, 1, 1, 3, 0.0F));
 		LArm.cubeList.add(new ModelBox(LArm, 0, 0, 5.346F, 5.5258F, -1.197F, 1, 3, 3, 0.0F));
 
-		leftarmshoulder = new ModelRenderer(this);
+        ModelRenderer leftarmshoulder = new ModelRenderer(this);
 		leftarmshoulder.setRotationPoint(0.0F, 0.0F, -0.5F);
 		setRotationAngle(leftarmshoulder, 0.0F, 0.0F, -0.1F);
 		LArm.addChild(leftarmshoulder);
@@ -152,7 +139,7 @@ public class ModelHatchiyackSuper extends ModelBase {
 		RLeg.cubeList.add(new ModelBox(RLeg, 54, 15, -1.0F, 7.0F, -3.0F, 2, 3, 1, 0.0F));
 		RLeg.cubeList.add(new ModelBox(RLeg, 8, 59, -3.0F, 4.0F, -1.0F, 1, 3, 2, 0.0F));
 
-		bone = new ModelRenderer(this);
+        ModelRenderer bone = new ModelRenderer(this);
 		bone.setRotationPoint(2.0F, 13.0F, 0.0F);
 		setRotationAngle(bone, -0.1745F, 0.0F, 0.0F);
 		RLeg.addChild(bone);
@@ -164,7 +151,7 @@ public class ModelHatchiyackSuper extends ModelBase {
 		LLeg.cubeList.add(new ModelBox(LLeg, 60, 0, -1.0F, 7.0F, -3.0F, 2, 3, 1, 0.0F));
 		LLeg.cubeList.add(new ModelBox(LLeg, 60, 30, 2.0F, 4.0F, -1.0F, 1, 3, 2, 0.0F));
 
-		bone2 = new ModelRenderer(this);
+        ModelRenderer bone2 = new ModelRenderer(this);
 		bone2.setRotationPoint(2.0F, 13.0F, 0.0F);
 		setRotationAngle(bone2, -0.1745F, 0.0F, 0.0F);
 		LLeg.addChild(bone2);

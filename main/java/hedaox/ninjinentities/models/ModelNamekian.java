@@ -9,11 +9,7 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelNamekian extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer EarR;
-	private final ModelRenderer EarL;
-	private final ModelRenderer AntennaR;
-	private final ModelRenderer AntennaL;
-	private final ModelRenderer Body;
+    private final ModelRenderer Body;
 	private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
@@ -34,31 +30,31 @@ public class ModelNamekian extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		EarR = new ModelRenderer(this);
-		EarR.setRotationPoint(-4.0F, -2.0F, 0.0F);
-		setRotationAngle(EarR, 0.0F, -0.5236F, 0.0F);
-		Head.addChild(EarR);
-		EarR.cubeList.add(new ModelBox(EarR, 35, 6, 0.0F, -4.0F, 0.0F, 0, 4, 3, 0.0F));
+        ModelRenderer earR = new ModelRenderer(this);
+		earR.setRotationPoint(-4.0F, -2.0F, 0.0F);
+		setRotationAngle(earR, 0.0F, -0.5236F, 0.0F);
+		Head.addChild(earR);
+		earR.cubeList.add(new ModelBox(earR, 35, 6, 0.0F, -4.0F, 0.0F, 0, 4, 3, 0.0F));
 
-		EarL = new ModelRenderer(this);
-		EarL.setRotationPoint(4.0F, -2.0F, 0.0F);
-		setRotationAngle(EarL, 0.0F, 0.5236F, 0.0F);
-		Head.addChild(EarL);
-		EarL.mirror = true;
-		EarL.cubeList.add(new ModelBox(EarL, 35, 6, 0.0F, -4.0F, 0.0F, 0, 4, 3, 0.0F));
+        ModelRenderer earL = new ModelRenderer(this);
+		earL.setRotationPoint(4.0F, -2.0F, 0.0F);
+		setRotationAngle(earL, 0.0F, 0.5236F, 0.0F);
+		Head.addChild(earL);
+		earL.mirror = true;
+		earL.cubeList.add(new ModelBox(earL, 35, 6, 0.0F, -4.0F, 0.0F, 0, 4, 3, 0.0F));
 
-		AntennaR = new ModelRenderer(this);
-		AntennaR.setRotationPoint(-1.9375F, -6.3125F, -5.0625F);
-		setRotationAngle(AntennaR, 0.3491F, 0.2618F, 0.0F);
-		Head.addChild(AntennaR);
-		AntennaR.cubeList.add(new ModelBox(AntennaR, 34, 3, -0.5F, -0.5F, -1.5F, 1, 1, 3, 0.0F));
+        ModelRenderer antennaR = new ModelRenderer(this);
+		antennaR.setRotationPoint(-1.9375F, -6.3125F, -5.0625F);
+		setRotationAngle(antennaR, 0.3491F, 0.2618F, 0.0F);
+		Head.addChild(antennaR);
+		antennaR.cubeList.add(new ModelBox(antennaR, 34, 3, -0.5F, -0.5F, -1.5F, 1, 1, 3, 0.0F));
 
-		AntennaL = new ModelRenderer(this);
-		AntennaL.setRotationPoint(1.9375F, -6.3125F, -5.0625F);
-		setRotationAngle(AntennaL, 0.3491F, -0.2618F, 0.0F);
-		Head.addChild(AntennaL);
-		AntennaL.mirror = true;
-		AntennaL.cubeList.add(new ModelBox(AntennaL, 46, 3, -0.5F, -0.5F, -1.5F, 1, 1, 3, 0.0F));
+        ModelRenderer antennaL = new ModelRenderer(this);
+		antennaL.setRotationPoint(1.9375F, -6.3125F, -5.0625F);
+		setRotationAngle(antennaL, 0.3491F, -0.2618F, 0.0F);
+		Head.addChild(antennaL);
+		antennaL.mirror = true;
+		antennaL.cubeList.add(new ModelBox(antennaL, 46, 3, -0.5F, -0.5F, -1.5F, 1, 1, 3, 0.0F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(0.0F, 0.0F, 0.0F);

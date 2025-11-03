@@ -5,23 +5,19 @@ import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
-
 import org.lwjgl.opengl.GL11;
 
 public class ModelNPCNormalArmor extends ModelBase {
 	private final ModelRenderer Head;
 	private final ModelRenderer Body;
 	private final ModelRenderer RArm;
-	private final ModelRenderer RShoulderArmor;
-	private final ModelRenderer LArm;
-	private final ModelRenderer LShoulderArmor;
-	private final ModelRenderer RLeg;
+    private final ModelRenderer LArm;
+    private final ModelRenderer RLeg;
 	private final ModelRenderer LLeg;
 	private float scaleX = 1.0F;
 	private float scaleY = 1.0F;
 	private float scaleZ = 1.0F;
 
-	@SuppressWarnings("unchecked")
 	public ModelNPCNormalArmor(float _scaleX, float _scaleY, float _scaleZ) {
 		textureWidth = 64;
 		textureHeight = 32;
@@ -29,7 +25,7 @@ public class ModelNPCNormalArmor extends ModelBase {
 		scaleX = _scaleX;
 		scaleY = _scaleY;
 		scaleZ = _scaleZ;
-		
+
 		Head = new ModelRenderer(this);
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
@@ -43,7 +39,7 @@ public class ModelNPCNormalArmor extends ModelBase {
 		Body.addChild(RArm);
 		RArm.cubeList.add(new ModelBox(RArm, 40, 16, -4.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		RShoulderArmor = new ModelRenderer(this);
+        ModelRenderer RShoulderArmor = new ModelRenderer(this);
 		RShoulderArmor.setRotationPoint(-3.0F, -1.7F, 0.0F);
 		setRotationAngle(RShoulderArmor, -1.5708F, 0.0F, 0.1047F);
 		RArm.addChild(RShoulderArmor);
@@ -54,7 +50,7 @@ public class ModelNPCNormalArmor extends ModelBase {
 		Body.addChild(LArm);
 		LArm.cubeList.add(new ModelBox(LArm, 40, 16, 8.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		LShoulderArmor = new ModelRenderer(this);
+        ModelRenderer LShoulderArmor = new ModelRenderer(this);
 		LShoulderArmor.setRotationPoint(11.0F, -1.7F, 0.0F);
 		LShoulderArmor.mirror = true;
 		setRotationAngle(LShoulderArmor, -1.5708F, 0.0F, -0.1047F);

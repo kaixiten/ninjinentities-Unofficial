@@ -9,35 +9,12 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelSansho extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer HeadChild_6;
-	private final ModelRenderer HeadChild_14;
-	private final ModelRenderer HeadChild_3;
-	private final ModelRenderer HeadChild;
-	private final ModelRenderer HeadChild_5;
-	private final ModelRenderer HeadChild_7;
-	private final ModelRenderer HeadChild_4;
-	private final ModelRenderer HeadChild_13;
-	private final ModelRenderer HeadChild_12;
-	private final ModelRenderer HeadChild_2;
-	private final ModelRenderer HeadChild_9;
-	private final ModelRenderer HeadChild_10;
-	private final ModelRenderer HeadChild_1;
-	private final ModelRenderer HeadChild_8;
-	private final ModelRenderer HeadChild_11;
-	private final ModelRenderer HeadChild_15;
-	private final ModelRenderer HeadChild_16;
-	private final ModelRenderer Body;
-	private final ModelRenderer Cape;
-	private final ModelRenderer leftarmshoulder;
-	private final ModelRenderer rightarmshoulder;
-	private final ModelRenderer RArm;
+    private final ModelRenderer Body;
+    private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
-	private final ModelRenderer bone;
-	private final ModelRenderer LLeg;
-	private final ModelRenderer bone2;
-	private final ModelRenderer bone3;
-	private float scaleX = 1.0F;
+    private final ModelRenderer LLeg;
+    private float scaleX = 1.0F;
 	private float scaleY = 1.0F;
 	private float scaleZ = 1.0F;
 
@@ -56,104 +33,104 @@ public class ModelSansho extends ModelBase {
 		Head.cubeList.add(new ModelBox(Head, 2, 0, 4.0F, -1.0F, -4.0F, 0, 7, 1, 0.0F));
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -1.0F, -4.0F, 0, 7, 1, 0.0F));
 
-		HeadChild_6 = new ModelRenderer(this);
-		HeadChild_6.setRotationPoint(-1.0F, -10.0F, 4.0F);
-		setRotationAngle(HeadChild_6, -0.3491F, 0.0F, 0.6982F);
-		Head.addChild(HeadChild_6);
+        ModelRenderer headChild_6 = new ModelRenderer(this);
+		headChild_6.setRotationPoint(-1.0F, -10.0F, 4.0F);
+		setRotationAngle(headChild_6, -0.3491F, 0.0F, 0.6982F);
+		Head.addChild(headChild_6);
 
-		HeadChild_14 = new ModelRenderer(this);
-		HeadChild_14.setRotationPoint(-6.0F, -7.5F, -0.9F);
-		setRotationAngle(HeadChild_14, -0.3491F, 0.0F, 0.4363F);
-		Head.addChild(HeadChild_14);
+        ModelRenderer headChild_14 = new ModelRenderer(this);
+		headChild_14.setRotationPoint(-6.0F, -7.5F, -0.9F);
+		setRotationAngle(headChild_14, -0.3491F, 0.0F, 0.4363F);
+		Head.addChild(headChild_14);
 
-		HeadChild_3 = new ModelRenderer(this);
-		HeadChild_3.setRotationPoint(2.0F, -7.0F, 0.0F);
-		setRotationAngle(HeadChild_3, 0.0F, 0.0873F, 0.7854F);
-		Head.addChild(HeadChild_3);
+        ModelRenderer headChild_3 = new ModelRenderer(this);
+		headChild_3.setRotationPoint(2.0F, -7.0F, 0.0F);
+		setRotationAngle(headChild_3, 0.0F, 0.0873F, 0.7854F);
+		Head.addChild(headChild_3);
 
-		HeadChild = new ModelRenderer(this);
-		HeadChild.setRotationPoint(-1.0F, -8.7F, 0.0F);
-		setRotationAngle(HeadChild, -0.0873F, 0.0F, -0.6108F);
-		Head.addChild(HeadChild);
+        ModelRenderer headChild = new ModelRenderer(this);
+		headChild.setRotationPoint(-1.0F, -8.7F, 0.0F);
+		setRotationAngle(headChild, -0.0873F, 0.0F, -0.6108F);
+		Head.addChild(headChild);
 
-		HeadChild_5 = new ModelRenderer(this);
-		HeadChild_5.setRotationPoint(-5.0F, -7.0F, 4.0F);
-		setRotationAngle(HeadChild_5, -0.3491F, 0.0F, -0.7854F);
-		Head.addChild(HeadChild_5);
+        ModelRenderer headChild_5 = new ModelRenderer(this);
+		headChild_5.setRotationPoint(-5.0F, -7.0F, 4.0F);
+		setRotationAngle(headChild_5, -0.3491F, 0.0F, -0.7854F);
+		Head.addChild(headChild_5);
 
-		HeadChild_7 = new ModelRenderer(this);
-		HeadChild_7.setRotationPoint(-5.0F, -7.0F, 2.0F);
-		setRotationAngle(HeadChild_7, 2.7925F, 0.0873F, -1.309F);
-		Head.addChild(HeadChild_7);
+        ModelRenderer headChild_7 = new ModelRenderer(this);
+		headChild_7.setRotationPoint(-5.0F, -7.0F, 2.0F);
+		setRotationAngle(headChild_7, 2.7925F, 0.0873F, -1.309F);
+		Head.addChild(headChild_7);
 
-		HeadChild_4 = new ModelRenderer(this);
-		HeadChild_4.setRotationPoint(-5.0F, -6.0F, -2.0F);
-		setRotationAngle(HeadChild_4, 2.7925F, 0.0873F, -1.1345F);
-		Head.addChild(HeadChild_4);
+        ModelRenderer headChild_4 = new ModelRenderer(this);
+		headChild_4.setRotationPoint(-5.0F, -6.0F, -2.0F);
+		setRotationAngle(headChild_4, 2.7925F, 0.0873F, -1.1345F);
+		Head.addChild(headChild_4);
 
-		HeadChild_13 = new ModelRenderer(this);
-		HeadChild_13.setRotationPoint(2.0F, -5.0F, -1.0F);
-		setRotationAngle(HeadChild_13, -0.3491F, 0.0F, -0.4363F);
-		Head.addChild(HeadChild_13);
+        ModelRenderer headChild_13 = new ModelRenderer(this);
+		headChild_13.setRotationPoint(2.0F, -5.0F, -1.0F);
+		setRotationAngle(headChild_13, -0.3491F, 0.0F, -0.4363F);
+		Head.addChild(headChild_13);
 
-		HeadChild_12 = new ModelRenderer(this);
-		HeadChild_12.setRotationPoint(0.0F, -5.0F, -2.0F);
-		setRotationAngle(HeadChild_12, -0.3491F, 0.0F, -0.4363F);
-		Head.addChild(HeadChild_12);
+        ModelRenderer headChild_12 = new ModelRenderer(this);
+		headChild_12.setRotationPoint(0.0F, -5.0F, -2.0F);
+		setRotationAngle(headChild_12, -0.3491F, 0.0F, -0.4363F);
+		Head.addChild(headChild_12);
 
-		HeadChild_2 = new ModelRenderer(this);
-		HeadChild_2.setRotationPoint(1.0F, -8.0F, 0.0F);
-		setRotationAngle(HeadChild_2, 0.0F, 0.0F, 0.6981F);
-		Head.addChild(HeadChild_2);
+        ModelRenderer headChild_2 = new ModelRenderer(this);
+		headChild_2.setRotationPoint(1.0F, -8.0F, 0.0F);
+		setRotationAngle(headChild_2, 0.0F, 0.0F, 0.6981F);
+		Head.addChild(headChild_2);
 
-		HeadChild_9 = new ModelRenderer(this);
-		HeadChild_9.setRotationPoint(0.0F, -2.0F, 6.0F);
-		setRotationAngle(HeadChild_9, -0.5236F, 0.3491F, 0.0F);
-		Head.addChild(HeadChild_9);
+        ModelRenderer headChild_9 = new ModelRenderer(this);
+		headChild_9.setRotationPoint(0.0F, -2.0F, 6.0F);
+		setRotationAngle(headChild_9, -0.5236F, 0.3491F, 0.0F);
+		Head.addChild(headChild_9);
 
-		HeadChild_10 = new ModelRenderer(this);
-		HeadChild_10.setRotationPoint(-4.0F, -2.0F, 4.0F);
-		setRotationAngle(HeadChild_10, -0.5236F, -0.2618F, 0.0F);
-		Head.addChild(HeadChild_10);
+        ModelRenderer headChild_10 = new ModelRenderer(this);
+		headChild_10.setRotationPoint(-4.0F, -2.0F, 4.0F);
+		setRotationAngle(headChild_10, -0.5236F, -0.2618F, 0.0F);
+		Head.addChild(headChild_10);
 
-		HeadChild_1 = new ModelRenderer(this);
-		HeadChild_1.setRotationPoint(-3.0F, -10.0F, 0.0F);
-		setRotationAngle(HeadChild_1, 0.0F, 0.0F, -0.6981F);
-		Head.addChild(HeadChild_1);
+        ModelRenderer headChild_1 = new ModelRenderer(this);
+		headChild_1.setRotationPoint(-3.0F, -10.0F, 0.0F);
+		setRotationAngle(headChild_1, 0.0F, 0.0F, -0.6981F);
+		Head.addChild(headChild_1);
 
-		HeadChild_8 = new ModelRenderer(this);
-		HeadChild_8.setRotationPoint(3.0F, -8.0F, 2.0F);
-		setRotationAngle(HeadChild_8, 2.7925F, 0.0873F, 0.9599F);
-		Head.addChild(HeadChild_8);
+        ModelRenderer headChild_8 = new ModelRenderer(this);
+		headChild_8.setRotationPoint(3.0F, -8.0F, 2.0F);
+		setRotationAngle(headChild_8, 2.7925F, 0.0873F, 0.9599F);
+		Head.addChild(headChild_8);
 
-		HeadChild_11 = new ModelRenderer(this);
-		HeadChild_11.setRotationPoint(-4.0F, -8.0F, -2.0F);
-		setRotationAngle(HeadChild_11, -0.3491F, 0.0F, 0.3491F);
-		Head.addChild(HeadChild_11);
+        ModelRenderer headChild_11 = new ModelRenderer(this);
+		headChild_11.setRotationPoint(-4.0F, -8.0F, -2.0F);
+		setRotationAngle(headChild_11, -0.3491F, 0.0F, 0.3491F);
+		Head.addChild(headChild_11);
 
-		HeadChild_15 = new ModelRenderer(this);
-		HeadChild_15.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(HeadChild_15, 0.0F, 0.5236F, 0.0F);
-		Head.addChild(HeadChild_15);
-		HeadChild_15.cubeList.add(new ModelBox(HeadChild_15, 12, 26, 4.0F, -6.0F, -1.0F, 0, 4, 6, 0.0F));
+        ModelRenderer headChild_15 = new ModelRenderer(this);
+		headChild_15.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(headChild_15, 0.0F, 0.5236F, 0.0F);
+		Head.addChild(headChild_15);
+		headChild_15.cubeList.add(new ModelBox(headChild_15, 12, 26, 4.0F, -6.0F, -1.0F, 0, 4, 6, 0.0F));
 
-		HeadChild_16 = new ModelRenderer(this);
-		HeadChild_16.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(HeadChild_16, 0.0F, -0.5236F, 0.0F);
-		Head.addChild(HeadChild_16);
-		HeadChild_16.cubeList.add(new ModelBox(HeadChild_16, 24, 14, -4.0F, -6.0F, -1.0F, 0, 4, 6, 0.0F));
+        ModelRenderer headChild_16 = new ModelRenderer(this);
+		headChild_16.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(headChild_16, 0.0F, -0.5236F, 0.0F);
+		Head.addChild(headChild_16);
+		headChild_16.cubeList.add(new ModelBox(headChild_16, 24, 14, -4.0F, -6.0F, -1.0F, 0, 4, 6, 0.0F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(0.2F, 5.4F, -0.2F);
 		Body.cubeList.add(new ModelBox(Body, 0, 16, -4.2F, -5.4F, -1.8F, 8, 12, 4, 0.0F));
 
-		Cape = new ModelRenderer(this);
-		Cape.setRotationPoint(0.0F, -1.0F, 0.0F);
-		setRotationAngle(Cape, 0.1745F, 0.0F, 0.0F);
-		Body.addChild(Cape);
-		Cape.cubeList.add(new ModelBox(Cape, 24, 24, -4.2F, -5.0F, 3.0F, 8, 23, 0, 0.0F));
+        ModelRenderer cape = new ModelRenderer(this);
+		cape.setRotationPoint(0.0F, -1.0F, 0.0F);
+		setRotationAngle(cape, 0.1745F, 0.0F, 0.0F);
+		Body.addChild(cape);
+		cape.cubeList.add(new ModelBox(cape, 24, 24, -4.2F, -5.0F, 3.0F, 8, 23, 0, 0.0F));
 
-		leftarmshoulder = new ModelRenderer(this);
+        ModelRenderer leftarmshoulder = new ModelRenderer(this);
 		leftarmshoulder.setRotationPoint(4.8F, -3.4F, -0.3F);
 		setRotationAngle(leftarmshoulder, 0.0F, 0.0F, -0.1F);
 		Body.addChild(leftarmshoulder);
@@ -161,7 +138,7 @@ public class ModelSansho extends ModelBase {
 		leftarmshoulder.cubeList.add(new ModelBox(leftarmshoulder, 24, 4, 4.2745F, -5.4858F, -2.0F, 1, 3, 1, 0.0F));
 		leftarmshoulder.cubeList.add(new ModelBox(leftarmshoulder, 0, 16, 1.2895F, -5.7853F, 0.0F, 1, 3, 1, 0.0F));
 
-		rightarmshoulder = new ModelRenderer(this);
+        ModelRenderer rightarmshoulder = new ModelRenderer(this);
 		rightarmshoulder.setRotationPoint(-5.2F, -3.4F, -0.4F);
 		setRotationAngle(rightarmshoulder, 0.0F, 0.0F, 0.1F);
 		Body.addChild(rightarmshoulder);
@@ -187,7 +164,7 @@ public class ModelSansho extends ModelBase {
 		RLeg.cubeList.add(new ModelBox(RLeg, 0, 32, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 		RLeg.cubeList.add(new ModelBox(RLeg, 32, 0, -2.5F, 0.4F, -2.4F, 4, 5, 5, 0.0F));
 
-		bone = new ModelRenderer(this);
+        ModelRenderer bone = new ModelRenderer(this);
 		bone.setRotationPoint(0.0F, 0.0F, 0.0F);
 		setRotationAngle(bone, 0.0F, 0.0F, 0.0873F);
 		RLeg.addChild(bone);
@@ -200,13 +177,13 @@ public class ModelSansho extends ModelBase {
 		LLeg.cubeList.add(new ModelBox(LLeg, 40, 20, 2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 		LLeg.cubeList.add(new ModelBox(LLeg, 32, 0, 2.5F, 0.4F, -2.4F, 4, 5, 5, 0.0F));
 
-		bone2 = new ModelRenderer(this);
+        ModelRenderer bone2 = new ModelRenderer(this);
 		bone2.setRotationPoint(2.0F, 12.0F, 0.0F);
 		setRotationAngle(bone2, 0.0F, 0.0F, -0.0873F);
 		LLeg.addChild(bone2);
 		bone2.cubeList.add(new ModelBox(bone2, 20, 18, 4.0F, -3.0F, 0.0F, 2, 1, 1, 0.0F));
 
-		bone3 = new ModelRenderer(this);
+        ModelRenderer bone3 = new ModelRenderer(this);
 		bone3.setRotationPoint(2.0F, 10.0F, 0.0F);
 		setRotationAngle(bone3, 0.0F, 0.0F, -0.0873F);
 		LLeg.addChild(bone3);

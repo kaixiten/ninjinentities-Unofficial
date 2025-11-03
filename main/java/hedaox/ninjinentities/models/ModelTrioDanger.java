@@ -1,49 +1,43 @@
 package hedaox.ninjinentities.models;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
+import org.lwjgl.opengl.GL11;
 
 public class ModelTrioDanger extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer Snout;
-	private final ModelRenderer REar;
-	private final ModelRenderer LEar;
-	private final ModelRenderer Body;
+    private final ModelRenderer Body;
 	private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
 	private final ModelRenderer LLeg;
-	private final ModelRenderer Tail;
-	private float scale = 1.0F;
+    private float scale = 1.0F;
 
-	@SuppressWarnings("unchecked")
 	public ModelTrioDanger(float _scale) {
 		textureWidth = 64;
 		textureHeight = 32;
-		
+
 		scale = _scale;
 
 		Head = new ModelRenderer(this);
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -7.0F, -4.0F, 8, 7, 8, 0.0F));
 
-		Snout = new ModelRenderer(this);
-		Snout.setRotationPoint(1.0F, -5.0F, -2.0F);
-		Head.addChild(Snout);
-		Snout.cubeList.add(new ModelBox(Snout, 50, 2, -3.0F, 2.0F, -5.0F, 4, 3, 3, 0.0F));
+        ModelRenderer snout = new ModelRenderer(this);
+		snout.setRotationPoint(1.0F, -5.0F, -2.0F);
+		Head.addChild(snout);
+		snout.cubeList.add(new ModelBox(snout, 50, 2, -3.0F, 2.0F, -5.0F, 4, 3, 3, 0.0F));
 
-		REar = new ModelRenderer(this);
+        ModelRenderer REar = new ModelRenderer(this);
 		REar.setRotationPoint(0.0F, 0.0F, 0.0F);
 		setRotationAngle(REar, 0.0F, -0.5236F, 0.0F);
 		Head.addChild(REar);
 		REar.cubeList.add(new ModelBox(REar, 32, 0, -4.0F, -10.0F, -1.0F, 0, 6, 6, 0.0F));
 
-		LEar = new ModelRenderer(this);
+        ModelRenderer LEar = new ModelRenderer(this);
 		LEar.setRotationPoint(0.0F, 0.0F, 0.0F);
 		setRotationAngle(LEar, 0.0F, 0.5236F, 0.0F);
 		Head.addChild(LEar);
@@ -75,11 +69,11 @@ public class ModelTrioDanger extends ModelBase {
 		Body.addChild(LLeg);
 		LLeg.cubeList.add(new ModelBox(LLeg, 0, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		Tail = new ModelRenderer(this);
-		Tail.setRotationPoint(4.0F, 6.0F, -2.0F);
-		setRotationAngle(Tail, -0.7854F, 0.0F, 0.0F);
-		Body.addChild(Tail);
-		Tail.cubeList.add(new ModelBox(Tail, 32, 0, -1.7F, -2.4F, -0.8F, 3, 3, 12, 0.0F));
+        ModelRenderer tail = new ModelRenderer(this);
+		tail.setRotationPoint(4.0F, 6.0F, -2.0F);
+		setRotationAngle(tail, -0.7854F, 0.0F, 0.0F);
+		Body.addChild(tail);
+		tail.cubeList.add(new ModelBox(tail, 32, 0, -1.7F, -2.4F, -0.8F, 3, 3, 12, 0.0F));
 	}
 
 	@Override

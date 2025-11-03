@@ -9,11 +9,8 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelGarlicJrSuper extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer Ear2;
-	private final ModelRenderer Ear;
-	private final ModelRenderer Body;
-	private final ModelRenderer Body2;
-	private final ModelRenderer RArm;
+    private final ModelRenderer Body;
+    private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
 	private final ModelRenderer LLeg;
@@ -34,26 +31,26 @@ public class ModelGarlicJrSuper extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		Ear2 = new ModelRenderer(this);
-		Ear2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(Ear2, 0.0F, 0.5236F, 0.0F);
-		Head.addChild(Ear2);
-		Ear2.cubeList.add(new ModelBox(Ear2, 22, 11, 4.0F, -7.0F, -1.0F, 0, 4, 6, 0.0F));
+        ModelRenderer ear2 = new ModelRenderer(this);
+		ear2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(ear2, 0.0F, 0.5236F, 0.0F);
+		Head.addChild(ear2);
+		ear2.cubeList.add(new ModelBox(ear2, 22, 11, 4.0F, -7.0F, -1.0F, 0, 4, 6, 0.0F));
 
-		Ear = new ModelRenderer(this);
-		Ear.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(Ear, 0.0F, -0.5236F, 0.0F);
-		Head.addChild(Ear);
-		Ear.cubeList.add(new ModelBox(Ear, 22, 11, -4.0F, -7.0F, -1.0F, 0, 4, 6, 0.0F));
+        ModelRenderer ear = new ModelRenderer(this);
+		ear.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(ear, 0.0F, -0.5236F, 0.0F);
+		Head.addChild(ear);
+		ear.cubeList.add(new ModelBox(ear, 22, 11, -4.0F, -7.0F, -1.0F, 0, 4, 6, 0.0F));
 
 		Body = new ModelRenderer(this);
 		Body.setRotationPoint(-3.8F, 5.4F, 3.8F);
 		Body.cubeList.add(new ModelBox(Body, 32, 0, -1.2F, -5.4F, -6.8F, 10, 7, 6, 0.0F));
 
-		Body2 = new ModelRenderer(this);
-		Body2.setRotationPoint(3.8F, -4.4F, -3.8F);
-		Body.addChild(Body2);
-		Body2.cubeList.add(new ModelBox(Body2, 16, 16, -4.0F, 0.0F, -2.0F, 8, 12, 4, 0.0F));
+        ModelRenderer body2 = new ModelRenderer(this);
+		body2.setRotationPoint(3.8F, -4.4F, -3.8F);
+		Body.addChild(body2);
+		body2.cubeList.add(new ModelBox(body2, 16, 16, -4.0F, 0.0F, -2.0F, 8, 12, 4, 0.0F));
 
 		RArm = new ModelRenderer(this);
 		RArm.setRotationPoint(-1.2F, -3.4F, -3.8F);

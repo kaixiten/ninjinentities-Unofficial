@@ -9,14 +9,10 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelBujin extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer headhair;
-	private final ModelRenderer Body;
-	private final ModelRenderer bb_main;
-	private final ModelRenderer RArm;
-	private final ModelRenderer bone;
-	private final ModelRenderer LArm;
-	private final ModelRenderer bone2;
-	private final ModelRenderer LLeg;
+    private final ModelRenderer Body;
+    private final ModelRenderer RArm;
+    private final ModelRenderer LArm;
+    private final ModelRenderer LLeg;
 	private final ModelRenderer RLeg;
 	private float scaleX = 1.0F;
 	private float scaleY = 1.0F;
@@ -34,7 +30,7 @@ public class ModelBujin extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 30, -4.0F, -4.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		headhair = new ModelRenderer(this);
+        ModelRenderer headhair = new ModelRenderer(this);
 		headhair.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.addChild(headhair);
 		headhair.cubeList.add(new ModelBox(headhair, 0, 0, -5.0F, -5.0F, -5.0F, 10, 10, 10, 0.0F));
@@ -43,7 +39,7 @@ public class ModelBujin extends ModelBase {
 		Body.setRotationPoint(0.2F, 5.4F, -0.2F);
 		Body.cubeList.add(new ModelBox(Body, 32, 32, -4.2F, -1.4F, -1.8F, 8, 10, 4, 0.0F));
 
-		bb_main = new ModelRenderer(this);
+        ModelRenderer bb_main = new ModelRenderer(this);
 		bb_main.setRotationPoint(-0.2F, 18.6F, 0.2F);
 		Body.addChild(bb_main);
 		bb_main.cubeList.add(new ModelBox(bb_main, 34, 49, -4.5F, -10.6F, -2.4F, 9, 7, 5, 0.0F));
@@ -53,7 +49,7 @@ public class ModelBujin extends ModelBase {
 		Body.addChild(RArm);
 		RArm.cubeList.add(new ModelBox(RArm, 0, 46, -4.0F, 2.0F, -2.0F, 4, 10, 4, 0.0F));
 
-		bone = new ModelRenderer(this);
+        ModelRenderer bone = new ModelRenderer(this);
 		bone.setRotationPoint(4.0F, 22.0F, 0.0F);
 		RArm.addChild(bone);
 		bone.cubeList.add(new ModelBox(bone, 0, 21, -9.0F, -21.0F, -3.0F, 5, 3, 6, 0.0F));
@@ -63,7 +59,7 @@ public class ModelBujin extends ModelBase {
 		Body.addChild(LArm);
 		LArm.cubeList.add(new ModelBox(LArm, 16, 46, 8.0F, 2.0F, -2.0F, 4, 10, 4, 0.0F));
 
-		bone2 = new ModelRenderer(this);
+        ModelRenderer bone2 = new ModelRenderer(this);
 		bone2.setRotationPoint(0.0F, 0.0F, 0.0F);
 		LArm.addChild(bone2);
 		bone2.cubeList.add(new ModelBox(bone2, 0, 21, 8.0F, 1.0F, -3.0F, 5, 3, 6, 0.0F));

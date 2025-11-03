@@ -9,16 +9,12 @@ import org.lwjgl.opengl.GL11;
 
 public class ModelCacao extends ModelBase {
 	private final ModelRenderer Head;
-	private final ModelRenderer bone;
-	private final ModelRenderer Body;
+    private final ModelRenderer Body;
 	private final ModelRenderer RArm;
-	private final ModelRenderer rightarmshoulder;
-	private final ModelRenderer LArm;
-	private final ModelRenderer leftarmshoulder;
-	private final ModelRenderer RLeg;
+    private final ModelRenderer LArm;
+    private final ModelRenderer RLeg;
 	private final ModelRenderer LLeg;
-	private final ModelRenderer Scooter;
-	private float scaleX = 1.0F;
+    private float scaleX = 1.0F;
 	private float scaleY = 1.0F;
 	private float scaleZ = 1.0F;
 
@@ -35,7 +31,7 @@ public class ModelCacao extends ModelBase {
 		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		bone = new ModelRenderer(this);
+        ModelRenderer bone = new ModelRenderer(this);
 		bone.setRotationPoint(0.0F, 24.0F, -0.75F);
 		Head.addChild(bone);
 		bone.cubeList.add(new ModelBox(bone, 1, 53, -4.0F, -32.0F, -3.0F, 8, 3, 7, 0.5F));
@@ -49,7 +45,7 @@ public class ModelCacao extends ModelBase {
 		Body.addChild(RArm);
 		RArm.cubeList.add(new ModelBox(RArm, 16, 34, -4.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		rightarmshoulder = new ModelRenderer(this);
+        ModelRenderer rightarmshoulder = new ModelRenderer(this);
 		rightarmshoulder.setRotationPoint(-1.0F, 0.0F, -0.6F);
 		setRotationAngle(rightarmshoulder, 0.0F, 0.0F, 0.1F);
 		RArm.addChild(rightarmshoulder);
@@ -60,7 +56,7 @@ public class ModelCacao extends ModelBase {
 		Body.addChild(LArm);
 		LArm.cubeList.add(new ModelBox(LArm, 44, 46, 8.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		leftarmshoulder = new ModelRenderer(this);
+        ModelRenderer leftarmshoulder = new ModelRenderer(this);
 		leftarmshoulder.setRotationPoint(9.0F, 0.0F, -0.5F);
 		setRotationAngle(leftarmshoulder, 0.0F, 0.0F, -0.1F);
 		LArm.addChild(leftarmshoulder);
@@ -76,9 +72,9 @@ public class ModelCacao extends ModelBase {
 		Body.addChild(LLeg);
 		LLeg.cubeList.add(new ModelBox(LLeg, 32, 34, 2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		Scooter = new ModelRenderer(this);
-		Scooter.setRotationPoint(4.5F, -4.5F, -0.5F);
-		Scooter.cubeList.add(new ModelBox(Scooter, 43, 5, -0.5F, -1.5F, -1.5F, 1, 4, 3, 0.0F));
+        ModelRenderer scooter = new ModelRenderer(this);
+		scooter.setRotationPoint(4.5F, -4.5F, -0.5F);
+		scooter.cubeList.add(new ModelBox(scooter, 43, 5, -0.5F, -1.5F, -1.5F, 1, 4, 3, 0.0F));
 	}
 
 	@Override

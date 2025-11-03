@@ -10,11 +10,7 @@ import org.lwjgl.opengl.GL11;
 public class ModelFreeza6Damaged extends ModelBase {
 	private final ModelRenderer Head;
 	private final ModelRenderer Body;
-	private final ModelRenderer Chest;
-	private final ModelRenderer Body2;
-	private final ModelRenderer Tail1;
-	private final ModelRenderer Tail2;
-	private final ModelRenderer RArm;
+    private final ModelRenderer RArm;
 	private final ModelRenderer LArm;
 	private final ModelRenderer RLeg;
 	private final ModelRenderer LLeg;
@@ -39,28 +35,28 @@ public class ModelFreeza6Damaged extends ModelBase {
 		Body.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Body.cubeList.add(new ModelBox(Body, 64, 0, -5.0F, 0.0F, -2.0F, 10, 5, 5, 0.0F));
 
-		Chest = new ModelRenderer(this);
-		Chest.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(Chest, -0.1745F, 0.0F, 0.0F);
-		Body.addChild(Chest);
-		Chest.cubeList.add(new ModelBox(Chest, 64, 12, -4.5F, 1.0F, -1.9333F, 9, 4, 1, 0.0F));
+        ModelRenderer chest = new ModelRenderer(this);
+		chest.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(chest, -0.1745F, 0.0F, 0.0F);
+		Body.addChild(chest);
+		chest.cubeList.add(new ModelBox(chest, 64, 12, -4.5F, 1.0F, -1.9333F, 9, 4, 1, 0.0F));
 
-		Body2 = new ModelRenderer(this);
-		Body2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		Body.addChild(Body2);
-		Body2.cubeList.add(new ModelBox(Body2, 16, 16, -3.5F, 5.0F, -2.0F, 7, 7, 4, 0.0F));
+        ModelRenderer body2 = new ModelRenderer(this);
+		body2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		Body.addChild(body2);
+		body2.cubeList.add(new ModelBox(body2, 16, 16, -3.5F, 5.0F, -2.0F, 7, 7, 4, 0.0F));
 
-		Tail1 = new ModelRenderer(this);
-		Tail1.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(Tail1, -0.3491F, 0.0F, 0.0F);
-		Body.addChild(Tail1);
-		Tail1.cubeList.add(new ModelBox(Tail1, 64, 48, -2.0F, 7.0F, 4.0F, 4, 4, 12, 0.0F));
+        ModelRenderer tail1 = new ModelRenderer(this);
+		tail1.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(tail1, -0.3491F, 0.0F, 0.0F);
+		Body.addChild(tail1);
+		tail1.cubeList.add(new ModelBox(tail1, 64, 48, -2.0F, 7.0F, 4.0F, 4, 4, 12, 0.0F));
 
-		Tail2 = new ModelRenderer(this);
-		Tail2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		setRotationAngle(Tail2, 0.5236F, 0.0F, 0.0F);
-		Body.addChild(Tail2);
-		Tail2.cubeList.add(new ModelBox(Tail2, 32, 48, -2.0F, 15.0F, 2.0F, 4, 4, 5, 0.0F));
+        ModelRenderer tail2 = new ModelRenderer(this);
+		tail2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		setRotationAngle(tail2, 0.5236F, 0.0F, 0.0F);
+		Body.addChild(tail2);
+		tail2.cubeList.add(new ModelBox(tail2, 32, 48, -2.0F, 15.0F, 2.0F, 4, 4, 5, 0.0F));
 
 		RArm = new ModelRenderer(this);
 		RArm.setRotationPoint(-5.0F, 2.0F, 0.0F);

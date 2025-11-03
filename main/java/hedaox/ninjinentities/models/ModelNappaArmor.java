@@ -11,17 +11,10 @@ public class ModelNappaArmor extends ModelBase {
 	private final ModelRenderer Head;
 	private final ModelRenderer Body;
 	private final ModelRenderer RArm;
-	private final ModelRenderer RShoulderArmor;
-	private final ModelRenderer LArm;
-	private final ModelRenderer LShoulderArmor;
-	private final ModelRenderer RLeg;
-	private final ModelRenderer Belt;
-	private final ModelRenderer Belt2;
-	private final ModelRenderer LLeg;
-	private final ModelRenderer FKusazuri;
-	private final ModelRenderer RKusazuri;
-	private final ModelRenderer LKusazuri;
-	private float scaleX = 1.0F;
+    private final ModelRenderer LArm;
+    private final ModelRenderer RLeg;
+    private final ModelRenderer LLeg;
+    private float scaleX = 1.0F;
 	private float scaleY = 1.0F;
 	private float scaleZ = 1.0F;
 
@@ -47,7 +40,7 @@ public class ModelNappaArmor extends ModelBase {
 		Body.addChild(RArm);
 		RArm.cubeList.add(new ModelBox(RArm, 40, 16, -4.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		RShoulderArmor = new ModelRenderer(this);
+        ModelRenderer RShoulderArmor = new ModelRenderer(this);
 		RShoulderArmor.setRotationPoint(-3.0F, -1.7F, 0.0F);
 		setRotationAngle(RShoulderArmor, -1.5708F, 0.0F, 0.1047F);
 		RArm.addChild(RShoulderArmor);
@@ -59,7 +52,7 @@ public class ModelNappaArmor extends ModelBase {
 		LArm.mirror = true;
 		LArm.cubeList.add(new ModelBox(LArm, 40, 16, 8.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		LShoulderArmor = new ModelRenderer(this);
+        ModelRenderer LShoulderArmor = new ModelRenderer(this);
 		LShoulderArmor.setRotationPoint(11.0F, -1.7F, 0.0F);
 		setRotationAngle(LShoulderArmor, -1.5708F, 0.0F, -0.1047F);
 		LArm.addChild(LShoulderArmor);
@@ -71,15 +64,15 @@ public class ModelNappaArmor extends ModelBase {
 		Body.addChild(RLeg);
 		RLeg.cubeList.add(new ModelBox(RLeg, 0, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		Belt = new ModelRenderer(this);
-		Belt.setRotationPoint(-0.8F, -1.6F, -2.2F);
-		setRotationAngle(Belt, -0.0698F, 0.0873F, 0.0F);
-		RLeg.addChild(Belt);
+        ModelRenderer belt = new ModelRenderer(this);
+		belt.setRotationPoint(-0.8F, -1.6F, -2.2F);
+		setRotationAngle(belt, -0.0698F, 0.0873F, 0.0F);
+		RLeg.addChild(belt);
 
-		Belt2 = new ModelRenderer(this);
-		Belt2.setRotationPoint(-0.8F, -1.6F, -2.2F);
-		setRotationAngle(Belt2, -0.0698F, 1.2217F, 0.0F);
-		RLeg.addChild(Belt2);
+        ModelRenderer belt2 = new ModelRenderer(this);
+		belt2.setRotationPoint(-0.8F, -1.6F, -2.2F);
+		setRotationAngle(belt2, -0.0698F, 1.2217F, 0.0F);
+		RLeg.addChild(belt2);
 
 		LLeg = new ModelRenderer(this);
 		LLeg.setRotationPoint(-2.2F, 6.6F, 0.2F);
@@ -87,19 +80,19 @@ public class ModelNappaArmor extends ModelBase {
 		LLeg.mirror = true;
 		LLeg.cubeList.add(new ModelBox(LLeg, 0, 16, 2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		FKusazuri = new ModelRenderer(this);
+        ModelRenderer FKusazuri = new ModelRenderer(this);
 		FKusazuri.setRotationPoint(-0.2F, 5.7F, -0.9F);
 		setRotationAngle(FKusazuri, -0.0873F, 0.0F, 0.0F);
 		Body.addChild(FKusazuri);
 		FKusazuri.cubeList.add(new ModelBox(FKusazuri, 52, 0, -3.0F, -1.0F, -1.0F, 6, 9, 0, 0.0F));
 
-		RKusazuri = new ModelRenderer(this);
+        ModelRenderer RKusazuri = new ModelRenderer(this);
 		RKusazuri.setRotationPoint(-4.4F, 4.9F, 0.1F);
 		setRotationAngle(RKusazuri, 0.0873F, -1.5708F, 0.0F);
 		Body.addChild(RKusazuri);
 		RKusazuri.cubeList.add(new ModelBox(RKusazuri, 52, 10, -2.0F, -0.3149F, -0.1781F, 4, 9, 0, 0.0F));
 
-		LKusazuri = new ModelRenderer(this);
+        ModelRenderer LKusazuri = new ModelRenderer(this);
 		LKusazuri.setRotationPoint(4.0F, 4.9F, 0.1F);
 		setRotationAngle(LKusazuri, 0.0873F, 1.5708F, 0.0F);
 		Body.addChild(LKusazuri);
