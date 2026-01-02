@@ -3,9 +3,9 @@ package hedaox.ninjinentities.event;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
+
 import java.util.List;
 import java.util.Random;
 
@@ -13,130 +13,160 @@ public class DodgeSystem {
     public static final Random RANDOM = new Random();
     private final EntityLivingBase entity;
 
-    // 公开的闪避和反击概率变量
-    public int dodge = 0;      // 闪避概率(0-100)
-    public int strikeBack = 0; // 反击概率(0-100)
+    public int dodge = 0;
+    public int strikeBack = 0;
+
+    private static final double[][] DODGE_DIRECTIONS = new double[25][3]; // [direction][x,y,z]
+
+    static {
+        int index = 0;
+        DODGE_DIRECTIONS[index] = new double[]{0.0, 0.0, 1.5};
+        //{cosθ, sinθ, distance}
+
+        DODGE_DIRECTIONS[++index] = new double[]{0.0, -1.0, 1.8};
+        DODGE_DIRECTIONS[++index] = new double[]{0.1, -0.95, 1.8};
+        DODGE_DIRECTIONS[++index] = new double[]{-0.1, -0.95, 1.8};
+
+        DODGE_DIRECTIONS[++index] = new double[]{0.0, 1.0, 1.8};
+        DODGE_DIRECTIONS[++index] = new double[]{0.1, 0.95, 1.8};
+        DODGE_DIRECTIONS[++index] = new double[]{-0.1, 0.95, 1.8};
+
+        DODGE_DIRECTIONS[++index] = new double[]{-1.0, 0.0, 1.5};
+        DODGE_DIRECTIONS[++index] = new double[]{1.0, 0.0, 1.2};
+
+        for (int i = index + 1; i < 25; i++) {
+            double angle = RANDOM.nextDouble() * Math.PI * 2;
+            DODGE_DIRECTIONS[i] = new double[]{
+                    Math.cos(angle),
+                    Math.sin(angle),
+                    1.3 + RANDOM.nextDouble() * 0.7
+            };
+        }
+    }
 
     public DodgeSystem(EntityLivingBase entity) {
         this.entity = entity;
     }
 
-    // 尝试闪避
     public boolean tryDodge(Entity attacker) {
         if (attacker == null || dodge <= 0) {
             return false;
         }
 
-        if (RANDOM.nextInt(100) < dodge) {
-            for (int i = 0; i < 30; i++) {
-                if (tryDodgePattern(attacker, i % 19 + 1)) {
-                    playDodgeSound();
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    // 尝试特定闪避模式
-    private boolean tryDodgePattern(Entity attacker, int pattern) {
-        // 获取角度和距离参数
-        double[] angles = {10,20,30,60,90,-10,-20,-30,-30,-40,-40,-80,-60,80,-180,140,-140,120,-120};
-        double[] distances = {1.0,1.15,1.0,1.15,1.35,1.0,1.15,1.0,1.25,1.15,1.65,1.75,1.25,1.75,1.75,1.25,1.25,1.75,1.75};
-
-        double baseX = entity.posX - attacker.posX;
-        double baseZ = entity.posZ - attacker.posZ;
-
-        // 单位化
-        double baseLength = Math.sqrt(baseX * baseX + baseZ * baseZ);
-        if (baseLength == 0) return false;
-
-        baseX /= baseLength;
-        baseZ /= baseLength;
-
-        // 获取偏移角度（单位：度 → 弧度）
-        double offsetAngle = Math.toRadians(angles[pattern - 1]);
-
-        // 旋转向量：绕 Y 轴旋转偏移角度
-        double cos = Math.cos(offsetAngle);
-        double sin = Math.sin(offsetAngle);
-
-        double dodgeX = baseX * cos - baseZ * sin;
-        double dodgeZ = baseX * sin + baseZ * cos;
-
-        double distance = distances[pattern - 1];
-
-        double x = entity.posX + dodgeX * distance;
-        double z = entity.posZ + dodgeZ * distance;
-
-        if (isPositionSafe(x, entity.posY, z)) {
-            entity.setPosition(x, entity.posY, z);
-            return true;
-        }
-
-        return false;
-    }
-
-    // 尝试反击
-    public boolean tryStrikeBack(Entity attacker, double damage) {
-        if (attacker == null || strikeBack <= 0) {
+        if (RANDOM.nextInt(100) >= dodge) {
             return false;
         }
 
-        if (RANDOM.nextInt(100) < strikeBack) {
-            performCounterAttack(attacker, damage);
-            return true;
+        List<DodgePosition> possiblePositions = calculateAllDodgePositions(attacker);
+
+        if (possiblePositions.isEmpty()) {
+            return false;
         }
-        return false;
+
+        DodgePosition chosenPosition = possiblePositions.get(RANDOM.nextInt(possiblePositions.size()));
+
+        entity.setPosition(chosenPosition.x, chosenPosition.y, chosenPosition.z);
+
+        playDodgeSound();
+        if (RANDOM.nextInt(100) < strikeBack && attacker != null) {
+            performCounterAttack(attacker, entity.getMaxHealth() * 0.1);
+        }
+
+        return true;
     }
 
-    // 执行反击攻击
-    public void performCounterAttack(Entity target, double damage) {
-        float radius = entity.width / 2.0F + 3.5F;
-        AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(
-            entity.posX - radius, entity.posY - radius, entity.posZ - radius,
-            entity.posX + radius, entity.posY + radius, entity.posZ + radius
-        );
+    private List<DodgePosition> calculateAllDodgePositions(Entity attacker) {
+        java.util.ArrayList<DodgePosition> positions = new java.util.ArrayList<>();
 
-        List<EntityPlayer> players = entity.worldObj.getEntitiesWithinAABB(EntityPlayer.class, aabb);
-        for (EntityPlayer player : players) {
-            player.attackEntityFrom(DamageSource.causeMobDamage(entity), (float)damage);
-            applyKnockback(player, 2.0f);
+        calculateBehindPosition(attacker, positions);
+
+        for (int i = 1; i < 25; i++) {
+            calculateDirectionPosition(i, positions);
+        }
+
+        return positions;
+    }
+
+    private void calculateBehindPosition(Entity attacker, List<DodgePosition> positions) {
+        if (!(attacker instanceof EntityLivingBase)) {
+            return;
+        }
+
+        EntityLivingBase livingAttacker = (EntityLivingBase) attacker;
+        float attackerYaw = livingAttacker.rotationYaw;
+        float attackerYawRad = attackerYaw * (float) Math.PI / 180.0F;
+
+        double behindDirX = -MathHelper.cos(attackerYawRad);
+        double behindDirZ = -MathHelper.sin(attackerYawRad);
+
+        for (double distance : new double[]{1.5, 1.8, 2.0}) {
+            double targetX = attacker.posX + behindDirX * distance;
+            double targetZ = attacker.posZ + behindDirZ * distance;
+            double targetY = entity.posY; // 保持当前高度
+
+            positions.add(new DodgePosition(targetX, targetY, targetZ));
+        }
+    }
+
+    private void calculateDirectionPosition(int directionIndex, List<DodgePosition> positions) {
+        if (directionIndex < 0 || directionIndex >= DODGE_DIRECTIONS.length) {
+            return;
+        }
+
+        double[] direction = DODGE_DIRECTIONS[directionIndex];
+        double localDirX = direction[0];
+        double localDirZ = direction[1];
+        double distance = direction[2];
+
+        float yawRad = entity.rotationYaw * (float) Math.PI / 180.0F;
+        float cosYaw = MathHelper.cos(yawRad);
+        float sinYaw = MathHelper.sin(yawRad);
+
+        double worldDirX = localDirX * cosYaw - localDirZ * sinYaw;
+        double worldDirZ = localDirX * sinYaw + localDirZ * cosYaw;
+
+        double targetX = entity.posX + worldDirX * distance;
+        double targetZ = entity.posZ + worldDirZ * distance;
+        double targetY = entity.posY;
+
+        positions.add(new DodgePosition(targetX, targetY, targetZ));
+    }
+
+    private static class DodgePosition {
+        public final double x, y, z;
+
+        public DodgePosition(double x, double y, double z) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+    }
+
+    public void performCounterAttack(Entity target, double damage) {
+        if (target == null || target.isDead) {
+            return;
+        }
+
+        if (target instanceof EntityPlayer) {
+            target.attackEntityFrom(DamageSource.causeMobDamage(entity), (float)damage);
+        } else if (target instanceof EntityLivingBase) {
+            target.attackEntityFrom(DamageSource.causeMobDamage(entity), (float)damage);
         }
 
         playCounterSound();
     }
 
-    // 检查位置是否安全
-    private boolean isPositionSafe(double x, double y, double z) {
-        int blockX = MathHelper.floor_double(x);
-        int blockY = MathHelper.floor_double(y);
-        int blockZ = MathHelper.floor_double(z);
-
-        return entity.worldObj.isAirBlock(blockX, blockY, blockZ) &&
-            entity.worldObj.isAirBlock(blockX, blockY + 1, blockZ);
-    }
-
-    // 播放闪避音效
     private void playDodgeSound() {
+        int soundNum = RANDOM.nextInt(3) + 1;
         entity.worldObj.playSoundAtEntity(entity,
-            "jinryuudragonbc:DBC4.dodge" + (RANDOM.nextInt(3) + 1),
-            1.0F, 1.0F);
+                "jinryuudragonbc:DBC4.dodge" + soundNum,
+                1.0F, 1.0F);
     }
 
-    // 播放反击音效
     private void playCounterSound() {
+        float pitch = entity.worldObj.rand.nextFloat() * 0.1F + 0.9F;
         entity.worldObj.playSoundAtEntity(entity,
-            "jinryuudragonbc:DBC3.force",
-            0.5F, entity.worldObj.rand.nextFloat() * 0.1F + 0.9F);
-    }
-
-    // 击退效果
-    private void applyKnockback(Entity target, float strength) {
-        target.addVelocity(
-            -MathHelper.sin(entity.rotationYaw * (float) Math.PI / 180.0F) * strength,
-            0.1,
-            MathHelper.cos(entity.rotationYaw * (float) Math.PI / 180.0F) * strength
-        );
+                "jinryuudragonbc:DBC3.force",
+                0.5F, pitch);
     }
 }

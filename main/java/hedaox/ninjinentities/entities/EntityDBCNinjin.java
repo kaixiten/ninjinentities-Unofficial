@@ -15,6 +15,8 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -28,41 +30,41 @@ import java.util.Map;
 
 public class EntityDBCNinjin extends EntityDBCNeut {
 
-	private EntityPlayer spwner = null;
-	private int noSpwnr = DBCConfig.mdat;
-	public int angerLevel = 0;
-	protected int aggroCooldown = 0;
-	public int prevAttackCounter = 0;
-	public int attackCounter = 0;
-	protected Entity targetedEntity = null;
+    private EntityPlayer spwner = null;
+    private int noSpwnr = DBCConfig.mdat;
+    public int angerLevel = 0;
+    protected int aggroCooldown = 0;
+    public int prevAttackCounter = 0;
+    public int attackCounter = 0;
+    protected Entity targetedEntity = null;
     private byte data1 = 1;
     private byte data2 = 0;
     private byte data3 = 0;
     private byte data4 = 0;
     // Attack Type : 1/KiAttack 2/disk 3/wave 4/whirled wave 5/Big Ki Attack 6/SmallKiAttack
-	private byte[] attacksType = {1};
-	// Attack Color : 1/white 2/blue 3/purple 4/red 5/black 6/green 7/yellow 8/orange
-	private byte[] attacksColor = {0};
-	private boolean blst = false;
-	public int alignment = 83;
-	public boolean isTrainer = false;
-	public boolean hasAnAura = false;
-	public float auraRed = 100.0F;
-	public float auraGreen = 125.0F;
-	public float auraBlue = 255.0F;
-	public float auraRed2 = 100.0F;
-	public float auraGreen2 = 125.0F;
-	public float auraBlue2 = 255.0F;
-	public MindState mindState = MindState.NEUTRAL;
-	public boolean canTeleport = false;
-	private int wait = 0;
-	private int m = 1;
-	private int rang = 0;
-	public boolean auraLightning = false;
-	private int lightningCount = 0;
-	private static double random = Math.random();
-	public boolean hasAGodAura = false;
-	private boolean updtd = false;
+    private byte[] attacksType = {1};
+    // Attack Color : 1/white 2/blue 3/purple 4/red 5/black 6/green 7/yellow 8/orange
+    private byte[] attacksColor = {0};
+    private boolean blst = false;
+    public int alignment = 83;
+    public boolean isTrainer = false;
+    public boolean hasAnAura = false;
+    public float auraRed = 100.0F;
+    public float auraGreen = 125.0F;
+    public float auraBlue = 255.0F;
+    public float auraRed2 = 100.0F;
+    public float auraGreen2 = 125.0F;
+    public float auraBlue2 = 255.0F;
+    public MindState mindState = MindState.NEUTRAL;
+    public boolean canTeleport = false;
+    private int wait = 0;
+    private int m = 1;
+    private int rang = 0;
+    public boolean auraLightning = false;
+    private int lightningCount = 0;
+    private static double random = Math.random();
+    public boolean hasAGodAura = false;
+    private boolean updtd = false;
     private final double moveSpeed = DBCConfig.EnemyDefaultMoveSpeed;
     private int outOfRangeHits = 0; // 记录近战范围外被攻击次数
     private static final double MELEE_RANGE = 3.5; // 近战范围
@@ -71,18 +73,35 @@ public class EntityDBCNinjin extends EntityDBCNeut {
     private int teleportCooldown = 160;
     private Map<EntityLivingBase, Integer> hateMap = new HashMap<>();
 
+    // 地面行走追踪相关变量
+    private boolean isFlying = false;
+    private EntityAIAttackOnCollide groundAttackAI;
+    private EntityAINearestAttackableTarget playerTargetAI;
+
+    // 肢体动画相关
+    public float limbSwingAmount;
+    public float prevLimbSwingAmount;
+    public float limbSwing;
+    private float moveStrafing;
+    private float moveVertical;
+    private float moveForward;
+
+    // 数据观察器同步ID
+    private static final int DATAWATCHER_LIMB_SWING_AMOUNT = 20;
+    private static final int DATAWATCHER_LIMB_SWING = 21;
 
     public boolean isBlst() {
         return blst;
     }
 
-	public enum MindState {
-		NEUTRAL, AGGRESSIVE, PACIFIC
-	}
+    public enum MindState {
+        NEUTRAL, AGGRESSIVE, PACIFIC
+    }
 
-	public EntityDBCNinjin(World par1World) {
-		super(par1World);
-	}
+    public EntityDBCNinjin(World par1World) {
+        super(par1World);
+        initializeAI();
+    }
 
     public EntityDBCNinjin(World par1World, int _alignment, MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors) {
         super(par1World);
@@ -95,6 +114,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         attacksColor = _attacksColors;
         if (mindState == MindState.AGGRESSIVE)
             angerLevel = 400;
+        initializeAI();
     }
 
     public EntityDBCNinjin(World par1World, int _alignment, MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, boolean _hasAnAura) {
@@ -109,6 +129,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         if (mindState == MindState.AGGRESSIVE)
             angerLevel = 400;
         hasAnAura = _hasAnAura;
+        initializeAI();
     }
 
     public EntityDBCNinjin(World par1World, int _alignment, MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue) {
@@ -126,6 +147,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         auraGreen = _auraGreen;
         auraBlue = _auraBlue;
         hasAnAura = true;
+        initializeAI();
     }
 
     public EntityDBCNinjin(World par1World, int _alignment, MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue, boolean _auraLightning) {
@@ -144,6 +166,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         auraBlue = _auraBlue;
         hasAnAura = true;
         auraLightning = _auraLightning;
+        initializeAI();
     }
 
     public EntityDBCNinjin(World par1World, int _alignment, MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue, boolean _auraLightning, boolean _auraGod) {
@@ -163,6 +186,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         hasAnAura = false;
         auraLightning = _auraLightning;
         hasAGodAura = _auraGod;
+        initializeAI();
     }
 
     public EntityDBCNinjin(World par1World, int _alignment, MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue, boolean _auraLightning, boolean _auraGod, float _auraRed2, float _auraGreen2, float _auraBlue2) {
@@ -185,6 +209,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         hasAnAura = false;
         auraLightning = _auraLightning;
         hasAGodAura = _auraGod;
+        initializeAI();
     }
 
     public EntityDBCNinjin(World par1World, int _alignment, MindState _mindState, boolean _isTrainer, boolean _canTeleport, byte[] _attacksType, byte[] _attacksColors, float _auraRed, float _auraGreen, float _auraBlue, boolean _auraLightning, boolean _auraGod, float _auraRed2, float _auraGreen2, float _auraBlue2, boolean _hasAnAura) {
@@ -207,6 +232,23 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         hasAnAura = _hasAnAura;
         auraLightning = _auraLightning;
         hasAGodAura = _auraGod;
+        initializeAI();
+    }
+
+    // 初始化AI
+    private void initializeAI() {
+        // 地面追踪AI
+        this.groundAttackAI = new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, true);
+        // 目标选择AI
+        this.playerTargetAI = new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true);
+    }
+
+    @Override
+    protected void entityInit() {
+        super.entityInit();
+        // 注册数据观察器对象，用于同步动画数据到客户端
+        this.dataWatcher.addObject(DATAWATCHER_LIMB_SWING_AMOUNT, Float.valueOf(0.0F));
+        this.dataWatcher.addObject(DATAWATCHER_LIMB_SWING, Float.valueOf(0.0F));
     }
 
     @Override
@@ -233,7 +275,6 @@ public class EntityDBCNinjin extends EntityDBCNeut {
                     this.aggroCooldown = 20;
                 }
             }
-            boolean isInMeleeRange = false;
             if (this.targetedEntity != null) {
                 float r = this.width / 2.0F + 3.5F;
                 if ((this.entityToAttack != null) && (this.entityToAttack.isEntityAlive()) && (this.entityToAttack.getDistanceToEntity(this) < r)) {
@@ -250,7 +291,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
                     }
                 }
                 if (this.targetedEntity != null && this.targetedEntity.isEntityAlive()
-                    && this.targetedEntity.getDistanceSqToEntity(this) < 4096.0D) {
+                        && this.targetedEntity.getDistanceSqToEntity(this) < 4096.0D) {
                     double distanceMulti = this.targetedEntity.getDistanceSqToEntity(this) / 50.0D * 0.1D + 1.0D;
                     double ogTimer = ((this.kiAttackTimer >= 10) ? this.kiAttackTimer : 80);
                     int fireAttackRate = (int)(ogTimer / distanceMulti);
@@ -274,7 +315,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
                                 EntityEnergyAtt kiAttack;
                                 this.worldObj.playSoundAtEntity(this, "jinryuudragonbc:DBC2.basicbeam_fire", 0.5F, 1.0F);
                                 byte type = this.data1;
-                                byte speed = 1;
+                                byte speed = 2;
                                 byte effect = 1;
                                 byte color = this.data2;
                                 byte density = 1;
@@ -297,12 +338,12 @@ public class EntityDBCNinjin extends EntityDBCNeut {
                                 kiAttack.posY = this.posY + (this.height / 2.0F) + 0.5D;
                                 kiAttack.posZ = this.posZ + vec3.zCoord * d8;
                                 this.worldObj.spawnEntityInWorld(kiAttack);
-                                if (this.data1 != 6 || (int)(Math.random() * 8.0D) == 0) {
-                                    this.attackCounter = -40;
-                                    this.blst = true;
-                                } else {
+                                if (this.data1 == 6 && (int)(Math.random() * 8.0D) != 0) {
                                     this.attackCounter = this.kiBarrageType0 ? (fireAttackRate - 10) : fireAttackRate;
                                     this.blst = false;
+                                } else {
+                                    this.attackCounter = -40;
+                                    this.blst = true;
                                 }
                             }
                         }
@@ -319,125 +360,125 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         }
     }
 
-	protected NBTTagCompound nbt(EntityPlayer p, String s) {
-		NBTTagCompound nbt;
-		if (s.contains("pres")) {
-			if (!p.getEntityData().hasKey("PlayerPersisted")) {
-				nbt = new NBTTagCompound();
-				p.getEntityData().setTag("PlayerPersisted", nbt);
-			} else {
-				nbt = p.getEntityData().getCompoundTag("PlayerPersisted");
-			}
-		} else {
-			nbt = p.getEntityData();
-		}
-		return nbt;
-	}
+    protected NBTTagCompound nbt(EntityPlayer p, String s) {
+        NBTTagCompound nbt;
+        if (s.contains("pres")) {
+            if (!p.getEntityData().hasKey("PlayerPersisted")) {
+                nbt = new NBTTagCompound();
+                p.getEntityData().setTag("PlayerPersisted", nbt);
+            } else {
+                nbt = p.getEntityData().getCompoundTag("PlayerPersisted");
+            }
+        } else {
+            nbt = p.getEntityData();
+        }
+        return nbt;
+    }
 
-	protected void applyEntityAttributes() {
-		super.applyEntityAttributes();
+    protected void applyEntityAttributes() {
+        super.applyEntityAttributes();
 
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(
-				0.7D);
-	}
+        getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(
+                0.7D);
+    }
 
-	public void onDeath(DamageSource par1DamageSource) {
-		Entity entitySource = par1DamageSource.getEntity();
-		if ((entitySource instanceof EntityPlayer)) {
-			List<?> listCloseEntities = this.worldObj
-					.getEntitiesWithinAABBExcludingEntity(this,
-							this.boundingBox.expand(32.0D, 32.0D, 32.0D));
-			for (int i = 0; i < listCloseEntities.size(); i++) {
-				Entity entity = (Entity) listCloseEntities.get(i);
-				if ((entity instanceof EntityDBCNinjin)) {
-					EntityDBCNinjin entityTrain = (EntityDBCNinjin) entity;
-					entityTrain.becomeAngryAt(entitySource);
-				}
-			}
-			becomeAngryAt(entitySource);
-		}
+    public void onDeath(DamageSource par1DamageSource) {
+        Entity entitySource = par1DamageSource.getEntity();
+        if ((entitySource instanceof EntityPlayer)) {
+            List<?> listCloseEntities = this.worldObj
+                    .getEntitiesWithinAABBExcludingEntity(this,
+                            this.boundingBox.expand(32.0D, 32.0D, 32.0D));
+            for (int i = 0; i < listCloseEntities.size(); i++) {
+                Entity entity = (Entity) listCloseEntities.get(i);
+                if ((entity instanceof EntityDBCNinjin)) {
+                    EntityDBCNinjin entityTrain = (EntityDBCNinjin) entity;
+                    entityTrain.becomeAngryAt(entitySource);
+                }
+            }
+            becomeAngryAt(entitySource);
+        }
 
-		if (entitySource instanceof EntityPlayer) {
-			int e = 1;
-			if (entitySource instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer)entitySource;
-				JRMCoreH.expPls(player, e);
-			}
-		}
+        if (entitySource instanceof EntityPlayer) {
+            int e = 1;
+            if (entitySource instanceof EntityPlayer) {
+                EntityPlayer player = (EntityPlayer)entitySource;
+                JRMCoreH.expPls(player, e);
+            }
+        }
 
-		if (ForgeHooks.onLivingDeath(this, par1DamageSource)) return;
-		Entity entity = par1DamageSource.getEntity();
-		EntityLivingBase entitylivingbase = this.func_94060_bK();
+        if (ForgeHooks.onLivingDeath(this, par1DamageSource)) return;
+        Entity entity = par1DamageSource.getEntity();
+        EntityLivingBase entitylivingbase = this.func_94060_bK();
 
-		if (this.scoreValue >= 0 && entitylivingbase != null)
-		{
-			entitylivingbase.addToPlayerScore(this, this.scoreValue);
-		}
+        if (this.scoreValue >= 0 && entitylivingbase != null)
+        {
+            entitylivingbase.addToPlayerScore(this, this.scoreValue);
+        }
 
-		if (entity != null)
-		{
-			entity.onKillEntity(this);
-		}
+        if (entity != null)
+        {
+            entity.onKillEntity(this);
+        }
 
-		this.dead = true;
-		this.func_110142_aN().func_94549_h();
+        this.dead = true;
+        this.func_110142_aN().func_94549_h();
 
-		if (!this.worldObj.isRemote)
-		{
-			int i = 0;
+        if (!this.worldObj.isRemote)
+        {
+            int i = 0;
 
-			if (entity instanceof EntityPlayer)
-			{
-				i = EnchantmentHelper.getLootingModifier((EntityLivingBase)entity);
-			}
+            if (entity instanceof EntityPlayer)
+            {
+                i = EnchantmentHelper.getLootingModifier((EntityLivingBase)entity);
+            }
 
-			captureDrops = true;
-			capturedDrops.clear();
-			int j = 0;
+            captureDrops = true;
+            capturedDrops.clear();
+            int j = 0;
 
-			if (this.func_146066_aG() && this.worldObj.getGameRules().getGameRuleBooleanValue("doMobLoot"))
-			{
-				this.dropFewItems(this.recentlyHit > 0, i);
-				this.dropEquipment(this.recentlyHit > 0, i);
+            if (this.func_146066_aG() && this.worldObj.getGameRules().getGameRuleBooleanValue("doMobLoot"))
+            {
+                this.dropFewItems(this.recentlyHit > 0, i);
+                this.dropEquipment(this.recentlyHit > 0, i);
 
-				if (this.recentlyHit > 0)
-				{
-					j = this.rand.nextInt(200) - i;
+                if (this.recentlyHit > 0)
+                {
+                    j = this.rand.nextInt(200) - i;
 
-					if (j < 5)
-					{
-						this.dropRareDrop(j <= 0 ? 1 : 0);
-					}
-				}
-			}
+                    if (j < 5)
+                    {
+                        this.dropRareDrop(j <= 0 ? 1 : 0);
+                    }
+                }
+            }
 
-			captureDrops = false;
+            captureDrops = false;
 
-			if (!ForgeHooks.onLivingDrops(this, par1DamageSource, capturedDrops, i, recentlyHit > 0, j))
-			{
-				for (EntityItem item : capturedDrops)
-				{
-					worldObj.spawnEntityInWorld(item);
-				}
-			}
-		}
+            if (!ForgeHooks.onLivingDrops(this, par1DamageSource, capturedDrops, i, recentlyHit > 0, j))
+            {
+                for (EntityItem item : capturedDrops)
+                {
+                    worldObj.spawnEntityInWorld(item);
+                }
+            }
+        }
 
-		this.worldObj.setEntityState(this, (byte)3);
-	}
+        this.worldObj.setEntityState(this, (byte)3);
+    }
 
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
-		super.writeEntityToNBT(par1NBTTagCompound);
-		par1NBTTagCompound.setShort("Anger", (short) this.angerLevel);
-	}
+    public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
+        super.writeEntityToNBT(par1NBTTagCompound);
+        par1NBTTagCompound.setShort("Anger", (short) this.angerLevel);
+    }
 
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
-		super.readEntityFromNBT(par1NBTTagCompound);
-		this.angerLevel = par1NBTTagCompound.getShort("Anger");
-	}
+    public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
+        super.readEntityFromNBT(par1NBTTagCompound);
+        this.angerLevel = par1NBTTagCompound.getShort("Anger");
+    }
 
-	protected Entity findPlayerToAttack() {
-		return this.angerLevel == 0 ? null : super.findPlayerToAttack();
-	}
+    protected Entity findPlayerToAttack() {
+        return this.angerLevel == 0 ? null : super.findPlayerToAttack();
+    }
 
 
     @Override
@@ -447,18 +488,11 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         if (source.getEntity() instanceof EntityPlayer) {
             EntityPlayer attacker = (EntityPlayer) source.getEntity();
 
-            // 计算距离
             double distance = getDistanceToEntity(attacker);
 
-            // 如果在近战范围外被攻击
             if (distance > MELEE_RANGE) {
                 outOfRangeHits++;
-
-                // 快触发瞬移时给出警告音效
-                if (outOfRangeHits >= TELEPORT_TRIGGER_HITS - 1) {
-                }
             } else {
-                // 在近战范围内被攻击则重置计数器
                 outOfRangeHits = 0;
             }
         }
@@ -473,11 +507,49 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 
 
     @SuppressWarnings("rawtypes")
-	@Override
-	public void onLivingUpdate() {
+    @Override
+    public void onLivingUpdate() {
+
+        // 更新肢体动画 - 这是关键修复
+        this.prevLimbSwingAmount = this.limbSwingAmount;
+        double dx = this.posX - this.prevPosX;
+        double dz = this.posZ - this.prevPosZ;
+        float moveDistance = (float) Math.sqrt(dx * dx + dz * dz) * 4.0F;
+
+        if (moveDistance > 1.0F) {
+            moveDistance = 1.0F;
+        }
+
+        this.limbSwingAmount += (moveDistance - this.limbSwingAmount) * 0.4F;
+        this.limbSwing += this.limbSwingAmount;
+
+        // ======= 关键修复：同步动画数据到客户端 =======
+        if (!this.worldObj.isRemote) {
+            // 服务端：更新数据观察器，同步到所有客户端
+            this.dataWatcher.updateObject(DATAWATCHER_LIMB_SWING_AMOUNT, Float.valueOf(this.limbSwingAmount));
+            this.dataWatcher.updateObject(DATAWATCHER_LIMB_SWING, Float.valueOf(this.limbSwing));
+        } else {
+            // 客户端：从数据观察器读取服务端同步的值
+            Float syncedAmount = this.dataWatcher.getWatchableObjectFloat(DATAWATCHER_LIMB_SWING_AMOUNT);
+            Float syncedSwing = this.dataWatcher.getWatchableObjectFloat(DATAWATCHER_LIMB_SWING);
+
+            if (syncedAmount != null) {
+                this.limbSwingAmount = syncedAmount;
+            }
+            if (syncedSwing != null) {
+                this.limbSwing = syncedSwing;
+            }
+        }
 
         if ((this.worldObj.isRemote) && (JGConfigClientSettings.CLIENT_DA8) && (angerLevel >= 400) && (hasAnAura || auraLightning || hasAGodAura)) {
             for (int k = 0; k < JGConfigClientSettings.get_da1(); k++) {
+                double y20 = 0.30000001192092896D;
+                double x21 = 0.019999999552965164D;
+                double x22 = 0.009999999776482582D;
+                double y21 = 0.8999999761581421D;
+                double random0 =0.800000011920929D;
+                double random01 =0.029999999329447746D;
+                double random02 =0.05000000074505806D;
                 EntityDBCNinjin EntityDBCNinjin = this;
                 Entity pl = this;
                 float red = auraRed;float green = auraGreen;float blue = auraBlue;
@@ -485,22 +557,32 @@ public class EntityDBCNinjin extends EntityDBCNeut {
                 float life = 0.8F * pl.height;
                 float extra_scale = 1.0F + (pl.height > 2.1F ? pl.height / 2.0F : 0.0F) / 5.0F;
                 double x = (Math.random() - 0.5D) * (width * 1.2F);
-                double y = Math.random() * (this.height * 1.4F) - this.height / 2.0F - 0.30000001192092896D;
+                double y = Math.random() * (this.height * 1.4F) - this.height / 2.0F - y20;
                 double z = (Math.random() - 0.5D) * (width * 1.2F);
-                double motx = Math.random() * 0.019999999552965164D - 0.009999999776482582D;
-                double moty = (Math.random() * 0.8999999761581421D + 0.8999999761581421D) * (life * extra_scale * 0.07D);
-                double motz = Math.random() * 0.019999999552965164D - 0.009999999776482582D;
+                double motx = Math.random() * x21 - x22;
+                double moty = (Math.random() * y21 + y21) * (life * extra_scale * 0.07D);
+                double motz = Math.random() * x21 - x22;
                 for (int i = 0; i < 5; i++) {
                     x = (Math.random() - 0.5D) * (width * 1.2F);
-                    y = Math.random() * (this.height * 1.4F) - this.height / 2.0F - 0.30000001192092896D;
+                    y = Math.random() * (this.height * 1.4F) - this.height / 2.0F - y20;
                     z = (Math.random() - 0.5D) * (width * 1.2F);
-                    motx = Math.random() * 0.019999999552965164D - 0.009999999776482582D;
-                    moty = (Math.random() * 0.8999999761581421D + 0.8999999761581421D) * (life * extra_scale * 0.07D);
-                    motz = Math.random() * 0.019999999552965164D - 0.009999999776482582D;
+                    motx = Math.random() * x21 - x22;
+                    moty = (Math.random() * y21 + y21) * (life * extra_scale * 0.07D);
+                    motz = Math.random() * x21 - x22;
                     if (hasAnAura) {
-                        Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", pl.worldObj, 0.2F, 0.2F, pl.posX, pl.posY + ((pl instanceof EntityPlayerSP) ? -1.6F : 0.0F), pl.posZ, x, y, z, motx, moty, motz, 0.0F, (int) (Math.random() * 3.0D) + 32, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", (int) (30.0F * life * 0.5F), 2, ((float) (Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float) (Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.2F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
+                        Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", pl.worldObj, 0.2F, 0.2F, pl.posX, pl.posY
+                                + ((pl instanceof EntityPlayerSP) ? -1.6F : 0.0F), pl.posZ, x, y, z, motx, moty, motz, 0.0F, (int) (Math.random() * 3.0D) + 32, 8, 3,
+                                32, false, 0.0F, false, 0.0F, 1, "", (int) (30.0F * life * 0.5F), 2,
+                                ((float) (Math.random() * random01) + 0.03F) * life * extra_scale, ((float) (Math.random() * x22) + 0.02F) * life * extra_scale,
+                                0.2F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F,
+                                0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
                         pl.worldObj.spawnEntityInWorld(entity);
-                        Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", pl.worldObj, 0.2F, 0.2F, pl.posX, pl.posY + ((pl instanceof EntityPlayerSP) ? -1.6F : 0.0F), pl.posZ, x, y, z, motx, moty, motz, 0.0F, (int) (Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", (int) (30.0F * life * 0.5F), 2, ((float) (Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float) (Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.1F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
+                        Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", pl.worldObj, 0.2F, 0.2F, pl.posX, pl.posY
+                                + ((pl instanceof EntityPlayerSP) ? -1.6F : 0.0F), pl.posZ, x, y, z, motx, moty, motz, 0.0F, (int) (Math.random() * 8.0D) + 32, 32, 8,
+                                32, false, 0.0F, false, 0.0F, 1, "", (int) (30.0F * life * 0.5F), 2,
+                                ((float) (Math.random() * random01) + 0.03F) * life * extra_scale, ((float) (Math.random() * x22) + 0.02F) * life * extra_scale,
+                                0.1F * life * extra_scale, 0, red, green, blue, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F,
+                                2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
                         pl.worldObj.spawnEntityInWorld(entity2);
                     }
                 }
@@ -513,14 +595,24 @@ public class EntityDBCNinjin extends EntityDBCNeut {
                         y = Math.random() * this.height - 0.5D;
                         z = Math.random() * out - out / 2.0F;
 
-                        Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
+                        Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ,
+                                x, y, z, 0.0D, Math.random() * random02, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32,
+                                false, 0.0F, false, 0.0F, 1, "", 50, 2,
+                                ((float)(Math.random() * random01) + 0.03F) * life * 0.5F, ((float)(Math.random() * x22) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,
+                                red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F,
+                                0.015F, false, -1, false, pl);
 
                         x = Math.random() * out - out / 2.0F;
                         y = Math.random() * this.height - 0.5D;
                         z = Math.random() * out - out / 2.0F;
                         entity.worldObj.spawnEntityInWorld(entity);
 
-                        Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
+                        Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ,
+                                x, y, z, 0.0D, Math.random() * random02, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32,
+                                false, 0.0F, false, 0.0F, 1, "", 50, 2,
+                                ((float)(Math.random() * random01) + 0.03F) * life * 0.5F, ((float)(Math.random() * x22) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,
+                                red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F,
+                                0.015F, false, -1, false, pl);
 
                         entity.worldObj.spawnEntityInWorld(entity2);
                     }
@@ -529,51 +621,33 @@ public class EntityDBCNinjin extends EntityDBCNeut {
                     y = Math.random() * this.height - 0.5D;
                     z = Math.random() * out - out / 2.0F;
 
-                    Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
+                    Entity entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ,
+                            x, y, z, 0.0D, Math.random() * random02, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32,
+                            false, 0.0F, false, 0.0F, 1, "", 50, 2,
+                            ((float)(Math.random() * random01) + 0.03F) * life * 0.5F, ((float)(Math.random() * x22) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,
+                            red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F,
+                            0.015F, false, -1, false, pl);
 
                     x = Math.random() * out - out / 2.0F;
                     y = Math.random() * this.height - 0.5D;
                     z = Math.random() * out - out / 2.0F;
                     entity.worldObj.spawnEntityInWorld(entity);
 
-                    Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
-
-                    entity.worldObj.spawnEntityInWorld(entity2);
-
-                    x = Math.random() * in - in / 2.0F;
-                    y = (Math.random() * this.height - 0.5D) * 0.800000011920929D;
-                    z = Math.random() * in - in / 2.0F;
-
-                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 180.0F, 180F, 180.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
-
-                    x = Math.random() * in - in / 2.0F;
-                    y = (Math.random() * this.height - 0.5D) * 0.800000011920929D;
-                    z = Math.random() * in - in / 2.0F;
-                    entity.worldObj.spawnEntityInWorld(entity);
-
-                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0, 180.0F, 180.0F, 180.0F, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
-
-                    entity.worldObj.spawnEntityInWorld(entity2);
-
-                    in *= 1.2F;
-                    x = Math.random() * in - in / 2.0F;
-                    y = (Math.random() * this.height - 0.5D) * 0.800000011920929D;
-                    z = Math.random() * in - in / 2.0F;
-
-                    entity = new EntityCusPar("jinryuumodscore:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 3.0D) + 8, 8, 3, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
-
-                    x = Math.random() * in - in / 2.0F;
-                    y = (Math.random() * this.height - 0.5D) * 0.800000011920929D;
-                    z = Math.random() * in - in / 2.0F;
-                    entity.worldObj.spawnEntityInWorld(entity);
-
-                    entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ, x, y, z, 0.0D, Math.random() * 0.05000000074505806D, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", 50, 2, ((float)(Math.random() * 0.029999999329447746D) + 0.03F) * life * 0.5F, ((float)(Math.random() * 0.009999999776482582D) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,  red2, green2, blue2, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.015F, false, -1, false, pl);
-
-                    entity.worldObj.spawnEntityInWorld(entity2);
+                    Entity entity2 = new EntityCusPar("jinryuudragonbc:bens_particles.png", this.worldObj, 0.2F, 0.2F, pl.posX, pl.posY, pl.posZ,
+                            x, y, z, 0.0D, Math.random() * random02, 0.0D, 0.0F, (int)(Math.random() * 8.0D) + 32, 32, 8, 32,
+                            false, 0.0F, false, 0.0F, 1, "", 50, 2,
+                            ((float)(Math.random() * random01) + 0.03F) * life * 0.5F, ((float)(Math.random() * x22) + 0.02F) * life * 0.5F, 0.2F * life * 0.5F, 0,
+                            red, green, blue, 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F,
+                            0.015F, false, -1, false, pl);
+                    entity2.worldObj.spawnEntityInWorld(entity2);
                 }
 
                 if(auraLightning && lightningCount == 1) {
-                    Entity entity3 = new EntityCusPar(ModVars.MOD_ID + ":textures/effect/lightning.png", pl.worldObj, 0.2F, 0.2F, pl.posX, pl.posY + ((pl instanceof EntityPlayerSP) ? -1.6F : 0.0F), pl.posZ, x, y, z, motx, moty, motz, 0.0F, (int) (Math.random() * 8.0D) + 32, 32, 8, 32, false, 0.0F, false, 0.0F, 1, "", (int) (30.0F * life * 0.5F), 2, ((float) (Math.random() * 0.029999999329447746D) + 0.03F) * life * extra_scale, ((float) (Math.random() * 0.009999999776482582D) + 0.02F) * life * extra_scale, 0.1F * life * extra_scale, 0, 255.0F, 255.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
+                    Entity entity3 = new EntityCusPar(ModVars.MOD_ID + ":textures/effect/lightning.png", pl.worldObj, 0.2F, 0.2F, pl.posX,
+                            pl.posY + ((pl instanceof EntityPlayerSP) ? -1.6F : 0.0F), pl.posZ, x, y, z, motx, moty, motz, 0.0F, (int) (Math.random() * 8.0D) + 32,
+                            32, 8, 32, false, 0.0F, false, 0.0F, 1, "", (int) (30.0F * life * 0.5F), 2,
+                            ((float) (Math.random() * random01) + 0.03F) * life * extra_scale, ((float) (Math.random() * x22) + 0.02F) * life * extra_scale, 0.1F
+                            * life * extra_scale, 0, 255.0F, 255.0F, 255.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 2, 0.0F, 0.0F, 0.4F, 0.45F, 0.08F, false, -1, true, pl);
 
                     pl.worldObj.spawnEntityInWorld(entity3);
 
@@ -592,9 +666,8 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         }
         this.wait++;
 
-        // ====== 玩家仇恨 & 瞬移逻辑 ======
         List<EntityPlayer> players = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class,
-            this.boundingBox.expand(16.0D, 16.0D, 16.0D));
+                this.boundingBox.expand(16.0D, 16.0D, 16.0D));
 
         if (!players.isEmpty()) {
             for (EntityPlayer player : players) {
@@ -604,12 +677,10 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 
                 int minInterval = 800;
                 int maxInterval = 2000;
-
-                // 距离越远瞬移越快，越近越慢
-                if (distSq > 256) { // 超过16格
+                if (distSq > 256) {
                     minInterval = 40;
                     maxInterval = 80;
-                } else if (distSq < 64) { // 小于8格
+                } else if (distSq < 64) {
                     minInterval = 120;
                     maxInterval = 240;
                 } else {
@@ -621,55 +692,47 @@ public class EntityDBCNinjin extends EntityDBCNeut {
                     this.wait = 0;
                     this.nextTeleportTick = minInterval + this.rand.nextInt(maxInterval - minInterval);
 
-                    if (!this.worldObj.isRemote && canTeleport) {
-                        this.targetedEntity = player; // 设置目标
-                        teleportToTarget();           // 瞬移到目标位置
+                    if (!this.worldObj.isRemote && canTeleport && distSq > 64) {
+                        this.targetedEntity = player;
+                        teleportToTarget();
+                    } else if (distSq <= 64) {
+                        if (!this.worldObj.isRemote && !isFlying) {
+                            this.targetedEntity = player;
+                            if (distSq > 2.5 * 2.5) {
+                                this.getNavigator().tryMoveToEntityLiving(player, 1.0D);
+                            }
+                        }
                     }
                 }
             }
         }
 
-        // ====== 🆕 新增: 飞行 vs 走路 切换逻辑 ======
-        if (this.getAttackTarget() != null) {
-            EntityLivingBase target = this.getAttackTarget();
-            double dx = target.posX - this.posX;
-            double dy = target.posY - this.posY;
-            double dz = target.posZ - this.posZ;
-            double distanceSq = dx * dx + dy * dy + dz * dz;
-
-            boolean shouldFly = false;
-
-            // 条件1: 距离太远（>8格）
-            if (distanceSq > 80) {
-                shouldFly = true;
-            }
-
-            // 条件2: 高度差大（>3格）
-            if (Math.abs(dy) > 3.0D) {
-                shouldFly = true;
-            }
-
-            if (shouldFly) {
-                // ====== 判断使用新飞行还是旧飞行 ======
-                if (ModConfig.useNewFlightAI) {
-                    handleTargetTracking(4.0D, 1.0D);
-                } else {
-                    handleOldFlight();
-                }
-
-                this.onGround = false; // 避免地面动画干扰
-            } else {
-                // 使用寻路 AI（走路）
-                this.getNavigator().tryMoveToEntityLiving(target, 1.0D);
-            }
+        EntityLivingBase target = this.getAttackTarget();
+        if (target == null && this.targetedEntity instanceof EntityLivingBase) {
+            target = (EntityLivingBase) this.targetedEntity;
+            this.setAttackTarget(target);
         }
 
-// ====== 其他常规更新 ======
+        if (target != null) {
+            double groundY = this.worldObj.getTopSolidOrLiquidBlock((int) this.posX, (int) this.posZ);
+            double heightOffGround = this.posY - groundY;
+            isFlying = heightOffGround > Math.ceil(this.height);
+        }
+        boolean shouldFly = shouldEntityFly(target);
+
+        if (shouldFly) {
+            if (ModConfig.useNewFlightAI) {
+                handleTargetTracking(4.0D, 1.6D);
+            } else {
+                handleOldFlight();
+            }
+        } else {
+            handleGroundTracking();
+        }
+
         updateArmSwingProgress();
         getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(this.moveSpeed);
         super.onLivingUpdate();
-
-// 定时刷新仇恨目标（每秒一次）
         if (!this.worldObj.isRemote && this.ticksExisted % 20 == 0) {
             updateTargetFromHate();
         }
@@ -681,7 +744,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         final double VERTICAL_CHASE_THRESHOLD = 4.0D;
         final double VERTICAL_SNAP_THRESHOLD = 1.6D;
         final int CLIENT_UPDATE_INTERVAL = 20;
-        final double MIN_TELEPORT_DIST_SQ = 4.0D; // 2格以内不瞬移
+        final double MIN_TELEPORT_DIST_SQ = 4.0D;
 
         // 1. 生成者检测与验证
         handleSpawnerDetection(SPAWNER_SEARCH_RADIUS);
@@ -697,14 +760,18 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         }
 
         // 3. 目标追踪行为
-        if (ModConfig.useNewFlightAI) {
-            // 新飞行逻辑
-            handleTargetTracking(VERTICAL_CHASE_THRESHOLD, VERTICAL_SNAP_THRESHOLD);
+        EntityLivingBase target = this.getAttackTarget();
+        boolean shouldFly = shouldEntityFly(target);
+        if (shouldFly) {
+            if (ModConfig.useNewFlightAI) {
+                handleTargetTracking(VERTICAL_CHASE_THRESHOLD, VERTICAL_SNAP_THRESHOLD);
+            } else {
+                handleOldFlight();
+            }
         } else {
-            // 旧飞行逻辑
-            handleOldFlight();
+            handleGroundTracking();
         }
-
+        updateLimbSwing();
         super.onUpdate();
 
         // 4. 瞬移冷却倒计时
@@ -714,54 +781,93 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         if (outOfRangeHits >= TELEPORT_TRIGGER_HITS && targetedEntity != null) {
             if (!(targetedEntity instanceof EntityPlayer && ((EntityPlayer) targetedEntity).capabilities.isCreativeMode)) {
                 double distSq = this.getDistanceSqToEntity(targetedEntity);
-                if (distSq > MIN_TELEPORT_DIST_SQ && canTeleport) {  // 🆕 加上条件
+                if (distSq > MIN_TELEPORT_DIST_SQ && canTeleport) {
                     teleportToTarget();
-
-                    if (targetedEntity instanceof EntityPlayer) {
-                        EntityPlayer player = (EntityPlayer) targetedEntity;
-                        String mobName = this.getCommandSenderName();
-                        String msg = StatCollector.translateToLocal("message.ninjin.teleportwarn");
-                        player.addChatMessage(new ChatComponentText(mobName + "：" + msg));
-                    }
                 }
             }
             outOfRangeHits = 0;
         }
 
-
-
-// 6. 条件2：每15秒必瞬移
+        // 6. 条件2：每15秒必瞬移
         if (teleportCooldown <= 0 && targetedEntity != null) {
-            // 跳过创造模式玩家
             if (!(targetedEntity instanceof EntityPlayer && ((EntityPlayer) targetedEntity).capabilities.isCreativeMode)) {
                 double distSq = this.getDistanceSqToEntity(targetedEntity);
                 if (distSq > MIN_TELEPORT_DIST_SQ && canTeleport) {
                     teleportToTarget();
                 }
             }
-            teleportCooldown = 300; // 重置冷却
+            teleportCooldown = 300;
         }
-}
 
+        if (this.ticksExisted % 100 == 0 && !this.worldObj.isRemote) {
+            hateMap.entrySet().removeIf(entry ->
+                    entry.getKey() == null ||
+                            entry.getKey().isDead ||
+                            this.getDistanceToEntity(entry.getKey()) > 100.0D
+            );
+        }
+    }
+    private void handleGroundTracking() {
+        EntityLivingBase target = this.getAttackTarget();
+        if (target != null && !isFlying) {
+            double targetGroundY = this.worldObj.getTopSolidOrLiquidBlock((int) target.posX, (int) target.posZ);
+            double targetHeightOffGround = target.posY - targetGroundY;
+            if (targetHeightOffGround <= 1.0D) {
+                double distanceToTarget = this.getDistanceSqToEntity(target);
 
+                if (distanceToTarget > 4.0D) {
+                    this.getNavigator().tryMoveToEntityLiving(target, 2.0D);
+                } else if (distanceToTarget <= 1.0D) {
+                    this.getNavigator().clearPathEntity();
+                }
+            }
+        }
+    }
+
+    public void updateLimbSwing() {
+        this.prevLimbSwingAmount = this.limbSwingAmount;
+        double dx = this.posX - this.prevPosX;
+        double dz = this.posZ - this.prevPosZ;
+        float moveDistance = (float) Math.sqrt(dx * dx + dz * dz) * 4.0F;
+        if (moveDistance > 1.0F) {
+            moveDistance = 1.0F;
+        }
+        this.limbSwingAmount += (moveDistance - this.limbSwingAmount) * 0.4F;
+        if (this.limbSwingAmount > 0.0F) {
+            this.limbSwing += this.limbSwingAmount;
+        }
+    }
+    private boolean shouldEntityFly(EntityLivingBase target) {
+        if (target == null) {
+            return false;
+        }
+        if (target instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) target;
+            if (player.capabilities.isCreativeMode) {
+                return false;
+            }
+        }
+
+        double groundY = this.worldObj.getTopSolidOrLiquidBlock((int) this.posX, (int) this.posZ);
+        double heightOffGround = this.posY - groundY;
+        boolean isInAir = heightOffGround > Math.ceil(this.height);
+
+        return isInAir;
+    }
     // 瞬移到目标位置
     private void teleportToTarget() {
         if (targetedEntity == null || worldObj.isRemote) return;
-
-        // 🆕 跳过创造模式玩家
         if (targetedEntity instanceof EntityPlayer && ((EntityPlayer) targetedEntity).capabilities.isCreativeMode) {
             return;
         }
-
         worldObj.playSoundAtEntity(this, "jinryuudragonbc:DBC3.teleport", 1.0F, 1.0F);
 
         Vec3 lookVec = targetedEntity.getLookVec();
-        double teleportDistance = 2.0; // 距离可调
+        double teleportDistance = 2.0;
 
         double newX = targetedEntity.posX - lookVec.xCoord * teleportDistance;
         double newZ = targetedEntity.posZ - lookVec.zCoord * teleportDistance;
 
-        // 对齐玩家碰撞箱顶部，让脚底在玩家头顶
         double targetTopY = targetedEntity.boundingBox.maxY;
         double newY = targetTopY;
 
@@ -769,9 +875,6 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 
         attackCounter = 0;
     }
-
-
-    // 辅助方法分解
     private void handleSpawnerDetection(double radius) {
         if (this.spwner == null && radius > 0) {
             AxisAlignedBB searchArea = createBoundingBox(radius);
@@ -809,12 +912,10 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         for (EntityPlayer player : players) {
             int playerGroupId = JRMCoreH.getInt(player, "JRMCGID");
             if (this.spwner.getEntityId() == player.getEntityId() ||
-                (spawnerGroupId != 0 && spawnerGroupId == playerGroupId)) {
+                    (spawnerGroupId != 0 && spawnerGroupId == playerGroupId)) {
                 count++;
             }
         }
-
-        // 自我检查
         if (getEntityId() == this.spwner.getEntityId()) {
             count++;
         }
@@ -831,7 +932,6 @@ public class EntityDBCNinjin extends EntityDBCNeut {
     }
 
     private void handleTargetTracking(double chaseThreshold, double snapThreshold) {
-        // 如果目标是玩家且处于创造模式，则直接返回，不启用飞行 AI
         if (this.targetedEntity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) this.targetedEntity;
             if (player.capabilities.isCreativeMode) {
@@ -844,20 +944,18 @@ public class EntityDBCNinjin extends EntityDBCNeut {
             double dy = this.targetedEntity.posY - this.posY;
             double dz = this.targetedEntity.posZ - this.posZ;
             double distanceSq = dx * dx + dy * dy + dz * dz;
-
-            // ======= 三维加速与最大速度 =======
-            double accel = 0.1D + Math.min(0.4D, distanceSq * 0.005D);
-            double maxSpeed = 0.35D + Math.min(0.5D, distanceSq * 0.005D);
-
-            // ======= 三维单位向量 =======
+            double distance = Math.sqrt(distanceSq);
+            if (distance < 3.0D) return;
+            double baseSpeed = 0.33D;
+            double distanceFactor = Math.min(1.0D, distance * 0.02D);
+            double totalSpeed = baseSpeed + distanceFactor; // 总速度
+            double accel = 0.12D + Math.min(0.6D, distance * 0.015D);
+            double maxSpeed = totalSpeed * 2.0D;
             Vec3 vecToTarget = Vec3.createVectorHelper(dx, dy, dz).normalize();
-
-            // ======= 直接施加运动 =======
             this.motionX += vecToTarget.xCoord * accel;
             this.motionY += vecToTarget.yCoord * accel;
             this.motionZ += vecToTarget.zCoord * accel;
 
-            // ======= 限制三维最大速度 =======
             double totalSpeedSq = this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ;
             if (totalSpeedSq > maxSpeed * maxSpeed) {
                 double scale = maxSpeed / Math.sqrt(totalSpeedSq);
@@ -866,7 +964,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
                 this.motionZ *= scale;
             }
 
-            this.fallDistance = 0.0F; // 防止摔落伤害
+            this.fallDistance = 0.0F;
         }
     }
     private void handleOldFlight() {
@@ -884,22 +982,20 @@ public class EntityDBCNinjin extends EntityDBCNeut {
 
     private AxisAlignedBB createBoundingBox(double radius) {
         return AxisAlignedBB.getBoundingBox(
-            this.posX - radius, this.posY - radius, this.posZ - radius,
-            this.posX + radius, this.posY + radius, this.posZ + radius
+                this.posX - radius, this.posY - radius, this.posZ - radius,
+                this.posX + radius, this.posY + radius, this.posZ + radius
         );
     }
 
-	private void becomeAngryAt(Entity par1Entity) {
-		this.entityToAttack = par1Entity;
-		this.angerLevel = (400 + this.rand.nextInt(400));
-	}
-    // 增加仇恨
+    private void becomeAngryAt(Entity par1Entity) {
+        this.entityToAttack = par1Entity;
+        this.angerLevel = (400 + this.rand.nextInt(400));
+    }
     public void addHate(EntityLivingBase entity, int amount) {
         if (entity == null || entity.isDead) return;
         hateMap.put(entity, hateMap.getOrDefault(entity, 0) + amount);
     }
 
-    // 选择仇恨最高的目标
     private void updateTargetFromHate() {
         EntityLivingBase highest = null;
         int maxHate = -1;
@@ -907,7 +1003,7 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         for (Map.Entry<EntityLivingBase, Integer> entry : hateMap.entrySet()) {
             EntityLivingBase e = entry.getKey();
             if (e == null || e.isDead || this.getDistanceToEntity(e) > 40) {
-                continue; // 距离太远/死亡的不算
+                continue;
             }
             if (entry.getValue() > maxHate) {
                 maxHate = entry.getValue();
@@ -920,12 +1016,11 @@ public class EntityDBCNinjin extends EntityDBCNeut {
         }
     }
 
-    // 当攻击别人时增加仇恨，保证不容易切目标
     @Override
     public boolean attackEntityAsMob(Entity entityIn) {
         boolean result = super.attackEntityAsMob(entityIn);
         if (result && entityIn instanceof EntityLivingBase) {
-            addHate((EntityLivingBase) entityIn, 5); // 每次攻击锁定更牢固
+            addHate((EntityLivingBase) entityIn, 5);
         }
         return result;
     }
