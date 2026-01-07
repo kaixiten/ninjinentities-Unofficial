@@ -9,10 +9,10 @@ import org.lwjgl.opengl.GL11;
 
 
 public class ModelPorungaNinjin extends ModelBase {
-	private final ModelRenderer Head1;
+	private final ModelRenderer bipedHead1;
 	private final ModelRenderer TentacleL;
-	private final ModelRenderer Head2;
-	private final ModelRenderer Head3;
+	private final ModelRenderer bipedHead2;
+	private final ModelRenderer bipedHead3;
 	private final ModelRenderer TopHornL1;
 	private final ModelRenderer TopHornL2;
 	private final ModelRenderer TopHornL3;
@@ -31,12 +31,12 @@ public class ModelPorungaNinjin extends ModelBase {
 	private final ModelRenderer Jaw2;
 	private final ModelRenderer Jaw3;
 	private final ModelRenderer TentacleR;
-	private final ModelRenderer Body1;
+	private final ModelRenderer bipedBody1;
 	private final ModelRenderer DragonFin1;
-	private final ModelRenderer Body2;
+	private final ModelRenderer bipedBody2;
 	private final ModelRenderer Chest;
-	private final ModelRenderer Body3;
-	private final ModelRenderer Body4;
+	private final ModelRenderer bipedBody3;
+	private final ModelRenderer bipedBody4;
 	private final ModelRenderer Tail1;
 	private final ModelRenderer Tail2;
 	private final ModelRenderer DragonFin4;
@@ -120,31 +120,31 @@ public class ModelPorungaNinjin extends ModelBase {
 		textureHeight = 256;
         scale = _scale;
 
-		Head1 = new ModelRenderer(this);
-		Head1.setRotationPoint(0.0F, -80.0F, -5.0F);
-		setRotationAngle(Head1, 0.4554F, 0.0F, 0.0F);
-		Head1.cubeList.add(new ModelBox(Head1, 97, 2, -4.0F, -4.0F, -5.5F, 8, 5, 7, 0.0F));
+		bipedHead1 = new ModelRenderer(this);
+		bipedHead1.setRotationPoint(0.0F, -80.0F, -5.0F);
+		setRotationAngle(bipedHead1, 0.4554F, 0.0F, 0.0F);
+		bipedHead1.cubeList.add(new ModelBox(bipedHead1, 97, 2, -4.0F, -4.0F, -5.5F, 8, 5, 7, 0.0F));
 
 		TentacleL = new ModelRenderer(this);
 		TentacleL.setRotationPoint(1.5F, -3.5F, -5.6F);
-		Head1.addChild(TentacleL);
+		bipedHead1.addChild(TentacleL);
         TentacleL.mirror = true;
 		setRotationAngle(TentacleL, 0.0F, 0.7741F, -0.1798F);
 		TentacleL.cubeList.add(new ModelBox(TentacleL, 92, 3, 0.0F, -0.5F, 0.0F, 5, 3, 0, 0.0F));
 
-		Head2 = new ModelRenderer(this);
-		Head2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		Head1.addChild(Head2);
-		Head2.cubeList.add(new ModelBox(Head2, 103, 15, -3.0F, 0.0F, -6.5F, 6, 1, 1, 0.0F));
+		bipedHead2 = new ModelRenderer(this);
+		bipedHead2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bipedHead1.addChild(bipedHead2);
+		bipedHead2.cubeList.add(new ModelBox(bipedHead2, 103, 15, -3.0F, 0.0F, -6.5F, 6, 1, 1, 0.0F));
 
-		Head3 = new ModelRenderer(this);
-		Head3.setRotationPoint(0.0F, 0.0F, 0.0F);
-		Head2.addChild(Head3);
-		Head3.cubeList.add(new ModelBox(Head3, 103, 18, -2.0F, -1.0F, -7.5F, 4, 2, 2, 0.0F));
+		bipedHead3 = new ModelRenderer(this);
+		bipedHead3.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bipedHead2.addChild(bipedHead3);
+		bipedHead3.cubeList.add(new ModelBox(bipedHead3, 103, 18, -2.0F, -1.0F, -7.5F, 4, 2, 2, 0.0F));
 
 		TopHornL1 = new ModelRenderer(this);
 		TopHornL1.setRotationPoint(2.0F, -4.0F, -3.2F);
-		Head1.addChild(TopHornL1);
+		bipedHead1.addChild(TopHornL1);
         TopHornL1.mirror = true;
 		setRotationAngle(TopHornL1, -0.9561F, 0.1745F, 0.0F);
 		TopHornL1.cubeList.add(new ModelBox(TopHornL1, 128, 21, -1.4F, -3.9F, 0.0F, 3, 4, 4, 0.0F));
@@ -166,7 +166,7 @@ public class ModelPorungaNinjin extends ModelBase {
 		SideHornL1 = new ModelRenderer(this);
 		SideHornL1.setRotationPoint(4.1F, 0.3F, -1.1F);
         SideHornL1.mirror = true;
-		Head1.addChild(SideHornL1);
+		bipedHead1.addChild(SideHornL1);
 		SideHornL1.cubeList.add(new ModelBox(SideHornL1, 91, 20, -0.2F, -1.5F, -1.8F, 2, 3, 3, 0.0F));
 
 		SideHornL2 = new ModelRenderer(this);
@@ -183,7 +183,7 @@ public class ModelPorungaNinjin extends ModelBase {
 
 		TopHornR1 = new ModelRenderer(this);
 		TopHornR1.setRotationPoint(-2.2F, -4.0F, -3.2F);
-		Head1.addChild(TopHornR1);
+		bipedHead1.addChild(TopHornR1);
 		setRotationAngle(TopHornR1, -0.9561F, -0.1745F, 0.0F);
 		TopHornR1.cubeList.add(new ModelBox(TopHornR1, 128, 21, -1.4F, -3.9F, 0.0F, 3, 4, 4, 0.0F));
 
@@ -201,7 +201,7 @@ public class ModelPorungaNinjin extends ModelBase {
 
 		SideHornR1 = new ModelRenderer(this);
 		SideHornR1.setRotationPoint(-4.2F, 0.3F, -1.1F);
-		Head1.addChild(SideHornR1);
+		bipedHead1.addChild(SideHornR1);
 		SideHornR1.cubeList.add(new ModelBox(SideHornR1, 91, 20, -1.8F, -1.5F, -1.8F, 2, 3, 3, 0.0F));
 
 		SideHornR2 = new ModelRenderer(this);
@@ -216,7 +216,7 @@ public class ModelPorungaNinjin extends ModelBase {
 
 		Jaw1 = new ModelRenderer(this);
 		Jaw1.setRotationPoint(0.0F, 0.2F, 0.0F);
-		Head1.addChild(Jaw1);
+		bipedHead1.addChild(Jaw1);
 		Jaw1.cubeList.add(new ModelBox(Jaw1, 99, 23, -3.0F, 0.8F, -5.5F, 6, 3, 5, 0.0F));
 
 		JawR = new ModelRenderer(this);
@@ -241,46 +241,46 @@ public class ModelPorungaNinjin extends ModelBase {
 
 		TentacleR = new ModelRenderer(this);
 		TentacleR.setRotationPoint(-1.5F, -3.5F, -5.6F);
-		Head1.addChild(TentacleR);
+		bipedHead1.addChild(TentacleR);
 		setRotationAngle(TentacleR, 0.0F, -0.7741F, 0.2731F);
 		TentacleR.cubeList.add(new ModelBox(TentacleR, 92, 3, -4.9F, -0.5F, 0.0F, 5, 3, 0, 0.0F));
 
-		Body1 = new ModelRenderer(this);
-		Body1.setRotationPoint(0.0F, -80.0F, 0.0F);
-		setRotationAngle(Body1, 0.2793F, 0.0F, 0.0F);
-		Body1.cubeList.add(new ModelBox(Body1, 8, 51, -15.0F, 0.0F, -3.5F, 30, 16, 14, 0.0F));
+		bipedBody1 = new ModelRenderer(this);
+		bipedBody1.setRotationPoint(0.0F, -80.0F, 0.0F);
+		setRotationAngle(bipedBody1, 0.2793F, 0.0F, 0.0F);
+		bipedBody1.cubeList.add(new ModelBox(bipedBody1, 8, 51, -15.0F, 0.0F, -3.5F, 30, 16, 14, 0.0F));
 
 		DragonFin1 = new ModelRenderer(this);
 		DragonFin1.setRotationPoint(0.0F, 0.0F, 11.9F);
-		Body1.addChild(DragonFin1);
+		bipedBody1.addChild(DragonFin1);
 		DragonFin1.cubeList.add(new ModelBox(DragonFin1, 85, 62, 0.0F, -9.9F, -11.8F, 0, 26, 20, 0.0F));
 
-		Body2 = new ModelRenderer(this);
-		Body2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		Body1.addChild(Body2);
-		setRotationAngle(Body2, -0.4554F, 0.0F, 0.0F);
-		Body2.cubeList.add(new ModelBox(Body2, 15, 35, -11.0F, -4.7F, -0.7F, 22, 5, 10, 0.0F));
+		bipedBody2 = new ModelRenderer(this);
+		bipedBody2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bipedBody1.addChild(bipedBody2);
+		setRotationAngle(bipedBody2, -0.4554F, 0.0F, 0.0F);
+		bipedBody2.cubeList.add(new ModelBox(bipedBody2, 15, 35, -11.0F, -4.7F, -0.7F, 22, 5, 10, 0.0F));
 
 		Chest = new ModelRenderer(this);
 		Chest.setRotationPoint(0.0F, 6.2F, -3.3F);
-		Body1.addChild(Chest);
+		bipedBody1.addChild(Chest);
 		Chest.cubeList.add(new ModelBox(Chest, 84, 50, -12.0F, -3.7F, -3.2F, 24, 8, 3, 0.0F));
 
-		Body3 = new ModelRenderer(this);
-		Body3.setRotationPoint(0.0F, 13.0F, 1.7F);
-		Body1.addChild(Body3);
-		setRotationAngle(Body3, -0.1745F, 0.0F, 0.0F);
-		Body3.cubeList.add(new ModelBox(Body3, 12, 83, -11.0F, -0.2F, -5.3F, 22, 14, 13, 0.0F));
+		bipedBody3 = new ModelRenderer(this);
+		bipedBody3.setRotationPoint(0.0F, 13.0F, 1.7F);
+		bipedBody1.addChild(bipedBody3);
+		setRotationAngle(bipedBody3, -0.1745F, 0.0F, 0.0F);
+		bipedBody3.cubeList.add(new ModelBox(bipedBody3, 12, 83, -11.0F, -0.2F, -5.3F, 22, 14, 13, 0.0F));
 
-		Body4 = new ModelRenderer(this);
-		Body4.setRotationPoint(0.0F, 12.8F, 0.0F);
-		Body3.addChild(Body4);
-		setRotationAngle(Body4, 0.182F, 0.0F, 0.0911F);
-		Body4.cubeList.add(new ModelBox(Body4, 17, 111, -8.5F, -1.0F, -4.8F, 17, 11, 11, 0.0F));
+		bipedBody4 = new ModelRenderer(this);
+		bipedBody4.setRotationPoint(0.0F, 12.8F, 0.0F);
+		bipedBody3.addChild(bipedBody4);
+		setRotationAngle(bipedBody4, 0.182F, 0.0F, 0.0911F);
+		bipedBody4.cubeList.add(new ModelBox(bipedBody4, 17, 111, -8.5F, -1.0F, -4.8F, 17, 11, 11, 0.0F));
 
 		Tail1 = new ModelRenderer(this);
 		Tail1.setRotationPoint(0.0F, 9.8F, 0.0F);
-		Body4.addChild(Tail1);
+		bipedBody4.addChild(Tail1);
 		setRotationAngle(Tail1, -0.0911F, 0.0F, 0.182F);
 		Tail1.cubeList.add(new ModelBox(Tail1, 21, 135, -7.0F, -0.7F, -4.2F, 14, 10, 9, 0.0F));
 
@@ -441,17 +441,17 @@ public class ModelPorungaNinjin extends ModelBase {
 
 		Abs = new ModelRenderer(this);
 		Abs.setRotationPoint(0.0F, 81.0F, -5.8F);
-		Body3.addChild(Abs);
+		bipedBody3.addChild(Abs);
 		Abs.cubeList.add(new ModelBox(Abs, 98, 63, -6.0F, -83.0F, -1.2F, 12, 9, 2, 0.0F));
 
 		DragonFin2 = new ModelRenderer(this);
 		DragonFin2.setRotationPoint(0.0F, 5.9F, 7.5F);
-		Body3.addChild(DragonFin2);
+		bipedBody3.addChild(DragonFin2);
 		DragonFin2.cubeList.add(new ModelBox(DragonFin2, 93, 98, 0.0F, -6.4F, -2.5F, 0, 22, 12, 0.0F));
 
 		Neck = new ModelRenderer(this);
 		Neck.setRotationPoint(0.0F, 0.0F, 0.0F);
-		Body1.addChild(Neck);
+		bipedBody1.addChild(Neck);
 		setRotationAngle(Neck, -0.2731F, 0.0F, 0.0F);
 		Neck.cubeList.add(new ModelBox(Neck, 28, 20, -5.8F, -4.1F, -5.1F, 12, 8, 5, 0.0F));
 
@@ -715,9 +715,9 @@ public class ModelPorungaNinjin extends ModelBase {
         GL11.glPushMatrix();
         GL11.glScalef(this.scale, this.scale, this.scale);
         GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(this.scale/0.45F,1.88F)))), 0.0F);
-        this.Head1.render(f5);
+        this.bipedHead1.render(f5);
         this.ShoulderR.render(f5);
-        this.Body1.render(f5);
+        this.bipedBody1.render(f5);
         this.ShoulderL.render(f5);
         GL11.glPopMatrix();
     }
@@ -737,7 +737,7 @@ public class ModelPorungaNinjin extends ModelBase {
         float rotation = 0.0F;
         float ANIMATION_MULTI = 1.0F;
         float ANIMATION_MULTI2 = 3.0F;
-        this.Head1.rotateAngleX = 0.5F;
+        this.bipedHead1.rotateAngleX = 0.5F;
         float r = MathHelper.sin(f2 * 0.01F * 3.0F) * 0.05F * 1.0F + 0.15F;
         float r2 = MathHelper.sin(f2 * 0.001F * 3.0F) * 0.05F * 1.0F + 0.15F;
         float ANIMATION_MULTI3 = 5.0F;
@@ -767,9 +767,9 @@ public class ModelPorungaNinjin extends ModelBase {
         rotation = 2.0F + r2 * 1.0F;
         this.PalmR3.rotateAngleY = rotation * 1.0F;
         rotation = r3 * 1.0F;
-        this.Body1.rotateAngleX = rotation * 1.0F;
+        this.bipedBody1.rotateAngleX = rotation * 1.0F;
         rotation = -r3 * 1.0F;
-        this.Body3.rotateAngleX = rotation * 1.0F;
+        this.bipedBody3.rotateAngleX = rotation * 1.0F;
         rotation = -r3 * 0.5F;
         float rotation2 = rotation * 1.0F;
         this.Tail1.rotateAngleY = rotation2 * 1.0F;

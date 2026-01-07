@@ -9,7 +9,7 @@ import org.lwjgl.opengl.GL11;
 
 
 public class ModelYoung_mara extends ModelBase {
-	private final ModelRenderer Body;
+	private final ModelRenderer bipedBody;
 	private final ModelRenderer LeftLeg;
 	private final ModelRenderer RightArm;
 	private final ModelRenderer LeftArm;
@@ -20,41 +20,41 @@ public class ModelYoung_mara extends ModelBase {
 		textureWidth = 64;
 		textureHeight = 64;
 
-		Body = new ModelRenderer(this);
-		Body.setRotationPoint(0.0F, 0.0F, 0.0F);
-		Body.cubeList.add(new ModelBox(Body, 0, 24, -4.0F, 0.0F, -2.0F, 8, 6, 4, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 24, 0, -4.0F, 9.0F, -2.0F, 8, 3, 4, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 0, 34, -3.0F, 6.0F, -1.5F, 6, 6, 3, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 0, 16, -4.5F, 9.0F, -2.25F, 9, 3, 5, 0.02F));
-		Body.cubeList.add(new ModelBox(Body, 24, 19, -4.5F, 11.0F, -2.25F, 5, 6, 5, 0.0F));
+		bipedBody = new ModelRenderer(this);
+		bipedBody.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 24, -4.0F, 0.0F, -2.0F, 8, 6, 4, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 24, 0, -4.0F, 9.0F, -2.0F, 8, 3, 4, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 34, -3.0F, 6.0F, -1.5F, 6, 6, 3, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 16, -4.5F, 9.0F, -2.25F, 9, 3, 5, 0.02F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 24, 19, -4.5F, 11.0F, -2.25F, 5, 6, 5, 0.0F));
 
 		LeftLeg = new ModelRenderer(this);
 		LeftLeg.setRotationPoint(1.9F, 12.0F, 0.0F);
-		Body.addChild(LeftLeg);
+		bipedBody.addChild(LeftLeg);
 		LeftLeg.cubeList.add(new ModelBox(LeftLeg, 40, 26, -2.0F, 0.0F, -2.0F, 4, 7, 4, 0.0F));
 		LeftLeg.cubeList.add(new ModelBox(LeftLeg, 52, 45, -1.5F, 7.0F, -1.5F, 3, 5, 3, 0.0F));
 
 		RightArm = new ModelRenderer(this);
 		RightArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
-		Body.addChild(RightArm);
+		bipedBody.addChild(RightArm);
 		RightArm.cubeList.add(new ModelBox(RightArm, 48, 0, -3.0F, -2.25F, -2.0F, 4, 6, 4, 0.0F));
 		RightArm.cubeList.add(new ModelBox(RightArm, 15, 41, -2.5F, 0.0F, -1.5F, 3, 12, 3, 0.0F));
 
 		LeftArm = new ModelRenderer(this);
 		LeftArm.setRotationPoint(5.0F, 2.0F, 0.0F);
-		Body.addChild(LeftArm);
+		bipedBody.addChild(LeftArm);
 		LeftArm.cubeList.add(new ModelBox(LeftArm, 44, 14, -1.0F, -2.25F, -2.0F, 4, 6, 4, 0.0F));
 		LeftArm.cubeList.add(new ModelBox(LeftArm, 36, 38, -0.5F, 0.0F, -1.5F, 3, 12, 3, 0.0F));
 
 		RightLeg = new ModelRenderer(this);
 		RightLeg.setRotationPoint(-1.9F, 12.0F, 0.0F);
-		Body.addChild(RightLeg);
+		bipedBody.addChild(RightLeg);
 		RightLeg.cubeList.add(new ModelBox(RightLeg, 32, 7, -2.0F, 0.0F, -2.0F, 4, 7, 4, 0.0F));
 		RightLeg.cubeList.add(new ModelBox(RightLeg, 27, 50, -1.5F, 7.0F, -1.5F, 3, 5, 3, 0.0F));
 
         ModelRenderer bone3 = new ModelRenderer(this);
 		bone3.setRotationPoint(0.0F, 0.0F, 0.0F);
-		Body.addChild(bone3);
+		bipedBody.addChild(bone3);
 		bone3.mirror = true;
 		bone3.cubeList.add(new ModelBox(bone3, 24, 19, -0.5F, 11.0F, -2.25F, 5, 6, 5, 0.0F));
 
@@ -93,7 +93,7 @@ public class ModelYoung_mara extends ModelBase {
         GL11.glScalef(scale, scale, scale);
 		GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(scale /0.45F,1.88F)))), 0.0F);
 		head.render(f5);
-		Body.render(f5);
+		bipedBody.render(f5);
 		GL11.glPopMatrix();
 		this.head.rotateAngleY = f3 / (180F / (float)Math.PI);
 		this.head.rotateAngleX = f4 / (180F / (float)Math.PI);

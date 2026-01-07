@@ -9,7 +9,7 @@ import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
 
 public class ModelGomahThirdEye extends ModelBase {
-	private final ModelRenderer bipedHead;
+	private final ModelRenderer Head;
 	private final ModelRenderer Hat;
 	private final ModelRenderer HatHornRight;
 	private final ModelRenderer cube_r1;
@@ -36,13 +36,13 @@ public class ModelGomahThirdEye extends ModelBase {
 
         scale = _scale;
 
-		bipedHead = new ModelRenderer(this);
-		bipedHead.setRotationPoint(0.0F, -10.0F, 0.0F);
-		bipedHead.cubeList.add(new ModelBox(bipedHead, 0, 0, -5.0F, -8.0F, -4.0F, 10, 8, 8, 0.0F));
+		Head = new ModelRenderer(this);
+		Head.setRotationPoint(0.0F, -10.0F, 0.0F);
+		Head.cubeList.add(new ModelBox(Head, 0, 0, -5.0F, -8.0F, -4.0F, 10, 8, 8, 0.0F));
 
 		Hat = new ModelRenderer(this);
 		Hat.setRotationPoint(0.0F, -7.0F, 0.0F);
-		bipedHead.addChild(Hat);
+		Head.addChild(Hat);
 
 
 		HatHornRight = new ModelRenderer(this);
@@ -93,7 +93,7 @@ public class ModelGomahThirdEye extends ModelBase {
 
 		Ears = new ModelRenderer(this);
 		Ears.setRotationPoint(0.0F, -7.0F, 0.0F);
-		bipedHead.addChild(Ears);
+		Head.addChild(Ears);
 
 
 		EarRight_r1 = new ModelRenderer(this);
@@ -155,7 +155,7 @@ public class ModelGomahThirdEye extends ModelBase {
         GL11.glPushMatrix();
         GL11.glScalef(scale, scale, scale);
         GL11.glTranslatef(0.0F, (float) (-1.0399999618530273 + 5.5 / (1.0 + Math.pow(scale / 0.45F, 1.8799999952316284))), 0.0F);
-        bipedHead.render(scaleFactor);
+        Head.render(scaleFactor);
         Body.render(scaleFactor);
         GL11.glPopMatrix();
     }
@@ -167,8 +167,8 @@ public class ModelGomahThirdEye extends ModelBase {
         modelRenderer.rotateAngleZ = z;
     }
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
-        this.bipedHead.rotateAngleY = netHeadYaw / (180F / (float)Math.PI);
-        this.bipedHead.rotateAngleX = headPitch / (180F / (float)Math.PI);
+        this.Head.rotateAngleY = netHeadYaw / (180F / (float)Math.PI);
+        this.Head.rotateAngleX = headPitch / (180F / (float)Math.PI);
 
         this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F;
         this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F;
@@ -191,7 +191,7 @@ public class ModelGomahThirdEye extends ModelBase {
         animCurve = 1.0F - animCurve;
 
         float sinCurve = MathHelper.sin(animCurve * (float)Math.PI);
-        float headOffset = MathHelper.sin(animProgress * (float)Math.PI) * -(this.bipedHead.rotateAngleX - 0.7F) * 0.75F;
+        float headOffset = MathHelper.sin(animProgress * (float)Math.PI) * -(this.Head.rotateAngleX - 0.7F) * 0.75F;
         this.bipedRightArm.rotateAngleX -= (sinCurve * 1.2F + headOffset);
         this.bipedRightArm.rotateAngleY += this.bipedBody.rotateAngleY * 2.0F;
         this.bipedRightArm.rotateAngleZ = MathHelper.sin(animProgress * 2.1415927F) * -0.4F;

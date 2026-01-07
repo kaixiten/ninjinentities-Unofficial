@@ -9,7 +9,7 @@ import org.lwjgl.opengl.GL11;
 
 
 public class ModelkanbaSsjOozaru extends ModelBase {
-    private final ModelRenderer Head;
+    private final ModelRenderer bipedHead;
     private final ModelRenderer hair;
     private final ModelRenderer hair1;
     private final ModelRenderer hair1_r1;
@@ -59,9 +59,9 @@ public class ModelkanbaSsjOozaru extends ModelBase {
     private final ModelRenderer mz;
     private final ModelRenderer cube_r1;
     private final ModelRenderer cube_r2;
-    private final ModelRenderer Body;
-    private final ModelRenderer RLeg;
-    private final ModelRenderer LLeg;
+    private final ModelRenderer bipedBody;
+    private final ModelRenderer bipedRightLeg;
+    private final ModelRenderer bipedLeftLeg;
     private final ModelRenderer FroB;
     private final ModelRenderer ftailS1;
     private final ModelRenderer ftailS2;
@@ -69,8 +69,8 @@ public class ModelkanbaSsjOozaru extends ModelBase {
     private final ModelRenderer ftailS4;
     private final ModelRenderer ftailS5;
     private final ModelRenderer ftailS6;
-    private final ModelRenderer RArm;
-    private final ModelRenderer LArm;
+    private final ModelRenderer bipedRightArm;
+    private final ModelRenderer bipedLeftArm;
     private float scale = 1.0F;
     public int heldItemRight;
 
@@ -80,13 +80,13 @@ public class ModelkanbaSsjOozaru extends ModelBase {
 
         scale = _scale;
 
-        Head = new ModelRenderer(this);
-        Head.setRotationPoint(0.0F, 0.0F, 0.0F);
-        Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, -0.1F));
+        bipedHead = new ModelRenderer(this);
+        bipedHead.setRotationPoint(0.0F, 0.0F, 0.0F);
+        bipedHead.cubeList.add(new ModelBox(bipedHead, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, -0.1F));
 
         hair = new ModelRenderer(this);
         hair.setRotationPoint(2.0F, -8.9F, -3.2F);
-        Head.addChild(hair);
+        bipedHead.addChild(hair);
 
 
         hair1 = new ModelRenderer(this);
@@ -361,7 +361,7 @@ public class ModelkanbaSsjOozaru extends ModelBase {
 
         mz = new ModelRenderer(this);
         mz.setRotationPoint(0.0F, 0.0F, -1.0F);
-        Head.addChild(mz);
+        bipedHead.addChild(mz);
         mz.cubeList.add(new ModelBox(mz, 90, 61, -1.0F, -2.0F, -3.75F, 2, 2, 1, 0.0F));
         mz.cubeList.add(new ModelBox(mz, 77, 61, -2.0F, -2.1F, -3.5F, 4, 2, 1, 0.0F));
         mz.cubeList.add(new ModelBox(mz, 55, 60, -4.0F, -2.0F, -3.25F, 8, 2, 2, 0.0F));
@@ -381,20 +381,20 @@ public class ModelkanbaSsjOozaru extends ModelBase {
         setRotationAngle(cube_r2, -0.9687F, 0.0F, 0.0F);
         cube_r2.cubeList.add(new ModelBox(cube_r2, 45, 53, -1.0F, -1.0068F, -0.0605F, 2, 1, 1, 0.0F));
 
-        Body = new ModelRenderer(this);
-        Body.setRotationPoint(-3.8F, 5.4F, 3.8F);
-        Body.cubeList.add(new ModelBox(Body, 16, 16, -0.2F, -5.4F, -5.8F, 8, 12, 4, 0.0F));
+        bipedBody = new ModelRenderer(this);
+        bipedBody.setRotationPoint(-3.8F, 5.4F, 3.8F);
+        bipedBody.cubeList.add(new ModelBox(bipedBody, 16, 16, -0.2F, -5.4F, -5.8F, 8, 12, 4, 0.0F));
 
-        RLeg = new ModelRenderer(this);
-        RLeg.setRotationPoint(1.8F, 6.6F, -3.8F);
-        Body.addChild(RLeg);
-        RLeg.cubeList.add(new ModelBox(RLeg, 0, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
+        bipedRightLeg = new ModelRenderer(this);
+        bipedRightLeg.setRotationPoint(1.8F, 6.6F, -3.8F);
+        bipedBody.addChild(bipedRightLeg);
+        bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 0, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
-        LLeg = new ModelRenderer(this);
-        LLeg.setRotationPoint(5.8F, 6.6F, -3.8F);
-        Body.addChild(LLeg);
-        LLeg.mirror = true;
-        LLeg.cubeList.add(new ModelBox(LLeg, 0, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
+        bipedLeftLeg = new ModelRenderer(this);
+        bipedLeftLeg.setRotationPoint(5.8F, 6.6F, -3.8F);
+        bipedBody.addChild(bipedLeftLeg);
+        bipedLeftLeg.mirror = true;
+        bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 0, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
         FroB = new ModelRenderer(this);
         FroB.setRotationPoint(0.0F, 10.0F, 2.0F);
@@ -430,14 +430,14 @@ public class ModelkanbaSsjOozaru extends ModelBase {
         ftailS5.addChild(ftailS6);
         ftailS6.cubeList.add(new ModelBox(ftailS6, 34, 4, -2.5F, -2.0F, 0.0F, 4, 4, 6, 0.0F));
 
-        RArm = new ModelRenderer(this);
-        RArm.setRotationPoint(-4.0F, 2.0F, 0.0F);
-        RArm.cubeList.add(new ModelBox(RArm, 40, 16, -4.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
+        bipedRightArm = new ModelRenderer(this);
+        bipedRightArm.setRotationPoint(-4.0F, 2.0F, 0.0F);
+        bipedRightArm.cubeList.add(new ModelBox(bipedRightArm, 40, 16, -4.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
 
-        LArm = new ModelRenderer(this);
-        LArm.setRotationPoint(4.0F, 2.0F, 0.0F);
-        LArm.mirror = true;
-        LArm.cubeList.add(new ModelBox(LArm, 40, 16, 0.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
+        bipedLeftArm = new ModelRenderer(this);
+        bipedLeftArm.setRotationPoint(4.0F, 2.0F, 0.0F);
+        bipedLeftArm.mirror = true;
+        bipedLeftArm.cubeList.add(new ModelBox(bipedLeftArm, 40, 16, 0.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
     }
 
     @Override
@@ -447,54 +447,54 @@ public class ModelkanbaSsjOozaru extends ModelBase {
             GL11.glPushMatrix();
             GL11.glScalef(this.scale, this.scale, this.scale);
             GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(this.scale/0.45F,1.88F)))), 0.0F);
-            this.Head.render(f5);
-            this.Body.render(f5);
+            this.bipedHead.render(f5);
+            this.bipedBody.render(f5);
             GL11.glPopMatrix();
         } else {
             GL11.glScalef(this.scale, this.scale, this.scale);
             GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(this.scale/0.45F,1.88F)))), 0.0F);
-            this.Head.render(f5);
-            this.Body.render(f5);
+            this.bipedHead.render(f5);
+            this.bipedBody.render(f5);
             renderHairs(0.0625F, "FR", f2);
-            this.RArm.render(f5);
-            this.LArm.render(f5);
-            this.Head.rotateAngleY = f3 / (180F / (float)Math.PI);
-            this.Head.rotateAngleX = f4 / (180F / (float)Math.PI);
-            this.RArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
-            this.LArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
-            this.RArm.rotateAngleZ = 0.0F;
-            this.LArm.rotateAngleZ = 0.0F;
-            this.RLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
-            this.LLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
-            this.RLeg.rotateAngleY = 0.0F;
-            this.LLeg.rotateAngleY = 0.0F;
+            this.bipedRightArm.render(f5);
+            this.bipedLeftArm.render(f5);
+            this.bipedHead.rotateAngleY = f3 / (180F / (float)Math.PI);
+            this.bipedHead.rotateAngleX = f4 / (180F / (float)Math.PI);
+            this.bipedRightArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
+            this.bipedLeftArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
+            this.bipedRightArm.rotateAngleZ = 0.0F;
+            this.bipedLeftArm.rotateAngleZ = 0.0F;
+            this.bipedRightLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+            this.bipedLeftLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+            this.bipedRightLeg.rotateAngleY = 0.0F;
+            this.bipedLeftLeg.rotateAngleY = 0.0F;
         }
         if (this.heldItemRight != 0) {
-            this.RArm.rotateAngleX = (this.RArm.rotateAngleX * 0.5F - 0.31415927F * this.heldItemRight);
+            this.bipedRightArm.rotateAngleX = (this.bipedRightArm.rotateAngleX * 0.5F - 0.31415927F * this.heldItemRight);
         }
-        this.RArm.rotateAngleY = 0.0F;
+        this.bipedRightArm.rotateAngleY = 0.0F;
         if (this.onGround > -9990.0F) {
             float f6 = this.onGround;
-            this.Body.rotateAngleY = (MathHelper.sin(MathHelper.sqrt_float(f6) * 3.1415927F * 2.0F) * 0.2F);
-            this.RArm.rotationPointZ = (-MathHelper.sin(this.Body.rotateAngleY) * 5.0F);
-            this.RArm.rotationPointX = (-MathHelper.cos(this.Body.rotateAngleY) * 5.0F);
-            this.LArm.rotationPointZ = (-MathHelper.sin(this.Body.rotateAngleY) * 5.0F);
-            this.LArm.rotationPointX = (MathHelper.cos(this.Body.rotateAngleY) * 5.0F);
+            this.bipedBody.rotateAngleY = (MathHelper.sin(MathHelper.sqrt_float(f6) * 3.1415927F * 2.0F) * 0.2F);
+            this.bipedRightArm.rotationPointZ = (-MathHelper.sin(this.bipedBody.rotateAngleY) * 5.0F);
+            this.bipedRightArm.rotationPointX = (-MathHelper.cos(this.bipedBody.rotateAngleY) * 5.0F);
+            this.bipedLeftArm.rotationPointZ = (-MathHelper.sin(this.bipedBody.rotateAngleY) * 5.0F);
+            this.bipedLeftArm.rotationPointX = (MathHelper.cos(this.bipedBody.rotateAngleY) * 5.0F);
 
             f6 = 1.0F - this.onGround;
             f6 *= f6;
             f6 *= f6;
             f6 = 1.0F - f6;
             float f7 = MathHelper.sin(f6 * 3.1415927F);
-            float f8 = MathHelper.sin(this.onGround * 3.1415927F) * -(this.Head.rotateAngleX - 0.7F) * 0.75F;
-            this.RArm.rotateAngleX = ((float)(this.RArm.rotateAngleX - (f7 * 1.2D + f8)));
-            this.RArm.rotateAngleY += this.Body.rotateAngleY * 2.0F;
-            this.RArm.rotateAngleZ = (MathHelper.sin(this.onGround * 2.1415927F) * -0.4F);
+            float f8 = MathHelper.sin(this.onGround * 3.1415927F) * -(this.bipedHead.rotateAngleX - 0.7F) * 0.75F;
+            this.bipedRightArm.rotateAngleX = ((float)(this.bipedRightArm.rotateAngleX - (f7 * 1.2D + f8)));
+            this.bipedRightArm.rotateAngleY += this.bipedBody.rotateAngleY * 2.0F;
+            this.bipedRightArm.rotateAngleZ = (MathHelper.sin(this.onGround * 2.1415927F) * -0.4F);
 
-            this.RArm.offsetX = 0.063F;
-            this.RArm.offsetZ = 0.0F;
-            this.LArm.offsetX = -0.126F;
-            this.LArm.offsetZ = 0.0F;
+            this.bipedRightArm.offsetX = 0.063F;
+            this.bipedRightArm.offsetZ = 0.0F;
+            this.bipedLeftArm.offsetX = -0.126F;
+            this.bipedLeftArm.offsetZ = 0.0F;
         }
     }
     private void transRot(float f5, ModelRenderer m)
@@ -515,7 +515,7 @@ public class ModelkanbaSsjOozaru extends ModelBase {
         if (hair.equals("FR"))
         {
             GL11.glPushMatrix();
-            transRot(par1, Body);
+            transRot(par1, bipedBody);
             GL11.glScalef(0.5F, 0.5F, 1.0F);
             FroB.render(par1);
             float r = MathHelper.sin(par3 * 0.02F) * 0.1F;

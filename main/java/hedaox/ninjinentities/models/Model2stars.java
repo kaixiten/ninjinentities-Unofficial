@@ -13,19 +13,19 @@ public class Model2stars extends ModelBase {
 	private final ModelRenderer bone4;
 	private final ModelRenderer head_r1;
 	private final ModelRenderer bipedBody;
-	private final ModelRenderer Body_r1;
+	private final ModelRenderer bipedBody_r1;
 	private final ModelRenderer bone6;
-	private final ModelRenderer Body_r2;
-	private final ModelRenderer Body_r3;
-	private final ModelRenderer Body_r4;
+	private final ModelRenderer bipedBody_r2;
+	private final ModelRenderer bipedBody_r3;
+	private final ModelRenderer bipedBody_r4;
 	private final ModelRenderer bone5;
-	private final ModelRenderer Body_r5;
-	private final ModelRenderer Body_r6;
-	private final ModelRenderer Body_r7;
+	private final ModelRenderer bipedBody_r5;
+	private final ModelRenderer bipedBody_r6;
+	private final ModelRenderer bipedBody_r7;
 	private final ModelRenderer bone3;
-	private final ModelRenderer Body_r8;
-	private final ModelRenderer Body_r9;
-	private final ModelRenderer Body_r10;
+	private final ModelRenderer bipedBody_r8;
+	private final ModelRenderer bipedBody_r9;
+	private final ModelRenderer bipedBody_r10;
 	private final ModelRenderer bipedRightArm;
 	private final ModelRenderer LeftArm2;
 	private final ModelRenderer RightArm_r1;
@@ -73,34 +73,34 @@ public class Model2stars extends ModelBase {
 		bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 0, -6.0F, -2.0F, -6.0F, 12, 8, 11, 0.0F));
 		bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 36, -5.0F, 6.0F, -4.0F, 10, 5, 8, 0.0F));
 
-		Body_r1 = new ModelRenderer(this);
-		Body_r1.setRotationPoint(0.0F, 24.0F, 0.0F);
-		bipedBody.addChild(Body_r1);
-		setRotationAngle(Body_r1, -0.2618F, 0.0F, 0.0F);
-		Body_r1.cubeList.add(new ModelBox(Body_r1, 0, 19, -6.0F, -14.0F, -9.0F, 12, 7, 10, 0.0F));
+		bipedBody_r1 = new ModelRenderer(this);
+		bipedBody_r1.setRotationPoint(0.0F, 24.0F, 0.0F);
+		bipedBody.addChild(bipedBody_r1);
+		setRotationAngle(bipedBody_r1, -0.2618F, 0.0F, 0.0F);
+		bipedBody_r1.cubeList.add(new ModelBox(bipedBody_r1, 0, 19, -6.0F, -14.0F, -9.0F, 12, 7, 10, 0.0F));
 
 		bone6 = new ModelRenderer(this);
 		bone6.setRotationPoint(0.0F, 24.0F, 0.0F);
 		bipedBody.addChild(bone6);
 		bone6.cubeList.add(new ModelBox(bone6, 50, 60, 4.0F, -31.0F, -1.0F, 2, 6, 2, -0.2F));
 
-		Body_r2 = new ModelRenderer(this);
-		Body_r2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		bone6.addChild(Body_r2);
-		setRotationAngle(Body_r2, -1.4835F, 0.0F, 0.0F);
-		Body_r2.cubeList.add(new ModelBox(Body_r2, 0, 0, 4.0F, -11.0F, -20.0F, 2, 6, 2, -0.2F));
+		bipedBody_r2 = new ModelRenderer(this);
+		bipedBody_r2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bone6.addChild(bipedBody_r2);
+		setRotationAngle(bipedBody_r2, -1.4835F, 0.0F, 0.0F);
+		bipedBody_r2.cubeList.add(new ModelBox(bipedBody_r2, 0, 0, 4.0F, -11.0F, -20.0F, 2, 6, 2, -0.2F));
 
-		Body_r3 = new ModelRenderer(this);
-		Body_r3.setRotationPoint(0.0F, 0.0F, 0.0F);
-		bone6.addChild(Body_r3);
-		setRotationAngle(Body_r3, -1.0908F, 0.0F, 0.0F);
-		Body_r3.cubeList.add(new ModelBox(Body_r3, 0, 19, 4.0F, -20.0F, -19.0F, 2, 6, 2, -0.2F));
+		bipedBody_r3 = new ModelRenderer(this);
+		bipedBody_r3.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bone6.addChild(bipedBody_r3);
+		setRotationAngle(bipedBody_r3, -1.0908F, 0.0F, 0.0F);
+		bipedBody_r3.cubeList.add(new ModelBox(bipedBody_r3, 0, 19, 4.0F, -20.0F, -19.0F, 2, 6, 2, -0.2F));
 
-		Body_r4 = new ModelRenderer(this);
-		Body_r4.setRotationPoint(0.0F, 0.0F, 0.0F);
-		bone6.addChild(Body_r4);
-		setRotationAngle(Body_r4, -0.6545F, 0.0F, 0.0F);
-		Body_r4.cubeList.add(new ModelBox(Body_r4, 0, 36, 4.0F, -28.0F, -14.0F, 2, 6, 2, -0.2F));
+		bipedBody_r4 = new ModelRenderer(this);
+		bipedBody_r4.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bone6.addChild(bipedBody_r4);
+		setRotationAngle(bipedBody_r4, -0.6545F, 0.0F, 0.0F);
+		bipedBody_r4.cubeList.add(new ModelBox(bipedBody_r4, 0, 36, 4.0F, -28.0F, -14.0F, 2, 6, 2, -0.2F));
 
 		bone5 = new ModelRenderer(this);
 		bone5.setRotationPoint(0.0F, 24.0F, 0.0F);
@@ -108,23 +108,23 @@ public class Model2stars extends ModelBase {
 		bone5.cubeList.add(new ModelBox(bone5, 58, 61, -6.0F, -31.0F, -1.0F, 2, 6, 2, -0.2F));
 		bone5.cubeList.add(new ModelBox(bone5, 28, 49, -1.0F, -28.0F, 1.0F, 2, 3, 2, -0.2F));
 
-		Body_r5 = new ModelRenderer(this);
-		Body_r5.setRotationPoint(0.0F, 0.0F, 0.0F);
-		bone5.addChild(Body_r5);
-		setRotationAngle(Body_r5, -1.4835F, 0.0F, 0.0F);
-		Body_r5.cubeList.add(new ModelBox(Body_r5, 0, 61, -6.0F, -11.0F, -20.0F, 2, 6, 2, -0.2F));
+		bipedBody_r5 = new ModelRenderer(this);
+		bipedBody_r5.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bone5.addChild(bipedBody_r5);
+		setRotationAngle(bipedBody_r5, -1.4835F, 0.0F, 0.0F);
+		bipedBody_r5.cubeList.add(new ModelBox(bipedBody_r5, 0, 61, -6.0F, -11.0F, -20.0F, 2, 6, 2, -0.2F));
 
-		Body_r6 = new ModelRenderer(this);
-		Body_r6.setRotationPoint(0.0F, 0.0F, 0.0F);
-		bone5.addChild(Body_r6);
-		setRotationAngle(Body_r6, -1.0908F, 0.0F, 0.0F);
-		Body_r6.cubeList.add(new ModelBox(Body_r6, 8, 61, -6.0F, -20.0F, -19.0F, 2, 6, 2, -0.2F));
+		bipedBody_r6 = new ModelRenderer(this);
+		bipedBody_r6.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bone5.addChild(bipedBody_r6);
+		setRotationAngle(bipedBody_r6, -1.0908F, 0.0F, 0.0F);
+		bipedBody_r6.cubeList.add(new ModelBox(bipedBody_r6, 8, 61, -6.0F, -20.0F, -19.0F, 2, 6, 2, -0.2F));
 
-		Body_r7 = new ModelRenderer(this);
-		Body_r7.setRotationPoint(0.0F, 0.0F, 0.0F);
-		bone5.addChild(Body_r7);
-		setRotationAngle(Body_r7, -0.6545F, 0.0F, 0.0F);
-		Body_r7.cubeList.add(new ModelBox(Body_r7, 16, 61, -6.0F, -28.0F, -14.0F, 2, 6, 2, -0.2F));
+		bipedBody_r7 = new ModelRenderer(this);
+		bipedBody_r7.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bone5.addChild(bipedBody_r7);
+		setRotationAngle(bipedBody_r7, -0.6545F, 0.0F, 0.0F);
+		bipedBody_r7.cubeList.add(new ModelBox(bipedBody_r7, 16, 61, -6.0F, -28.0F, -14.0F, 2, 6, 2, -0.2F));
 
 		bone3 = new ModelRenderer(this);
 		bone3.setRotationPoint(0.0F, 23.6F, 0.0F);
@@ -132,23 +132,23 @@ public class Model2stars extends ModelBase {
 		setRotationAngle(bone3, -0.0873F, 0.0F, 0.0F);
 
 
-		Body_r8 = new ModelRenderer(this);
-		Body_r8.setRotationPoint(0.0F, 0.0F, 0.0F);
-		bone3.addChild(Body_r8);
-		setRotationAngle(Body_r8, -0.2618F, 0.0F, 0.0F);
-		Body_r8.cubeList.add(new ModelBox(Body_r8, 44, 24, -2.25F, -8.0F, 4.25F, 5, 4, 7, 0.0F));
+		bipedBody_r8 = new ModelRenderer(this);
+		bipedBody_r8.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bone3.addChild(bipedBody_r8);
+		setRotationAngle(bipedBody_r8, -0.2618F, 0.0F, 0.0F);
+		bipedBody_r8.cubeList.add(new ModelBox(bipedBody_r8, 44, 24, -2.25F, -8.0F, 4.25F, 5, 4, 7, 0.0F));
 
-		Body_r9 = new ModelRenderer(this);
-		Body_r9.setRotationPoint(0.0F, 0.0F, 0.0F);
-		bone3.addChild(Body_r9);
-		setRotationAngle(Body_r9, -0.7418F, 0.0F, 0.0F);
-		Body_r9.cubeList.add(new ModelBox(Body_r9, 36, 36, -4.0F, -10.0F, -5.0F, 8, 5, 7, 0.0F));
+		bipedBody_r9 = new ModelRenderer(this);
+		bipedBody_r9.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bone3.addChild(bipedBody_r9);
+		setRotationAngle(bipedBody_r9, -0.7418F, 0.0F, 0.0F);
+		bipedBody_r9.cubeList.add(new ModelBox(bipedBody_r9, 36, 36, -4.0F, -10.0F, -5.0F, 8, 5, 7, 0.0F));
 
-		Body_r10 = new ModelRenderer(this);
-		Body_r10.setRotationPoint(0.0F, 0.0F, 0.0F);
-		bone3.addChild(Body_r10);
-		setRotationAngle(Body_r10, -0.0873F, 0.0F, 0.0F);
-		Body_r10.cubeList.add(new ModelBox(Body_r10, 30, 48, -1.25F, -5.5F, 11.25F, 3, 3, 6, 0.0F));
+		bipedBody_r10 = new ModelRenderer(this);
+		bipedBody_r10.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bone3.addChild(bipedBody_r10);
+		setRotationAngle(bipedBody_r10, -0.0873F, 0.0F, 0.0F);
+		bipedBody_r10.cubeList.add(new ModelBox(bipedBody_r10, 30, 48, -1.25F, -5.5F, 11.25F, 3, 3, 6, 0.0F));
 
 		bipedRightArm = new ModelRenderer(this);
 		bipedRightArm.setRotationPoint(-6.0F, 2.0F, -1.0F);
@@ -260,9 +260,9 @@ public class Model2stars extends ModelBase {
 	}
 
     @Override
-    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor) {
+    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor) {
         // ★ 先计算动画角度
-        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
+        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netbipedHeadYaw, headPitch, scaleFactor, entity);
         GL11.glPushMatrix();
         GL11.glScalef(scale, scale, scale);
         GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(scale/0.45F,1.88F)))), 0.0F);
@@ -276,8 +276,8 @@ public class Model2stars extends ModelBase {
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
     }
-    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
-        this.bipedHead.rotateAngleY = netHeadYaw / (180F / (float)Math.PI);
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+        this.bipedHead.rotateAngleY = netbipedHeadYaw / (180F / (float)Math.PI);
         this.bipedHead.rotateAngleX = headPitch / (180F / (float)Math.PI);
 
         this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F;

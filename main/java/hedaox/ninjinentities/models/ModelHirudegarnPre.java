@@ -8,8 +8,8 @@ import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
 
 public class ModelHirudegarnPre extends ModelBase {
-	private final ModelRenderer Head;
-	private final ModelRenderer Body;
+	private final ModelRenderer bipedHead;
+	private final ModelRenderer bipedBody;
 	private final ModelRenderer Bone;
 	private final ModelRenderer globl_horns;
 	private final ModelRenderer horns2_r1;
@@ -31,13 +31,13 @@ public class ModelHirudegarnPre extends ModelBase {
 	private final ModelRenderer Tail;
 	private final ModelRenderer Tail2;
 	private final ModelRenderer bodyChildChild;
-	private final ModelRenderer RArm;
+	private final ModelRenderer bipedRightArm;
 	private final ModelRenderer RightGauntlet;
-	private final ModelRenderer LArm;
+	private final ModelRenderer bipedLeftArm;
 	private final ModelRenderer bone;
-	private final ModelRenderer RLeg;
-	private final ModelRenderer RLeg2;
-	private final ModelRenderer LLeg;
+	private final ModelRenderer bipedRightLeg;
+	private final ModelRenderer bipedRightLeg2;
+	private final ModelRenderer bipedLeftLeg;
 	private final ModelRenderer LeftLeg3;
 	private float scaleX = 1.0F;
 	private float scaleY = 1.0F;
@@ -52,24 +52,24 @@ public class ModelHirudegarnPre extends ModelBase {
 		textureWidth = 256;
 		textureHeight = 256;
 
-		Head = new ModelRenderer(this);
-		Head.setRotationPoint(0.0F, 12.0F, 0.0F);
-		Head.cubeList.add(new ModelBox(Head, 0, 57, -5.0F, -52.0F, -13.0F, 10, 11, 13, 0.0F));
+		bipedHead = new ModelRenderer(this);
+		bipedHead.setRotationPoint(0.0F, 12.0F, 0.0F);
+		bipedHead.cubeList.add(new ModelBox(bipedHead, 0, 57, -5.0F, -52.0F, -13.0F, 10, 11, 13, 0.0F));
 
-		Body = new ModelRenderer(this);
-		Body.setRotationPoint(0.0F, 15.0F, 0.0F);
-		Body.cubeList.add(new ModelBox(Body, 66, 0, -8.0F, -49.0F, -4.0F, 16, 15, 8, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 102, 29, -7.0F, -34.0F, -4.0F, 14, 5, 8, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 98, 106, -6.0F, -29.0F, -4.0F, 12, 7, 8, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 0, 137, -2.0F, -23.0F, -4.0F, 4, 3, 8, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 58, 131, -3.0F, -20.0F, -4.0F, 6, 3, 8, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 0, 0, -8.0F, -57.0F, -8.0F, 16, 14, 17, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 0, 120, -9.0F, -26.0F, -5.0F, 7, 7, 10, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 117, 42, 2.0F, -26.0F, -5.0F, 7, 7, 10, 0.0F));
+		bipedBody = new ModelRenderer(this);
+		bipedBody.setRotationPoint(0.0F, 15.0F, 0.0F);
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 66, 0, -8.0F, -49.0F, -4.0F, 16, 15, 8, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 102, 29, -7.0F, -34.0F, -4.0F, 14, 5, 8, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 98, 106, -6.0F, -29.0F, -4.0F, 12, 7, 8, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 137, -2.0F, -23.0F, -4.0F, 4, 3, 8, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 58, 131, -3.0F, -20.0F, -4.0F, 6, 3, 8, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 0, -8.0F, -57.0F, -8.0F, 16, 14, 17, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 120, -9.0F, -26.0F, -5.0F, 7, 7, 10, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 117, 42, 2.0F, -26.0F, -5.0F, 7, 7, 10, 0.0F));
 
 		Bone = new ModelRenderer(this);
 		Bone.setRotationPoint(2.0F, -48.0F, -4.0F);
-		Body.addChild(Bone);
+		bipedBody.addChild(Bone);
 		Bone.cubeList.add(new ModelBox(Bone, 4, 3, -9.0F, -12.0F, -7.0F, 14, 15, 14, 0.0F));
 
 		globl_horns = new ModelRenderer(this);
@@ -147,13 +147,13 @@ public class ModelHirudegarnPre extends ModelBase {
 		Tail = new ModelRenderer(this);
 		Tail.setRotationPoint(0.0F, -15.0F, 0.0F);
 		setRotationAngle(Tail, -0.3491F, 0.0F, 0.0F);
-		Body.addChild(Tail);
+		bipedBody.addChild(Tail);
 		Tail.cubeList.add(new ModelBox(Tail, 210, 54, -3.0F, -10.0611F, 1.3468F, 6, 5, 17, 0.0F));
 
 		Tail2 = new ModelRenderer(this);
 		Tail2.setRotationPoint(0.0F, -17.0F, 0.0F);
 		setRotationAngle(Tail2, 0.5236F, 0.0F, 0.0F);
-		Body.addChild(Tail2);
+		bipedBody.addChild(Tail2);
 		Tail2.cubeList.add(new ModelBox(Tail2, 204, 0, -3.0F, 7.5096F, 14.4904F, 6, 5, 20, 0.0F));
 
 		bodyChildChild = new ModelRenderer(this);
@@ -161,42 +161,42 @@ public class ModelHirudegarnPre extends ModelBase {
 		Tail2.addChild(bodyChildChild);
 		bodyChildChild.cubeList.add(new ModelBox(bodyChildChild, 227, 56, -2.0F, 9.6436F, 34.8564F, 4, 2, 6, 0.0F));
 
-		RArm = new ModelRenderer(this);
-		RArm.setRotationPoint(-9.0F, -48.0F, 0.0F);
-		setRotationAngle(RArm, 0.0F, 0.0F, 0.0873F);
-		Body.addChild(RArm);
-		RArm.cubeList.add(new ModelBox(RArm, 46, 71, -8.0417F, -1.4786F, -4.0F, 7, 30, 8, 0.0F));
+		bipedRightArm = new ModelRenderer(this);
+		bipedRightArm.setRotationPoint(-9.0F, -48.0F, 0.0F);
+		setRotationAngle(bipedRightArm, 0.0F, 0.0F, 0.0873F);
+		bipedBody.addChild(bipedRightArm);
+		bipedRightArm.cubeList.add(new ModelBox(bipedRightArm, 46, 71, -8.0417F, -1.4786F, -4.0F, 7, 30, 8, 0.0F));
 
 		RightGauntlet = new ModelRenderer(this);
 		RightGauntlet.setRotationPoint(15.4237F, 50.2827F, 0.0F);
-		RArm.addChild(RightGauntlet);
+		bipedRightArm.addChild(RightGauntlet);
 		RightGauntlet.cubeList.add(new ModelBox(RightGauntlet, 0, 174, -24.5785F, -33.9166F, -5.0F, 9, 11, 10, 0.0F));
 
 		right_sleeve = new ModelRenderer(this);
 		right_sleeve.setRotationPoint(5.9774F, 56.9573F, 0.0F);
 		setRotationAngle(right_sleeve, 0.0F, 0.0F, 0.0436F);
-		RArm.addChild(right_sleeve);
+		bipedRightArm.addChild(right_sleeve);
 		right_sleeve.cubeList.add(new ModelBox(right_sleeve, 106, 94, -20.0F, -64.0F, 7.0F, 14, 5, 0, 0.0F));
 		right_sleeve.cubeList.add(new ModelBox(right_sleeve, 106, 92, -20.0F, -64.0F, -7.0F, 14, 5, 0, 0.0F));
 		right_sleeve.cubeList.add(new ModelBox(right_sleeve, 106, 81, -20.0F, -64.0F, -7.0F, 0, 5, 14, 0.0F));
 		right_sleeve.cubeList.add(new ModelBox(right_sleeve, 36, 31, -20.0F, -64.0F, -7.0F, 14, 0, 14, 0.0F));
 		right_sleeve.cubeList.add(new ModelBox(right_sleeve, 38, 45, -19.0F, -64.0F, -6.0F, 13, 14, 12, 0.0F));
 
-		LArm = new ModelRenderer(this);
-		LArm.setRotationPoint(8.0F, -48.0F, 0.0F);
-		setRotationAngle(LArm, 0.0F, 0.0F, -0.0873F);
-		Body.addChild(LArm);
-		LArm.cubeList.add(new ModelBox(LArm, 76, 76, 2.0455F, -1.5658F, -4.0F, 7, 30, 8, 0.0F));
+		bipedLeftArm = new ModelRenderer(this);
+		bipedLeftArm.setRotationPoint(8.0F, -48.0F, 0.0F);
+		setRotationAngle(bipedLeftArm, 0.0F, 0.0F, -0.0873F);
+		bipedBody.addChild(bipedLeftArm);
+		bipedLeftArm.cubeList.add(new ModelBox(bipedLeftArm, 76, 76, 2.0455F, -1.5658F, -4.0F, 7, 30, 8, 0.0F));
 
 		bone = new ModelRenderer(this);
 		bone.setRotationPoint(-12.9545F, 56.4342F, 0.0F);
-		LArm.addChild(bone);
+		bipedLeftArm.addChild(bone);
 		bone.cubeList.add(new ModelBox(bone, 0, 174, 14.0F, -40.5671F, -5.0F, 9, 11, 10, 0.0F));
 
 		left_sleeve = new ModelRenderer(this);
 		left_sleeve.setRotationPoint(22.0264F, 54.8701F, 0.0F);
 		setRotationAngle(left_sleeve, 0.0F, 0.0F, -0.0436F);
-		LArm.addChild(left_sleeve);
+		bipedLeftArm.addChild(left_sleeve);
 		left_sleeve.cubeList.add(new ModelBox(left_sleeve, 106, 92, -22.0F, -63.0F, 7.0F, 14, 5, 0, 0.0F));
 		left_sleeve.cubeList.add(new ModelBox(left_sleeve, 105, 92, -22.0F, -63.0F, -7.0F, 14, 5, 0, 0.0F));
 		left_sleeve.cubeList.add(new ModelBox(left_sleeve, 66, 0, -22.0F, -63.0F, -7.0F, 0, 5, 14, 0.0F));
@@ -204,31 +204,31 @@ public class ModelHirudegarnPre extends ModelBase {
 		left_sleeve.cubeList.add(new ModelBox(left_sleeve, 36, 45, -21.0F, -63.0F, -6.0F, 13, 14, 12, 0.0F));
 		left_sleeve.cubeList.add(new ModelBox(left_sleeve, 106, 80, -7.9111F, -63.0794F, -7.0F, 0, 5, 14, 0.0F));
 
-		RLeg = new ModelRenderer(this);
-		RLeg.setRotationPoint(-7.0F, -19.0F, -2.0F);
-		setRotationAngle(RLeg, -0.1309F, 0.0F, 0.0F);
-		Body.addChild(RLeg);
-		RLeg.cubeList.add(new ModelBox(RLeg, 97, 121, -3.0F, -0.5271F, -1.2162F, 6, 15, 6, 0.0F));
+		bipedRightLeg = new ModelRenderer(this);
+		bipedRightLeg.setRotationPoint(-7.0F, -19.0F, -2.0F);
+		setRotationAngle(bipedRightLeg, -0.1309F, 0.0F, 0.0F);
+		bipedBody.addChild(bipedRightLeg);
+		bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 97, 121, -3.0F, -0.5271F, -1.2162F, 6, 15, 6, 0.0F));
 
-		RLeg2 = new ModelRenderer(this);
-		RLeg2.setRotationPoint(-6.0F, 28.274F, 7.8195F);
-		setRotationAngle(RLeg2, 0.1745F, 0.0F, 0.0F);
-		RLeg.addChild(RLeg2);
-		RLeg2.cubeList.add(new ModelBox(RLeg2, 129, 60, 3.0F, -16.2611F, -6.6831F, 6, 15, 6, 0.0F));
-		RLeg2.cubeList.add(new ModelBox(RLeg2, 140, 120, 2.0F, -1.9051F, -8.8096F, 3, 1, 8, 0.0F));
-		RLeg2.cubeList.add(new ModelBox(RLeg2, 26, 71, 5.0F, -2.8182F, -6.8171F, 2, 2, 7, 0.0F));
-		RLeg2.cubeList.add(new ModelBox(RLeg2, 141, 121, 7.0F, -1.9051F, -8.8096F, 3, 1, 7, 0.0F));
+		bipedRightLeg2 = new ModelRenderer(this);
+		bipedRightLeg2.setRotationPoint(-6.0F, 28.274F, 7.8195F);
+		setRotationAngle(bipedRightLeg2, 0.1745F, 0.0F, 0.0F);
+		bipedRightLeg.addChild(bipedRightLeg2);
+		bipedRightLeg2.cubeList.add(new ModelBox(bipedRightLeg2, 129, 60, 3.0F, -16.2611F, -6.6831F, 6, 15, 6, 0.0F));
+		bipedRightLeg2.cubeList.add(new ModelBox(bipedRightLeg2, 140, 120, 2.0F, -1.9051F, -8.8096F, 3, 1, 8, 0.0F));
+		bipedRightLeg2.cubeList.add(new ModelBox(bipedRightLeg2, 26, 71, 5.0F, -2.8182F, -6.8171F, 2, 2, 7, 0.0F));
+		bipedRightLeg2.cubeList.add(new ModelBox(bipedRightLeg2, 141, 121, 7.0F, -1.9051F, -8.8096F, 3, 1, 7, 0.0F));
 
-		LLeg = new ModelRenderer(this);
-		LLeg.setRotationPoint(7.0F, -19.0F, -1.0F);
-		setRotationAngle(LLeg, -0.1309F, 0.0F, 0.0F);
-		Body.addChild(LLeg);
-		LLeg.cubeList.add(new ModelBox(LLeg, 97, 121, -3.0F, -0.3965F, -2.2076F, 6, 15, 6, 0.0F));
+		bipedLeftLeg = new ModelRenderer(this);
+		bipedLeftLeg.setRotationPoint(7.0F, -19.0F, -1.0F);
+		setRotationAngle(bipedLeftLeg, -0.1309F, 0.0F, 0.0F);
+		bipedBody.addChild(bipedLeftLeg);
+		bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 97, 121, -3.0F, -0.3965F, -2.2076F, 6, 15, 6, 0.0F));
 
 		LeftLeg3 = new ModelRenderer(this);
 		LeftLeg3.setRotationPoint(-6.0F, 28.4046F, 6.8281F);
 		setRotationAngle(LeftLeg3, 0.1745F, 0.0F, 0.0F);
-		LLeg.addChild(LeftLeg3);
+		bipedLeftLeg.addChild(LeftLeg3);
 		LeftLeg3.cubeList.add(new ModelBox(LeftLeg3, 129, 60, 3.0F, -16.2611F, -6.6831F, 6, 15, 6, 0.0F));
 		LeftLeg3.cubeList.add(new ModelBox(LeftLeg3, 140, 120, 2.0F, -1.9051F, -8.8096F, 3, 1, 8, 0.0F));
 		LeftLeg3.cubeList.add(new ModelBox(LeftLeg3, 26, 71, 5.0F, -2.8182F, -6.8171F, 2, 2, 7, 0.0F));
@@ -240,17 +240,17 @@ public class ModelHirudegarnPre extends ModelBase {
 		GL11.glPushMatrix();
 		GL11.glScalef(this.scaleX, this.scaleY, this.scaleZ);
 		GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(this.scaleY/0.45F,1.88F)))), 0.0F);
-		Head.render(f5);
-		Body.render(f5);
+		bipedHead.render(f5);
+		bipedBody.render(f5);
 		GL11.glPopMatrix();
-		this.RArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
-		this.LArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
-		this.RArm.rotateAngleZ = 0.0F;
-		this.LArm.rotateAngleZ = 0.0F;
-		this.RLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
-		this.LLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
-		this.RLeg.rotateAngleY = 0.0F;
-		this.LLeg.rotateAngleY = 0.0F;
+		this.bipedRightArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
+		this.bipedLeftArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
+		this.bipedRightArm.rotateAngleZ = 0.0F;
+		this.bipedLeftArm.rotateAngleZ = 0.0F;
+		this.bipedRightLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+		this.bipedLeftLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+		this.bipedRightLeg.rotateAngleY = 0.0F;
+		this.bipedLeftLeg.rotateAngleY = 0.0F;
 	}
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;

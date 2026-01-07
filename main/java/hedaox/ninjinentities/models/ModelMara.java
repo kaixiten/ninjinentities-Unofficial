@@ -8,54 +8,54 @@ import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
 
 public class ModelMara extends ModelBase {
-	private final ModelRenderer Body;
+	private final ModelRenderer bipedBody;
 	private final ModelRenderer bone3;
 	private final ModelRenderer RightLeg;
 	private final ModelRenderer LeftLeg;
 	private final ModelRenderer RightArm;
 	private final ModelRenderer LeftArm;
-	private final ModelRenderer Head;
+	private final ModelRenderer bipedHead;
 	private final ModelRenderer bone;
-	private final ModelRenderer Head_r1;
+	private final ModelRenderer bipedHead_r1;
 	private final ModelRenderer bone2;
-	private final ModelRenderer Head_r2;
+	private final ModelRenderer bipedHead_r2;
 	private float scale = 1.0F;
 
 	public ModelMara(float _scale) {
 		textureWidth = 64;
 		textureHeight = 64;
 
-		Body = new ModelRenderer(this);
-		Body.setRotationPoint(0.0F, 0.0F, 0.0F);
-		Body.cubeList.add(new ModelBox(Body, 0, 24, -4.0F, 0.0F, -2.0F, 8, 6, 4, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 24, 0, -4.0F, 9.0F, -2.0F, 8, 3, 4, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 0, 34, -3.0F, 6.0F, -1.5F, 6, 6, 3, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 0, 16, -4.5F, 9.0F, -2.25F, 9, 3, 5, 0.02F));
-		Body.cubeList.add(new ModelBox(Body, 24, 19, -4.5F, 11.0F, -2.25F, 5, 6, 5, 0.0F));
+		bipedBody = new ModelRenderer(this);
+		bipedBody.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 24, -4.0F, 0.0F, -2.0F, 8, 6, 4, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 24, 0, -4.0F, 9.0F, -2.0F, 8, 3, 4, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 34, -3.0F, 6.0F, -1.5F, 6, 6, 3, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 16, -4.5F, 9.0F, -2.25F, 9, 3, 5, 0.02F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 24, 19, -4.5F, 11.0F, -2.25F, 5, 6, 5, 0.0F));
 
 
 		bone3 = new ModelRenderer(this);
 		bone3.setRotationPoint(0.0F, 0.0F, 0.0F);
-		Body.addChild(bone3);
+		bipedBody.addChild(bone3);
 		bone3.mirror = true;
 		bone3.cubeList.add(new ModelBox(bone3, 24, 19, -0.5F, 11.0F, -2.25F, 5, 6, 5, 0.0F));
 
 		RightLeg = new ModelRenderer(this);
 		RightLeg.setRotationPoint(-1.9F, 12.0F, 0.0F);
-		Body.addChild(RightLeg);
+		bipedBody.addChild(RightLeg);
 		RightLeg.cubeList.add(new ModelBox(RightLeg, 32, 7, -2.0F, 0.0F, -2.0F, 4, 7, 4, 0.0F));
 		RightLeg.cubeList.add(new ModelBox(RightLeg, 52, 45, -1.5F, 7.0F, -1.5F, 3, 5, 3, 0.0F));
 		RightLeg.mirror = true;
 
 		LeftLeg = new ModelRenderer(this);
 		LeftLeg.setRotationPoint(1.9F, 12.0F, 0.0F);
-		Body.addChild(LeftLeg);
+		bipedBody.addChild(LeftLeg);
 		LeftLeg.cubeList.add(new ModelBox(LeftLeg, 32, 7, -2.0F, 0.0F, -2.0F, 4, 7, 4, 0.0F));
 		LeftLeg.cubeList.add(new ModelBox(LeftLeg, 52, 45, -1.5F, 7.0F, -1.5F, 3, 5, 3, 0.0F));
 
 		RightArm = new ModelRenderer(this);
 		RightArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
-		Body.addChild(RightArm);
+		bipedBody.addChild(RightArm);
 		RightArm.mirror = true;
 		RightArm.cubeList.add(new ModelBox(RightArm, 44, 14, -3.0F, -2.25F, -2.0F, 4, 6, 4, 0.0F));
 		RightArm.mirror = true;
@@ -63,37 +63,37 @@ public class ModelMara extends ModelBase {
 
 		LeftArm = new ModelRenderer(this);
 		LeftArm.setRotationPoint(5.0F, 2.0F, 0.0F);
-		Body.addChild(LeftArm);
+		bipedBody.addChild(LeftArm);
 		LeftArm.cubeList.add(new ModelBox(LeftArm, 44, 14, -1.0F, -2.25F, -2.0F, 4, 6, 4, 0.0F));
 		LeftArm.cubeList.add(new ModelBox(LeftArm, 36, 38, -0.5F, 0.0F, -1.5F, 3, 12, 3, 0.0F));
 
-		Head = new ModelRenderer(this);
-		Head.setRotationPoint(0.0F, 0.0F, -1.0F);
-		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -7.75F, -3.25F, 8, 8, 8, -0.2F));
-		Head.cubeList.add(new ModelBox(Head, 48, 37, -3.5F, 0.0F, -3.0F, 7, 7, 1, 0.0F));
-		Head.cubeList.add(new ModelBox(Head, 0, 43, -1.5F, -2.75F, -5.75F, 3, 3, 4, -0.25F));
+		bipedHead = new ModelRenderer(this);
+		bipedHead.setRotationPoint(0.0F, 0.0F, -1.0F);
+		bipedHead.cubeList.add(new ModelBox(bipedHead, 0, 0, -4.0F, -7.75F, -3.25F, 8, 8, 8, -0.2F));
+		bipedHead.cubeList.add(new ModelBox(bipedHead, 48, 37, -3.5F, 0.0F, -3.0F, 7, 7, 1, 0.0F));
+		bipedHead.cubeList.add(new ModelBox(bipedHead, 0, 43, -1.5F, -2.75F, -5.75F, 3, 3, 4, -0.25F));
 
 		bone = new ModelRenderer(this);
 		bone.setRotationPoint(-0.5F, 25.0F, 0.0F);
-		Head.addChild(bone);
+		bipedHead.addChild(bone);
 		bone.cubeList.add(new ModelBox(bone, 48, 10, 3.5F, -31.0F, 2.0F, 3, 2, 2, 0.0F));
 
-		Head_r1 = new ModelRenderer(this);
-		Head_r1.setRotationPoint(0.0F, 0.0F, 0.0F);
-		bone.addChild(Head_r1);
-		setRotationAngle(Head_r1, 0.6563F, 0.0692F, 0.0532F);
-		Head_r1.cubeList.add(new ModelBox(Head_r1, 42, 47, 3.5F, -23.0F, 14.9F, 2, 2, 6, 0.0F));
+		bipedHead_r1 = new ModelRenderer(this);
+		bipedHead_r1.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bone.addChild(bipedHead_r1);
+		setRotationAngle(bipedHead_r1, 0.6563F, 0.0692F, 0.0532F);
+		bipedHead_r1.cubeList.add(new ModelBox(bipedHead_r1, 42, 47, 3.5F, -23.0F, 14.9F, 2, 2, 6, 0.0F));
 
 		bone2 = new ModelRenderer(this);
 		bone2.setRotationPoint(1.0F, 0.0F, 0.0F);
 		bone.addChild(bone2);
 		bone2.cubeList.add(new ModelBox(bone2, 48, 10, -6.5F, -31.0F, 2.0F, 3, 2, 2, 0.0F));
 
-		Head_r2 = new ModelRenderer(this);
-		Head_r2.setRotationPoint(0.0F, 0.0F, 0.0F);
-		bone2.addChild(Head_r2);
-		setRotationAngle(Head_r2, 0.6563F, -0.0692F, -0.0532F);
-		Head_r2.cubeList.add(new ModelBox(Head_r2, 42, 47, -5.5F, -23.0F, 14.9F, 2, 2, 6, 0.0F));
+		bipedHead_r2 = new ModelRenderer(this);
+		bipedHead_r2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bone2.addChild(bipedHead_r2);
+		setRotationAngle(bipedHead_r2, 0.6563F, -0.0692F, -0.0532F);
+		bipedHead_r2.cubeList.add(new ModelBox(bipedHead_r2, 42, 47, -5.5F, -23.0F, 14.9F, 2, 2, 6, 0.0F));
 	}
 
 	@Override
@@ -101,11 +101,11 @@ public class ModelMara extends ModelBase {
 		GL11.glPushMatrix();
 		GL11.glScalef(this.scale, this.scale, this.scale);
 		GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(this.scale/0.45F,1.88F)))), 0.0F);
-		Head.render(f5);
-		Body.render(f5);
+		bipedHead.render(f5);
+		bipedBody.render(f5);
 		GL11.glPopMatrix();
-        this.Head.rotateAngleY = f3 / (180F / (float)Math.PI);
-        this.Head.rotateAngleX = f4 / (180F / (float)Math.PI);
+        this.bipedHead.rotateAngleY = f3 / (180F / (float)Math.PI);
+        this.bipedHead.rotateAngleX = f4 / (180F / (float)Math.PI);
 		this.RightArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
 		this.LeftArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
 		this.RightArm.rotateAngleZ = 0.0F;

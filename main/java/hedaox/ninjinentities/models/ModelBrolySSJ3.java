@@ -5,10 +5,11 @@ import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
+import org.lwjgl.opengl.GL11;
 
 
 public class ModelBrolySSJ3 extends ModelBase {
-    private final ModelRenderer Head;
+    private final ModelRenderer bipedHead;
     private final ModelRenderer hair;
     private final ModelRenderer hair1;
     private final ModelRenderer hair1_r1;
@@ -63,32 +64,32 @@ public class ModelBrolySSJ3 extends ModelBase {
     private final ModelRenderer hair39;
     private final ModelRenderer hair40;
     private final ModelRenderer hair41;
-    private final ModelRenderer Body1;
-    private final ModelRenderer Body2;
+    private final ModelRenderer bipedBody;
+    private final ModelRenderer bipedBody2;
     private final ModelRenderer Chest;
-    private final ModelRenderer Body3;
+    private final ModelRenderer bipedBody3;
     private final ModelRenderer Cloth;
-    private final ModelRenderer ArmR1;
+    private final ModelRenderer bipedRightArm;
     private final ModelRenderer ArmR2;
     private final ModelRenderer ArmR3;
     private final ModelRenderer ArmR3_r1;
-    private final ModelRenderer ArmL1;
+    private final ModelRenderer bipedLeftArm;
     private final ModelRenderer ArmL2;
     private final ModelRenderer ArmL3;
-    private final ModelRenderer LegR;
-    private final ModelRenderer LegL;
+    private final ModelRenderer bipedRightLeg;
+    private final ModelRenderer bipedLeftLeg;
 
     public ModelBrolySSJ3() {
         textureWidth = 128;
         textureHeight = 64;
 
-        Head = new ModelRenderer(this);
-        Head.setRotationPoint(0.0F, -8.0F, 0.5F);
-        Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
+        bipedHead = new ModelRenderer(this);
+        bipedHead.setRotationPoint(0.0F, -8.0F, 0.5F);
+        bipedHead.cubeList.add(new ModelBox(bipedHead, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
         hair = new ModelRenderer(this);
         hair.setRotationPoint(2.0F, -8.7F, -3.3F);
-        Head.addChild(hair);
+        bipedHead.addChild(hair);
 
 
         hair1 = new ModelRenderer(this);
@@ -409,37 +410,37 @@ public class ModelBrolySSJ3 extends ModelBase {
         setRotationAngle(hair41, -2.7053F, 0.1745F, -0.9599F);
         hair41.cubeList.add(new ModelBox(hair41, 56, 2, 5.9972F, -8.6289F, 0.8415F, 3, 7, 3, -0.1F));
 
-        Body1 = new ModelRenderer(this);
-        Body1.setRotationPoint(0.0F, -8.0F, 0.0F);
-        Body1.cubeList.add(new ModelBox(Body1, 0, 18, -7.0F, 0.0F, -2.7F, 14, 8, 7, 0.0F));
+        bipedBody = new ModelRenderer(this);
+        bipedBody.setRotationPoint(0.0F, -8.0F, 0.0F);
+        bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 18, -7.0F, 0.0F, -2.7F, 14, 8, 7, 0.0F));
 
-        Body2 = new ModelRenderer(this);
-        Body2.setRotationPoint(0.0F, 8.0F, 0.0F);
-        Body1.addChild(Body2);
-        Body2.cubeList.add(new ModelBox(Body2, 0, 34, -5.5F, -1.8F, -2.9F, 11, 6, 6, 0.0F));
+        bipedBody2 = new ModelRenderer(this);
+        bipedBody2.setRotationPoint(0.0F, 8.0F, 0.0F);
+        bipedBody.addChild(bipedBody2);
+        bipedBody2.cubeList.add(new ModelBox(bipedBody2, 0, 34, -5.5F, -1.8F, -2.9F, 11, 6, 6, 0.0F));
 
         Chest = new ModelRenderer(this);
         Chest.setRotationPoint(0.0F, 0.0F, 0.0F);
-        Body2.addChild(Chest);
+        bipedBody2.addChild(Chest);
         Chest.cubeList.add(new ModelBox(Chest, 35, 34, -6.5F, -6.8F, -3.8F, 13, 5, 2, 0.0F));
 
-        Body3 = new ModelRenderer(this);
-        Body3.setRotationPoint(0.0F, 0.0F, 0.0F);
-        Body2.addChild(Body3);
-        Body3.cubeList.add(new ModelBox(Body3, 0, 48, -6.5F, 4.0F, -3.1F, 13, 5, 7, 0.0F));
+        bipedBody3 = new ModelRenderer(this);
+        bipedBody3.setRotationPoint(0.0F, 0.0F, 0.0F);
+        bipedBody2.addChild(bipedBody3);
+        bipedBody3.cubeList.add(new ModelBox(bipedBody3, 0, 48, -6.5F, 4.0F, -3.1F, 13, 5, 7, 0.0F));
 
         Cloth = new ModelRenderer(this);
         Cloth.setRotationPoint(0.0F, 15.5F, 0.8F);
-        Body3.addChild(Cloth);
+        bipedBody3.addChild(Cloth);
         Cloth.cubeList.add(new ModelBox(Cloth, 90, 46, -6.6F, -7.0F, 0.2F, 13, 10, 4, 0.0F));
 
-        ArmR1 = new ModelRenderer(this);
-        ArmR1.setRotationPoint(-7.4F, -5.5F, 0.3F);
-        ArmR1.cubeList.add(new ModelBox(ArmR1, 66, 25, -6.0F, -3.0F, -3.5F, 7, 5, 7, -0.1F));
+        bipedRightArm = new ModelRenderer(this);
+        bipedRightArm.setRotationPoint(-7.4F, -5.5F, 0.3F);
+        bipedRightArm.cubeList.add(new ModelBox(bipedRightArm, 66, 25, -6.0F, -3.0F, -3.5F, 7, 5, 7, -0.1F));
 
         ArmR2 = new ModelRenderer(this);
         ArmR2.setRotationPoint(5.7F, 7.5F, -0.3F);
-        ArmR1.addChild(ArmR2);
+        bipedRightArm.addChild(ArmR2);
         ArmR2.cubeList.add(new ModelBox(ArmR2, 67, 38, -11.3F, -5.8F, -2.8F, 6, 5, 6, 0.0F));
 
         ArmR3 = new ModelRenderer(this);
@@ -454,14 +455,14 @@ public class ModelBrolySSJ3 extends ModelBase {
         setRotationAngle(ArmR3_r1, 0.0436F, 0.0F, 0.0F);
         ArmR3_r1.cubeList.add(new ModelBox(ArmR3_r1, 67, 50, -3.0F, -4.7F, -3.3F, 6, 8, 5, 0.0F));
 
-        ArmL1 = new ModelRenderer(this);
-        ArmL1.setRotationPoint(7.4F, -5.5F, 0.3F);
-        ArmL1.mirror = true;
-        ArmL1.cubeList.add(new ModelBox(ArmL1, 66, 25, -1.0F, -3.0F, -3.5F, 7, 5, 7, -0.1F));
+        bipedLeftArm = new ModelRenderer(this);
+        bipedLeftArm.setRotationPoint(7.4F, -5.5F, 0.3F);
+        bipedLeftArm.mirror = true;
+        bipedLeftArm.cubeList.add(new ModelBox(bipedLeftArm, 66, 25, -1.0F, -3.0F, -3.5F, 7, 5, 7, -0.1F));
 
         ArmL2 = new ModelRenderer(this);
         ArmL2.setRotationPoint(-5.7F, 7.5F, -0.3F);
-        ArmL1.addChild(ArmL2);
+        bipedLeftArm.addChild(ArmL2);
         ArmL2.mirror = true;
         ArmL2.cubeList.add(new ModelBox(ArmL2, 67, 38, 5.3F, -5.8F, -2.8F, 6, 5, 6, 0.0F));
 
@@ -472,66 +473,67 @@ public class ModelBrolySSJ3 extends ModelBase {
         setRotationAngle(ArmL3, -0.182F, 0.0F, 0.0F);
         ArmL3.cubeList.add(new ModelBox(ArmL3, 67, 50, 6.4F, -3.7F, -2.5F, 6, 8, 5, 0.0F));
 
-        LegR = new ModelRenderer(this);
-        LegR.setRotationPoint(-3.0F, 9.0F, 0.0F);
-        LegR.cubeList.add(new ModelBox(LegR, 41, 42, -3.0F, 0.0F, -3.0F, 6, 15, 6, 0.0F));
+        bipedRightLeg = new ModelRenderer(this);
+        bipedRightLeg.setRotationPoint(-3.0F, 9.0F, 0.0F);
+        bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 41, 42, -3.0F, 0.0F, -3.0F, 6, 15, 6, 0.0F));
 
-        LegL = new ModelRenderer(this);
-        LegL.setRotationPoint(3.0F, 9.0F, 0.0F);
-        LegL.mirror = true;
-        LegL.cubeList.add(new ModelBox(LegL, 41, 42, -3.0F, 0.0F, -3.0F, 6, 15, 6, 0.0F));
+        bipedLeftLeg = new ModelRenderer(this);
+        bipedLeftLeg.setRotationPoint(3.0F, 9.0F, 0.0F);
+        bipedLeftLeg.mirror = true;
+        bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 41, 42, -3.0F, 0.0F, -3.0F, 6, 15, 6, 0.0F));
     }
 
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
-	{
-		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+    @Override
+    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor) {
+        // ★ 先计算动画角度
+        float scale = 1.0F;
+        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netbipedHeadYaw, headPitch, scaleFactor, entity);
+        GL11.glPushMatrix();
+        GL11.glScalef(scale, scale, scale);
+        GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(scale/0.45F,1.88F)))), 0.0F);
+        // 渲染带动画的部件
+        bipedHead.render(scaleFactor);
+        bipedBody.render(scaleFactor);
+        bipedRightLeg.render(scaleFactor);
+        bipedLeftLeg.render(scaleFactor);
+        bipedLeftArm.render(scaleFactor);
+        bipedRightArm.render(scaleFactor);
+        GL11.glPopMatrix();
+    }
+    public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+        modelRenderer.rotateAngleX = x;
+        modelRenderer.rotateAngleY = y;
+        modelRenderer.rotateAngleZ = z;
+    }
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+        this.bipedHead.rotateAngleY = netbipedHeadYaw / (180F / (float)Math.PI);
+        this.bipedHead.rotateAngleX = headPitch / (180F / (float)Math.PI);
 
-		this.Head.render(f5);
-		this.Body1.render(f5);
-		this.ArmR1.render(f5);
-		this.ArmL1.render(f5);
-		this.LegL.render(f5);
-		this.LegR.render(f5);
-	}
+        this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F;
+        this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F;
 
-	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z)
-	{
-		modelRenderer.rotateAngleX = x;
-		modelRenderer.rotateAngleY = y;
-		modelRenderer.rotateAngleZ = z;
-	}
+        this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+        this.bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
 
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
-	{
-		int calc = par7Entity.ticksExisted;
-		if (calc > 100) {
-			calc -= 100;
-		}
-		float r = 360.0F;
-		float r2 = 180.0F;
-		float n4 = par4;
-		float n5 = par5;
+        this.bipedRightArm.rotateAngleZ = 0.0F;
+        this.bipedLeftArm.rotateAngleZ = 0.0F;
+        this.bipedRightLeg.rotateAngleY = 0.0F;
+        this.bipedLeftLeg.rotateAngleY = 0.0F;
+        this.bipedRightArm.rotateAngleY = 0.0F;
 
-		this.Head.rotateAngleY = (n4 / (r2 / 3.1415927F));
-		this.Head.rotateAngleX = (n5 / (r2 / 3.1415927F));
-		float ex = par7Entity.ticksExisted;
-		float r3 = MathHelper.cos(ex * 0.14F) * 0.1F;
-		float r4 = MathHelper.cos(ex / 8.0F) / 5.0F + 0.1F;
+        float animProgress = this.onGround;
+        this.bipedBody.rotateAngleY = MathHelper.sin(MathHelper.sqrt_float(animProgress) * (float)Math.PI * 2.0F) * 0.2F;
 
-		r3 = MathHelper.cos(ex * 0.14F) * 0.1F;
-		r4 = MathHelper.cos(ex / 8.0F) / 3.0F - 0.2F;
+        float animCurve = 1.0F - animProgress;
+        animCurve *= animCurve;
+        animCurve *= animCurve;
+        animCurve = 1.0F - animCurve;
 
-		this.LegR.rotateAngleX = (-0.0F - MathHelper.cos(par1 * 0.6662F) * 1.2F * par2);
-		this.LegL.rotateAngleX = (-0.0F + MathHelper.cos(par1 * 0.6662F) * 1.2F * par2);
-		this.ArmR1.rotateAngleX = (-0.0F + MathHelper.cos(par1 * 0.6662F) * 1.2F * par2);
-		this.ArmL1.rotateAngleX = (-0.0F - MathHelper.cos(par1 * 0.6662F) * 1.2F * par2);
-
-		this.LegR.rotateAngleY = 0.0F;
-		this.LegL.rotateAngleY = 0.0F;
-		this.ArmR1.rotateAngleY = 0.0F;
-		this.ArmL1.rotateAngleY = 0.0F;
-
-		this.Cloth.rotateAngleX = (0.15F + this.LegL.rotateAngleX * (this.LegR.rotateAngleX >= 0.0F ? -1 : 1) * 1.0F);
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
-	}
+        float sinCurve = MathHelper.sin(animCurve * (float)Math.PI);
+        float headOffset = MathHelper.sin(animProgress * (float)Math.PI) * -(this.bipedHead.rotateAngleX - 0.7F) * 0.75F;
+        this.bipedRightArm.rotateAngleX -= (sinCurve * 1.2F + headOffset);
+        this.bipedRightArm.rotateAngleY += this.bipedBody.rotateAngleY * 2.0F;
+        this.bipedRightArm.rotateAngleZ = MathHelper.sin(animProgress * 2.1415927F) * -0.4F;
+    }
 }
+

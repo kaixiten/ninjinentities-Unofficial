@@ -239,20 +239,9 @@ public class Modeltamagami_1 extends ModelBase {
         GL11.glPushMatrix();
         GL11.glScalef(this.scale, this.scale, this.scale);
         GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(this.scale/0.45F,1.88F)))), 0.0F);
-
-        // 正常渲染不透明部分
         bipedHead.render(f5);
         bipedBody.render(f5);
         dragonball2.render(f5);
-        // 启用透明渲染
-        GL11.glEnable(GL11.GL_BLEND);
-        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        // 渲染透明部分
-        dragonball.render(f5);
-        // 关闭透明
-        GL11.glDisable(GL11.GL_BLEND);
-        GL11.glPopMatrix();
-        // 其余动画逻辑...
         this.bipedHead.rotateAngleY = f3 / (110F / (float)Math.PI);
         this.bipedHead.rotateAngleX = f4 / (90F / (float)Math.PI);
         this.bipedRightArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
@@ -263,6 +252,11 @@ public class Modeltamagami_1 extends ModelBase {
         this.bipedLeftLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
         this.bipedRightLeg.rotateAngleY = 0.0F;
         this.bipedLeftLeg.rotateAngleY = 0.0F;
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        dragonball.render(f5);
+        GL11.glDisable(GL11.GL_BLEND);
+        GL11.glPopMatrix();
     }
     public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
         modelRenderer.rotateAngleX = x;

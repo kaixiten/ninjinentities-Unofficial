@@ -8,12 +8,12 @@ import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
 
 public class ModelMisokatsun extends ModelBase {
-	private final ModelRenderer Head;
-    private final ModelRenderer Body;
-	private final ModelRenderer RArm;
-	private final ModelRenderer LArm;
-	private final ModelRenderer RLeg;
-	private final ModelRenderer LLeg;
+	private final ModelRenderer bipedHead;
+    private final ModelRenderer bipedBody;
+	private final ModelRenderer bipedRightArm;
+	private final ModelRenderer bipedLeftArm;
+	private final ModelRenderer bipedRightLeg;
+	private final ModelRenderer bipedLeftLeg;
 	private float scaleX = 1.0F;
 	private float scaleY = 1.0F;
 	private float scaleZ = 1.0F;
@@ -27,47 +27,47 @@ public class ModelMisokatsun extends ModelBase {
 		textureWidth = 64;
 		textureHeight = 64;
 
-		Head = new ModelRenderer(this);
-		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
-		Head.cubeList.add(new ModelBox(Head, 0, 18, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
+		bipedHead = new ModelRenderer(this);
+		bipedHead.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bipedHead.cubeList.add(new ModelBox(bipedHead, 0, 18, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
         ModelRenderer headChild_2 = new ModelRenderer(this);
 		headChild_2.setRotationPoint(0.0F, 0.0F, 0.0F);
 		setRotationAngle(headChild_2, 0.0F, 0.5236F, 0.0F);
-		Head.addChild(headChild_2);
+		bipedHead.addChild(headChild_2);
 		headChild_2.cubeList.add(new ModelBox(headChild_2, 0, 52, 4.0F, -7.0F, -1.0F, 0, 6, 6, 0.0F));
 
         ModelRenderer headChild_1 = new ModelRenderer(this);
 		headChild_1.setRotationPoint(0.0F, 0.0F, 0.0F);
 		setRotationAngle(headChild_1, 0.0F, -0.5236F, 0.0F);
-		Head.addChild(headChild_1);
+		bipedHead.addChild(headChild_1);
 		headChild_1.cubeList.add(new ModelBox(headChild_1, 0, 52, -4.0F, -7.0F, -1.0F, 0, 6, 6, 0.0F));
 
-		Body = new ModelRenderer(this);
-		Body.setRotationPoint(0.0F, 0.0F, 0.0F);
-		Body.cubeList.add(new ModelBox(Body, 0, 0, -6.0F, 0.0F, -3.0F, 12, 12, 6, 0.0F));
+		bipedBody = new ModelRenderer(this);
+		bipedBody.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 0, -6.0F, 0.0F, -3.0F, 12, 12, 6, 0.0F));
 
-		RArm = new ModelRenderer(this);
-		RArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
-		setRotationAngle(RArm, -0.0086F, 0.0F, 0.2212F);
-		Body.addChild(RArm);
-		RArm.cubeList.add(new ModelBox(RArm, 38, 42, -5.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
+		bipedRightArm = new ModelRenderer(this);
+		bipedRightArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
+		setRotationAngle(bipedRightArm, -0.0086F, 0.0F, 0.2212F);
+		bipedBody.addChild(bipedRightArm);
+		bipedRightArm.cubeList.add(new ModelBox(bipedRightArm, 38, 42, -5.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		LArm = new ModelRenderer(this);
-		LArm.setRotationPoint(5.0F, 2.0F, 0.0F);
-		setRotationAngle(LArm, 0.0086F, 0.0F, -0.2212F);
-		Body.addChild(LArm);
-		LArm.cubeList.add(new ModelBox(LArm, 22, 42, 1.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
+		bipedLeftArm = new ModelRenderer(this);
+		bipedLeftArm.setRotationPoint(5.0F, 2.0F, 0.0F);
+		setRotationAngle(bipedLeftArm, 0.0086F, 0.0F, -0.2212F);
+		bipedBody.addChild(bipedLeftArm);
+		bipedLeftArm.cubeList.add(new ModelBox(bipedLeftArm, 22, 42, 1.0F, -2.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		RLeg = new ModelRenderer(this);
-		RLeg.setRotationPoint(-1.9F, 12.0F, 0.0F);
-		Body.addChild(RLeg);
-		RLeg.cubeList.add(new ModelBox(RLeg, 0, 34, -3.0F, 0.0F, -3.0F, 5, 12, 6, 0.0F));
+		bipedRightLeg = new ModelRenderer(this);
+		bipedRightLeg.setRotationPoint(-1.9F, 12.0F, 0.0F);
+		bipedBody.addChild(bipedRightLeg);
+		bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 0, 34, -3.0F, 0.0F, -3.0F, 5, 12, 6, 0.0F));
 
-		LLeg = new ModelRenderer(this);
-		LLeg.setRotationPoint(1.9F, 12.0F, 0.0F);
-		Body.addChild(LLeg);
-		LLeg.cubeList.add(new ModelBox(LLeg, 36, 0, -1.9F, 0.0F, -3.0F, 5, 12, 6, 0.0F));
+		bipedLeftLeg = new ModelRenderer(this);
+		bipedLeftLeg.setRotationPoint(1.9F, 12.0F, 0.0F);
+		bipedBody.addChild(bipedLeftLeg);
+		bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 36, 0, -1.9F, 0.0F, -3.0F, 5, 12, 6, 0.0F));
 	}
 
 	@Override
@@ -75,19 +75,19 @@ public class ModelMisokatsun extends ModelBase {
 		GL11.glPushMatrix();
 		GL11.glScalef(this.scaleX, this.scaleY, this.scaleZ);
 		GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(this.scaleY/0.45F,1.88F)))), 0.0F);
-		Head.render(f5);
-		Body.render(f5);
+		bipedHead.render(f5);
+		bipedBody.render(f5);
 		GL11.glPopMatrix();
-        this.Head.rotateAngleY = f3 / (180F / (float)Math.PI);
-        this.Head.rotateAngleX = f4 / (180F / (float)Math.PI);
-        this.RArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
-        this.LArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
-        this.RArm.rotateAngleZ = 0.0F;
-        this.LArm.rotateAngleZ = 0.0F;
-        this.RLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
-        this.LLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
-        this.RLeg.rotateAngleY = 0.0F;
-        this.LLeg.rotateAngleY = 0.0F;
+        this.bipedHead.rotateAngleY = f3 / (180F / (float)Math.PI);
+        this.bipedHead.rotateAngleX = f4 / (180F / (float)Math.PI);
+        this.bipedRightArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
+        this.bipedLeftArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
+        this.bipedRightArm.rotateAngleZ = 0.0F;
+        this.bipedLeftArm.rotateAngleZ = 0.0F;
+        this.bipedRightLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+        this.bipedLeftLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+        this.bipedRightLeg.rotateAngleY = 0.0F;
+        this.bipedLeftLeg.rotateAngleY = 0.0F;
 	}
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
 		modelRenderer.rotateAngleX = x;

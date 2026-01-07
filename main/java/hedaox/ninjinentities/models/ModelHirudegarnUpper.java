@@ -8,8 +8,8 @@ import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
 
 public class ModelHirudegarnUpper extends ModelBase {
-	private final ModelRenderer Head;
-	private final ModelRenderer Body;
+	private final ModelRenderer bipedHead;
+	private final ModelRenderer bipedBody;
 	private final ModelRenderer Bone;
 	private final ModelRenderer globl_horns;
 	private final ModelRenderer horns2_r1;
@@ -30,10 +30,10 @@ public class ModelHirudegarnUpper extends ModelBase {
 	private final ModelRenderer Tail2;
 	private final ModelRenderer bodyChildChild;
 	private final ModelRenderer bone2;
-	private final ModelRenderer RArm;
+	private final ModelRenderer bipedRightArm;
 	private final ModelRenderer RightGauntlet;
 	private final ModelRenderer right_sleeve;
-	private final ModelRenderer LArm;
+	private final ModelRenderer bipedLeftArm;
 	private final ModelRenderer bone;
 	private final ModelRenderer left_sleeve;
 
@@ -50,21 +50,21 @@ public class ModelHirudegarnUpper extends ModelBase {
 		textureWidth = 256;
 		textureHeight = 256;
 
-		Head = new ModelRenderer(this);
-		Head.setRotationPoint(0.0F, -12.0F, -5.0F);
-		Head.cubeList.add(new ModelBox(Head, 0, 57, -5.0F, -2.0F, -8.0F, 10, 11, 13, 0.0F));
+		bipedHead = new ModelRenderer(this);
+		bipedHead.setRotationPoint(0.0F, -12.0F, -5.0F);
+		bipedHead.cubeList.add(new ModelBox(bipedHead, 0, 57, -5.0F, -2.0F, -8.0F, 10, 11, 13, 0.0F));
 
-		Body = new ModelRenderer(this);
-		Body.setRotationPoint(0.0F, 15.0F, 0.0F);
-		Body.cubeList.add(new ModelBox(Body, 66, 0, -8.0F, -23.0F, -4.0F, 16, 15, 8, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 102, 29, -7.0F, -8.0F, -4.0F, 14, 5, 8, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 98, 106, -6.0F, -3.0F, -4.0F, 12, 7, 8, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 0, 137, -2.0F, 3.0F, -4.0F, 4, 3, 8, 0.0F));
-		Body.cubeList.add(new ModelBox(Body, 0, 0, -8.0F, -31.0F, -8.0F, 16, 14, 17, 0.0F));
+		bipedBody = new ModelRenderer(this);
+		bipedBody.setRotationPoint(0.0F, 15.0F, 0.0F);
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 66, 0, -8.0F, -23.0F, -4.0F, 16, 15, 8, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 102, 29, -7.0F, -8.0F, -4.0F, 14, 5, 8, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 98, 106, -6.0F, -3.0F, -4.0F, 12, 7, 8, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 137, -2.0F, 3.0F, -4.0F, 4, 3, 8, 0.0F));
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 0, 0, -8.0F, -31.0F, -8.0F, 16, 14, 17, 0.0F));
 
 		Bone = new ModelRenderer(this);
 		Bone.setRotationPoint(2.0F, -48.0F, -4.0F);
-		Body.addChild(Bone);
+		bipedBody.addChild(Bone);
 		Bone.cubeList.add(new ModelBox(Bone, 4, 3, -9.0F, 14.0F, -7.0F, 14, 15, 14, 0.0F));
 
 		globl_horns = new ModelRenderer(this);
@@ -142,12 +142,12 @@ public class ModelHirudegarnUpper extends ModelBase {
 		Tail = new ModelRenderer(this);
 		Tail.setRotationPoint(0.0F, -15.0F, 0.0F);
 		setRotationAngle(Tail, -0.3491F, 0.0F, 0.0F);
-		Body.addChild(Tail);
+		bipedBody.addChild(Tail);
 
 		Tail2 = new ModelRenderer(this);
 		Tail2.setRotationPoint(0.0F, -17.0F, 0.0F);
 		setRotationAngle(Tail2, 0.5236F, 0.0F, 0.0F);
-		Body.addChild(Tail2);
+		bipedBody.addChild(Tail2);
 
 		bodyChildChild = new ModelRenderer(this);
 		bodyChildChild.setRotationPoint(0.0F, 0.0F, 0.0F);
@@ -155,45 +155,45 @@ public class ModelHirudegarnUpper extends ModelBase {
 
 		bone2 = new ModelRenderer(this);
 		bone2.setRotationPoint(0.0F, 9.0F, 0.0F);
-		Body.addChild(bone2);
+		bipedBody.addChild(bone2);
 		bone2.cubeList.add(new ModelBox(bone2, 44, 221, -26.0F, -2.0F, -15.0F, 50, 1, 30, 0.0F));
 
-		RArm = new ModelRenderer(this);
-		RArm.setRotationPoint(-8.0F, -23.0F, 0.0F);
-		setRotationAngle(RArm, 0.0F, 0.0F, 0.0873F);
-		Body.addChild(RArm);
-		RArm.cubeList.add(new ModelBox(RArm, 46, 71, -8.9507F, -0.3953F, -4.0F, 7, 30, 8, 0.0F));
+		bipedRightArm = new ModelRenderer(this);
+		bipedRightArm.setRotationPoint(-8.0F, -23.0F, 0.0F);
+		setRotationAngle(bipedRightArm, 0.0F, 0.0F, 0.0873F);
+		bipedBody.addChild(bipedRightArm);
+		bipedRightArm.cubeList.add(new ModelBox(bipedRightArm, 46, 71, -8.9507F, -0.3953F, -4.0F, 7, 30, 8, 0.0F));
 
 		RightGauntlet = new ModelRenderer(this);
 		RightGauntlet.setRotationPoint(12.2478F, 25.465F, 0.0F);
-		RArm.addChild(RightGauntlet);
+		bipedRightArm.addChild(RightGauntlet);
 		RightGauntlet.cubeList.add(new ModelBox(RightGauntlet, 0, 174, -22.3116F, -8.0156F, -5.0F, 9, 11, 10, 0.0F));
 
 		right_sleeve = new ModelRenderer(this);
 		right_sleeve.setRotationPoint(2.8015F, 32.1397F, 0.0F);
 		setRotationAngle(right_sleeve, 0.0F, 0.0F, 0.0436F);
-		RArm.addChild(right_sleeve);
+		bipedRightArm.addChild(right_sleeve);
 		right_sleeve.cubeList.add(new ModelBox(right_sleeve, 106, 94, -16.6063F, -38.2224F, 7.0F, 14, 5, 0, 0.0F));
 		right_sleeve.cubeList.add(new ModelBox(right_sleeve, 106, 92, -16.6063F, -38.2224F, -7.0F, 14, 5, 0, 0.0F));
 		right_sleeve.cubeList.add(new ModelBox(right_sleeve, 106, 81, -16.6063F, -38.2224F, -7.0F, 0, 5, 14, 0.0F));
 		right_sleeve.cubeList.add(new ModelBox(right_sleeve, 36, 31, -16.6063F, -38.2224F, -7.0F, 14, 0, 14, 0.0F));
 		right_sleeve.cubeList.add(new ModelBox(right_sleeve, 38, 45, -15.6063F, -38.2224F, -6.0F, 13, 14, 12, 0.0F));
 
-		LArm = new ModelRenderer(this);
-		LArm.setRotationPoint(8.0F, -23.0F, 0.0F);
-		setRotationAngle(LArm, 0.0F, 0.0F, -0.0873F);
-		Body.addChild(LArm);
-		LArm.cubeList.add(new ModelBox(LArm, 76, 76, 1.9583F, -0.5697F, -4.0F, 7, 30, 8, 0.0F));
+		bipedLeftArm = new ModelRenderer(this);
+		bipedLeftArm.setRotationPoint(8.0F, -23.0F, 0.0F);
+		setRotationAngle(bipedLeftArm, 0.0F, 0.0F, -0.0873F);
+		bipedBody.addChild(bipedLeftArm);
+		bipedLeftArm.cubeList.add(new ModelBox(bipedLeftArm, 76, 76, 1.9583F, -0.5697F, -4.0F, 7, 30, 8, 0.0F));
 
 		bone = new ModelRenderer(this);
 		bone.setRotationPoint(-10.7748F, 31.5293F, 0.0F);
-		LArm.addChild(bone);
+		bipedLeftArm.addChild(bone);
 		bone.cubeList.add(new ModelBox(bone, 0, 174, 11.7331F, -14.6661F, -5.0F, 9, 11, 10, 0.0F));
 
 		left_sleeve = new ModelRenderer(this);
 		left_sleeve.setRotationPoint(24.2061F, 29.9653F, 0.0F);
 		setRotationAngle(left_sleeve, 0.0F, 0.0F, -0.0436F);
-		LArm.addChild(left_sleeve);
+		bipedLeftArm.addChild(left_sleeve);
 		left_sleeve.cubeList.add(new ModelBox(left_sleeve, 106, 92, -25.3937F, -37.2224F, 7.0F, 14, 5, 0, 0.0F));
 		left_sleeve.cubeList.add(new ModelBox(left_sleeve, 105, 92, -25.3937F, -37.2224F, -7.0F, 14, 5, 0, 0.0F));
 		left_sleeve.cubeList.add(new ModelBox(left_sleeve, 66, 0, -25.3937F, -37.2224F, -7.0F, 0, 5, 14, 0.0F));
@@ -202,22 +202,51 @@ public class ModelHirudegarnUpper extends ModelBase {
 		left_sleeve.cubeList.add(new ModelBox(left_sleeve, 106, 80, -11.3048F, -37.3018F, -7.0F, 0, 5, 14, 0.0F));
 	}
 
-	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		GL11.glPushMatrix();
-		GL11.glScalef(this.scaleX, this.scaleY, this.scaleZ);
-		GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(this.scaleY/0.45F,1.88F))))-2.0F, 0.0F);
-		Head.render(f5);
-		Body.render(f5);
-		GL11.glPopMatrix();
-		this.RArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
-		this.LArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
-		this.RArm.rotateAngleZ = 0.0F;
-		this.LArm.rotateAngleZ = 0.0F;
-	}
-	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-		modelRenderer.rotateAngleX = x;
-		modelRenderer.rotateAngleY = y;
-		modelRenderer.rotateAngleZ = z;
-	}
+    @Override
+    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor) {
+        // ★ 先计算动画角度
+        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netbipedHeadYaw, headPitch, scaleFactor, entity);
+        GL11.glPushMatrix();
+        GL11.glScalef(scaleX, scaleY, scaleZ);
+        GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(scaleY/0.45F,1.88F)))), 0.0F);
+        // 渲染带动画的部件
+        bipedHead.render(scaleFactor);
+        bipedBody.render(scaleFactor);
+        GL11.glPopMatrix();
+    }
+    public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
+        modelRenderer.rotateAngleX = x;
+        modelRenderer.rotateAngleY = y;
+        modelRenderer.rotateAngleZ = z;
+    }
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+        this.bipedHead.rotateAngleY = netbipedHeadYaw / (180F / (float)Math.PI);
+        this.bipedHead.rotateAngleX = headPitch / (180F / (float)Math.PI);
+
+        this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F;
+        this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F;
+
+        //this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+        //this.bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+
+        this.bipedRightArm.rotateAngleZ = 0.0F;
+        this.bipedLeftArm.rotateAngleZ = 0.0F;
+        //this.bipedRightLeg.rotateAngleY = 0.0F;
+        //this.bipedLeftLeg.rotateAngleY = 0.0F;
+        this.bipedRightArm.rotateAngleY = 0.0F;
+
+        float animProgress = this.onGround;
+        this.bipedBody.rotateAngleY = MathHelper.sin(MathHelper.sqrt_float(animProgress) * (float)Math.PI * 2.0F) * 0.2F;
+
+        float animCurve = 1.0F - animProgress;
+        animCurve *= animCurve;
+        animCurve *= animCurve;
+        animCurve = 1.0F - animCurve;
+
+        float sinCurve = MathHelper.sin(animCurve * (float)Math.PI);
+        float headOffset = MathHelper.sin(animProgress * (float)Math.PI) * -(this.bipedHead.rotateAngleX - 0.7F) * 0.75F;
+        this.bipedRightArm.rotateAngleX -= (sinCurve * 1.2F + headOffset);
+        this.bipedRightArm.rotateAngleY += this.bipedBody.rotateAngleY * 2.0F;
+        this.bipedRightArm.rotateAngleZ = MathHelper.sin(animProgress * 2.1415927F) * -0.4F;
+    }
 }

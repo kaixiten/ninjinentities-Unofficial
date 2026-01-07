@@ -1,15 +1,17 @@
 package hedaox.ninjinentities.entities;
 
 import cpw.mods.fml.common.registry.EntityRegistry;
-import hedaox.ninjinentities.entities.IF.*;
-import hedaox.ninjinentities.entities.DBAF.*;
 import hedaox.ninjinentities.entities.DAIMA.*;
 import hedaox.ninjinentities.entities.DB.*;
+import hedaox.ninjinentities.entities.DBAF.EntityGokuSsj5;
+import hedaox.ninjinentities.entities.DBAF.EntityXicor;
+import hedaox.ninjinentities.entities.DBAF.EntityXicorSsj;
 import hedaox.ninjinentities.entities.DBGT.*;
 import hedaox.ninjinentities.entities.DBS.*;
 import hedaox.ninjinentities.entities.DBZ.*;
+import hedaox.ninjinentities.entities.IF.*;
 import hedaox.ninjinentities.entities.Movies.*;
-import hedaox.ninjinentities.entities.ZENO.*;
+import hedaox.ninjinentities.entities.XENO.*;
 import hedaox.ninjinentities.entities.doujin.*;
 import hedaox.ninjinentities.lib.ModVars;
 
@@ -21,9 +23,14 @@ public class NinjinEntities {
 	{
 		createEntity(EntityMasterBaba.class, 64, "masterBaba");
 		createEntity(EntityHercule.class, 64, "hercule");
+        //Gohan
 		createEntity(EntityGohanAdult.class, 64, "gohanAdult");
 		createEntity(EntityGohanAdultSsj.class, 64, "gohanAdultSsj");
 		createEntity(EntityGohanAdultSsj2.class, 64, "gohanAdultSsj2");
+        createEntity(EntityGohanHighSchool.class, 64, "GohanHighSchool");
+        createEntity(EntityGohanSsjHighSchool.class, 64, "GohanSsjHighSchool");
+        createEntity(EntityGohanSaiyamanSsj.class, 64, "GohanSaiyamanSsj");
+        createEntity(EntityGohanSaiyamanSsj2.class, 64, "GohanSaiyamanSsj2");
 		createEntity(EntityGohanKid1.class, 64, "gohanKid1");
 		createEntity(EntityGohanKid2.class, 64, "gohanKid2");
 		createEntity(EntityGohanKid3.class, 64, "gohanKid3");
@@ -39,9 +46,25 @@ public class NinjinEntities {
         createEntity(EntityFutureGohan2Ssj.class, 64, "FutureGohan2Ssj");
 		createEntity(EntityGohanUltimate.class, 64, "gohanUltimate");
         createEntity(EntityGohanBeast.class, 64, "gohanBeast");
+        //GT Gohan
+        createEntity(EntityGTgohan.class, 64, "GTgohan");
+        createEntity(EntityGTgohan2.class, 64, "GTgohan2");
+        createEntity(EntityGTgohanSsj.class, 64, "GTgohanSsj");
+        //IF Gohan
+        createEntity(EntityBlockGohanUltimate.class, 64, "BlockGohan");
+        //XENO Gohan
+        createEntity(EntityGohanXENO.class, 64, "XENOgohan");
+        createEntity(EntityGohan2XENO.class, 64, "XENOgohan2");
+        createEntity(EntityGohanSsjXENO.class, 64, "XENOgohanSsj");
+        createEntity(EntityGohanSsj2XENO.class, 64, "XENOgohanSsj2");
+        createEntity(EntityGohanSsj3XENO.class, 64, "XENOgohanSsj3");
+        createEntity(EntityGohanSsj4XENO.class, 64, "XENOgohanSsj4");
+        createEntity(EntityGohanUltimateXENO.class, 64, "gohanUltimateXENO");
+        createEntity(EntityGohanSsj4.class, 64, "gohanSsj4");
 		createEntity(EntityGokuKid1.class, 64, "gokuKid1");
 		createEntity(EntityGokuKid2.class, 64, "gokuKid2");
 		createEntity(EntityGoku1.class, 64, "goku1");
+        //DBZ Goku
 		createEntity(EntityGoku2Kaioken.class, 64, "goku2Kaioken");
 		createEntity(EntityGoku2.class, 64, "goku2");
 		createEntity(EntityGokuArmor.class, 64, "gokuArmor");
@@ -54,6 +77,7 @@ public class NinjinEntities {
 		createEntity(EntityGokuSsjg.class, 64, "gokuSsjg");
 		createEntity(EntityGokuSsjb.class, 64, "gokuSsjb");
 		createEntity(EntityGokuSsjbk.class, 64, "gokuSsjbk");
+        //DBS Goku
 		createEntity(EntityGokuSuper.class, 64, "gokuSuper");
 		createEntity(EntityGokuSuperSsj.class, 64, "gokuSuperSsj");
 		createEntity(EntityGokuSuperSsjb.class, 64, "gokuSuperSsjb");
@@ -61,7 +85,7 @@ public class NinjinEntities {
 		createEntity(EntityGokuUIM.class, 64, "gokuUiM");
 		createEntity(EntityGokuYardrat.class, 64, "gokuYardrat");
 		createEntity(EntityGokuYardratSsj.class, 64, "gokuYardratSsj");
-        //GTgoku
+        //GT Goku
         createEntity(EntityGTgoku.class, 64, "GTgoku");
         createEntity(EntityGTgokuSsj.class, 64, "GTgokuSsj");
         createEntity(EntityGTgokuSsj2.class, 64, "GTgokuSsj2");
@@ -71,6 +95,17 @@ public class NinjinEntities {
         createEntity(EntityGTgokuSsj2Child.class, 64, "GTgokuSsj2Child");
         createEntity(EntityGTgokuSsj3Child.class, 64, "GTgokuSsj3Child");
         createEntity(EntityGokuSsj4.class, 64, "gokuSsj4");
+        //XENO Goku
+        createEntity(EntityGokuXENO.class, 64, "XENOGoku");
+        createEntity(EntityGokuSsjXENO.class, 64, "XENOGokuSsj");
+        createEntity(EntityGokuSsj2XENO.class, 64, "XENOGokuSsj2");
+        createEntity(EntityGokuSsj3XENO.class, 64, "XENOGokuSsj3");
+        createEntity(EntityGokuSsj4XENO.class, 64, "XENOGokuSsj4");
+        createEntity(EntityGoku2XENO.class, 64, "XENOGoku2");
+        createEntity(EntityGoku2SsjXENO.class, 64, "XENOGoku2Ssj");
+        createEntity(EntityGoku2Ssj2XENO.class, 64, "XENOGoku2Ssj2");
+        createEntity(EntityGoku2Ssj3XENO.class, 64, "XENOGoku2Ssj3");
+
 		createEntity(EntityGoten.class, 64, "goten");
 		createEntity(EntityGotenSsj.class, 64, "gotenSsj");
 		createEntity(EntityGotenks.class, 64, "gotenks");
@@ -109,20 +144,28 @@ public class NinjinEntities {
 		createEntity(EntityTrunksFuturSuperSsjRage.class, 64, "trunksFuturSuperSsjRage");
 		createEntity(EntityTrunksKid.class, 64, "trunksKid");
 		createEntity(EntityTrunksKidSsj.class, 64, "trunksKidSsj");
+        createEntity(EntityGTTrunks.class, 64, "GTTrunks");
+        createEntity(EntityGTTrunksSsj.class, 64, "GTTrunksSsj");
 		createEntity(EntityVegeto.class, 64, "vegeto");
+        createEntity(EntityVegetoSsj.class, 64, "vegetoSsj");
+        createEntity(EntityVegetoSsjKisword.class, 64, "VegetoSsjKiSword");
 		createEntity(EntityVegetoSsj2.class, 64, "vegetoSsj2");
 		createEntity(EntityVegetoSsj3.class, 64, "vegetoSsj3");
-		createEntity(EntityVegetoSsj.class, 64, "vegetoSsj");
 		createEntity(EntityVegetoSsjb.class, 64, "vegetoSsjb");
+        createEntity(EntityVegetoSsjbKisword.class, 64, "VegetoSsjbKisword");
 		createEntity(EntityVegetoUi.class, 64, "vegetoUi");
 		createEntity(EntityVegetoUw.class, 64, "vegetoUw");
+        createEntity(EntitysuperMajinBuuVegeto.class, 64, "MajinBuuVegeto");
+        //Gogeta
 		createEntity(EntityGogeta.class, 64, "gogeta");
 		createEntity(EntityGogetaSsj.class, 64, "gogetaSsj");
 		createEntity(EntityGogetaSsj2.class, 64, "gogetaSsj2");
 		createEntity(EntityGogetaSsj3.class, 64, "gogetaSsj3");
+        createEntity(EntityGTGogetaSsj4.class, 64, "gogetaSsj4");
 		createEntity(EntityGogetaSsjb.class, 64, "gogetaSsjb");
 		createEntity(EntityGogetaUi.class, 64, "gogetaUi");
 		createEntity(EntityGogetaUw.class, 64, "gogetaUw");
+        //Vegeta
 		createEntity(EntityVegeta0.class, 64, "vegeta0");
 		createEntity(EntityVegeta0Damaged.class, 64, "vegeta0Damaged");
 		createEntity(EntityVegeta1.class, 64, "vegeta");
@@ -137,17 +180,32 @@ public class NinjinEntities {
 		createEntity(EntityVegetaSsjbe.class, 64, "vegetaSsjbe");
 		createEntity(EntityVegetaMajin.class, 64, "vegetaMajin");
 		createEntity(EntityVegetaOozaru.class, 64, "vegetaOozaru");
+        //DBS Vegeta
 		createEntity(EntityVegetaCopy.class, 64, "vegetaCopy");
 		createEntity(EntityVegetaCopyBlue.class, 64, "vegetaBlueCopy");
 		createEntity(EntityVegetaSuper.class, 64, "vegetaSuper");
 		createEntity(EntityVegetaSuperSsj.class, 64, "vegetaSuperSsj");
 		createEntity(EntityVegetaSuperSsjb.class, 64, "vegetaSuperSsjb");
+        createEntity(EntityVegetaZw.class, 64, "Vegetazw");
+        //GT Vegeta
         createEntity(EntityGTvegeta.class, 64, "GTvegeta");
         createEntity(EntityGTvegeta2.class, 64, "GTvegeta2");
         createEntity(EntityGTvegeta2Ssj.class, 64, "GTvegeta2Ssj");
         createEntity(EntityGTvegetaSsj.class, 64, "GTvegetaSsj");
         createEntity(EntityGTvegeta2Ssj2.class, 64, "GTvegeta2Ssj2");
         createEntity(EntityGTvegetaSsj2.class, 64, "GTvegetaSsj2");
+        createEntity(EntityVegetaSsj4.class, 64, "VegetaSsj4");
+        //XENO Vegeta
+        createEntity(EntityvegetaXENO.class, 64, "XENOvegeta");
+        createEntity(EntityvegetaSsjXENO.class, 64, "XENOvegetaSsj");
+        createEntity(EntityvegetaSsj2XENO.class, 64, "XENOvegetaSsj2");
+        createEntity(EntityVegetaSsj3XENO.class, 64, "XENOvegetaSsj3");
+        createEntity(EntityVegetaSsj4XENO.class, 64, "XENOVegetaSsj4");
+        createEntity(Entityvegeta2XENO.class, 64, "XENOvegeta2");
+        createEntity(Entityvegeta2SsjXENO.class, 64, "XENOvegeta2Ssj");
+        createEntity(Entityvegeta2Ssj2XENO.class, 64, "XENOvegeta2Ssj2");
+        createEntity(EntityVegeta2Ssj3XENO.class, 64, "XENOvegeta2Ssj3");
+
 		createEntity(EntityCyborgTaopaipai.class, 64, "cyborgTaopaipai");
 		createEntity(EntityPiccoloDaimaoOld.class, 64, "piccoloDaimaoOld");
 		createEntity(EntityPiccoloDaimaoYoung.class, 64, "piccoloDaimaoYoung");
@@ -286,8 +344,6 @@ public class NinjinEntities {
         createEntity(EntityGoldCooler.class, 64, "GoldCooler");
 		createEntity(EntityBzGokuSsj.class, 64, "Bzgokussj");
 		createEntity(EntityFu.class, 64, "fu");
-		createEntity(EntityVegetaZw.class, 64, "Vegetazw");
-		createEntity(EntityVegetaSsj4.class, 64, "VegetaSsj4");
 		createEntity(EntityDragon.class, 64, "GTDragon");
 		createEntity(Entityomega.class, 64, "omega");
 		createEntity(Entityomega2.class, 64, "omega2");
@@ -315,7 +371,6 @@ public class NinjinEntities {
         createEntity(EntityTamagami_3.class,64,"Tamagami3");
         createEntity(EntityKaioshin.class, 64, "Kaioshin");
         createEntity(EntityKaioshinChild.class, 64, "KaioshinChild");
-        createEntity(EntityBlockGohanUltimate.class, 64, "BlockGohan");
         createEntity(EntityDAIMAGokuSsj4.class, 64, "DAIMAGokuSsj4");
         createEntity(EntityDAIMAGoku.class, 64, "DAIMAGoku");
         createEntity(EntityDAIMAGokuSsj.class, 64, "DAIMAGokuSsj");
@@ -350,6 +405,7 @@ public class NinjinEntities {
         createEntity(EntityLedgic.class, 64, "Ledgic");
         createEntity(Entitylierde.class, 64, "lierde");
         createEntity(Entityhetilierde.class, 64, "hetilierde");
+        createEntity(EntityMrpopo.class, 64, "Mrpopo");
 	}
 
 	// simpleEntity

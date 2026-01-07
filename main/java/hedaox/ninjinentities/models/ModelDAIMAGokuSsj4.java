@@ -9,7 +9,7 @@ import org.lwjgl.opengl.GL11;
 
 
 public class ModelDAIMAGokuSsj4 extends ModelBase {
-	private final ModelRenderer Head;
+	private final ModelRenderer bipedHead;
 	private final ModelRenderer SSJ4;
 	private final ModelRenderer Hair1;
 	private final ModelRenderer cube_r1;
@@ -253,9 +253,9 @@ public class ModelDAIMAGokuSsj4 extends ModelBase {
 	private final ModelRenderer hair64;
 	private final ModelRenderer hair65;
 	private final ModelRenderer hair66;
-	private final ModelRenderer Body;
-	private final ModelRenderer RLeg;
-	private final ModelRenderer LLeg;
+	private final ModelRenderer bipedBody;
+	private final ModelRenderer bipedRightLeg;
+	private final ModelRenderer bipedLeftLeg;
 	private final ModelRenderer FroB;
 	private final ModelRenderer ftailS1;
 	private final ModelRenderer ftailS2;
@@ -263,27 +263,27 @@ public class ModelDAIMAGokuSsj4 extends ModelBase {
 	private final ModelRenderer ftailS4;
 	private final ModelRenderer ftailS5;
 	private final ModelRenderer ftailS6;
-	private final ModelRenderer RArm;
-	private final ModelRenderer RArm3;
-	private final ModelRenderer RArm1;
-	private final ModelRenderer RArm4;
-	private final ModelRenderer LArm;
-	private final ModelRenderer LArm3;
-	private final ModelRenderer LArm1;
-	private final ModelRenderer LArm4;
+	private final ModelRenderer bipedRightArm;
+	private final ModelRenderer bipedRightArm3;
+	private final ModelRenderer bipedRightArm1;
+	private final ModelRenderer bipedRightArm4;
+	private final ModelRenderer bipedLeftArm;
+	private final ModelRenderer bipedLeftArm3;
+	private final ModelRenderer bipedLeftArm1;
+	private final ModelRenderer bipedLeftArm4;
     private float scale = 1.0F;
 
 	public ModelDAIMAGokuSsj4(float _scale) {
 		textureWidth = 128;
 		textureHeight = 64;
 
-		Head = new ModelRenderer(this);
-		Head.setRotationPoint(0.0F, 0.1F, 0.0F);
-		Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, -0.1F));
+		bipedHead = new ModelRenderer(this);
+		bipedHead.setRotationPoint(0.0F, 0.1F, 0.0F);
+		bipedHead.cubeList.add(new ModelBox(bipedHead, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, -0.1F));
 
 		SSJ4 = new ModelRenderer(this);
 		SSJ4.setRotationPoint(-1.0F, -6.2F, -4.0F);
-		Head.addChild(SSJ4);
+		bipedHead.addChild(SSJ4);
 
 
 		Hair1 = new ModelRenderer(this);
@@ -1735,20 +1735,20 @@ public class ModelDAIMAGokuSsj4 extends ModelBase {
 		setRotationAngle(hair66, -2.7032F, 0.2103F, -0.7958F);
 		hair66.cubeList.add(new ModelBox(hair66, 43, 2, -1.7418F, -4.7443F, 1.1272F, 2, 7, 2, -0.1F));
 
-		Body = new ModelRenderer(this);
-		Body.setRotationPoint(0.2F, 5.4F, -0.2F);
-		Body.cubeList.add(new ModelBox(Body, 16, 16, -4.2F, -5.4F, -1.8F, 8, 12, 4, 0.0F));
+		bipedBody = new ModelRenderer(this);
+		bipedBody.setRotationPoint(0.2F, 5.4F, -0.2F);
+		bipedBody.cubeList.add(new ModelBox(bipedBody, 16, 16, -4.2F, -5.4F, -1.8F, 8, 12, 4, 0.0F));
 
-		RLeg = new ModelRenderer(this);
-		RLeg.setRotationPoint(-2.2F, 6.6F, 0.2F);
-		Body.addChild(RLeg);
-		RLeg.cubeList.add(new ModelBox(RLeg, 0, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
+		bipedRightLeg = new ModelRenderer(this);
+		bipedRightLeg.setRotationPoint(-2.2F, 6.6F, 0.2F);
+		bipedBody.addChild(bipedRightLeg);
+		bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 0, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
-		LLeg = new ModelRenderer(this);
-		LLeg.setRotationPoint(-2.2F, 6.6F, 0.2F);
-        LLeg.mirror = true;
-		Body.addChild(LLeg);
-		LLeg.cubeList.add(new ModelBox(LLeg, 0, 16, 2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
+		bipedLeftLeg = new ModelRenderer(this);
+		bipedLeftLeg.setRotationPoint(-2.2F, 6.6F, 0.2F);
+        bipedLeftLeg.mirror = true;
+		bipedBody.addChild(bipedLeftLeg);
+		bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 0, 16, 2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
 		FroB = new ModelRenderer(this);
 		FroB.setRotationPoint(0.0F, 10.0F, 2.0F);
@@ -1784,72 +1784,64 @@ public class ModelDAIMAGokuSsj4 extends ModelBase {
 		ftailS5.addChild(ftailS6);
 		ftailS6.cubeList.add(new ModelBox(ftailS6, 94, 7, -1.5F, -2.0F, 0.0F, 3, 4, 6, 0.0F));
 
-		RArm = new ModelRenderer(this);
-		RArm.setRotationPoint(-8.3F, 2.4F, 0.5F);
-		RArm.cubeList.add(new ModelBox(RArm, 40, 16, -0.5F, 1.9F, -3.0F, 5, 3, 5, -0.3F));
+		bipedRightArm = new ModelRenderer(this);
+		bipedRightArm.setRotationPoint(-8.3F, 2.4F, 0.5F);
+		bipedRightArm.cubeList.add(new ModelBox(bipedRightArm, 40, 16, -0.5F, 1.9F, -3.0F, 5, 3, 5, -0.3F));
 
-		RArm3 = new ModelRenderer(this);
-		RArm3.setRotationPoint(0.2F, -0.3F, 1.0F);
-		RArm.addChild(RArm3);
-		RArm3.cubeList.add(new ModelBox(RArm3, 40, 40, -0.2F, 4.8F, -3.5F, 4, 2, 4, 0.0F));
+		bipedRightArm3 = new ModelRenderer(this);
+		bipedRightArm3.setRotationPoint(0.2F, -0.3F, 1.0F);
+		bipedRightArm.addChild(bipedRightArm3);
+		bipedRightArm3.cubeList.add(new ModelBox(bipedRightArm3, 40, 40, -0.2F, 4.8F, -3.5F, 4, 2, 4, 0.0F));
 
-		RArm1 = new ModelRenderer(this);
-		RArm1.setRotationPoint(0.2F, -0.3F, 1.0F);
-		RArm.addChild(RArm1);
-		RArm1.cubeList.add(new ModelBox(RArm1, 7, 40, -1.2F, -2.8F, -4.5F, 6, 6, 6, -0.65F));
+		bipedRightArm1 = new ModelRenderer(this);
+		bipedRightArm1.setRotationPoint(0.2F, -0.3F, 1.0F);
+		bipedRightArm.addChild(bipedRightArm1);
+		bipedRightArm1.cubeList.add(new ModelBox(bipedRightArm1, 7, 40, -1.2F, -2.8F, -4.5F, 6, 6, 6, -0.65F));
 
-		RArm4 = new ModelRenderer(this);
-		RArm4.setRotationPoint(0.2F, -0.3F, 1.0F);
-		RArm.addChild(RArm4);
-		RArm4.cubeList.add(new ModelBox(RArm4, 70, 40, -0.7F, 6.1F, -4.0F, 5, 6, 5, -0.45F));
+		bipedRightArm4 = new ModelRenderer(this);
+		bipedRightArm4.setRotationPoint(0.2F, -0.3F, 1.0F);
+		bipedRightArm.addChild(bipedRightArm4);
+		bipedRightArm4.cubeList.add(new ModelBox(bipedRightArm4, 70, 40, -0.7F, 6.1F, -4.0F, 5, 6, 5, -0.45F));
 
-		LArm = new ModelRenderer(this);
-		LArm.setRotationPoint(4.3F, 2.4F, 0.5F);
-        LArm.mirror = true;
-		LArm.cubeList.add(new ModelBox(LArm, 40, 16, -0.5F, 1.9F, -3.0F, 5, 3, 5, -0.3F));
+		bipedLeftArm = new ModelRenderer(this);
+		bipedLeftArm.setRotationPoint(4.3F, 2.4F, 0.5F);
+        bipedLeftArm.mirror = true;
+		bipedLeftArm.cubeList.add(new ModelBox(bipedLeftArm, 40, 16, -0.5F, 1.9F, -3.0F, 5, 3, 5, -0.3F));
 
-		LArm3 = new ModelRenderer(this);
-		LArm3.setRotationPoint(0.2F, -0.3F, 1.0F);
-        LArm3.mirror = true;
-		LArm.addChild(LArm3);
-		LArm3.cubeList.add(new ModelBox(LArm3, 40, 40, -0.2F, 4.8F, -3.5F, 4, 2, 4, 0.0F));
+		bipedLeftArm3 = new ModelRenderer(this);
+		bipedLeftArm3.setRotationPoint(0.2F, -0.3F, 1.0F);
+        bipedLeftArm3.mirror = true;
+		bipedLeftArm.addChild(bipedLeftArm3);
+		bipedLeftArm3.cubeList.add(new ModelBox(bipedLeftArm3, 40, 40, -0.2F, 4.8F, -3.5F, 4, 2, 4, 0.0F));
 
-		LArm1 = new ModelRenderer(this);
-		LArm1.setRotationPoint(0.2F, -0.3F, 1.0F);
-        LArm1.mirror = true;
-		LArm.addChild(LArm1);
-		LArm1.cubeList.add(new ModelBox(LArm1, 7, 40, -1.2F, -2.8F, -4.5F, 6, 6, 6, -0.65F));
+		bipedLeftArm1 = new ModelRenderer(this);
+		bipedLeftArm1.setRotationPoint(0.2F, -0.3F, 1.0F);
+        bipedLeftArm1.mirror = true;
+		bipedLeftArm.addChild(bipedLeftArm1);
+		bipedLeftArm1.cubeList.add(new ModelBox(bipedLeftArm1, 7, 40, -1.2F, -2.8F, -4.5F, 6, 6, 6, -0.65F));
 
-		LArm4 = new ModelRenderer(this);
-		LArm4.setRotationPoint(0.2F, -0.3F, 1.0F);
-        LArm4.mirror = true;
-		LArm.addChild(LArm4);
-		LArm4.cubeList.add(new ModelBox(LArm4, 70, 40, -0.7F, 6.1F, -4.0F, 5, 6, 5, -0.45F));
+		bipedLeftArm4 = new ModelRenderer(this);
+		bipedLeftArm4.setRotationPoint(0.2F, -0.3F, 1.0F);
+        bipedLeftArm4.mirror = true;
+		bipedLeftArm.addChild(bipedLeftArm4);
+		bipedLeftArm4.cubeList.add(new ModelBox(bipedLeftArm4, 70, 40, -0.7F, 6.1F, -4.0F, 5, 6, 5, -0.45F));
 	}
 
     @Override
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor) {
+        // ★ 先计算动画角度
+        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netbipedHeadYaw, headPitch, scaleFactor, entity);
         GL11.glPushMatrix();
         GL11.glScalef(scale, scale, scale);
-        GL11.glTranslatef(0.0F, (float)(-1.0399999618530273 + 5.5 / (1.0 + Math.pow(scale / 0.45F, 1.8799999952316284))), 0.0F);
-        Head.render(f5);
-        Body.render(f5);
-        RArm.render(f5);
-        LArm.render(f5);
-        renderHairs(0.0625F, "FR", f2);
+        GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(scale/0.45F,1.88F)))), 0.0F);
+        // 渲染带动画的部件
+        bipedHead.render(scaleFactor);
+        bipedBody.render(scaleFactor);
+        bipedRightArm.render(scaleFactor);
+        bipedLeftArm.render(scaleFactor);
+        renderHairs(0.0625F, "FR", ageInTicks);
         GL11.glPopMatrix();
-        this.Head.rotateAngleY = f3 / (180F / (float)Math.PI);
-        this.Head.rotateAngleX = f4 / (180F / (float)Math.PI);
-        RArm.rotateAngleX = MathHelper.cos(f * 0.6662F + 3.1415927F) * 2.0F * f1 * 0.5F;
-        LArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
-        RArm.rotateAngleZ = 0.0F;
-        LArm.rotateAngleZ = 0.0F;
-        RLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
-        LLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + 3.1415927F) * 1.4F * f1;
-        RLeg.rotateAngleY = 0.0F;
-        LLeg.rotateAngleY = 0.0F;
     }
-
     private void transRot(float f5, ModelRenderer m)
     {
         GL11.glTranslatef(m.rotationPointX * f5, m.rotationPointY * f5, m.rotationPointZ * f5);
@@ -1868,7 +1860,7 @@ public class ModelDAIMAGokuSsj4 extends ModelBase {
         if (hair.equals("FR"))
         {
             GL11.glPushMatrix();
-            transRot(par1, Body);
+            transRot(par1, bipedBody);
             GL11.glScalef(1.0F, 0.35F, 1.0F);
             FroB.render(par1);
             GL11.glScaled(0.1D, 0.1D, 0.1D);
@@ -1901,11 +1893,39 @@ public class ModelDAIMAGokuSsj4 extends ModelBase {
         }
         return "";
     }
-
-    public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z)
-    {
+    public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
         modelRenderer.rotateAngleX = x;
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
+    }
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+        this.bipedHead.rotateAngleY = netbipedHeadYaw / (180F / (float)Math.PI);
+        this.bipedHead.rotateAngleX = headPitch / (180F / (float)Math.PI);
+
+        this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F;
+        this.bipedLeftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F;
+
+        this.bipedRightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+        this.bipedLeftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+
+        this.bipedRightArm.rotateAngleZ = 0.0F;
+        this.bipedLeftArm.rotateAngleZ = 0.0F;
+        this.bipedRightLeg.rotateAngleY = 0.0F;
+        this.bipedLeftLeg.rotateAngleY = 0.0F;
+        this.bipedRightArm.rotateAngleY = 0.0F;
+
+        float animProgress = this.onGround;
+        this.bipedBody.rotateAngleY = MathHelper.sin(MathHelper.sqrt_float(animProgress) * (float)Math.PI * 2.0F) * 0.2F;
+
+        float animCurve = 1.0F - animProgress;
+        animCurve *= animCurve;
+        animCurve *= animCurve;
+        animCurve = 1.0F - animCurve;
+
+        float sinCurve = MathHelper.sin(animCurve * (float)Math.PI);
+        float headOffset = MathHelper.sin(animProgress * (float)Math.PI) * -(this.bipedHead.rotateAngleX - 0.7F) * 0.75F;
+        this.bipedRightArm.rotateAngleX -= (sinCurve * 1.2F + headOffset);
+        this.bipedRightArm.rotateAngleY += this.bipedBody.rotateAngleY * 2.0F;
+        this.bipedRightArm.rotateAngleZ = MathHelper.sin(animProgress * 2.1415927F) * -0.4F;
     }
 }

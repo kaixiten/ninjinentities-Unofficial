@@ -336,6 +336,25 @@ public class ModelGeneral2 extends ModelBase {
     private final ModelRenderer TrunksSsj15;
     private final ModelRenderer TrunksSsj16;
     private final ModelRenderer TrunksSsj17;
+    private final ModelRenderer gohanGT;
+    private final ModelRenderer gohanGT2;
+    private final ModelRenderer gohanGT3;
+    private final ModelRenderer gohanGT4;
+    private final ModelRenderer gohanGT5;
+    private final ModelRenderer gohanGT6;
+    private final ModelRenderer gohanGT7;
+    private final ModelRenderer gohan6_r1;
+    private final ModelRenderer gohanGT8;
+    private final ModelRenderer gohanGT9;
+    private final ModelRenderer gohanGT10;
+    private final ModelRenderer gohanGT11;
+    private final ModelRenderer gohan10_r1;
+    private final ModelRenderer gohanGT12;
+    private final ModelRenderer gohanGT13;
+    private final ModelRenderer gohanGT14;
+    private final ModelRenderer gohanGT15;
+    private final ModelRenderer gohanGT16;
+    private final ModelRenderer gohanGT17;
     private final ModelRenderer FroB;
     private final ModelRenderer ftailS1;
     private final ModelRenderer ftailS2;
@@ -2307,79 +2326,192 @@ public class ModelGeneral2 extends ModelBase {
 		setRotationAngle(TrunksSsj17, -0.3491F, 0.0F, -0.7854F);
 		TrunksSsj17.cubeList.add(new ModelBox(TrunksSsj17, 110, 21, -2.6436F, -1.6388F, -3.0979F, 1, 5, 1, 0.0F));
 
-		FroB = new ModelRenderer(this);
-		FroB.setRotationPoint(0.0F, 10.0F, 2.0F);
+		gohanGT = new ModelRenderer(this);
+		gohanGT.setRotationPoint(0.0F, 0.0F, 0.0F);
+		bipedHead.addChild(gohanGT);
 
 
-		ftailS1 = new ModelRenderer(this);
-		ftailS1.setRotationPoint(0.0F, 0.0F, 0.0F);
-		FroB.addChild(ftailS1);
-		ftailS1.cubeList.add(new ModelBox(ftailS1, 110, 0, -1.5F, -2.0F, 0.0F, 3, 3, 6, 0.0F));
+		gohanGT2 = new ModelRenderer(this);
+		gohanGT2.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT2);
+		setRotationAngle(gohanGT2, -0.1745F, 0.0F, 0.0F);
+		gohanGT2.cubeList.add(new ModelBox(gohanGT2, 6, 52, -1.0F, -10.0F, -5.0667F, 4, 4, 4, 0.0F));
 
-		ftailS2 = new ModelRenderer(this);
-		ftailS2.setRotationPoint(0.0F, 0.0F, 5.0F);
-		ftailS1.addChild(ftailS2);
-		ftailS2.cubeList.add(new ModelBox(ftailS2, 110, 0, -1.5F, -2.0F, 0.0F, 3, 3, 6, 0.0F));
+		gohanGT3 = new ModelRenderer(this);
+		gohanGT3.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT3);
+		setRotationAngle(gohanGT3, -0.3665F, 0.0F, 0.0F);
+		gohanGT3.cubeList.add(new ModelBox(gohanGT3, 0, 51, -0.5F, -11.0F, -6.0F, 3, 2, 3, 0.0F));
 
-		ftailS3 = new ModelRenderer(this);
-		ftailS3.setRotationPoint(0.0F, 0.0F, 5.0F);
-		ftailS2.addChild(ftailS3);
-		ftailS3.cubeList.add(new ModelBox(ftailS3, 110, 0, -1.5F, -2.0F, 0.0F, 3, 3, 6, 0.0F));
+		gohanGT4 = new ModelRenderer(this);
+		gohanGT4.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT4);
+		setRotationAngle(gohanGT4, -0.5585F, 0.0F, 0.0F);
+		gohanGT4.cubeList.add(new ModelBox(gohanGT4, 0, 51, 0.0F, -11.0F, -7.0F, 2, 2, 2, 0.0F));
 
-		ftailS4 = new ModelRenderer(this);
-		ftailS4.setRotationPoint(0.0F, 0.0F, 5.0F);
-		ftailS3.addChild(ftailS4);
-		ftailS4.cubeList.add(new ModelBox(ftailS4, 110, 0, -1.5F, -2.0F, 0.0F, 3, 3, 6, 0.0F));
+		gohanGT5 = new ModelRenderer(this);
+		gohanGT5.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT5);
+		setRotationAngle(gohanGT5, -0.2618F, 0.0F, -0.3665F);
+		gohanGT5.cubeList.add(new ModelBox(gohanGT5, 6, 49, -1.5333F, -10.3F, -5.4667F, 4, 5, 4, 0.0F));
 
-		ftailS5 = new ModelRenderer(this);
-		ftailS5.setRotationPoint(0.0F, 0.0F, 5.0F);
-		ftailS4.addChild(ftailS5);
-		ftailS5.cubeList.add(new ModelBox(ftailS5, 110, 0, -1.5F, -2.0F, 0.0F, 3, 3, 6, 0.0F));
+		gohanGT6 = new ModelRenderer(this);
+		gohanGT6.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT6);
+		setRotationAngle(gohanGT6, -0.4189F, 0.0F, -0.3316F);
+		gohanGT6.cubeList.add(new ModelBox(gohanGT6, 4, 56, -0.5F, -11.3F, -6.0F, 5, 4, 4, 0.0F));
 
-		ftailS6 = new ModelRenderer(this);
-		ftailS6.setRotationPoint(0.0F, 0.0F, 5.0F);
-		ftailS5.addChild(ftailS6);
-		ftailS6.cubeList.add(new ModelBox(ftailS6, 110, 0, -1.5F, -2.0F, 0.0F, 3, 3, 6, 0.0F));
+		gohanGT7 = new ModelRenderer(this);
+		gohanGT7.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT7);
+		setRotationAngle(gohanGT7, -0.5236F, 0.0F, -0.2269F);
+
+
+		gohan6_r1 = new ModelRenderer(this);
+		gohan6_r1.setRotationPoint(0.2F, -11.0F, -4.5F);
+		gohanGT7.addChild(gohan6_r1);
+		setRotationAngle(gohan6_r1, 0.0F, 0.0F, -0.1745F);
+		gohan6_r1.cubeList.add(new ModelBox(gohan6_r1, 0, 51, -1.5F, -1.5F, -1.5F, 3, 3, 3, 0.0F));
+
+		gohanGT8 = new ModelRenderer(this);
+		gohanGT8.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT8);
+		setRotationAngle(gohanGT8, -0.6283F, 0.0F, -0.0698F);
+		gohanGT8.cubeList.add(new ModelBox(gohanGT8, 0, 51, 0.0F, -12.6667F, -7.0F, 2, 4, 2, 0.0F));
+
+		gohanGT9 = new ModelRenderer(this);
+		gohanGT9.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT9);
+		setRotationAngle(gohanGT9, -0.2269F, 0.0F, 0.4014F);
+		gohanGT9.cubeList.add(new ModelBox(gohanGT9, 0, 51, -1.3F, -9.3F, -5.0F, 3, 5, 3, 0.0F));
+
+		gohanGT10 = new ModelRenderer(this);
+		gohanGT10.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT10);
+		setRotationAngle(gohanGT10, -0.4538F, 0.0F, 0.2618F);
+		gohanGT10.cubeList.add(new ModelBox(gohanGT10, 4, 49, -0.8333F, -10.8F, -6.0F, 3, 4, 4, 0.0F));
+
+		gohanGT11 = new ModelRenderer(this);
+		gohanGT11.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT11);
+		setRotationAngle(gohanGT11, -0.5411F, 0.0F, 0.1745F);
+
+
+		gohan10_r1 = new ModelRenderer(this);
+		gohan10_r1.setRotationPoint(0.5F, -10.4667F, -4.5F);
+		gohanGT11.addChild(gohan10_r1);
+		setRotationAngle(gohan10_r1, 0.0F, 0.0F, 0.1222F);
+		gohan10_r1.cubeList.add(new ModelBox(gohan10_r1, 2, 49, -1.5F, -2.0F, -1.5F, 3, 4, 3, 0.0F));
+
+		gohanGT12 = new ModelRenderer(this);
+		gohanGT12.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT12);
+		setRotationAngle(gohanGT12, -0.2793F, 0.0F, 0.0F);
+		gohanGT12.cubeList.add(new ModelBox(gohanGT12, 6, 49, -2.0F, -9.0F, -1.0F, 4, 5, 4, 0.0F));
+
+		gohanGT13 = new ModelRenderer(this);
+		gohanGT13.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT13);
+		setRotationAngle(gohanGT13, -0.2443F, 0.2618F, 0.0175F);
+		gohanGT13.cubeList.add(new ModelBox(gohanGT13, 0, 55, -0.8F, -10.0F, -1.0F, 4, 5, 4, 0.0F));
+
+		gohanGT14 = new ModelRenderer(this);
+		gohanGT14.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT14);
+		setRotationAngle(gohanGT14, -0.2443F, -0.2618F, 0.0175F);
+		gohanGT14.cubeList.add(new ModelBox(gohanGT14, 6, 52, -3.2667F, -10.0F, -1.0F, 4, 4, 4, 0.0F));
+
+		gohanGT15 = new ModelRenderer(this);
+		gohanGT15.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT15);
+		setRotationAngle(gohanGT15, -0.1396F, 0.0F, 0.0F);
+		gohanGT15.cubeList.add(new ModelBox(gohanGT15, 4, 49, -2.0F, -12.0F, -1.0F, 3, 4, 4, 0.0F));
+
+		gohanGT16 = new ModelRenderer(this);
+		gohanGT16.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT16);
+		setRotationAngle(gohanGT16, -0.1222F, 0.1745F, 0.0F);
+		gohanGT16.cubeList.add(new ModelBox(gohanGT16, 10, 49, -0.6F, -11.5F, 0.0F, 3, 2, 3, 0.0F));
+
+		gohanGT17 = new ModelRenderer(this);
+		gohanGT17.setRotationPoint(0.0F, 0.0F, 0.0F);
+		gohanGT.addChild(gohanGT17);
+		setRotationAngle(gohanGT17, -0.2443F, -0.2618F, 0.0175F);
+		gohanGT17.cubeList.add(new ModelBox(gohanGT17, 0, 49, -2.8667F, -11.5333F, -0.6667F, 3, 4, 3, 0.0F));
+
+        FroB = new ModelRenderer(this);
+        FroB.setRotationPoint(0.0F, 10.0F, 2.0F);
+
+
+        ftailS1 = new ModelRenderer(this);
+        ftailS1.setRotationPoint(0.0F, 0.0F, 0.0F);
+        FroB.addChild(ftailS1);
+        ftailS1.cubeList.add(new ModelBox(ftailS1, 110, 0, -1.5F, -2.0F, 0.0F, 3, 3, 6, 0.0F));
+
+        ftailS2 = new ModelRenderer(this);
+        ftailS2.setRotationPoint(0.0F, 0.0F, 5.0F);
+        ftailS1.addChild(ftailS2);
+        ftailS2.cubeList.add(new ModelBox(ftailS2, 110, 0, -1.5F, -2.0F, 0.0F, 3, 3, 6, 0.0F));
+
+        ftailS3 = new ModelRenderer(this);
+        ftailS3.setRotationPoint(0.0F, 0.0F, 5.0F);
+        ftailS2.addChild(ftailS3);
+        ftailS3.cubeList.add(new ModelBox(ftailS3, 110, 0, -1.5F, -2.0F, 0.0F, 3, 3, 6, 0.0F));
+
+        ftailS4 = new ModelRenderer(this);
+        ftailS4.setRotationPoint(0.0F, 0.0F, 5.0F);
+        ftailS3.addChild(ftailS4);
+        ftailS4.cubeList.add(new ModelBox(ftailS4, 110, 0, -1.5F, -2.0F, 0.0F, 3, 3, 6, 0.0F));
+
+        ftailS5 = new ModelRenderer(this);
+        ftailS5.setRotationPoint(0.0F, 0.0F, 5.0F);
+        ftailS4.addChild(ftailS5);
+        ftailS5.cubeList.add(new ModelBox(ftailS5, 110, 0, -1.5F, -2.0F, 0.0F, 3, 3, 6, 0.0F));
+
+        ftailS6 = new ModelRenderer(this);
+        ftailS6.setRotationPoint(0.0F, 0.0F, 5.0F);
+        ftailS5.addChild(ftailS6);
+        ftailS6.cubeList.add(new ModelBox(ftailS6, 110, 0, -1.5F, -2.0F, 0.0F, 3, 3, 6, 0.0F));
 
         bipedBody = new ModelRenderer(this);
-        bipedBody.setRotationPoint(0.0F, 5.4F, 0.0F);
-        bipedBody.cubeList.add(new ModelBox(bipedBody, 16, 16, -4.0F, -5.4F, -2.0F, 8, 12, 4, 0.0F));
+        bipedBody.setRotationPoint(0.2F, 5.4F, -0.2F);
+        bipedBody.cubeList.add(new ModelBox(bipedBody, 16, 16, -4.2F, -5.4F, -1.8F, 8, 12, 4, 0.0F));
 
         bipedRightArm = new ModelRenderer(this);
-        bipedRightArm.setRotationPoint(-5.0F, -2.4F, 0.0F);
+        bipedRightArm.setRotationPoint(-5.2F, -2.4F, 0.2F);
         bipedBody.addChild(bipedRightArm);
         bipedRightArm.cubeList.add(new ModelBox(bipedRightArm, 40, 16, -3.0F, -3.0F, -2.0F, 4, 12, 4, 0.0F));
 
         bipedLeftArm = new ModelRenderer(this);
-        bipedLeftArm.setRotationPoint(5.0F, -2.4F, 0.0F);
+        bipedLeftArm.setRotationPoint(4.8F, -2.4F, 0.2F);
         bipedLeftArm.mirror = true;
         bipedBody.addChild(bipedLeftArm);
         bipedLeftArm.cubeList.add(new ModelBox(bipedLeftArm, 40, 32, -1.0F, -3.0F, -2.0F, 4, 12, 4, 0.0F));
 
         bipedRightLeg = new ModelRenderer(this);
-        bipedRightLeg.setRotationPoint(-2.0F, 6.6F, 0.0F);
+        bipedRightLeg.setRotationPoint(-2.2F, 6.6F, 0.2F);
         bipedBody.addChild(bipedRightLeg);
-        bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 0, 16, -1.9F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
+        bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 0, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
         bipedLeftLeg = new ModelRenderer(this);
-        bipedLeftLeg.setRotationPoint(2.0F, 6.6F, 0.0F);
+        bipedLeftLeg.setRotationPoint(1.8F, 6.6F, 0.2F);
         bipedLeftLeg.mirror = true;
         bipedBody.addChild(bipedLeftLeg);
-        bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 0, 32, -2.1F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
+        bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 0, 32, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
     }
 
 
     @Override
-    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor) {
+    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor) {
         // ★ 先计算动画角度
-        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
+        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netbipedHeadYaw, headPitch, scaleFactor, entity);
         GL11.glPushMatrix();
         GL11.glScalef(scale, scale, scale);
         GL11.glTranslatef(0.0F, (float) (-1.0399999618530273 + 5.5 / (1.0 + Math.pow(scale / 0.45F, 1.8799999952316284))), 0.0F);
         // 渲染带动画的部件
         bipedHead.render(scaleFactor);
         bipedBody.render(scaleFactor);
-        renderHairs(0.0625F, "FR", limbSwingAmount);
+        renderHairs(0.0625F, "FR", ageInTicks);
         GL11.glPopMatrix();
     }
     private void transRot(float f5, ModelRenderer m)
@@ -2438,8 +2570,8 @@ public class ModelGeneral2 extends ModelBase {
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
     }
-    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
-        this.bipedHead.rotateAngleY = netHeadYaw / (180F / (float)Math.PI);
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+        this.bipedHead.rotateAngleY = netbipedHeadYaw / (180F / (float)Math.PI);
         this.bipedHead.rotateAngleX = headPitch / (180F / (float)Math.PI);
 
         this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F;

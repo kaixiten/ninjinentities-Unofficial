@@ -2757,43 +2757,43 @@ public class ModelGeneral1 extends ModelBase {
         ftailS6.cubeList.add(new ModelBox(ftailS6, 110, 0, -1.5F, -2.0F, 0.0F, 3, 3, 6, 0.0F));
 
         bipedBody = new ModelRenderer(this);
-        bipedBody.setRotationPoint(0.0F, 5.4F, 0.0F);
-        bipedBody.cubeList.add(new ModelBox(bipedBody, 16, 16, -4.0F, -5.4F, -2.0F, 8, 12, 4, 0.0F));
+        bipedBody.setRotationPoint(0.2F, 5.4F, -0.2F);
+        bipedBody.cubeList.add(new ModelBox(bipedBody, 16, 16, -4.2F, -5.4F, -1.8F, 8, 12, 4, 0.0F));
 
         bipedRightArm = new ModelRenderer(this);
-        bipedRightArm.setRotationPoint(-5.0F, -2.4F, 0.0F);
+        bipedRightArm.setRotationPoint(-5.2F, -2.4F, 0.2F);
         bipedBody.addChild(bipedRightArm);
         bipedRightArm.cubeList.add(new ModelBox(bipedRightArm, 40, 16, -3.0F, -3.0F, -2.0F, 4, 12, 4, 0.0F));
 
         bipedLeftArm = new ModelRenderer(this);
-        bipedLeftArm.setRotationPoint(5.0F, -2.4F, 0.0F);
+        bipedLeftArm.setRotationPoint(4.8F, -2.4F, 0.2F);
         bipedLeftArm.mirror = true;
         bipedBody.addChild(bipedLeftArm);
         bipedLeftArm.cubeList.add(new ModelBox(bipedLeftArm, 40, 32, -1.0F, -3.0F, -2.0F, 4, 12, 4, 0.0F));
 
         bipedRightLeg = new ModelRenderer(this);
-        bipedRightLeg.setRotationPoint(-2.0F, 6.6F, 0.0F);
+        bipedRightLeg.setRotationPoint(-2.2F, 6.6F, 0.2F);
         bipedBody.addChild(bipedRightLeg);
-        bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 0, 16, -1.9F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
+        bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 0, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
         bipedLeftLeg = new ModelRenderer(this);
-        bipedLeftLeg.setRotationPoint(2.0F, 6.6F, 0.0F);
+        bipedLeftLeg.setRotationPoint(1.8F, 6.6F, 0.2F);
         bipedLeftLeg.mirror = true;
         bipedBody.addChild(bipedLeftLeg);
-        bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 0, 32, -2.1F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
+        bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 0, 32, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
     }
 
     @Override
-    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor) {
+    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor) {
         // ★ 先计算动画角度
-        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
+        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netbipedHeadYaw, headPitch, scaleFactor, entity);
         GL11.glPushMatrix();
         GL11.glScalef(scale, scale, scale);
         GL11.glTranslatef(0.0F, (float) (-1.0399999618530273 + 5.5 / (1.0 + Math.pow(scale / 0.45F, 1.8799999952316284))), 0.0F);
         // 渲染带动画的部件
         bipedHead.render(scaleFactor);
         bipedBody.render(scaleFactor);
-        renderHairs(0.0625F, "FR", limbSwingAmount);
+        renderHairs(0.0625F, "FR", ageInTicks);
         GL11.glPopMatrix();
     }
     private void transRot(float f5, ModelRenderer m)
@@ -2852,8 +2852,8 @@ public class ModelGeneral1 extends ModelBase {
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
     }
-    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
-        this.bipedHead.rotateAngleY = netHeadYaw / (180F / (float)Math.PI);
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+        this.bipedHead.rotateAngleY = netbipedHeadYaw / (180F / (float)Math.PI);
         this.bipedHead.rotateAngleX = headPitch / (180F / (float)Math.PI);
 
         this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F;

@@ -10,8 +10,8 @@ import org.lwjgl.opengl.GL11;
 
 public class Modellude extends ModelBase {
 	private final ModelRenderer bipedHead;
-	private final ModelRenderer Head_r1;
-	private final ModelRenderer Head_r2;
+	private final ModelRenderer bipedHead_r1;
+	private final ModelRenderer bipedHead_r2;
 	private final ModelRenderer bipedBody;
 	private final ModelRenderer bipedRightArm;
 	private final ModelRenderer bipedLeftArm;
@@ -28,17 +28,17 @@ public class Modellude extends ModelBase {
 		bipedHead.setRotationPoint(0.0F, 2.0F, 0.0F);
 		bipedHead.cubeList.add(new ModelBox(bipedHead, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F));
 
-		Head_r1 = new ModelRenderer(this);
-		Head_r1.setRotationPoint(1.5F, -7.5F, 0.0F);
-		bipedHead.addChild(Head_r1);
-		setRotationAngle(Head_r1, 0.0F, 0.0F, 0.6545F);
-		Head_r1.cubeList.add(new ModelBox(Head_r1, 40, 30, 0.0F, -3.0F, -1.0F, 3, 3, 3, 0.0F));
+		bipedHead_r1 = new ModelRenderer(this);
+		bipedHead_r1.setRotationPoint(1.5F, -7.5F, 0.0F);
+		bipedHead.addChild(bipedHead_r1);
+		setRotationAngle(bipedHead_r1, 0.0F, 0.0F, 0.6545F);
+		bipedHead_r1.cubeList.add(new ModelBox(bipedHead_r1, 40, 30, 0.0F, -3.0F, -1.0F, 3, 3, 3, 0.0F));
 
-		Head_r2 = new ModelRenderer(this);
-		Head_r2.setRotationPoint(-1.5F, -7.5F, 0.0F);
-		bipedHead.addChild(Head_r2);
-		setRotationAngle(Head_r2, 0.0F, 0.0F, -0.6545F);
-		Head_r2.cubeList.add(new ModelBox(Head_r2, 12, 38, -3.0F, -3.0F, -1.0F, 3, 3, 3, 0.0F));
+		bipedHead_r2 = new ModelRenderer(this);
+		bipedHead_r2.setRotationPoint(-1.5F, -7.5F, 0.0F);
+		bipedHead.addChild(bipedHead_r2);
+		setRotationAngle(bipedHead_r2, 0.0F, 0.0F, -0.6545F);
+		bipedHead_r2.cubeList.add(new ModelBox(bipedHead_r2, 12, 38, -3.0F, -3.0F, -1.0F, 3, 3, 3, 0.0F));
 
 		bipedBody = new ModelRenderer(this);
 		bipedBody.setRotationPoint(0.0F, 2.0F, 0.0F);
@@ -67,9 +67,9 @@ public class Modellude extends ModelBase {
 	}
 
     @Override
-    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor) {
+    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor) {
         // ★ 先计算动画角度
-        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
+        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netbipedHeadYaw, headPitch, scaleFactor, entity);
         GL11.glPushMatrix();
         GL11.glScalef(scale, scale, scale);
         GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(scale/0.45F,1.88F)))), 0.0F);
@@ -83,8 +83,8 @@ public class Modellude extends ModelBase {
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
     }
-    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
-        this.bipedHead.rotateAngleY = netHeadYaw / (180F / (float)Math.PI);
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+        this.bipedHead.rotateAngleY = netbipedHeadYaw / (180F / (float)Math.PI);
         this.bipedHead.rotateAngleX = headPitch / (180F / (float)Math.PI);
 
         this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F;

@@ -22,14 +22,14 @@ public class Modelpikkon extends ModelBase {
 	private final ModelRenderer RightCloth4;
 	private final ModelRenderer bipedBody;
 	private final ModelRenderer Outfit;
-	private final ModelRenderer Body_r1;
-	private final ModelRenderer Body_r2;
+	private final ModelRenderer bipedBody_r1;
+	private final ModelRenderer bipedBody_r2;
 	private final ModelRenderer bipedRightArm;
 	private final ModelRenderer bipedLeftArm;
 	private final ModelRenderer bipedRightLeg;
-	private final ModelRenderer Body_r3;
+	private final ModelRenderer bipedBody_r3;
 	private final ModelRenderer bipedLeftLeg;
-	private final ModelRenderer Body_r4;
+	private final ModelRenderer bipedBody_r4;
     private float scale = 1.0F;
 
 	public Modelpikkon(float _scale) {
@@ -112,17 +112,17 @@ public class Modelpikkon extends ModelBase {
 		Outfit.cubeList.add(new ModelBox(Outfit, 32, 14, -4.0F, -14.0F, -2.25F, 8, 2, 5, 0.02F));
 		Outfit.cubeList.add(new ModelBox(Outfit, 60, 32, -4.0F, -16.0F, -2.0F, 8, 2, 4, 0.01F));
 
-		Body_r1 = new ModelRenderer(this);
-		Body_r1.setRotationPoint(-2.0F, -16.0F, 0.0F);
-		Outfit.addChild(Body_r1);
-		setRotationAngle(Body_r1, 0.0F, 0.0F, -0.2618F);
-		Body_r1.cubeList.add(new ModelBox(Body_r1, 60, 38, -2.5F, -9.0F, -2.25F, 3, 8, 5, 0.02F));
+		bipedBody_r1 = new ModelRenderer(this);
+		bipedBody_r1.setRotationPoint(-2.0F, -16.0F, 0.0F);
+		Outfit.addChild(bipedBody_r1);
+		setRotationAngle(bipedBody_r1, 0.0F, 0.0F, -0.2618F);
+		bipedBody_r1.cubeList.add(new ModelBox(bipedBody_r1, 60, 38, -2.5F, -9.0F, -2.25F, 3, 8, 5, 0.02F));
 
-		Body_r2 = new ModelRenderer(this);
-		Body_r2.setRotationPoint(2.0F, -16.0F, 0.0F);
-		Outfit.addChild(Body_r2);
-		setRotationAngle(Body_r2, 0.0F, 0.0F, 0.2618F);
-		Body_r2.cubeList.add(new ModelBox(Body_r2, 16, 61, -0.5F, -9.0F, -2.25F, 3, 8, 5, 0.02F));
+		bipedBody_r2 = new ModelRenderer(this);
+		bipedBody_r2.setRotationPoint(2.0F, -16.0F, 0.0F);
+		Outfit.addChild(bipedBody_r2);
+		setRotationAngle(bipedBody_r2, 0.0F, 0.0F, 0.2618F);
+		bipedBody_r2.cubeList.add(new ModelBox(bipedBody_r2, 16, 61, -0.5F, -9.0F, -2.25F, 3, 8, 5, 0.02F));
 
 		bipedRightArm = new ModelRenderer(this);
 		bipedRightArm.setRotationPoint(-5.0F, 2.0F, 0.0F);
@@ -142,11 +142,11 @@ public class Modelpikkon extends ModelBase {
 		bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 24, 45, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 		bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 58, 0, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.25F));
 
-		Body_r3 = new ModelRenderer(this);
-		Body_r3.setRotationPoint(1.9F, -0.1F, 0.0F);
-		bipedRightLeg.addChild(Body_r3);
-		setRotationAngle(Body_r3, 0.0F, 0.0F, 0.0873F);
-		Body_r3.cubeList.add(new ModelBox(Body_r3, 24, 31, -4.5F, 0.0F, -2.25F, 5, 9, 5, 0.0F));
+		bipedBody_r3 = new ModelRenderer(this);
+		bipedBody_r3.setRotationPoint(1.9F, -0.1F, 0.0F);
+		bipedRightLeg.addChild(bipedBody_r3);
+		setRotationAngle(bipedBody_r3, 0.0F, 0.0F, 0.0873F);
+		bipedBody_r3.cubeList.add(new ModelBox(bipedBody_r3, 24, 31, -4.5F, 0.0F, -2.25F, 5, 9, 5, 0.0F));
 
 		bipedLeftLeg = new ModelRenderer(this);
 		bipedLeftLeg.setRotationPoint(1.9F, 12.0F, 0.0F);
@@ -154,17 +154,17 @@ public class Modelpikkon extends ModelBase {
 		bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 0, 47, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 		bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 60, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.25F));
 
-		Body_r4 = new ModelRenderer(this);
-		Body_r4.setRotationPoint(-1.9F, -0.1F, 0.0F);
-		bipedLeftLeg.addChild(Body_r4);
-		setRotationAngle(Body_r4, 0.0F, 0.0F, -0.0873F);
-		Body_r4.cubeList.add(new ModelBox(Body_r4, 32, 0, -0.5F, 0.0F, -2.25F, 5, 9, 5, 0.0F));
+		bipedBody_r4 = new ModelRenderer(this);
+		bipedBody_r4.setRotationPoint(-1.9F, -0.1F, 0.0F);
+		bipedLeftLeg.addChild(bipedBody_r4);
+		setRotationAngle(bipedBody_r4, 0.0F, 0.0F, -0.0873F);
+		bipedBody_r4.cubeList.add(new ModelBox(bipedBody_r4, 32, 0, -0.5F, 0.0F, -2.25F, 5, 9, 5, 0.0F));
 	}
 
     @Override
-    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor) {
+    public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor) {
         // ★ 先计算动画角度
-        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entity);
+        this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netbipedHeadYaw, headPitch, scaleFactor, entity);
         GL11.glPushMatrix();
         GL11.glScalef(scale, scale, scale);
         GL11.glTranslatef(0.0F, (float) (-1.0399999618530273 + 5.5 / (1.0 + Math.pow(scale / 0.45F, 1.8799999952316284))), 0.0F);
@@ -180,8 +180,8 @@ public class Modelpikkon extends ModelBase {
         modelRenderer.rotateAngleY = y;
         modelRenderer.rotateAngleZ = z;
     }
-    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
-        this.bipedHead.rotateAngleY = netHeadYaw / (180F / (float)Math.PI);
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netbipedHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+        this.bipedHead.rotateAngleY = netbipedHeadYaw / (180F / (float)Math.PI);
         this.bipedHead.rotateAngleX = headPitch / (180F / (float)Math.PI);
 
         this.bipedRightArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F;

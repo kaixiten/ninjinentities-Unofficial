@@ -81,18 +81,14 @@ public class ModConfig {
             }
         }
     }
-    // 解析百分比值，并限制最大值为 100%
     private static double parsePercentage(String value, double defaultValue) {
         if (value.endsWith("%")) {
             try {
-                double percentage = Double.parseDouble(value.substring(0, value.length() - 1));
-                return Math.min(percentage, 100.0); // 限制最大值为 100%
+                return Double.parseDouble(value.substring(0, value.length() - 1));
             } catch (NumberFormatException e) {
-                // 如果解析失败，使用默认值
                 return defaultValue;
             }
         } else {
-            // 如果不是百分比格式，使用默认值
             return defaultValue;
         }
     }

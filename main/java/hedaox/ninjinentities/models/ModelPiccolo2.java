@@ -6,8 +6,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
 public class ModelPiccolo2 extends ModelBase {
-  private final ModelRenderer Head;
-  private final ModelRenderer Body;
+  private final ModelRenderer bipedHead;
+  private final ModelRenderer bipedBody;
   private final ModelRenderer ArmL;
   private final ModelRenderer ArmR;
   private final ModelRenderer LegL;
@@ -24,9 +24,9 @@ public class ModelPiccolo2 extends ModelBase {
     tentacleL.setRotationPoint(1.5F, -5.5F, -4.0F);
     tentacleL.addBox(0.0F, -2.0F, -4.0F, 0, 4, 4, 0.0F);
     setRotateAngle(tentacleL, 0.0F, -0.6981317F, 0.0F);
-    this.Head = new ModelRenderer(this, 0, 0);
-    this.Head.setRotationPoint(0.0F, -7.0F, 0.0F);
-    this.Head.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F);
+    this.bipedHead = new ModelRenderer(this, 0, 0);
+    this.bipedHead.setRotationPoint(0.0F, -7.0F, 0.0F);
+    this.bipedHead.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, 0.0F);
       ModelRenderer tentacleR = new ModelRenderer(this, 25, -1);
     tentacleR.setRotationPoint(-1.5F, -5.5F, -4.0F);
     tentacleR.addBox(0.0F, -2.0F, -4.0F, 0, 4, 4, 0.0F);
@@ -70,17 +70,17 @@ public class ModelPiccolo2 extends ModelBase {
     feetL.mirror = true;
     feetL.setRotationPoint(0.0F, 0.0F, 0.0F);
     feetL.addBox(-2.0F, 14.0F, -3.3F, 4, 2, 5, 0.0F);
-    this.Body = new ModelRenderer(this, 1, 24);
-    this.Body.setRotationPoint(0.0F, -7.0F, 0.0F);
-    this.Body.addBox(-5.0F, 0.0F, -3.0F, 10, 9, 6, 0.0F);
-    this.Head.addChild(tentacleL);
-    this.Head.addChild(tentacleR);
-    this.Body.addChild(body2);
+    this.bipedBody = new ModelRenderer(this, 1, 24);
+    this.bipedBody.setRotationPoint(0.0F, -7.0F, 0.0F);
+    this.bipedBody.addBox(-5.0F, 0.0F, -3.0F, 10, 9, 6, 0.0F);
+    this.bipedHead.addChild(tentacleL);
+    this.bipedHead.addChild(tentacleR);
+    this.bipedBody.addChild(body2);
     this.LegR.addChild(feetR);
-    this.Head.addChild(earL);
-    this.Body.addChild(body3);
-    this.Head.addChild(head2);
-    this.Head.addChild(earR);
+    this.bipedHead.addChild(earL);
+    this.bipedBody.addChild(body3);
+    this.bipedHead.addChild(head2);
+    this.bipedHead.addChild(earR);
     this.LegL.addChild(feetL);
   }
 
@@ -88,9 +88,9 @@ public class ModelPiccolo2 extends ModelBase {
   {
     setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 
-    this.Head.render(f5);
+    this.bipedHead.render(f5);
 
-    this.Body.render(f5);
+    this.bipedBody.render(f5);
     this.ArmR.render(f5);
     this.ArmL.render(f5);
     this.LegL.render(f5);
@@ -113,8 +113,8 @@ public class ModelPiccolo2 extends ModelBase {
     float r = 360.0F;
     float r2 = 180.0F;
 
-      this.Head.rotateAngleY = (par4 / (r2 / 3.1415927F));
-    this.Head.rotateAngleX = (par5 / (r2 / 3.1415927F));
+      this.bipedHead.rotateAngleY = (par4 / (r2 / 3.1415927F));
+    this.bipedHead.rotateAngleX = (par5 / (r2 / 3.1415927F));
     float ex = par7Entity.ticksExisted;
     float r3 = MathHelper.cos(ex * 0.14F) * 0.1F;
     float r4 = MathHelper.cos(ex / 8.0F) / 5.0F + 0.1F;

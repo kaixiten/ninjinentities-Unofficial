@@ -9,7 +9,7 @@ import org.lwjgl.opengl.GL11;
 
 
 public class ModelKaioshinChild extends ModelBase {
-    private final ModelRenderer Head;
+    private final ModelRenderer bipedHead;
     private final ModelRenderer ear2;
     private final ModelRenderer ear1;
     private final ModelRenderer hair;
@@ -42,11 +42,11 @@ public class ModelKaioshinChild extends ModelBase {
     private final ModelRenderer hair2_r10;
     private final ModelRenderer hair11;
     private final ModelRenderer hair2_r11;
-    private final ModelRenderer Body;
-    private final ModelRenderer RArm;
-    private final ModelRenderer LArm;
-    private final ModelRenderer RLeg;
-    private final ModelRenderer LLeg;
+    private final ModelRenderer bipedBody;
+    private final ModelRenderer bipedRightArm;
+    private final ModelRenderer bipedLeftArm;
+    private final ModelRenderer bipedRightLeg;
+    private final ModelRenderer bipedLeftLeg;
     private float scale = 1.0F;
 
     public ModelKaioshinChild(float _scale) {
@@ -55,26 +55,26 @@ public class ModelKaioshinChild extends ModelBase {
 
         scale = _scale;
 
-        Head = new ModelRenderer(this);
-        Head.setRotationPoint(0.0F, 0.2F, 0.0F);
-        Head.cubeList.add(new ModelBox(Head, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, -0.19F));
+        bipedHead = new ModelRenderer(this);
+        bipedHead.setRotationPoint(0.0F, 0.2F, 0.0F);
+        bipedHead.cubeList.add(new ModelBox(bipedHead, 0, 0, -4.0F, -8.0F, -4.0F, 8, 8, 8, -0.19F));
 
         ear2 = new ModelRenderer(this);
         ear2.setRotationPoint(2.8F, -1.5F, -2.0F);
-        Head.addChild(ear2);
+        bipedHead.addChild(ear2);
         ear2.mirror = true;
         setRotationAngle(ear2, 0.0F, -0.5236F, 0.0F);
         ear2.cubeList.add(new ModelBox(ear2, 25, 3, 0.1F, -5.5F, -0.4F, 5, 5, 0, -0.19F));
 
         ear1 = new ModelRenderer(this);
         ear1.setRotationPoint(-2.8F, -1.5F, -2.0F);
-        Head.addChild(ear1);
+        bipedHead.addChild(ear1);
         setRotationAngle(ear1, 0.0F, 0.5236F, 0.0F);
         ear1.cubeList.add(new ModelBox(ear1, 25, 3, -5.1F, -5.5F, -0.4F, 5, 5, 0, -0.19F));
 
         hair = new ModelRenderer(this);
         hair.setRotationPoint(0.3F, 0.0F, 0.0F);
-        Head.addChild(hair);
+        bipedHead.addChild(hair);
 
 
         hair1 = new ModelRenderer(this);
@@ -251,29 +251,29 @@ public class ModelKaioshinChild extends ModelBase {
         setRotationAngle(hair2_r11, 1.077F, 0.1794F, 0.1032F);
         hair2_r11.cubeList.add(new ModelBox(hair2_r11, 45, -1, -0.8336F, -0.0693F, -3.1247F, 2, 2, 3, -0.01F));
 
-        Body = new ModelRenderer(this);
-        Body.setRotationPoint(0.2F, 5.4F, -0.2F);
-        Body.cubeList.add(new ModelBox(Body, 16, 16, -4.2F, -5.4F, -1.8F, 8, 12, 4, 0.0F));
+        bipedBody = new ModelRenderer(this);
+        bipedBody.setRotationPoint(0.2F, 5.4F, -0.2F);
+        bipedBody.cubeList.add(new ModelBox(bipedBody, 16, 16, -4.2F, -5.4F, -1.8F, 8, 12, 4, 0.0F));
 
-        RArm = new ModelRenderer(this);
-        RArm.setRotationPoint(-4.0F, -3.6F, 0.2F);
-        Body.addChild(RArm);
-        RArm.cubeList.add(new ModelBox(RArm, 40, 16, -3.9F, -2.1F, -2.0F, 4, 12, 4, -0.3F));
+        bipedRightArm = new ModelRenderer(this);
+        bipedRightArm.setRotationPoint(-4.0F, -3.6F, 0.2F);
+        bipedBody.addChild(bipedRightArm);
+        bipedRightArm.cubeList.add(new ModelBox(bipedRightArm, 40, 16, -3.9F, -2.1F, -2.0F, 4, 12, 4, -0.3F));
 
-        LArm = new ModelRenderer(this);
-        LArm.setRotationPoint(3.8F, -3.4F, 0.2F);
-        Body.addChild(LArm);
-        LArm.cubeList.add(new ModelBox(LArm, 32, 48, -0.3F, -2.3F, -2.0F, 4, 12, 4, -0.3F));
+        bipedLeftArm = new ModelRenderer(this);
+        bipedLeftArm.setRotationPoint(3.8F, -3.4F, 0.2F);
+        bipedBody.addChild(bipedLeftArm);
+        bipedLeftArm.cubeList.add(new ModelBox(bipedLeftArm, 32, 48, -0.3F, -2.3F, -2.0F, 4, 12, 4, -0.3F));
 
-        RLeg = new ModelRenderer(this);
-        RLeg.setRotationPoint(-2.2F, 6.6F, 0.2F);
-        Body.addChild(RLeg);
-        RLeg.cubeList.add(new ModelBox(RLeg, 0, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
+        bipedRightLeg = new ModelRenderer(this);
+        bipedRightLeg.setRotationPoint(-2.2F, 6.6F, 0.2F);
+        bipedBody.addChild(bipedRightLeg);
+        bipedRightLeg.cubeList.add(new ModelBox(bipedRightLeg, 0, 16, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
 
-        LLeg = new ModelRenderer(this);
-        LLeg.setRotationPoint(1.8F, 6.6F, 0.2F);
-        Body.addChild(LLeg);
-        LLeg.cubeList.add(new ModelBox(LLeg, 16, 48, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
+        bipedLeftLeg = new ModelRenderer(this);
+        bipedLeftLeg.setRotationPoint(1.8F, 6.6F, 0.2F);
+        bipedBody.addChild(bipedLeftLeg);
+        bipedLeftLeg.cubeList.add(new ModelBox(bipedLeftLeg, 16, 48, -2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F));
     }
 
     @Override
@@ -281,19 +281,19 @@ public class ModelKaioshinChild extends ModelBase {
         GL11.glPushMatrix();
         GL11.glScalef(this.scale, this.scale, this.scale);
         GL11.glTranslatef(0.0F, (float) (-1.04F+(5.5F/(1.0F+Math.pow(this.scale/0.45F,1.88F)))), 0.0F);
-        Head.render(f5);
-        Body.render(f5);
+        bipedHead.render(f5);
+        bipedBody.render(f5);
         GL11.glPopMatrix();
-        this.Head.rotateAngleY = f3 / (180F / (float)Math.PI);
-        this.Head.rotateAngleX = f4 / (180F / (float)Math.PI);
-        this.RArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
-        this.LArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
-        this.RArm.rotateAngleZ = 0.0F;
-        this.LArm.rotateAngleZ = 0.0F;
-        this.RLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
-        this.LLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
-        this.RLeg.rotateAngleY = 0.0F;
-        this.LLeg.rotateAngleY = 0.0F;
+        this.bipedHead.rotateAngleY = f3 / (180F / (float)Math.PI);
+        this.bipedHead.rotateAngleX = f4 / (180F / (float)Math.PI);
+        this.bipedRightArm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 2.0F * f1 * 0.5F;
+        this.bipedLeftArm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 2.0F * f1 * 0.5F;
+        this.bipedRightArm.rotateAngleZ = 0.0F;
+        this.bipedLeftArm.rotateAngleZ = 0.0F;
+        this.bipedRightLeg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+        this.bipedLeftLeg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+        this.bipedRightLeg.rotateAngleY = 0.0F;
+        this.bipedLeftLeg.rotateAngleY = 0.0F;
     }
     public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
         modelRenderer.rotateAngleX = x;
