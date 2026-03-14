@@ -337,6 +337,7 @@ entity.ninjinentities.cellmax.name=cellmax
 entity.ninjinentities.Tamagami1.name=Tamagami1
 entity.ninjinentities.Tamagami2.name=Tamagami2
 entity.ninjinentities.Tamagami3.name=Tamagami3
+entity.ninjinentities.oldKaioshin.name=oldKaioshin
 entity.ninjinentities.Kaioshin.name=Kaioshin
 entity.ninjinentities.KaioshinChild.name=KaioshinChild
 entity.ninjinentities.DAIMAPorunga.name=DAIMAPorunga
@@ -368,5 +369,8 @@ entity.ninjinentities.ledgic.name=Ledgic
 entity.ninjinentities.lierde.name=lierde
 entity.ninjinentities.hetilierde.name=lierde
 entity.ninjinentities.Mrpopo.name=mr.popo
+entity.ninjinentities.MajinKuu.name=MajinKuu
+entity.ninjinentities.MajinDuu.name=MajinDuu
+entity.ninjinentities.MajinDuu2.name=MajinDuu
 
 

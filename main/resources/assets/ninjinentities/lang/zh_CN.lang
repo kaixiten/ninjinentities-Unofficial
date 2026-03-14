@@ -337,6 +337,7 @@ entity.ninjinentities.cellmax.name=沙鲁MAX
 entity.ninjinentities.Tamagami1.name=球神1号
 entity.ninjinentities.Tamagami2.name=球神2号
 entity.ninjinentities.Tamagami3.name=球神3号
+entity.ninjinentities.oldKaioshin.name=老界王神
 entity.ninjinentities.Kaioshin.name=界王神辛
 entity.ninjinentities.KaioshinChild.name=小孩界王神辛
 entity.ninjinentities.DAIMAPorunga.name=大魔波仑伽
@@ -368,5 +369,8 @@ entity.ninjinentities.Ledgic.name=雷基克
 entity.ninjinentities.lierde.name=利尔德
 entity.ninjinentities.hetilierde.name=利尔德
 entity.ninjinentities.Mrpopo.name=波波先生
+entity.ninjinentities.MajinKuu.name=魔人酷欧
+entity.ninjinentities.MajinDuu.name=魔人杜欧
+entity.ninjinentities.MajinDuu2.name=魔人杜欧
 
 
